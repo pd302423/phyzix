@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CBSE Class 11 Physics — Cheat Sheet (Ch 1–7)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<style>
+@page { size: A4 portrait; margin: 10mm; }
+
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.08;
+  color: #111;
+  background: #fff;
+  margin: 0;
+}
+.sheet {
+  column-count: 2;
+  column-gap: 4mm;
+  column-fill: auto;
+  column-rule: 0.4pt solid #d8d8d8;
+}
+/* ---------- headings ---------- */
+h1 {
+  font-size: 12.5pt; margin: 0 0 1mm; letter-spacing: .2px;
+  column-span: all; text-align: center; border-bottom: 1.2pt solid #111; padding-bottom: 1mm;
+}
+h1 .sub { display:block; font-size: 7.6pt; font-weight: 400; color:#444; margin-top: .5mm; letter-spacing:0; }
+h2 {
+  font-size: 10.2pt; margin: 1.2mm 0 0.6mm; padding: 0.45mm 1.4mm;
+  background: #1b1b1b; color: #fff; border-radius: 1.2pt;
+  break-after: avoid; page-break-after: avoid;
+}
+h2 .cno { font-weight: 800; }
+h3 {
+  font-size: 8.7pt; margin: 0.8mm 0 0.35mm; padding-bottom: .15mm;
+  border-bottom: 0.9pt solid #444; text-transform: uppercase; letter-spacing: .4px;
+  break-after: avoid; page-break-after: avoid;
+}
+h4 {
+  font-size: 8.7pt; margin: 0.5mm 0 .1mm; color: #000;
+  border-bottom: 0.4pt dotted #bbb; padding-bottom: .15mm;
+  break-after: avoid; page-break-after: avoid;
+}
+h4::before { content: "▸ "; color:#888; }
+
+/* ---------- formula lists ---------- */
+ul.f { list-style: none; margin: 0 0 .5mm; padding: 0; }
+ul.f > li {
+  margin: 0 0 .45mm; padding-left: 2.4mm; text-indent: -2.4mm;
+  break-inside: avoid; page-break-inside: avoid;
+}
+ul.f > li::before { content: "· "; font-weight: 700; color: #555; }
+.m { background: #f2f4f7; padding: 0 .5mm; border-radius: 1pt; }
+.mean { color: #333; }
+.u { color: #0a5; font-weight: 600; white-space: nowrap; }
+.u::before { content: "["; } .u::after { content: "]"; }
+
+/* ---------- derivation boxes ---------- */
+.deriv {
+  border: 0.9pt solid #222; border-left: 2.4pt solid #222; border-radius: 1.5pt;
+  padding: 0.7mm 1.3mm 0.7mm 1.6mm; margin: 0 0 1mm; background: #fcfcfc;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.deriv.star { border-left-color: #b8860b; background: #fffdf5; }
+.dh { font-weight: 700; font-size: 8.8pt; margin-bottom: .35mm; }
+.dh .st { color: #b8860b; }
+.deriv ol { margin: 0; padding-left: 3.8mm; }
+.deriv ol li { margin-bottom: .15mm; }
+.deriv .res { margin-top: .4mm; padding-top: .4mm; border-top: 0.5pt dashed #999; font-weight: 600; }
+
+/* ---------- tables ---------- */
+table {
+  border-collapse: collapse; width: 100%; font-size: 8.2pt; margin: 0 0 1mm;
+  break-inside: avoid; page-break-inside: avoid;
+}
+th, td { border: 0.5pt solid #999; padding: .28mm .7mm; text-align: left; vertical-align: top; }
+th { background: #e6e8ec; font-weight: 700; }
+tbody tr:nth-child(even) { background: #f7f8fa; }
+td.c, th.c { text-align: center; }
+
+/* ---------- traps ---------- */
+.traps {
+  border: 0.9pt solid #c0392b; border-radius: 1.5pt; background: #fdf3f2;
+  padding: 0.7mm 1.3mm; margin: 0 0 1mm;
+}
+.traps .th { font-weight: 700; color: #a5281b; font-size: 8.8pt; margin-bottom: .3mm; }
+.traps ol { margin: 0; padding-left: 3.8mm; }
+.traps ol li { margin-bottom: .18mm; }
+
+/* ---------- [IF TAUGHT] grey box ---------- */
+.opt {
+  border: 0.9pt dashed #777; background: #eeeeee; color: #222;
+  padding: 0.7mm 1.3mm; margin: 0 0 1mm; border-radius: 1.5pt;
+}
+.opt .oh {
+  font-weight: 700; font-size: 8.5pt; color: #333; margin-bottom: .3mm;
+  letter-spacing: .3px;
+}
+.opt ul { margin: 0; padding-left: 3.6mm; list-style: square; }
+.opt ul li { margin-bottom: .18mm; }
+
+/* ---------- priority end box ---------- */
+.priority {
+  column-span: all; border: 1.6pt solid #111; border-radius: 2pt;
+  padding: 1.1mm 2mm; margin-top: 1.6mm; background: #fffdf5;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.priority .ph { font-size: 9.8pt; font-weight: 800; margin-bottom: .6mm; text-align: center; }
+.priority ol { margin: 0; padding-left: 4.2mm; columns: 2; column-gap: 5mm; font-size: 8.7pt; }
+.priority ol li { margin-bottom: .25mm; break-inside: avoid; }
+.priority .tag { font-size: 8pt; color: #555; }
+
+/* ---------- misc ---------- */
+.note { font-size: 8.1pt; color: #444; font-style: italic; margin: 0 0 .6mm; }
+.katex { font-size: 1.0em; }
+.katex-display { margin: .5mm 0; break-inside: avoid; page-break-inside: avoid; overflow-x: auto; overflow-y: hidden; }
+.katex-display > .katex { font-size: 1.0em; }
+b, strong { font-weight: 700; }
+.sc { font-variant: small-caps; }
+hr.sp { border: 0; border-top: 0.5pt dotted #bbb; margin: 1.2mm 0; }
+
+@media screen {
+  body { max-width: 190mm; margin: 6mm auto; padding: 0 4mm; }
+  .sheet { column-fill: balance; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<h1>CBSE Class&nbsp;11 Physics — Exam Cheat Sheet
+<span class="sub">Rationalised NCERT (2023–24 onward) · Ch 1–7 (Gravitation up to variation of <i>g</i>) · ★ = high-priority derivation</span></h1>
+
+<!-- ============================ CH 1 ============================ -->
+<h2><span class="cno">Ch 1</span> · Units and Measurements</h2>
+
+<h3>Formulas</h3>
+
+<h4>Dimensional formulae (learn this table cold)</h4>
+<table>
+<thead><tr><th>Quantity</th><th>Dimensions</th><th>SI unit</th></tr></thead>
+<tbody>
+<tr><td>Force, Weight, Tension</td><td>$[\mathrm{M\,L\,T^{-2}}]$</td><td>N</td></tr>
+<tr><td>Work, Energy, Torque</td><td>$[\mathrm{M\,L^2T^{-2}}]$</td><td>J; N m</td></tr>
+<tr><td>Power</td><td>$[\mathrm{M\,L^2T^{-3}}]$</td><td>W</td></tr>
+<tr><td>Pressure, Stress, Elastic modulus</td><td>$[\mathrm{M\,L^{-1}T^{-2}}]$</td><td>Pa</td></tr>
+<tr><td>Momentum, Impulse</td><td>$[\mathrm{M\,L\,T^{-1}}]$</td><td>kg m s⁻¹; N s</td></tr>
+<tr><td>Angular momentum, Planck's $h$</td><td>$[\mathrm{M\,L^2T^{-1}}]$</td><td>J s</td></tr>
+<tr><td>Moment of inertia $I$</td><td>$[\mathrm{M\,L^{2}}]$</td><td>kg m²</td></tr>
+<tr><td>Gravitational constant $G$</td><td>$[\mathrm{M^{-1}L^{3}T^{-2}}]$</td><td>N m² kg⁻²</td></tr>
+<tr><td>Surface tension, Spring constant $k$</td><td>$[\mathrm{M\,T^{-2}}]$</td><td>N m⁻¹</td></tr>
+<tr><td>Coefficient of viscosity $\eta$</td><td>$[\mathrm{M\,L^{-1}T^{-1}}]$</td><td>Pa s (CGS: poise)</td></tr>
+<tr><td>Frequency $\nu$, $\omega$, Velocity gradient</td><td>$[\mathrm{T^{-1}}]$</td><td>Hz; rad s⁻¹</td></tr>
+<tr><td>Acceleration, $g$, Gravitational field</td><td>$[\mathrm{L\,T^{-2}}]$</td><td>m s⁻²; N kg⁻¹</td></tr>
+<tr><td>Density</td><td>$[\mathrm{M\,L^{-3}}]$</td><td>kg m⁻³</td></tr>
+<tr><td>Angle, Strain, $\mu$, $e$, Refractive index</td><td>$[\mathrm{M^0L^0T^0}]$</td><td>rad / none</td></tr>
+</tbody>
+</table>
+<p class="note">Same dimensions ⇒ may be added/equated. Work, torque and energy share $[\mathrm{ML^2T^{-2}}]$ yet differ physically.</p>
+
+<h4>Significant figures</h4>
+<ul class="f">
+<li><b>Counting:</b> non-zero digits, and zeros <i>between</i> them, count; <i>leading</i> zeros never ($0.00250\Rightarrow3$); trailing zeros only with a decimal point ($2.500\Rightarrow4$; $2500$ ambiguous → $2.5\times10^3$).</li>
+<li><b>Add / subtract:</b> keep the <i>fewest decimal places</i>. <span class="mean">$436.32+227.2+0.301=663.8$</span></li>
+<li><b>Multiply / divide:</b> keep the <i>fewest significant figures</i>. <span class="mean">$4.237\times2.51=10.6$</span></li>
+<li><b>Rounding:</b> dropped digit $&gt;5$ up, $&lt;5$ down, exactly $5$ ⇒ make the preceding digit <b>even</b> ($2.745\to2.74$, $2.735\to2.74$).</li>
+<li><b>Exact numbers</b> (counts, the $2$ in $2\pi r$) have infinite s.f. — they never limit the answer.</li>
+</ul>
+
+<h4>Unit conversion</h4>
+<ul class="f">
+<li>$n_1u_1 = n_2u_2$ — <span class="mean">magnitude × unit is invariant: bigger unit ⇒ smaller number</span></li>
+<li>$n_2 = n_1\!\left[\frac{M_1}{M_2}\right]^{a}\!\left[\frac{L_1}{L_2}\right]^{b}\!\left[\frac{T_1}{T_2}\right]^{c}$ — <span class="mean">$a,b,c$ = exponents in its dimensional formula</span></li>
+<li>$1\ \text{N} = 10^{5}\ \text{dyne}$; $\ 1\ \text{J} = 10^{7}\ \text{erg}$; $\ 1\ \text{Pa}=10\ \text{dyne cm}^{-2}$; $1\ \text{kg m}^2\text{s}^{-1} = 10^{7}$ CGS units</li>
+</ul>
+
+<h3>Derivations</h3>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Time period of a simple pendulum by the dimensional method</div>
+<ol>
+<li>Assume $T=k\,m^{a}l^{b}g^{c}$, $k$ dimensionless.</li>
+<li>Write dimensions: $[\mathrm{M^0L^0T^1}] = [\mathrm{M}]^{a}[\mathrm{L}]^{b}[\mathrm{L\,T^{-2}}]^{c}$.</li>
+<li>Collect: $[\mathrm{M^0L^0T^1}]=[\mathrm{M}^{a}\,\mathrm{L}^{b+c}\,\mathrm{T}^{-2c}]$.</li>
+<li>Equate exponents: $a=0$; &nbsp;$b+c=0$; &nbsp;$-2c=1$.</li>
+<li>$c=-\tfrac12$, $b=+\tfrac12$, $a=0$ — <b>$T$ is independent of mass</b>.</li>
+</ol>
+<div class="res">$T=k\sqrt{l/g}$; experiment gives $k=2\pi$ ⇒ $T=2\pi\sqrt{l/g}$.</div>
+</div>
+
+<div class="deriv">
+<div class="dh">Checking homogeneity of $v^2 = u^2 + 2as$</div>
+<ol>
+<li>Every additive term in a correct equation has identical dimensions.</li>
+<li>LHS: $[v^2] = [\mathrm{L\,T^{-1}}]^2 = [\mathrm{L^2T^{-2}}]$.</li>
+<li>1st term RHS: $[u^2] = [\mathrm{L^2T^{-2}}]$.</li>
+<li>2nd term RHS: $[2as]=[\mathrm{LT^{-2}}][\mathrm{L}]=[\mathrm{L^2T^{-2}}]$.</li>
+<li>All three match ⇒ dimensionally homogeneous, hence dimensionally correct.</li>
+</ol>
+<div class="res">Necessary, not sufficient: the factor $2$ is unchecked, so $v^2=u^2+3as$ also "passes".</div>
+</div>
+
+<h3>Standard results</h3>
+<h4>Limitations of dimensional analysis</h4>
+<ul class="f">
+<li>Cannot find <b>dimensionless constants</b> ($k$, $2\pi$, $\tfrac12$) — only the <i>form</i> of the relation.</li>
+<li>Fails for quantities depending on <b>more than three</b> variables (only 3 equations from M, L, T).</li>
+<li>Cannot handle <b>trigonometric, exponential or logarithmic</b> relations ($\sin\theta$, $e^{-kt}$).</li>
+<li>Cannot derive relations containing <b>sums of terms</b>, e.g. $s = ut + \tfrac12 at^2$.</li>
+<li>Cannot <b>distinguish</b> quantities with identical dimensions (work vs torque; energy vs moment of force).</li>
+<li>Says nothing about <b>scalar vs vector</b>, or whether an equation is physically meaningful.</li>
+</ul>
+
+<h4>Useful constants</h4>
+<ul class="f">
+<li>$g = 9.8\ \mathrm{m\,s^{-2}}$, $R_E = 6.4\times10^{6}\ \mathrm{m}$, $M_E \approx 6\times10^{24}\ \mathrm{kg}$, $G = 6.67\times10^{-11}$ SI, $1\ \mathrm{hp}=746\ \mathrm{W}$, $1\ \mathrm{kWh}=3.6\times10^{6}\ \mathrm{J}$.</li>
+</ul>
+
+<div class="opt">
+<div class="oh">Only if covered in class — Error propagation</div>
+<ul>
+<li>$\bar a=\frac1n\sum a_i$; mean absolute error $\overline{\Delta a}=\frac1n\sum|\Delta a_i|$; relative $\overline{\Delta a}/\bar a$; percentage $\times100\%$.</li>
+<li><b>Sum or difference</b> $Z = A \pm B$: &nbsp;$\Delta Z = \Delta A + \Delta B$ — <i>absolute</i> errors add, even for a difference.</li>
+<li><b>Product or quotient</b> $Z = AB$ or $A/B$: &nbsp;$\frac{\Delta Z}{Z} = \frac{\Delta A}{A} + \frac{\Delta B}{B}$ — <i>relative</i> errors add.</li>
+<li><b>Powers</b> $Z=\frac{A^pB^q}{C^r}$: $\frac{\Delta Z}{Z}=p\frac{\Delta A}{A}+q\frac{\Delta B}{B}+r\frac{\Delta C}{C}$ — the exponent <i>multiplies</i> the error, so measure high powers most carefully.</li>
+</ul>
+</div>
+
+<div class="traps">
+<div class="th">Traps — Ch 1</div>
+<ol>
+<li>$+,-$ ⇒ count <b>decimal places</b>; $\times,\div$ ⇒ count <b>significant figures</b>. Swapping them is the classic slip.</li>
+<li>Errors <b>always add</b>. For $Z=A-B$ you still write $\Delta Z = \Delta A + \Delta B$ — never subtract errors.</li>
+<li>Dimensionally correct $\ne$ physically correct: dimensional analysis cannot detect a wrong numerical factor, nor tell torque from work.</li>
+<li>Arguments of $\sin,\cos,\log$ and exponents must be <b>dimensionless</b> — use this to find an unknown constant's dimensions.</li>
+<li>In $n_2=n_1[M_1/M_2]^a\dots$: 1 = <b>old</b> system, 2 = <b>new</b>. Inverting the ratios is a guaranteed blunder.</li>
+</ol>
+</div>
+
+<!-- ============================ CH 2 ============================ -->
+<h2><span class="cno">Ch 2</span> · Motion in a Straight Line</h2>
+
+<h3>Formulas</h3>
+
+<h4>Definitions</h4>
+<ul class="f">
+<li>$\bar v=\frac{\Delta x}{\Delta t}$ — <span class="mean">average velocity; displacement per unit time; vector</span> <span class="u">m s⁻¹</span></li>
+<li>Average speed $=\frac{\text{path length}}{\text{time}}$ — <span class="mean">scalar; $\ge|\bar v|$</span> <span class="u">m s⁻¹</span></li>
+<li>$v = \frac{dx}{dt}$, &nbsp;$a = \frac{dv}{dt} = \frac{d^2x}{dt^2}$ — <span class="mean">instantaneous velocity and acceleration</span> <span class="u">m s⁻¹, m s⁻²</span></li>
+<li>$a = v\,\frac{dv}{dx}$ — <span class="mean">use when $a$ is given as a function of position $x$, not of time</span></li>
+<li>Equal <i>distances</i> at $v_1,v_2$: $\bar v=\frac{2v_1v_2}{v_1+v_2}$; equal <i>times</i>: $\bar v=\frac{v_1+v_2}{2}$.</li>
+</ul>
+
+<h4>Uniformly accelerated motion (constant $a$ only)</h4>
+<ul class="f">
+<li>$v = u + at$ — <span class="mean">velocity–time; no $s$</span></li>
+<li>$s = ut + \tfrac12 at^2$ — <span class="mean">displacement–time; no $v$</span> <span class="u">m</span></li>
+<li>$v^2 = u^2 + 2as$ — <span class="mean">no $t$; use when time is neither given nor asked</span></li>
+<li>$s = \left(\frac{u+v}{2}\right)t$ — <span class="mean">no $a$</span></li>
+<li>$s_{n^{\text{th}}} = u + \frac{a}{2}(2n-1)$ — <span class="mean">displacement <b>during</b> the $n^{\text{th}}$ second</span> <span class="u">m, not m s⁻¹</span></li>
+</ul>
+
+<h4>Free fall &amp; stopping</h4>
+<ul class="f">
+<li>Dropped from rest (down positive, $u=0$): $\ v = gt$, &nbsp;$h = \tfrac12 gt^2$, &nbsp;$v = \sqrt{2gh}$</li>
+<li>Thrown up with $u$ ($a=-g$): $t_{\text{up}}=u/g$, $H_{\max}=u^2/2g$, $T=2u/g$; returns with speed $u$.</li>
+<li>Stopping distance $s=\frac{u^2}{2a}$ ($a$ = retardation) — <span class="mean">$\propto u^2$: double the speed ⇒ 4× the distance</span></li>
+<li>Relative velocity 1D: $v_{AB}=v_A-v_B$ ($A$ as seen by $B$); same direction ⇒ subtract, opposite ⇒ add magnitudes.</li>
+</ul>
+
+<h3>Derivations</h3>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Three equations of motion — <b>graphical</b> ($v$–$t$ graph)</div>
+<ol>
+<li>$v$–$t$ graph, constant $a$: line $AB$ from $(0,u)$ to $(t,v)$; $BC\perp t$-axis, $AD\parallel t$-axis ⇒ $BD=v-u$, $AD=OC=t$.</li>
+<li><b>Eq. 1:</b> slope $=a=\frac{BD}{AD}=\frac{v-u}{t}\Rightarrow v=u+at$.</li>
+<li><b>Eq. 2:</b> displacement $=$ area $OABC=$ rectangle $+$ triangle $=ut+\tfrac12t(at)\Rightarrow s=ut+\tfrac12at^2$.</li>
+<li><b>Eq. 3:</b> same area as a trapezium $=\tfrac12(u+v)t$; put $t=(v-u)/a$ from Eq. 1.</li>
+<li>$s=\frac{(u+v)(v-u)}{2a}=\frac{v^2-u^2}{2a}\Rightarrow v^2=u^2+2as$.</li>
+</ol>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Three equations of motion — <b>calculus</b></div>
+<ol>
+<li>$a=\frac{dv}{dt}$ with $a$ constant ⇒ $dv=a\,dt$.</li>
+<li>$\int_u^{v}dv = a\int_0^{t}dt \Rightarrow v-u=at$. &nbsp;<b>(1)</b></li>
+<li>$\frac{dx}{dt}=u+at$ ⇒ $\int_{x_0}^{x}dx=\int_0^{t}(u+at)\,dt$.</li>
+<li>$x - x_0 = s = ut + \tfrac12 at^2$. &nbsp;<b>(2)</b></li>
+<li>Then $a=\frac{dv}{dt}=\frac{dv}{dx}\frac{dx}{dt}=v\frac{dv}{dx}$ ⇒ $v\,dv=a\,dx$.</li>
+<li>$\int_u^{v}v\,dv=a\int_0^{s}dx\Rightarrow\frac{v^2-u^2}{2}=as\Rightarrow v^2=u^2+2as$. &nbsp;<b>(3)</b></li>
+</ol>
+</div>
+
+<div class="deriv">
+<div class="dh">Distance travelled in the $n^{\text{th}}$ second</div>
+<ol>
+<li>$s_{n^{\text{th}}}=s_n-s_{n-1}$ (distance in $n$ s minus in $n-1$ s).</li>
+<li>$s_n = un + \tfrac12 a n^2$; &nbsp;$s_{n-1} = u(n-1) + \tfrac12 a (n-1)^2$.</li>
+<li>Subtract: $s_{n^{\text{th}}} = u + \tfrac{a}{2}\big[n^2-(n-1)^2\big] = u + \tfrac{a}{2}(2n-1)$.</li>
+</ol>
+<div class="res">Unit: <b>metre</b> — a displacement over a 1 s interval, numerically equal to that second's average velocity.</div>
+</div>
+
+<h3>Standard results — graph interpretation</h3>
+<table>
+<thead><tr><th>Graph</th><th>Slope gives</th><th>Area gives</th></tr></thead>
+<tbody>
+<tr><td>$x$–$t$</td><td>velocity $v$</td><td>no physical meaning</td></tr>
+<tr><td>$v$–$t$</td><td>acceleration $a$</td><td>displacement (signed)</td></tr>
+<tr><td>$a$–$t$</td><td>jerk (not in syllabus)</td><td>change in velocity $\Delta v$</td></tr>
+</tbody>
+</table>
+<table>
+<thead><tr><th>Motion</th><th>$x$–$t$ shape</th><th>$v$–$t$ shape</th></tr></thead>
+<tbody>
+<tr><td>At rest</td><td>horizontal line</td><td>on the $t$-axis ($v=0$)</td></tr>
+<tr><td>Uniform velocity</td><td>straight line, slope $=v$</td><td>horizontal line</td></tr>
+<tr><td>Uniform acceleration ($u=0$)</td><td>parabola opening upward</td><td>straight line through origin</td></tr>
+<tr><td>Uniform retardation</td><td>parabola, slope decreasing</td><td>straight line, negative slope</td></tr>
+</tbody>
+</table>
+<ul class="f">
+<li>An $x$–$t$ graph is never <b>vertical</b> (infinite velocity) and never doubles back (one position per instant).</li>
+<li>Area below the $t$-axis of a $v$–$t$ graph is negative: add magnitudes for <i>distance</i>, add signed for <i>displacement</i>.</li>
+</ul>
+
+<div class="traps">
+<div class="th">Traps — Ch 2</div>
+<ol>
+<li>$s_{n^{\text{th}}} = u + \frac{a}{2}(2n-1)$ has unit <b>metre</b>, though its form looks like a velocity. Do not write m s⁻¹.</li>
+<li>Fix the $+$ direction <b>once</b>. Thrown up with "up positive" ⇒ $a=-g$ throughout, including at the top and on the way down.</li>
+<li>At the highest point $v=0$ but $a = g \ne 0$. "Velocity zero" never means "acceleration zero".</li>
+<li>The three equations need <b>constant $a$</b>. If $a$ varies, integrate — use $a=v\,dv/dx$ when $a=a(x)$.</li>
+<li>Negative acceleration $\ne$ deceleration. Motion slows only when $v$ and $a$ have <b>opposite signs</b>.</li>
+</ol>
+</div>
+
+<!-- ============================ CH 3 ============================ -->
+<h2><span class="cno">Ch 3</span> · Motion in a Plane</h2>
+
+<h3>Formulas</h3>
+
+<h4>Vector addition &amp; resolution</h4>
+<ul class="f">
+<li><b>Parallelogram law</b> ($\theta$ = angle <i>between</i> them, tails together): $R=\sqrt{A^2+B^2+2AB\cos\theta}$, $\tan\alpha=\frac{B\sin\theta}{A+B\cos\theta}$ — <span class="mean">$\alpha$ from $\vec A$</span></li>
+<li>Limits: $0^\circ\Rightarrow A+B$ (max); $90^\circ\Rightarrow\sqrt{A^2+B^2}$; $180^\circ\Rightarrow|A-B|$ (min).</li>
+<li><b>Triangle law:</b> tail of $\vec B$ at head of $\vec A$; the closing side is $\vec R$. <b>Polygon law:</b> $n$ vectors; closed ⇒ $\vec R=0$.</li>
+<li><b>Subtraction:</b> $\vec A-\vec B=\vec A+(-\vec B)$, so $|\vec A-\vec B| = \sqrt{A^2+B^2-2AB\cos\theta}$.</li>
+<li><b>Resolution</b> ($\theta$ from the $+x$ axis): $A_x=A\cos\theta$, $A_y=A\sin\theta$; &nbsp;$A=\sqrt{A_x^2+A_y^2}$, &nbsp;$\tan\theta=A_y/A_x$.</li>
+<li><b>Unit vector</b> $\hat A = \vec A/|\vec A|$ (dimensionless, magnitude 1); $\vec A = A_x\hat i + A_y\hat j + A_z\hat k$.</li>
+</ul>
+
+<h4>Products</h4>
+<ul class="f">
+<li><b>Dot:</b> $\vec A\cdot\vec B=AB\cos\theta=A_xB_x+A_yB_y+A_zB_z$; commutative; $\hat i\cdot\hat i=1$, $\hat i\cdot\hat j=0$; zero ⇔ $\perp$; gives $W$.</li>
+<li><b>Cross:</b> $|\vec A\times\vec B|=AB\sin\theta$, $\perp$ both (right hand); $=-\vec B\times\vec A$; $\vec A\times\vec A=0$; $\hat i\times\hat j=\hat k$, $\hat j\times\hat k=\hat i$, $\hat k\times\hat i=\hat j$; zero ⇔ parallel; gives $\vec\tau$.</li>
+<li>$\vec A\times\vec B=\begin{vmatrix}\hat i&amp;\hat j&amp;\hat k\\A_x&amp;A_y&amp;A_z\\B_x&amp;B_y&amp;B_z\end{vmatrix}$; &nbsp;$\cos\theta=\frac{\vec A\cdot\vec B}{AB}$.</li>
+</ul>
+
+<h4>Constant acceleration in a plane (each component independent)</h4>
+<ul class="f">
+<li>$\vec v = \vec u + \vec a t$; &nbsp;$\vec r = \vec r_0 + \vec u t + \tfrac12\vec a t^2$; &nbsp;$\vec v\cdot\vec v = \vec u\cdot\vec u + 2\vec a\cdot(\vec r-\vec r_0)$</li>
+<li>Components: $v_x=u_x+a_xt$, $x=u_xt+\tfrac12a_xt^2$; same independently in $y$.</li>
+</ul>
+
+<h4>Projectile motion ($u$ at angle $\theta$ to the horizontal, same landing level)</h4>
+<ul class="f">
+<li>$T = \frac{2u\sin\theta}{g}$ — <span class="mean">time of flight</span> <span class="u">s</span>; &nbsp;time to peak $=T/2$</li>
+<li>$H = \frac{u^2\sin^2\theta}{2g}$ — <span class="mean">maximum height</span> <span class="u">m</span></li>
+<li>$R = \frac{u^2\sin2\theta}{g}$ — <span class="mean">horizontal range on level ground</span> <span class="u">m</span>; &nbsp;$R_{\max}=u^2/g$ at $\theta=45^\circ$</li>
+<li>$y = x\tan\theta - \frac{gx^2}{2u^2\cos^2\theta}$ — <span class="mean">trajectory: a parabola</span>; &nbsp;$R = 4H\cot\theta$</li>
+<li>At $t$: $v_x=u\cos\theta$, $v_y=u\sin\theta-gt$, $v=\sqrt{v_x^2+v_y^2}$, $\tan\beta=v_y/v_x$. Top: speed $u\cos\theta$, $a=g$ down.</li>
+<li><b>Horizontal projection from $h$:</b> $t=\sqrt{2h/g}$, $x=u\sqrt{2h/g}$, $v_y=\sqrt{2gh}$, $v=\sqrt{u^2+2gh}$, $\tan\beta=\sqrt{2gh}/u$ below horizontal, $y=\frac{gx^2}{2u^2}$ ($y$ down).</li>
+</ul>
+
+<h4>Uniform circular motion</h4>
+<ul class="f">
+<li>$v=\omega r$; &nbsp;$\omega = \frac{2\pi}{T}=2\pi\nu$ — <span class="mean">angular velocity</span> <span class="u">rad s⁻¹</span></li>
+<li>$a_c = \frac{v^2}{r} = \omega^2 r = \frac{4\pi^2 r}{T^2}$ — <span class="mean">centripetal acceleration, directed to the centre</span> <span class="u">m s⁻²</span></li>
+<li>Non-uniform: $a_t=dv/dt$, net $a=\sqrt{a_c^2+a_t^2}$; constant speed ⇒ $a_t=0$.</li>
+</ul>
+
+<h4>Relative velocity in 2D</h4>
+<ul class="f">
+<li>$\vec v_{AB} = \vec v_A - \vec v_B$ — <span class="mean">velocity of $A$ relative to $B$</span>; &nbsp;$\vec v_{AB}=-\vec v_{BA}$</li>
+<li><b>Rain–umbrella:</b> rain $v_r$ down, man $v_m$ across ⇒ tilt <b>forward</b> at $\tan\theta=v_m/v_r$ from the vertical; apparent speed $\sqrt{v_r^2+v_m^2}$.</li>
+<li><b>River–boat, shortest time:</b> steer straight across ⇒ $t=d/v_b$, drift $v_rd/v_b$, resultant $\sqrt{v_b^2+v_r^2}$.</li>
+<li><b>Zero drift:</b> steer upstream at $\sin\theta=v_r/v_b$ from the normal ⇒ speed $\sqrt{v_b^2-v_r^2}$, $t=d/\sqrt{v_b^2-v_r^2}$; needs $v_b&gt;v_r$.</li>
+</ul>
+
+<h3>Derivations</h3>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Parallelogram law — magnitude and direction of the resultant</div>
+<ol>
+<li>$\vec A=\overrightarrow{OP}$, $\vec B=\overrightarrow{OQ}$, angle $\theta$ between; complete parallelogram $OPSQ$ ⇒ $\vec R=\overrightarrow{OS}$, $PS=B$.</li>
+<li>Drop $SN\perp OP$ produced ⇒ $PN=B\cos\theta$, $SN=B\sin\theta$.</li>
+<li>In $\triangle ONS$: $R^2=ON^2+SN^2=(A+B\cos\theta)^2+(B\sin\theta)^2$.</li>
+<li>Expand: $R^2 = A^2 + 2AB\cos\theta + B^2(\cos^2\theta+\sin^2\theta)$.</li>
+<li>$\Rightarrow R = \sqrt{A^2+B^2+2AB\cos\theta}$.</li>
+<li>$\tan\alpha=\frac{SN}{ON}=\frac{B\sin\theta}{A+B\cos\theta}$, $\alpha$ from $\vec A$.</li>
+</ol>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Projectile: trajectory is a parabola, $T$, $H$, $R$</div>
+<ol>
+<li>Origin at launch, $x$ horizontal, $y$ up: $a_x=0$, $a_y=-g$, $u_x=u\cos\theta$, $u_y=u\sin\theta$; the two motions are <b>independent</b>.</li>
+<li>Horizontal: $x = (u\cos\theta)t \Rightarrow t = \frac{x}{u\cos\theta}$.</li>
+<li>Vertical: $y=(u\sin\theta)t-\tfrac12gt^2$; substitute $t$ from step 2:</li>
+<li>$y=x\tan\theta-\frac{gx^2}{2u^2\cos^2\theta}$ — form $y=ax-bx^2$ ⇒ the path is a <b>parabola</b>.</li>
+<li><b>$T$:</b> put $y=0$: $t(u\sin\theta-\tfrac12gt)=0\Rightarrow T=\frac{2u\sin\theta}{g}$.</li>
+<li><b>$H$:</b> at the top $v_y=0$; $0=u^2\sin^2\theta-2gH\Rightarrow H=\frac{u^2\sin^2\theta}{2g}$.</li>
+<li><b>$R$:</b> $R=(u\cos\theta)T=\frac{2u^2\sin\theta\cos\theta}{g}=\frac{u^2\sin2\theta}{g}$.</li>
+</ol>
+<div class="res">$R$ max at $\sin2\theta=1$, i.e. $\theta=45^\circ$, $R_{\max}=u^2/g$. Since $\sin2(90^\circ-\theta)=\sin2\theta$, <b>complementary angles</b> ($30^\circ,60^\circ$) give <b>equal $R$</b>, different $T,H$.</div>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Centripetal acceleration $a_c = v^2/r = \omega^2 r$</div>
+<ol>
+<li>Particle on a circle of radius $r$ at constant speed $v$: position vectors $\vec r_1,\vec r_2$ at $t$ and $t+\Delta t$ subtend $\Delta\theta$ at the centre.</li>
+<li>Velocity is tangential, so $\vec v_1,\vec v_2$ (each of length $v$) turn through the <b>same</b> $\Delta\theta$.</li>
+<li>Position triangle ($\vec r_1,\vec r_2,\Delta\vec r$) and velocity triangle ($\vec v_1,\vec v_2,\Delta\vec v$) are isosceles with the same apex angle ⇒ <b>similar</b>.</li>
+<li>Hence $\frac{|\Delta\vec v|}{v} = \frac{|\Delta\vec r|}{r}$, i.e. $|\Delta\vec v| = \frac{v}{r}|\Delta\vec r|$.</li>
+<li>Divide by $\Delta t$ and let $\Delta t\to0$, where $\frac{|\Delta\vec r|}{\Delta t}\to v$:</li>
+<li>$a=\frac{v^2}{r}$; and $\Delta\vec v$ becomes $\perp\vec v$, pointing to the centre ⇒ <b>centripetal</b>.</li>
+</ol>
+<div class="res">With $v=\omega r$: $a_c=\frac{v^2}{r}=\omega^2r=v\omega=\frac{4\pi^2r}{T^2}$. Speed constant, velocity not — hence non-zero $a$.</div>
+</div>
+
+<div class="traps">
+<div class="th">Traps — Ch 3</div>
+<ol>
+<li>Parallelogram: $\theta$ is <b>tail-to-tail</b>. Triangle: <b>head-to-tail</b>, so the figure shows $180^\circ-\theta$. Mixing them flips the sign of $2AB\cos\theta$.</li>
+<li>$A\cos\theta$ is the $x$-component only if $\theta$ is measured <b>from the $x$-axis</b>. From the $y$-axis or an incline, sine and cosine swap.</li>
+<li>In a projectile, $a=g$ downward at <b>every</b> point, including the top where $v_y=0$; $v_x$ never changes.</li>
+<li>$R$, $T$, $H$ assume launch and landing at the <b>same height</b>. From a cliff or tower, go back to the component equations.</li>
+<li>$a_c=v^2/r$ is an <b>acceleration</b>, not a force. Never add a "centrifugal force" in an inertial frame — the inward force is tension, friction, gravity or $N$.</li>
+</ol>
+</div>
+
+<!-- ============================ CH 4 ============================ -->
+<h2><span class="cno">Ch 4</span> · Laws of Motion</h2>
+
+<h3>Formulas</h3>
+
+<h4>Newton's laws, momentum, impulse</h4>
+<ul class="f">
+<li><b>1st law (inertia):</b> a body stays at rest or in uniform motion unless a net external force acts. Defines force qualitatively, and the inertial frame.</li>
+<li><b>2nd law:</b> $\vec F = \frac{d\vec p}{dt} = m\vec a$ (constant $m$) — <span class="mean">gives force <i>quantitatively</i></span> <span class="u">N = kg m s⁻²</span></li>
+<li>$\vec p = m\vec v$ — <span class="mean">linear momentum</span> <span class="u">kg m s⁻¹</span></li>
+<li><b>3rd law:</b> $\vec F_{AB}=-\vec F_{BA}$ — <span class="mean">equal, opposite, simultaneous, on <b>two different</b> bodies</span></li>
+<li>Impulse $\vec J=\vec F_{\text{avg}}\Delta t=\Delta\vec p=\int\vec F\,dt$ = area under $F$–$t$ <span class="u">N s</span></li>
+<li><b>Conservation:</b> $\vec F_{\text{ext}}=0\Rightarrow\vec p_{\text{tot}}$ constant: $m_1\vec u_1+m_2\vec u_2=m_1\vec v_1+m_2\vec v_2$.</li>
+</ul>
+
+<h4>Equilibrium of concurrent forces</h4>
+<ul class="f">
+<li>$\sum\vec F=0\Rightarrow\sum F_x=0,\ \sum F_y=0$ — <span class="mean">necessary and sufficient for a particle</span></li>
+<li>Three concurrent forces in equilibrium close into a triangle. <b>Lami:</b> $\frac{F_1}{\sin\alpha}=\frac{F_2}{\sin\beta}=\frac{F_3}{\sin\gamma}$, each angle being the one <i>opposite</i> its force.</li>
+</ul>
+
+<h4>Friction</h4>
+<ul class="f">
+<li>$f_s\le\mu_sN$, $(f_s)_{\max}=\mu_sN$ — <span class="mean"><b>self-adjusting</b>: equals the applied force up to the limit</span></li>
+<li>$f_k=\mu_kN$, $\mu_k&lt;\mu_s$ — <span class="mean">constant; independent of speed and contact area</span></li>
+<li><b>Angle of friction</b> $\lambda$: $\tan\lambda=\mu_s$ — <span class="mean">between the resultant of $N,f_{\max}$ and $N$</span></li>
+<li><b>Angle of repose</b> $\alpha$: $\tan\alpha=\mu_s$ — <span class="mean">incline at which sliding just begins; $\alpha=\lambda$</span></li>
+<li>Rolling friction $\lll$ sliding friction — hence wheels and ball bearings.</li>
+</ul>
+
+<h4>Circular motion dynamics</h4>
+<ul class="f">
+<li>$F_c=\frac{mv^2}{r}=m\omega^2r$ — <span class="mean">the <i>name</i> of the net inward force, not a new force</span> <span class="u">N</span></li>
+<li>Level road: $v_{\max}=\sqrt{\mu_s R g}$ — <span class="mean">friction alone supplies $F_c$</span></li>
+<li>Banked, frictionless: $v_0 = \sqrt{Rg\tan\theta}$ — <span class="mean">optimum speed; no friction needed</span></li>
+<li>Banked + friction: $v_{\max}=\sqrt{Rg\frac{\mu_s+\tan\theta}{1-\mu_s\tan\theta}}$; $v_{\min}=\sqrt{Rg\frac{\tan\theta-\mu_s}{1+\mu_s\tan\theta}}$ if $\tan\theta&gt;\mu_s$</li>
+</ul>
+
+<h4>Standard systems</h4>
+<ul class="f">
+<li><b>Lift ($N$ = apparent weight):</b> rest: $mg$; up with $a$: $m(g+a)$; down: $m(g-a)$; free fall: $0$; $a&gt;g$ down ⇒ presses on the roof.</li>
+<li><b>Atwood</b> ($m_1&gt;m_2$, light string, ideal pulley): $a=\frac{(m_1-m_2)g}{m_1+m_2}$, $T=\frac{2m_1m_2g}{m_1+m_2}$, pulley load $=2T$.</li>
+<li><b>Incline</b> $\theta$: $N=mg\cos\theta$; smooth $a=g\sin\theta$; down $a=g(\sin\theta-\mu_k\cos\theta)$; up $a=g(\sin\theta+\mu_k\cos\theta)$; rests if $\tan\theta\le\mu_s$.</li>
+<li><b>Blocks in contact</b> ($F$ on $m_1$, smooth): $a=\frac{F}{m_1+m_2}$, contact force $=\frac{m_2F}{m_1+m_2}$ — the mass <i>ahead</i>.</li>
+<li><b>Blocks joined by a string</b>, pulled by $F$: $a=\frac{F}{m_1+m_2}$, $T=\frac{m_{\text{behind}}}{m_1+m_2}F$.</li>
+</ul>
+
+<h3>Derivations</h3>
+
+<div class="deriv">
+<div class="dh">$\vec F = d\vec p/dt \Rightarrow \vec F = m\vec a$; impulse</div>
+<ol>
+<li>$\vec p=m\vec v$; second law in general form: $\vec F=\frac{d\vec p}{dt}$.</li>
+<li>$\frac{d\vec p}{dt}=\frac{d(m\vec v)}{dt}=m\frac{d\vec v}{dt}+\vec v\frac{dm}{dt}$.</li>
+<li><b>Constant mass</b> ⇒ $dm/dt=0$ ⇒ $\vec F=m\frac{d\vec v}{dt}=m\vec a$.</li>
+<li>Integrate over the contact time: $\int_{t_1}^{t_2}\vec F\,dt=\vec p_2-\vec p_1$ — <b>impulse $=\Delta\vec p$</b>.</li>
+</ol>
+<div class="res">Same $\Delta p$ over a longer $\Delta t$ ⇒ smaller force: bent knees on landing, airbags, drawing the hands back to catch a ball.</div>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Conservation of linear momentum from the 2nd + 3rd laws; gun recoil</div>
+<ol>
+<li>Isolated system: bodies $A,B$ interact for a time $\Delta t$, no external force.</li>
+<li>Third law: $\vec F_{AB}=-\vec F_{BA}$.</li>
+<li>Second law on each: $\frac{d\vec p_A}{dt}=\vec F_{AB}$, $\frac{d\vec p_B}{dt}=\vec F_{BA}$.</li>
+<li>Add: $\frac{d}{dt}(\vec p_A+\vec p_B)=\vec F_{AB}+\vec F_{BA}=0$.</li>
+<li>⇒ $\vec p_A+\vec p_B$ constant: $m_1\vec u_1+m_2\vec u_2=m_1\vec v_1+m_2\vec v_2$.</li>
+<li><b>Gun recoil:</b> gun ($M$) + bullet ($m$) at rest ⇒ total $\vec p=0$; after firing $0=m\vec v_b+M\vec v_g$.</li>
+<li>⇒ $\vec v_g=-\frac{m}{M}\vec v_b$ — <b>opposite</b> to the bullet and small because $M\gg m$.</li>
+</ol>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Maximum speed on a level circular road</div>
+<ol>
+<li>Car of mass $m$, horizontal circular road of radius $R$. Forces: $mg$ down, $N$ up, static friction $f$ — the <b>only</b> horizontal force.</li>
+<li>Vertical equilibrium: $N = mg$.</li>
+<li>Friction supplies $F_c$: $\frac{mv^2}{R}=f\le\mu_sN=\mu_smg$.</li>
+<li>$\frac{v^2}{R}\le\mu_sg\Rightarrow v\le\sqrt{\mu_sRg}$.</li>
+</ol>
+<div class="res">$v_{\max}=\sqrt{\mu_sRg}$ — independent of the car's mass; beyond it the car skids outward.</div>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Banked road — optimum and maximum speed</div>
+<ol>
+<li>Road banked at $\theta$, radius $R$. <b>Frictionless first:</b> forces are $N$ ($\perp$ road) and $mg$.</li>
+<li>Resolve $N$: vertical $N\cos\theta=mg$; inward $N\sin\theta=\frac{mv_0^2}{R}$.</li>
+<li>Divide: $\tan\theta=\frac{v_0^2}{Rg}\Rightarrow v_0=\sqrt{Rg\tan\theta}$ — the <b>optimum speed</b>, needing no friction.</li>
+<li><b>With friction, at $v_{\max}$</b> the car tends to slip <i>up</i> the slope, so $f=\mu_sN$ acts <i>down</i> it. Resolve vertically and horizontally:</li>
+<li>$N\cos\theta=mg+f\sin\theta$; &nbsp;$N\sin\theta+f\cos\theta=\frac{mv_{\max}^2}{R}$.</li>
+<li>Put $f=\mu_sN$; divide the second by the first to kill $N$ and $m$:</li>
+<li>$\frac{v_{\max}^2}{Rg} = \frac{\sin\theta+\mu_s\cos\theta}{\cos\theta-\mu_s\sin\theta} = \frac{\tan\theta+\mu_s}{1-\mu_s\tan\theta}$.</li>
+</ol>
+<div class="res">$v_{\max}=\sqrt{Rg\frac{\mu_s+\tan\theta}{1-\mu_s\tan\theta}}$. <b>Checks:</b> $\mu_s=0\Rightarrow\sqrt{Rg\tan\theta}$; $\theta=0\Rightarrow\sqrt{\mu_sRg}$. Friction reversed ⇒ $v_{\min}=\sqrt{Rg\frac{\tan\theta-\mu_s}{1+\mu_s\tan\theta}}$.</div>
+</div>
+
+<div class="deriv">
+<div class="dh">Atwood machine — acceleration and tension</div>
+<ol>
+<li>$m_1&gt;m_2$ over a light frictionless pulley; inextensible string ⇒ same $|a|$, same $T$ both sides.</li>
+<li>For $m_1$ (moving down): $m_1g - T = m_1a$.</li>
+<li>For $m_2$ (moving up): $T - m_2g = m_2a$.</li>
+<li>Add: $(m_1-m_2)g = (m_1+m_2)a \Rightarrow a = \frac{(m_1-m_2)g}{m_1+m_2}$.</li>
+<li>Back-substitute: $T=m_2(g+a)=\frac{2m_1m_2g}{m_1+m_2}$ (note $m_2g&lt;T&lt;m_1g$).</li>
+</ol>
+</div>
+
+<div class="traps">
+<div class="th">Traps — Ch 4</div>
+<ol>
+<li>Action and reaction act on <b>different bodies</b> — never cancel, never both in one free-body diagram. $N$ and $mg$ on a resting block are <i>not</i> a pair.</li>
+<li>On an incline $N = mg\cos\theta$, so friction is $\mu mg\cos\theta$ — not $\mu mg$.</li>
+<li>$f_s=\mu_sN$ is the <b>maximum</b> only; below it, static friction equals the applied force (possibly zero).</li>
+<li>In a lift the true weight $mg$ never changes — only $N$ does. In free fall $N=0$, yet $g$ still acts.</li>
+<li>$\sqrt{Rg\tan\theta}$ is the <b>optimum</b> speed, not the maximum; with friction a band $v_{\min}\le v\le v_{\max}$ is allowed.</li>
+</ol>
+</div>
+
+<!-- ============================ CH 5 ============================ -->
+<h2><span class="cno">Ch 5</span> · Work, Energy and Power</h2>
+
+<h3>Formulas</h3>
+
+<h4>Work</h4>
+<ul class="f">
+<li>$W=\vec F\cdot\vec d=Fd\cos\theta$ — <span class="mean">scalar; $\theta$ between $\vec F$ and the <b>displacement</b></span> <span class="u">J</span></li>
+<li>$\theta&lt;90^\circ$ ⇒ $+W$; $\theta=90^\circ$ ⇒ <b>zero</b> ($F_c$, $N$ on level ground); $\theta&gt;90^\circ$ ⇒ $-W$ (friction; gravity on a rising body).</li>
+<li>Variable force: $W=\int_{x_1}^{x_2}\!F\,dx$ = <b>area under $F$–$x$</b> (below the axis ⇒ negative).</li>
+</ul>
+
+<h4>Energy</h4>
+<ul class="f">
+<li>$K = \tfrac12 mv^2 = \frac{p^2}{2m}$; &nbsp;$p = \sqrt{2mK}$ — <span class="mean">kinetic energy</span> <span class="u">J</span></li>
+<li><b>Work–energy theorem:</b> $W_{\text{net}}=\Delta K=\tfrac12mv^2-\tfrac12mu^2$ — <span class="mean">work of <b>all</b> forces</span></li>
+<li>$U=mgh$ — <span class="mean">gravitational PE near the surface</span> <span class="u">J</span></li>
+<li>$U=\tfrac12kx^2$ — <span class="mean">spring PE at extension/compression $x$; $k$ in N m⁻¹</span> <span class="u">J</span></li>
+<li>$F=-\frac{dU}{dx}$ — <span class="mean">negative slope of the PE curve; $U$ minimum ⇒ stable equilibrium</span></li>
+<li>$E = K + U = $ constant when only <b>conservative</b> forces do work.</li>
+<li>With friction: $\Delta K+\Delta U=W_{\text{non-cons}}$; heat $=f\times$ (relative sliding distance).</li>
+</ul>
+
+<h4>Power</h4>
+<ul class="f">
+<li>$P_{\text{avg}} = \frac{W}{t}$; &nbsp;$P_{\text{inst}} = \frac{dW}{dt} = \vec F\cdot\vec v = Fv\cos\theta$ <span class="u">W = J s⁻¹</span></li>
+<li>$1\,\mathrm{hp}=746\,\mathrm{W}$; $1\,\mathrm{kWh}=3.6\times10^{6}\,\mathrm{J}$ (a unit of <b>energy</b>).</li>
+</ul>
+
+<h4>Collisions</h4>
+<ul class="f">
+<li>Momentum is conserved in <b>every</b> collision; KE only in an <b>elastic</b> one.</li>
+<li><b>1D elastic</b> ($m_1,u_1$ and $m_2,u_2$): $v_1 = \frac{m_1-m_2}{m_1+m_2}u_1 + \frac{2m_2}{m_1+m_2}u_2$, &nbsp;$v_2 = \frac{m_2-m_1}{m_1+m_2}u_2 + \frac{2m_1}{m_1+m_2}u_1$</li>
+<li>Elastic ⇔ $u_1-u_2=v_2-v_1$ — <span class="mean">approach speed $=$ separation speed</span></li>
+<li><b>Perfectly inelastic</b> ($u_2=0$): $v=\frac{m_1u_1}{m_1+m_2}$; $\Delta K_{\text{lost}}=\frac{1}{2}\frac{m_1m_2}{m_1+m_2}u_1^2$; fraction lost $=\frac{m_2}{m_1+m_2}$.</li>
+<li>$e=\frac{|v_2-v_1|}{|u_1-u_2|}=\frac{\text{separation}}{\text{approach}}$ — <span class="mean">restitution coefficient; $1$ elastic, $0$ perfectly inelastic; dimensionless</span></li>
+<li>Ball dropped from $h$: $h'=e^2h$; after $n$ bounces $h_n=e^{2n}h$; $e=\sqrt{h'/h}$.</li>
+<li><b>2D elastic</b> ($m_2$ at rest): $m_1u_1=m_1v_1\cos\theta_1+m_2v_2\cos\theta_2$; $0=m_1v_1\sin\theta_1-m_2v_2\sin\theta_2$; $\tfrac12m_1u_1^2=\tfrac12m_1v_1^2+\tfrac12m_2v_2^2$ (3 equations, 4 unknowns).</li>
+</ul>
+
+<h4>Vertical circle (string / track, radius $R$)</h4>
+<ul class="f">
+<li>Minimum speeds: top $\sqrt{gR}$, side (height $R$) $\sqrt{3gR}$, bottom $\sqrt{5gR}$.</li>
+<li>$T_{\text{bot}}-T_{\text{top}}=6mg$ at <b>any</b> speed; at minimum $T_{\text{top}}=0$, $T_{\text{bot}}=6mg$, $T_{\text{side}}=3mg$.</li>
+<li>At $\theta$ from the lowest point: $T=\frac{mv^2}{R}+mg\cos\theta$, $v^2=v_{\text{bot}}^2-2gR(1-\cos\theta)$.</li>
+<li>For a <b>rod</b> or a bead in a tube the minimum top speed is $0$ (it can push).</li>
+</ul>
+
+<h3>Derivations</h3>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Work–energy theorem — constant and variable force</div>
+<ol>
+<li><b>Constant force:</b> from $v^2=u^2+2as$, multiply by $\tfrac12m$: $\tfrac12mv^2-\tfrac12mu^2=mas$.</li>
+<li>$ma=F$ and $Fs=W$ ⇒ $W=\tfrac12mv^2-\tfrac12mu^2=\Delta K$.</li>
+<li><b>Variable force:</b> $W=\int_{x_1}^{x_2}F\,dx=\int ma\,dx=\int m\frac{dv}{dt}dx$.</li>
+<li>$\frac{dv}{dt}dx=\frac{dv}{dt}\frac{dx}{dt}dt=v\,dv$ (i.e. $a=v\,dv/dx$).</li>
+<li>$W=\int_u^{v}mv\,dv=\tfrac12mv^2-\tfrac12mu^2=\Delta K$.</li>
+</ol>
+<div class="res">$W_{\text{net}}=\Delta K$: positive ⇒ speeds up, negative ⇒ slows down, zero ⇒ speed unchanged.</div>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Potential energy of a spring, $U=\tfrac12kx^2$</div>
+<ol>
+<li>Hooke's law: restoring force $F_s=-kx$ ($x$ from the natural length; the sign means it opposes the displacement).</li>
+<li>Stretching slowly, the agent applies $F_{\text{ext}}=+kx$ over a further $dx$: $dW=kx\,dx$.</li>
+<li>$W_{\text{ext}}=\int_0^{x}kx\,dx=\tfrac12kx^2$.</li>
+<li>Stored as elastic PE: $U(x)=\tfrac12kx^2$ (the spring itself does $-\tfrac12kx^2$).</li>
+<li>Equals the triangle under $F$–$x$: $\tfrac12\cdot x\cdot kx$. $U$ is <b>even</b> in $x$ — equal stretch and compression store equal energy.</li>
+</ol>
+<div class="res">Work from $x_1$ to $x_2$ is $\tfrac12k(x_2^2-x_1^2)$ — <b>not</b> $\tfrac12k(x_2-x_1)^2$.</div>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Conservation of mechanical energy — a freely falling body</div>
+<ol>
+<li>Mass $m$ released from rest at height $H$; ground as reference ($U=0$); no air resistance, so only gravity acts.</li>
+<li><b>Top:</b> $v=0$ ⇒ $K=0$, $U=mgH$, $E=mgH$.</li>
+<li><b>Depth $x$ below the top:</b> $v^2=2gx$ ⇒ $K=mgx$, $U=mg(H-x)$, $E=mgH$.</li>
+<li><b>Ground:</b> $v^2=2gH$ ⇒ $K=mgH$, $U=0$, $E=mgH$.</li>
+<li>Same $E$ at all three ⇒ ME conserved; PE converts steadily into KE.</li>
+</ol>
+<div class="res">Halfway ($x=H/2$): $K=U=mgH/2$. Ground speed $\sqrt{2gH}$, independent of $m$.</div>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> 1D elastic collision — final velocities</div>
+<ol>
+<li>$m_1,m_2$ with $u_1,u_2$ along one line, final $v_1,v_2$. <b>Momentum:</b> $m_1(u_1-v_1)=m_2(v_2-u_2)$. &nbsp;<b>(i)</b></li>
+<li><b>KE:</b> $m_1(u_1-v_1)(u_1+v_1)=m_2(v_2-u_2)(v_2+u_2)$. &nbsp;<b>(ii)</b></li>
+<li>(ii)$\div$(i): $u_1+v_1=u_2+v_2$, i.e. $u_1-u_2=v_2-v_1$ — <b>approach $=$ separation</b>. &nbsp;<b>(iii)</b></li>
+<li>Solve (i) and (iii) together for $v_1,v_2$.</li>
+</ol>
+<div class="res">
+$v_1 = \frac{m_1-m_2}{m_1+m_2}u_1 + \frac{2m_2}{m_1+m_2}u_2$, &nbsp;$v_2 = \frac{m_2-m_1}{m_1+m_2}u_2 + \frac{2m_1}{m_1+m_2}u_1$
+</div>
+</div>
+
+<table>
+<thead><tr><th>Special case ($u_2=0$)</th><th class="c">$v_1$</th><th class="c">$v_2$</th><th>Physical picture</th></tr></thead>
+<tbody>
+<tr><td>$m_1 = m_2$</td><td class="c">$0$</td><td class="c">$u_1$</td><td>velocities are <b>exchanged</b> (carrom, Newton's cradle)</td></tr>
+<tr><td>$m_1 \gg m_2$ (heavy hits light)</td><td class="c">$\approx u_1$</td><td class="c">$\approx 2u_1$</td><td>heavy body ploughs on; light body shoots off at twice the speed</td></tr>
+<tr><td>$m_1 \ll m_2$ (light hits heavy)</td><td class="c">$\approx -u_1$</td><td class="c">$\approx 0$</td><td>light body rebounds with almost the same speed; wall stays put</td></tr>
+</tbody>
+</table>
+
+<div class="deriv">
+<div class="dh">Perfectly inelastic collision — common velocity and KE loss; the $90^\circ$ result</div>
+<ol>
+<li>$m_1$ (speed $u_1$) hits $m_2$ at rest and sticks: $m_1u_1=(m_1+m_2)v\Rightarrow v=\frac{m_1u_1}{m_1+m_2}$.</li>
+<li>$K_i=\tfrac12m_1u_1^2$; $K_f=\tfrac12(m_1+m_2)v^2=\frac{m_1^2u_1^2}{2(m_1+m_2)}$.</li>
+<li>$\Delta K=\tfrac12m_1u_1^2\left[1-\frac{m_1}{m_1+m_2}\right]=\frac12\frac{m_1m_2}{m_1+m_2}u_1^2&gt;0$ — heat, sound, deformation.</li>
+<li><b>2D elastic, equal masses, target at rest:</b> $\vec u=\vec v_1+\vec v_2$ and $u^2=v_1^2+v_2^2$.</li>
+<li>Square the vector equation: $u^2=v_1^2+v_2^2+2\vec v_1\cdot\vec v_2$ ⇒ $\vec v_1\cdot\vec v_2=0$.</li>
+<li>⇒ $\vec v_1\perp\vec v_2$: they separate at <b>$90^\circ$</b> (if both actually move).</li>
+</ol>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Vertical circle — minimum speeds and $T_{\text{bot}}-T_{\text{top}}=6mg$</div>
+<ol>
+<li>Mass $m$ on a string of length $R$. <b>At the top</b> $T_t$ and $mg$ both point down, to the centre: $T_t+mg=\frac{mv_t^2}{R}$.</li>
+<li>A string only pulls ⇒ critical case $T_t=0$: $mg=\frac{mv_t^2}{R}\Rightarrow v_t^{\min}=\sqrt{gR}$.</li>
+<li><b>Energy</b> top → bottom (drop $2R$, only gravity works): $\tfrac12mv_b^2=\tfrac12mv_t^2+mg(2R)\Rightarrow v_b^2=v_t^2+4gR$.</li>
+<li>With $v_t^2=gR$: $v_b^2=5gR\Rightarrow v_b^{\min}=\sqrt{5gR}$.</li>
+<li><b>At the bottom</b> $T_b$ is up (to the centre), $mg$ down: $T_b-mg=\frac{mv_b^2}{R}$.</li>
+<li>Subtract: $T_b-T_t=\frac{m}{R}(v_b^2-v_t^2)+2mg=\frac{m}{R}(4gR)+2mg$.</li>
+</ol>
+<div class="res">$T_b-T_t=6mg$ at any speed, since $v_b^2-v_t^2=4gR$ always. At minimum: $T_t=0$, $T_b=6mg$, $T_{\text{side}}=3mg$, $v_{\text{side}}=\sqrt{3gR}$.</div>
+</div>
+
+<div class="traps">
+<div class="th">Traps — Ch 5</div>
+<ol>
+<li>In $W=Fd\cos\theta$, $\theta$ is between $\vec F$ and the <b>displacement</b>, not the horizontal. $F_c$ and $N$ (level ground) do <b>zero</b> work.</li>
+<li>The work–energy theorem uses the <b>net</b> work of all forces — gravity and friction included.</li>
+<li>Momentum is conserved in inelastic collisions too — only KE is lost. Never conserve KE there.</li>
+<li>Spring work $x_1\to x_2$ is $\tfrac12k(x_2^2-x_1^2)$, <b>not</b> $\tfrac12k(x_2-x_1)^2$.</li>
+<li>Minimum speed at the top of a vertical circle is $\sqrt{gR}$, not zero (zero only for a rod or tube).</li>
+</ol>
+</div>
+
+<!-- ============================ CH 6 ============================ -->
+<h2><span class="cno">Ch 6</span> · System of Particles and Rotational Motion</h2>
+
+<h3>Formulas</h3>
+
+<h4>Centre of mass</h4>
+<ul class="f">
+<li>$x_{cm}=\frac{m_1x_1+m_2x_2}{m_1+m_2}$ — <span class="mean">2 particles; divides the join as $m_2:m_1$</span> <span class="u">m</span></li>
+<li>$n$ particles: $\vec R_{cm} = \frac{\sum m_i\vec r_i}{\sum m_i} = \frac{1}{M}\sum m_i\vec r_i$</li>
+<li>Continuous body: $\vec R_{cm} = \frac{1}{M}\displaystyle\int \vec r\,dm$</li>
+<li>Rod: CoM at $L/2$. Ring, disc, sphere, cylinder: geometric centre. Triangular lamina: centroid.</li>
+<li>$M\vec v_{cm} = \sum m_i\vec v_i = \vec P_{\text{total}}$; &nbsp;$M\vec a_{cm} = \vec F_{\text{ext}}$</li>
+</ul>
+
+<h4>Torque, angular momentum</h4>
+<ul class="f">
+<li>$\vec\tau=\vec r\times\vec F$, $|\vec\tau|=rF\sin\theta=F\times(\perp$ distance from the axis$)$ <span class="u">N m</span></li>
+<li>$\vec L=\vec r\times\vec p$, $|\vec L|=rp\sin\theta$; fixed axis: $L=I\omega$ <span class="u">J s</span></li>
+<li>$\vec\tau_{\text{ext}}=\frac{d\vec L}{dt}$; $\vec\tau_{\text{ext}}=0\Rightarrow\vec L$ constant $\Rightarrow I_1\omega_1=I_2\omega_2$</li>
+<li>$\tau = I\alpha$ — <span class="mean">rotational analogue of $F=ma$</span>; &nbsp;$W = \tau\theta$; &nbsp;$P = \tau\omega$</li>
+</ul>
+
+<h4>Moment of inertia</h4>
+<ul class="f">
+<li>$I=\sum m_ir_i^2=\int r^2dm$ — <span class="mean">rotational inertia; $r$ = <b>$\perp$ distance from the axis</b></span> <span class="u">kg m²</span></li>
+<li>$I=MK^2\Rightarrow K=\sqrt{I/M}$ — <span class="mean">radius of gyration: distance at which all the mass could sit</span> <span class="u">m</span></li>
+<li>$K_{\text{rot}} = \tfrac12 I\omega^2 = \frac{L^2}{2I}$ <span class="u">J</span></li>
+</ul>
+
+<h4>Rotational kinematics (constant $\alpha$)</h4>
+<ul class="f">
+<li>$\omega = \omega_0 + \alpha t$; &nbsp;$\theta = \omega_0 t + \tfrac12\alpha t^2$; &nbsp;$\omega^2 = \omega_0^2 + 2\alpha\theta$; &nbsp;$\theta_{n^{\text{th}}} = \omega_0 + \tfrac{\alpha}{2}(2n-1)$</li>
+<li>Links: $v=\omega r$, $a_t=\alpha r$, $a_c=\omega^2r$, $s=r\theta$.</li>
+</ul>
+
+<h4>Equilibrium of a rigid body</h4>
+<ul class="f">
+<li><b>Both</b> are needed: $\sum\vec F=0$ (no translation) <b>and</b> $\sum\vec\tau=0$ (no rotation).</li>
+<li><b>Principle of moments:</b> anticlockwise $=$ clockwise moments, $F_1d_1=F_2d_2$; MA $=\frac{\text{load}}{\text{effort}}=\frac{d_{\text{effort}}}{d_{\text{load}}}$.</li>
+<li><b>Couple:</b> equal, opposite, non-collinear forces. Net force $0$, torque $=F\times d$ — the <b>same about every point</b>; gives pure rotation (tap, steering wheel).</li>
+</ul>
+
+<h3>Derivations</h3>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Motion of the centre of mass: $M\vec a_{cm} = \vec F_{\text{ext}}$</div>
+<ol>
+<li>$M\vec R_{cm}=\sum m_i\vec r_i$, with $M=\sum m_i$ constant.</li>
+<li>Differentiate: $M\vec v_{cm}=\sum m_i\vec v_i=\vec P_{\text{total}}$.</li>
+<li>Again: $M\vec a_{cm}=\sum m_i\vec a_i=\sum\vec F_i$.</li>
+<li>Split into internal and external: internal forces come in pairs $\vec f_{ij}=-\vec f_{ji}$ and cancel.</li>
+<li>⇒ $M\vec a_{cm}=\vec F_{\text{ext}}$: the CoM moves like one particle of mass $M$ under $\vec F_{\text{ext}}$.</li>
+<li>$\vec F_{\text{ext}}=0$ ⇒ $\vec a_{cm}=0$ ⇒ $\vec v_{cm}$ constant, $\vec P_{\text{total}}$ conserved.</li>
+</ol>
+<div class="res">A shell exploding in flight: fragments scatter by internal forces, but the CoM keeps the original parabola.</div>
+</div>
+
+<div class="deriv">
+<div class="dh">Centre of mass of a uniform rod</div>
+<ol>
+<li>Rod of mass $M$, length $L$, $\lambda=M/L$; origin at one end, $x$ along the rod.</li>
+<li>Element $dx$ at distance $x$: $dm=\lambda\,dx$.</li>
+<li>$x_{cm}=\frac{1}{M}\int_0^{L}x\lambda\,dx=\frac{\lambda}{M}\cdot\frac{L^2}{2}$.</li>
+<li>With $\lambda=M/L$: $x_{cm}=\frac{L}{2}$ — the midpoint, as symmetry demands.</li>
+</ol>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> $\vec\tau = d\vec L/dt$ and conservation of angular momentum</div>
+<ol>
+<li>For a particle, $\vec L = \vec r\times\vec p$.</li>
+<li>Product rule: $\frac{d\vec L}{dt}=\frac{d\vec r}{dt}\times\vec p+\vec r\times\frac{d\vec p}{dt}$.</li>
+<li>First term: $\vec v\times m\vec v=0$ (parallel vectors).</li>
+<li>Second term: $\frac{d\vec p}{dt}=\vec F$ ⇒ $\vec r\times\vec F=\vec\tau$.</li>
+<li>⇒ $\vec\tau=\frac{d\vec L}{dt}$. Over a system, internal torques cancel: $\vec\tau_{\text{ext}}=\frac{d\vec L_{\text{tot}}}{dt}$.</li>
+<li>$\vec\tau_{\text{ext}}=0$ ⇒ $\vec L$ constant: $I_1\omega_1=I_2\omega_2$.</li>
+</ol>
+<div class="res"><b>Skater / stool:</b> arms in ⇒ $I$ down ⇒ $\omega$ up at fixed $L$; $K_{\text{rot}}=L^2/2I$ <i>rises</i>, the extra energy being muscular work. Also a diver tucking.</div>
+</div>
+
+<h3>Standard results</h3>
+
+<h4>Moments of inertia ($M$ = mass, $R$ = radius, $L$ = length)</h4>
+<table>
+<thead><tr><th>Body</th><th>Axis</th><th class="c">$I$</th><th class="c">$K$</th></tr></thead>
+<tbody>
+<tr><td>Thin ring / hoop</td><td>centre, $\perp$ plane</td><td class="c">$MR^2$</td><td class="c">$R$</td></tr>
+<tr><td>Thin ring</td><td>diameter</td><td class="c">$\tfrac12MR^2$</td><td class="c">$R/\sqrt2$</td></tr>
+<tr><td>Circular disc</td><td>centre, $\perp$ plane</td><td class="c">$\tfrac12MR^2$</td><td class="c">$R/\sqrt2$</td></tr>
+<tr><td>Circular disc</td><td>diameter</td><td class="c">$\tfrac14MR^2$</td><td class="c">$R/2$</td></tr>
+<tr><td>Thin rod</td><td>$\perp$, centre</td><td class="c">$\tfrac{1}{12}ML^2$</td><td class="c">$L/\sqrt{12}$</td></tr>
+<tr><td>Thin rod</td><td>$\perp$, one end</td><td class="c">$\tfrac13ML^2$</td><td class="c">$L/\sqrt3$</td></tr>
+<tr><td>Solid sphere</td><td>diameter</td><td class="c">$\tfrac25MR^2$</td><td class="c">$R\sqrt{2/5}$</td></tr>
+<tr><td>Hollow sphere (shell)</td><td>diameter</td><td class="c">$\tfrac23MR^2$</td><td class="c">$R\sqrt{2/3}$</td></tr>
+<tr><td>Solid cylinder</td><td>own axis</td><td class="c">$\tfrac12MR^2$</td><td class="c">$R/\sqrt2$</td></tr>
+<tr><td>Hollow cylinder (thin)</td><td>own axis</td><td class="c">$MR^2$</td><td class="c">$R$</td></tr>
+<tr><td>Solid cylinder</td><td>$\perp$, centre</td><td class="c">$M\!\left(\tfrac{L^2}{12}+\tfrac{R^2}{4}\right)$</td><td class="c">—</td></tr>
+</tbody>
+</table>
+<p class="note">$I$ grows as mass moves out: ring $&gt;$ shell $&gt;$ disc $&gt;$ solid sphere (same $M,R$).</p>
+
+<h4>Linear ↔ rotational analogy (fill either column from the other)</h4>
+<table>
+<thead><tr><th>Linear motion</th><th>Rotational motion (fixed axis)</th></tr></thead>
+<tbody>
+<tr><td>Displacement $s$</td><td>Angular displacement $\theta$</td></tr>
+<tr><td>Velocity $v = ds/dt$</td><td>Angular velocity $\omega = d\theta/dt$</td></tr>
+<tr><td>Acceleration $a = dv/dt$</td><td>Angular acceleration $\alpha = d\omega/dt$</td></tr>
+<tr><td>Mass $m$ (inertia)</td><td>Moment of inertia $I$</td></tr>
+<tr><td>Force $F$</td><td>Torque $\tau = rF\sin\theta$</td></tr>
+<tr><td>$F = ma$</td><td>$\tau = I\alpha$</td></tr>
+<tr><td>Momentum $p = mv$</td><td>Angular momentum $L = I\omega$</td></tr>
+<tr><td>$F = dp/dt$</td><td>$\tau = dL/dt$</td></tr>
+<tr><td>Impulse $F\Delta t = \Delta p$</td><td>Angular impulse $\tau\Delta t = \Delta L$</td></tr>
+<tr><td>Work $W = Fs$</td><td>$W = \tau\theta$</td></tr>
+<tr><td>KE $=\tfrac12mv^2 = p^2/2m$</td><td>KE $=\tfrac12I\omega^2 = L^2/2I$</td></tr>
+<tr><td>Power $P = Fv$</td><td>$P = \tau\omega$</td></tr>
+<tr><td>$v=u+at$; $s=ut+\tfrac12at^2$</td><td>$\omega=\omega_0+\alpha t$; $\theta=\omega_0t+\tfrac12\alpha t^2$</td></tr>
+<tr><td>$v^2=u^2+2as$</td><td>$\omega^2=\omega_0^2+2\alpha\theta$</td></tr>
+</tbody>
+</table>
+
+<div class="opt">
+<div class="oh">Only if covered in class — Axis theorems &amp; rolling</div>
+<ul>
+<li><b>Parallel axis:</b> $I=I_{cm}+Md^2$ ($d$ = $\perp$ distance between parallel axes, one through the CoM). <i>Check:</i> rod about an end $=\frac{1}{12}ML^2+M(L/2)^2=\frac13ML^2$ ✓</li>
+<li><b>Perpendicular axis</b> (<i>laminae only</i>): $I_z=I_x+I_y$, $x,y$ in the plane, $z\perp$, concurrent. <i>Check:</i> disc $\frac12MR^2=\frac14MR^2+\frac14MR^2$ ✓</li>
+<li><b>Rolling without slipping:</b> $v_{cm}=\omega R$; contact point instantaneously at rest; top point at $2v_{cm}$.</li>
+<li><b>Rolling KE:</b> $K_{\text{total}}=\tfrac12Mv_{cm}^2+\tfrac12I\omega^2=\tfrac12Mv_{cm}^2\!\left(1+\frac{K^2}{R^2}\right)$; &nbsp;$\frac{K_{\text{rot}}}{K_{\text{total}}}=\frac{K^2/R^2}{1+K^2/R^2}$ &nbsp;($K$ here = radius of gyration).</li>
+<li><b>Down an incline $\theta$:</b> $a=\frac{g\sin\theta}{1+K^2/R^2}$; $v_{\text{bot}}=\sqrt{\frac{2gh}{1+K^2/R^2}}$; $f=\frac{Mg\sin\theta\,(K^2/R^2)}{1+K^2/R^2}$; needs $\mu_s\ge\frac{\tan\theta\,(K^2/R^2)}{1+K^2/R^2}$.</li>
+<li>Arrival order (smallest $K^2/R^2$ first): <b>sphere</b> $\frac25$ → <b>disc</b> $\frac12$ → <b>shell</b> $\frac23$ → <b>ring</b> $1$; independent of $M,R$.</li>
+</ul>
+</div>
+
+<div class="traps">
+<div class="th">Traps — Ch 6</div>
+<ol>
+<li>$I$ depends on the <b>axis</b>, not just the body. Always name the axis before quoting a value.</li>
+<li>In $I=\sum mr^2$, $r$ is the <b>$\perp$ distance from the axis</b> — not from the centre or origin.</li>
+<li>$L$ conserved and $I$ down ⇒ $\omega$ up <i>and</i> $K_{\text{rot}}=L^2/2I$ up. KE is <b>not</b> conserved — internal work supplies it.</li>
+<li>Equilibrium needs <b>both</b> $\sum F=0$ and $\sum\tau=0$ — a couple has zero net force yet still rotates the body.</li>
+<li>$\vec\omega,\vec\tau,\vec L$ point <b>along the axis</b> (right-hand rule), not along the motion. $\vec L\parallel\vec\omega$ only about a principal axis.</li>
+</ol>
+</div>
+
+<!-- ============================ CH 7 ============================ -->
+<h2><span class="cno">Ch 7</span> · Gravitation <span style="font-weight:400;font-size:8.4pt">(up to variation of $g$)</span></h2>
+
+<h3>Formulas</h3>
+
+<h4>Kepler's laws</h4>
+<ul class="f">
+<li><b>1. Orbits:</b> each planet moves in an <b>ellipse</b> with the Sun at one <b>focus</b> (circle = special case).</li>
+<li><b>2. Areas:</b> the Sun–planet line sweeps <b>equal areas in equal times</b>: $\frac{dA}{dt}=\frac{L}{2m}=$ const ⇒ <b>fastest at perihelion</b>, slowest at aphelion.</li>
+<li><b>3. Periods:</b> $T^2\propto a^3$ ($a$ = semi-major axis; $a=r$ for a circle): $T^2=\frac{4\pi^2}{GM}r^3$</li>
+</ul>
+
+<h4>Newton's law of gravitation</h4>
+<ul class="f">
+<li>$F=\frac{Gm_1m_2}{r^2}$ — <span class="mean">attractive, along the line joining the masses; a 3rd-law pair</span> <span class="u">N</span></li>
+<li>Vector form: $\vec F_{12} = -\frac{Gm_1m_2}{r^2}\hat r_{12}$ (the minus sign = attraction).</li>
+<li>$G=6.67\times10^{-11}\,\mathrm{N\,m^2\,kg^{-2}}$, $[G]=[\mathrm{M^{-1}L^3T^{-2}}]$ — <span class="mean">universal; independent of medium, temperature, pressure; Cavendish</span></li>
+<li><b>Superposition:</b> $\vec F_{\text{net}}=\vec F_1+\vec F_2+\dots$ — each pair acts independently.</li>
+<li><b>Shell theorem:</b> (i) a uniform shell pulls an <b>outside</b> particle as if all its mass sat at the centre; (ii) <b>zero</b> force inside a shell ⇒ at depth only the mass <i>below</i> pulls.</li>
+</ul>
+
+<h4>Acceleration due to gravity</h4>
+<ul class="f">
+<li>$g=\frac{GM}{R^2}=\frac43\pi G\rho R$ — <span class="mean">surface value; independent of the falling body's mass</span> <span class="u">m s⁻²</span></li>
+<li>$M=\frac{gR^2}{G}\approx6\times10^{24}\,\mathrm{kg}$ — <span class="mean">mass of the Earth</span> <span class="u">kg</span></li>
+<li><b>Height:</b> $g_h=\frac{GM}{(R+h)^2}=\frac{gR^2}{(R+h)^2}$; for $h\ll R$: $g_h\approx g(1-\frac{2h}{R})$</li>
+<li><b>Depth:</b> $g_d=g(1-\frac{d}{R})$; $g=0$ at the centre ($d=R$)</li>
+<li>Weight $W=mg$ varies with location; <b>mass does not</b>.</li>
+</ul>
+
+<h3>Derivations</h3>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Kepler's second law from conservation of angular momentum</div>
+<ol>
+<li>Planet of mass $m$ at $\vec r$ from the Sun moves $d\vec r=\vec v\,dt$ in time $dt$.</li>
+<li>It sweeps a thin triangle: $dA=\tfrac12|\vec r\times d\vec r|=\tfrac12|\vec r\times\vec v|\,dt$.</li>
+<li>$\vec L=\vec r\times m\vec v\Rightarrow|\vec r\times\vec v|=L/m$.</li>
+<li>⇒ areal velocity $\frac{dA}{dt}=\frac{L}{2m}$.</li>
+<li>Gravity is <b>central</b> (along $\vec r$) ⇒ $\vec\tau=\vec r\times\vec F=0$ ⇒ $\vec L$ constant.</li>
+<li>$m,L$ constant ⇒ $\frac{dA}{dt}$ constant: equal areas in equal times.</li>
+</ol>
+<div class="res">$rv$ constant along the orbit ⇒ small $r$ (perihelion) forces large $v$. Kepler's 2nd law <i>is</i> $L$-conservation.</div>
+</div>
+
+<div class="deriv">
+<div class="dh">Kepler's third law for a circular orbit</div>
+<ol>
+<li>Planet $m$ circles a star $M$ at radius $r$, period $T$, so $\omega=\frac{2\pi}{T}$.</li>
+<li>Gravity supplies $F_c$: $\frac{GMm}{r^2}=m\omega^2r$ — $m$ cancels.</li>
+<li>Substitute $\omega$: $\frac{GM}{r^2}=\frac{4\pi^2r}{T^2}$.</li>
+<li>⇒ $T^2=\frac{4\pi^2}{GM}r^3$, i.e. $T^2\propto r^3$.</li>
+</ol>
+<div class="res">$4\pi^2/GM$ depends only on the <b>central</b> body — same for all planets of one Sun, all moons of one planet.</div>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> $g = GM/R^2$ and the mass of the Earth</div>
+<ol>
+<li>Earth: mass $M$, radius $R$, uniform sphere ⇒ by the shell theorem it pulls as if all its mass sat at the centre.</li>
+<li>A body of mass $m$ on the surface is at distance $R$: $F=\frac{GMm}{R^2}$.</li>
+<li>Its weight is also $F = mg$.</li>
+<li>Equate: $mg=\frac{GMm}{R^2}\Rightarrow g=\frac{GM}{R^2}$ — $m$ cancels, so <b>all bodies fall alike</b>.</li>
+<li>Invert: $M=\frac{gR^2}{G}=\frac{9.8\times(6.4\times10^6)^2}{6.67\times10^{-11}}\approx6\times10^{24}\,\mathrm{kg}$.</li>
+<li>With $M=\tfrac43\pi R^3\rho$: $g=\tfrac43\pi G\rho R$, so $g\propto\rho R$ — used to compare planets.</li>
+</ol>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Variation of $g$ with height</div>
+<ol>
+<li>At height $h$ the body is at distance $R+h$; the whole mass $M$ still lies below it.</li>
+<li>$g_h=\frac{GM}{(R+h)^2}$; divide by $g=\frac{GM}{R^2}$: $\frac{g_h}{g}=\frac{R^2}{(R+h)^2}$.</li>
+<li>⇒ $g_h=\frac{gR^2}{(R+h)^2}=g\left(1+\frac{h}{R}\right)^{-2}$ — exact, any $h$.</li>
+<li>For $h\ll R$, binomial to first order: $\left(1+\frac{h}{R}\right)^{-2}\approx1-\frac{2h}{R}$.</li>
+<li>⇒ $g_h\approx g\left(1-\frac{2h}{R}\right)$; loss $\Delta g=\frac{2gh}{R}$, fractional $\frac{2h}{R}$.</li>
+</ol>
+</div>
+
+<div class="deriv star">
+<div class="dh"><span class="st">★</span> Variation of $g$ with depth</div>
+<ol>
+<li>At depth $d$, $r=R-d$. Split the Earth (density $\rho$) into an <b>inner sphere</b> of radius $R-d$ and an <b>outer shell</b> of thickness $d$.</li>
+<li>By the shell theorem the outer shell exerts <b>zero</b> force inside ⇒ only the inner sphere counts.</li>
+<li>$M'=\tfrac43\pi(R-d)^3\rho$; whole Earth $M=\tfrac43\pi R^3\rho$.</li>
+<li>$g_d=\frac{GM'}{(R-d)^2}=\frac{G\cdot\frac43\pi(R-d)^3\rho}{(R-d)^2}=\tfrac43\pi G\rho(R-d)$ — <b>linear</b> in $(R-d)$.</li>
+<li>Surface: $g=\tfrac43\pi G\rho R$; divide: $\frac{g_d}{g}=\frac{R-d}{R}$.</li>
+<li>⇒ $g_d=g\left(1-\frac{d}{R}\right)$; at the centre ($d=R$) $g=0$.</li>
+</ol>
+<div class="res"><b>Height vs depth</b>, same small $x$: $g_h\approx g(1-2x/R)$ vs $g_d=g(1-x/R)$ ⇒ $g$ falls <b>twice as fast going up as down</b>. $g\to0$ exactly at the centre, asymptotically at infinite height.</div>
+</div>
+
+<div class="opt">
+<div class="oh">Only if covered in class — Variation of $g$ with latitude</div>
+<ul>
+<li>At latitude $\lambda$ a body circles with radius $R\cos\lambda$, so part of gravity is spent on $F_c$: $g'=g-\omega^2R\cos^2\lambda$.</li>
+<li><b>Equator</b> ($\lambda=0$): $g'=g-\omega^2R$, minimum. <b>Poles</b> ($\lambda=90^\circ$): $g'=g$, maximum (the pole lies on the axis).</li>
+<li>$\omega^2R\approx0.034\,\mathrm{m\,s^{-2}}$ ($0.35\%$ of $g$). Stop the rotation and $g$ rises everywhere but the poles; $\omega$ about $17\times$ larger ⇒ weightless at the equator.</li>
+<li>The equatorial bulge ($R_{\text{eq}}&gt;R_{\text{pole}}$) adds to this, so $g$ is smallest at the equator.</li>
+</ul>
+</div>
+
+<div class="traps">
+<div class="th">Traps — Ch 7</div>
+<ol>
+<li>$g_h=\frac{gR^2}{(R+h)^2}$ — keep the $R^2$ on top; $gR/(R+h)^2$ is dimensionally wrong.</li>
+<li><b>Height: inverse-square</b> (≈ $1-2h/R$). <b>Depth: linear</b> ($1-d/R$). Never put the factor 2 in the depth formula.</li>
+<li>$g(1-2h/R)$ is binomial, valid only for $h\ll R$; for large $h$ use the exact form.</li>
+<li>$M=gR^2/G$, not $gR/G$. Check: $[\mathrm{LT^{-2}}][\mathrm{L^2}]/[\mathrm{M^{-1}L^3T^{-2}}]=[\mathrm{M}]$ ✓</li>
+<li>$G$ is universal; $g$ is local and varies with height, depth, latitude and planet. $g$ is not "the gravitational constant".</li>
+</ol>
+</div>
+
+</div><!-- /.sheet -->
+
+<div class="priority">
+<div class="ph">★ Night-before priority — do these eight in this order</div>
+<ol>
+<li><b>Projectile motion</b> — trajectory is a parabola, then $T$, $H$, $R$; $45^\circ$ maximum and complementary angles. <span class="tag">Ch 3</span></li>
+<li><b>Banked road</b> — optimum $\sqrt{Rg\tan\theta}$, then the full $v_{\max}$ with friction. <span class="tag">Ch 4</span></li>
+<li><b>1D elastic collision</b> — momentum + KE ⇒ approach = separation ⇒ $v_1,v_2$ and the three special cases. <span class="tag">Ch 5</span></li>
+<li><b>Work–energy theorem</b> — constant force from $v^2=u^2+2as$, variable force by $\int mv\,dv$. <span class="tag">Ch 5</span></li>
+<li><b>Vertical circle</b> — $\sqrt{gR}$ at the top, $\sqrt{5gR}$ at the bottom, $T_b-T_t = 6mg$. <span class="tag">Ch 5</span></li>
+<li><b>$\vec\tau = d\vec L/dt$</b> — differentiate $\vec r\times\vec p$, kill the $\vec v\times m\vec v$ term ⇒ conservation of $\vec L$, skater. <span class="tag">Ch 6</span></li>
+<li><b>Variation of $g$ with height and depth</b> — $gR^2/(R+h)^2$ with the binomial step; inner-sphere argument for $g(1-d/R)$. <span class="tag">Ch 7</span></li>
+<li><b>Equations of motion</b> — graphical ($v$–$t$ slope and area) and calculus (three integrations). <span class="tag">Ch 2</span></li>
+</ol>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$",  right: "$",  display: false }
+    ],
+    throwOnError: false,
+    errorColor: "#cc0000",
+    strict: false,
+    trust: false
+  });
+  document.body.setAttribute("data-katex-done", "1");
+});
+</script>
+</body>
+</html>
