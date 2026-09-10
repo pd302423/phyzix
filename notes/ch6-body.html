@@ -1,0 +1,268 @@
+<h1><span class="ch">CBSE Class 11 Physics · Chapter 6</span>System of Particles and Rotational Motion</h1>
+<p class="subtitle">Complete chapter notes — concepts, every derivation worked in full, the moment-of-inertia table, the linear↔rotational analogy, worked examples and the traps that cost marks.</p>
+
+<div class="key"><b>The spine of this chapter:</b> a rigid body has two independent kinds of motion — the <b>translation of its centre of mass</b>, and <b>rotation about that centre of mass</b>. Chapter 4 handled the first. This chapter builds an exact parallel set of tools for the second: torque replaces force, moment of inertia replaces mass, angular momentum replaces momentum. Once you see the analogy, half the chapter is already learnt.</div>
+
+<div class="exam"><div class="xh">Read this first</div>Most students think this chapter is "centre of mass". It is not. Centre of mass is roughly the first quarter. The bulk of the marks live in <b>torque, angular momentum and moment of inertia</b> — sections 4 to 8 below. Budget your time accordingly.</div>
+
+<h2>1 · Centre of mass</h2>
+<p>The centre of mass of a system is the point that moves as though the entire mass were concentrated there and all external forces acted there. It is a weighted average of position, weighted by mass.</p>
+
+<h3>1.1 The formulae</h3>
+<table>
+<thead><tr><th>System</th><th>Position of the centre of mass</th></tr></thead>
+<tbody>
+<tr><td>Two particles on a line</td><td>$x_{cm} = \dfrac{m_1x_1+m_2x_2}{m_1+m_2}$ — divides the join internally in the ratio $m_2 : m_1$</td></tr>
+<tr><td>$n$ particles</td><td>$\vec R_{cm} = \dfrac{\sum m_i\vec r_i}{\sum m_i} = \dfrac{1}{M}\sum m_i\vec r_i$</td></tr>
+<tr><td>Continuous body</td><td>$\vec R_{cm} = \dfrac{1}{M}\displaystyle\int \vec r\,dm$</td></tr>
+</tbody>
+</table>
+<p><b>Standard bodies (uniform):</b> rod — midpoint; ring, disc, sphere, cylinder — geometric centre; triangular lamina — centroid.</p>
+<p><b>The centre of mass need not lie inside the material of the body</b> — for a ring or a horseshoe it lies in the empty space.</p>
+
+<h3>1.2 Centre of mass versus centre of gravity</h3>
+<p>The <b>centre of gravity</b> is the point where the total weight of the body appears to act. When $g$ is uniform over the body — which it is for anything of ordinary size — the centre of gravity <b>coincides with the centre of mass</b>. They separate only for objects large enough that $g$ varies across them.</p>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 1</span> &nbsp;Centre of mass of a uniform rod</div>
+<ol>
+<li>Rod of mass $M$ and length $L$, uniform, so the linear mass density is $\lambda = M/L$. Put the origin at one end with $x$ measured along the rod.</li>
+<li>Take a small element of length $dx$ at distance $x$ from the origin. Its mass is $dm = \lambda\,dx$.</li>
+<li>$x_{cm} = \dfrac{1}{M}\displaystyle\int_0^{L} x\,\lambda\,dx = \dfrac{\lambda}{M}\left[\dfrac{x^2}{2}\right]_0^{L} = \dfrac{\lambda}{M}\cdot\dfrac{L^2}{2}$.</li>
+<li>Substitute $\lambda = M/L$: &nbsp;$x_{cm} = \dfrac{M}{L}\cdot\dfrac{1}{M}\cdot\dfrac{L^2}{2}$.</li>
+</ol>
+<div class="res">$x_{cm} = \dfrac{L}{2}$ — the midpoint, exactly as symmetry demands.</div>
+</div>
+
+<h2>2 · Motion of the centre of mass</h2>
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 2</span> &nbsp;$M\vec a_{cm} = \vec F_{\text{ext}}$</div>
+<ol>
+<li>By definition, $M\vec R_{cm} = \sum m_i\vec r_i$, where $M = \sum m_i$ is constant.</li>
+<li>Differentiate once with respect to time: $M\vec v_{cm} = \sum m_i\vec v_i = \sum\vec p_i = \vec P_{\text{total}}$.<br>
+<i>So the total momentum of any system equals $M\vec v_{cm}$.</i></li>
+<li>Differentiate again: $M\vec a_{cm} = \sum m_i\vec a_i = \sum\vec F_i$ — the sum of <i>all</i> forces on <i>all</i> particles.</li>
+<li>Split that sum into internal and external forces. Internal forces occur in Newton-third-law pairs, $\vec f_{ij} = -\vec f_{ji}$, and therefore cancel exactly in the sum.</li>
+<li>$\Rightarrow M\vec a_{cm} = \vec F_{\text{ext}}$ — the centre of mass moves exactly like a single particle of mass $M$ acted on by the total external force.</li>
+<li>If $\vec F_{\text{ext}} = 0$: $\vec a_{cm} = 0$, so $\vec v_{cm}$ is constant and $\vec P_{\text{total}}$ is conserved.</li>
+</ol>
+<div class="res">$M\vec a_{cm} = \vec F_{\text{ext}}$ &nbsp;·&nbsp; $\vec F_{\text{ext}}=0 \Rightarrow \vec v_{cm}$ constant, $\vec P_{\text{total}}$ conserved.</div>
+</div>
+
+<div class="exam"><div class="xh">Two questions this answers directly</div>
+<b>(a) A firecracker following a parabolic path explodes in mid-air. What path do the fragments' centre of mass follow?</b> The <b>same parabola</b>. The explosion is caused entirely by <i>internal</i> forces, which cancel in pairs. The only external force is still gravity, so $\vec a_{cm}$ is unchanged and the centre of mass continues on its original trajectory.<br><br>
+<b>(b) Passengers start walking about inside a stationary railway compartment. Does the centre of mass of the whole system move?</b> <b>No.</b> The forces the passengers exert are internal to the compartment-plus-passengers system. With no external horizontal force, $\vec v_{cm}$ stays zero and the centre of mass remains exactly where it was — even though the compartment itself may shift slightly.</div>
+
+<h2>3 · The vector product — the tool the rest of the chapter runs on</h2>
+<div class="key">$\vec A\times\vec B$ has magnitude $AB\sin\theta$ and direction perpendicular to both, given by the <b>right-hand rule</b>.</div>
+<ul>
+<li>Anticommutative: $\vec A\times\vec B = -\,\vec B\times\vec A$. &nbsp;And $\vec A\times\vec A = 0$.</li>
+<li>$\hat i\times\hat j = \hat k$, &nbsp;$\hat j\times\hat k = \hat i$, &nbsp;$\hat k\times\hat i = \hat j$ (cyclic; reverse the order and you pick up a minus sign).</li>
+<li>Zero if the vectors are parallel or antiparallel; maximum if perpendicular.</li>
+</ul>
+<p><b>Determinant form</b> — this is how you compute torque and angular momentum in the exam:</p>
+<div class="key">$\vec A\times\vec B=\begin{vmatrix}\hat i&amp;\hat j&amp;\hat k\\A_x&amp;A_y&amp;A_z\\B_x&amp;B_y&amp;B_z\end{vmatrix} = \hat i(A_yB_z-A_zB_y) - \hat j(A_xB_z-A_zB_x) + \hat k(A_xB_y-A_yB_x)$</div>
+<p><b>Watch the middle sign.</b> The $\hat j$ term carries a minus sign in front of its determinant. That single sign is the most common error in every vector-product question.</p>
+
+<h2>4 · Torque — the rotational analogue of force</h2>
+<div class="key">$\vec\tau = \vec r\times\vec F$, &nbsp;$|\vec\tau| = rF\sin\theta = F\times(\text{perpendicular distance from the axis})$. Unit: N m. It is a <b>vector</b>, directed along the axis of rotation.</div>
+<p>Torque measures the turning effect of a force. Three things control it: the size of the force, how far from the axis it is applied, and the angle at which it is applied.</p>
+<ul>
+<li><b>Torque is zero</b> when the force passes through the axis ($\theta = 0$ or $180^\circ$), however large the force is.</li>
+<li><b>Torque is maximum</b> when the force is applied perpendicular to $\vec r$, i.e. $\theta = 90^\circ$.</li>
+</ul>
+<div class="exam"><div class="xh">Frequently asked</div>"Why are door handles fixed near the outer edge, far from the hinges?" Because $\tau = rF\sin\theta$: maximising $r$ maximises the torque for a given force, so the door opens with the least effort. Applying the same force near the hinge gives a tiny $r$ and almost no turning effect.</div>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 3</span> &nbsp;Torque in Cartesian form</div>
+<ol>
+<li>Write the position vector and force in components:<br>
+$\vec r = x\hat i + y\hat j + z\hat k$ &nbsp;and&nbsp; $\vec F = F_x\hat i + F_y\hat j + F_z\hat k$.</li>
+<li>$\vec\tau = \vec r\times\vec F = \begin{vmatrix}\hat i&amp;\hat j&amp;\hat k\\x&amp;y&amp;z\\F_x&amp;F_y&amp;F_z\end{vmatrix}$</li>
+<li>Expand along the first row, remembering the minus sign on $\hat j$:</li>
+</ol>
+<div class="res">$\vec\tau = \hat i\,(yF_z - zF_y) \;+\; \hat j\,(zF_x - xF_z) \;+\; \hat k\,(xF_y - yF_x)$</div>
+</div>
+
+<div class="ex">
+<div class="eh">Worked example — torque about the origin</div>
+<p>Find the torque of the force $\vec F = 5\hat i - 2\hat j + 3\hat k$ acting on a particle whose position vector is $\vec r = \hat i - \hat j + \hat k$.</p>
+<p>$\vec\tau = \begin{vmatrix}\hat i&amp;\hat j&amp;\hat k\\1&amp;-1&amp;1\\5&amp;-2&amp;3\end{vmatrix}$</p>
+<p>$\hat i$: $(-1)(3) - (1)(-2) = -3 + 2 = -1$<br>
+$\hat j$: $-\big[(1)(3) - (1)(5)\big] = -(3-5) = +2$<br>
+$\hat k$: $(1)(-2) - (-1)(5) = -2 + 5 = +3$</p>
+<p class="ans">τ⃗ = −î + 2ĵ + 3k̂  (N m)</p>
+</div>
+
+<h2>5 · Angular momentum</h2>
+<div class="key">$\vec L = \vec r\times\vec p$, &nbsp;$|\vec L| = rp\sin\theta$. Unit: kg m² s<sup>−1</sup> $=$ J s. For a rigid body rotating about a fixed axis, $\;\boxed{L = I\omega}$.</div>
+<p>Angular momentum is the "moment of linear momentum" — the rotational counterpart of $\vec p$, exactly as torque is the counterpart of $\vec F$.</p>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 4</span> &nbsp;$\vec\tau = d\vec L/dt$, and conservation of angular momentum</div>
+<ol>
+<li>For a single particle, $\vec L = \vec r\times\vec p$.</li>
+<li>Differentiate using the product rule for cross products:<br>
+$\dfrac{d\vec L}{dt} = \dfrac{d\vec r}{dt}\times\vec p \;+\; \vec r\times\dfrac{d\vec p}{dt}$</li>
+<li><b>First term vanishes.</b> $\dfrac{d\vec r}{dt} = \vec v$ and $\vec p = m\vec v$, so this is $\vec v\times m\vec v$ — the cross product of two parallel vectors, which is zero.</li>
+<li><b>Second term.</b> By Newton's second law $\dfrac{d\vec p}{dt} = \vec F$, so $\vec r\times\vec F = \vec\tau$.</li>
+<li>$\Rightarrow \vec\tau = \dfrac{d\vec L}{dt}$. Summing over a whole system, internal torques cancel in third-law pairs, leaving $\vec\tau_{\text{ext}} = \dfrac{d\vec L_{\text{total}}}{dt}$.</li>
+<li>If $\vec\tau_{\text{ext}} = 0$, then $\dfrac{d\vec L}{dt} = 0$, so $\vec L$ is constant: $I_1\omega_1 = I_2\omega_2$.</li>
+</ol>
+<div class="res"><b>$\vec\tau_{\text{ext}} = d\vec L/dt$</b> — the rotational form of Newton's second law.<br>
+<b>$\vec\tau_{\text{ext}} = 0 \Rightarrow \vec L$ conserved $\Rightarrow I_1\omega_1 = I_2\omega_2$</b></div>
+</div>
+
+<h3>5.1 Applications of angular momentum conservation</h3>
+<ul>
+<li><b>The spinning skater.</b> Pulling the arms in reduces $I$, so $\omega$ must rise to keep $L = I\omega$ fixed. Same for a diver tucking, and for a person on a rotating stool pulling dumbbells inward.</li>
+<li><b>Important subtlety:</b> $K_{\text{rot}} = L^2/2I$, so when $I$ falls at constant $L$, the kinetic energy <b>increases</b>. Energy is <i>not</i> conserved here — the extra energy comes from the muscular work done in pulling the arms in.</li>
+<li><b>Planets.</b> Gravity is a central force, so it exerts no torque about the Sun; $L$ is conserved, which is exactly Kepler's second law.</li>
+</ul>
+<div class="exam"><div class="xh">Frequently asked</div>"With no external torque on a rotating body, can the angular acceleration or the angular speed change?" <b>Both can.</b> If the body's internal mass distribution changes, $I$ changes, so $\omega$ must change to keep $I\omega$ constant — and a changing $\omega$ <i>is</i> an angular acceleration. What stays fixed is $L$, not $\omega$.</div>
+
+<div class="ex">
+<div class="eh">Worked example — angular momentum from r⃗ and p⃗</div>
+<p>A particle has $\vec r = \hat i + 2\hat j - \hat k$ and $\vec p = 3\hat i + 4\hat j - 2\hat k$. Show that $\vec L$ is perpendicular to the $x$-axis.</p>
+<p>The $x$-component of $\vec L = \vec r\times\vec p$ is $L_x = r_yp_z - r_zp_y = (2)(-2) - (-1)(4) = -4 + 4 = 0$.</p>
+<p class="ans">Since Lₓ = 0, L⃗ has no component along x — it lies in the yz-plane and is perpendicular to the x-axis.</p>
+</div>
+
+<h2>6 · Moment of inertia</h2>
+<div class="key">$I = \sum m_i r_i^2 = \displaystyle\int r^2\,dm$ &nbsp;— where $r$ is the <b>perpendicular distance from the axis of rotation</b>. Unit: kg m².</div>
+<p>Moment of inertia is the rotational analogue of mass: it measures a body's resistance to a change in its rotational motion. But unlike mass, <b>it is not a fixed property of the body</b> — it depends entirely on which axis you choose. Always state the axis.</p>
+<p>It depends on three things: the total mass, the way that mass is distributed, and the position and orientation of the axis. Mass further from the axis contributes far more, because of the $r^2$.</p>
+
+<h3>6.1 Radius of gyration</h3>
+<div class="key">$I = MK^2 \Rightarrow K = \sqrt{I/M}$ — the <b>radius of gyration</b> $K$ is the distance from the axis at which the whole mass could be concentrated without changing $I$. Unit: metre.</div>
+
+<h3>6.2 The standard table — learn this</h3>
+<table>
+<thead><tr><th>Body</th><th>Axis</th><th class="c">$I$</th><th class="c">$K$</th></tr></thead>
+<tbody>
+<tr><td>Thin ring / hoop</td><td>Through centre, ⊥ to plane</td><td class="c">$MR^2$</td><td class="c">$R$</td></tr>
+<tr><td>Thin ring</td><td>Any diameter</td><td class="c">$\tfrac12MR^2$</td><td class="c">$R/\sqrt2$</td></tr>
+<tr><td>Circular disc</td><td>Through centre, ⊥ to plane</td><td class="c">$\tfrac12MR^2$</td><td class="c">$R/\sqrt2$</td></tr>
+<tr><td>Circular disc</td><td>Any diameter</td><td class="c">$\tfrac14MR^2$</td><td class="c">$R/2$</td></tr>
+<tr><td>Thin rod</td><td>⊥ through centre</td><td class="c">$\tfrac{1}{12}ML^2$</td><td class="c">$L/\sqrt{12}$</td></tr>
+<tr><td>Thin rod</td><td>⊥ through one end</td><td class="c">$\tfrac13ML^2$</td><td class="c">$L/\sqrt3$</td></tr>
+<tr><td>Solid sphere</td><td>Any diameter</td><td class="c">$\tfrac25MR^2$</td><td class="c">$R\sqrt{2/5}$</td></tr>
+<tr><td>Hollow sphere (shell)</td><td>Any diameter</td><td class="c">$\tfrac23MR^2$</td><td class="c">$R\sqrt{2/3}$</td></tr>
+<tr><td>Solid cylinder</td><td>Own axis</td><td class="c">$\tfrac12MR^2$</td><td class="c">$R/\sqrt2$</td></tr>
+<tr><td>Hollow cylinder (thin)</td><td>Own axis</td><td class="c">$MR^2$</td><td class="c">$R$</td></tr>
+<tr><td>Solid cylinder</td><td>⊥ through centre</td><td class="c">$M\!\left(\tfrac{L^2}{12}+\tfrac{R^2}{4}\right)$</td><td class="c">—</td></tr>
+</tbody>
+</table>
+<p><b>Memory aid:</b> for the same $M$ and $R$, $I$ is largest when the mass sits furthest from the axis — <b>ring $&gt;$ hollow sphere $&gt;$ disc $&gt;$ solid sphere</b> ($1 &gt; \tfrac23 &gt; \tfrac12 &gt; \tfrac25$).</p>
+
+<h3>6.3 Rotational kinetic energy</h3>
+<div class="key">$K_{\text{rot}} = \tfrac12 I\omega^2 = \dfrac{L^2}{2I}$</div>
+<p>The second form is the one exam questions exploit. <b>For two bodies with equal angular momenta, the one with the larger $I$ has the smaller kinetic energy</b>, since $K \propto 1/I$.</p>
+
+<h2>7 · Rotational dynamics and kinematics</h2>
+<div class="key">$\tau = I\alpha$ — the rotational $F = ma$. &nbsp;$W = \tau\theta$ &nbsp;·&nbsp; $P = \tau\omega$ &nbsp;·&nbsp; angular impulse $\tau\Delta t = \Delta L$</div>
+
+<h3>7.1 Rotational kinematic equations (constant $\alpha$)</h3>
+<p>Identical in form to the linear ones — just swap the symbols:</p>
+<div class="key">$\omega = \omega_0 + \alpha t$ &nbsp;·&nbsp; $\theta = \omega_0 t + \tfrac12\alpha t^2$ &nbsp;·&nbsp; $\omega^2 = \omega_0^2 + 2\alpha\theta$ &nbsp;·&nbsp; $\theta_{n^{\text{th}}} = \omega_0 + \tfrac{\alpha}{2}(2n-1)$</div>
+<p><b>Linking linear and angular quantities:</b> $v = \omega r$, &nbsp;$a_t = \alpha r$, &nbsp;$a_c = \omega^2 r$, &nbsp;$s = r\theta$.</p>
+
+<h2>8 · Equilibrium of a rigid body</h2>
+<p>A rigid body can both translate and rotate, so it needs <b>two</b> conditions to be in equilibrium — this is the key difference from a particle:</p>
+<div class="key"><b>$\sum\vec F = 0$</b> (no translation) &nbsp;<b>AND</b>&nbsp; <b>$\sum\vec\tau = 0$</b> (no rotation)</div>
+<p>Both are needed. A couple has zero net force yet still spins the body, so $\sum F = 0$ alone is not enough.</p>
+
+<h3>8.1 Principle of moments</h3>
+<div class="key">In rotational equilibrium, the sum of the anticlockwise moments equals the sum of the clockwise moments: $F_1d_1 = F_2d_2$.</div>
+<p>This is the theory of the lever. The <b>mechanical advantage</b> is</p>
+<p>$\text{MA} = \dfrac{\text{load}}{\text{effort}} = \dfrac{d_{\text{effort}}}{d_{\text{load}}}$</p>
+<p>— so a long effort arm lets a small effort balance a large load.</p>
+
+<h3>8.2 Couple</h3>
+<p>A <b>couple</b> is a pair of forces that are equal in magnitude, opposite in direction, and <b>not collinear</b> (they act along different lines).</p>
+<ul>
+<li>Net force $= 0$, so a couple produces <b>no translation</b>.</li>
+<li>Net torque $=$ $F \times d$, where $d$ is the perpendicular distance between the lines of action.</li>
+<li><b>The torque of a couple is the same about every point</b> — you can take moments anywhere and get the same answer.</li>
+<li>It produces <b>pure rotation</b>: turning a tap, a steering wheel, a screwdriver, winding a clock.</li>
+</ul>
+
+<div class="ex">
+<div class="eh">Worked example — a non-uniform bar on two strings</div>
+<p>A non-uniform bar of weight $W$ and length 2 m hangs at rest from two strings making angles of 36.9° and 53.1° with the vertical. Find the distance of its centre of gravity from the left end. (Use $\cos36.9^\circ=0.84$, $\sin36.9^\circ=0.55$, $\cos53.1^\circ=0.68$, $\sin53.1^\circ=0.74$.)</p>
+<p><b>Step 1 — horizontal forces balance.</b><br>
+$T_1\sin36.9^\circ = T_2\sin53.1^\circ \Rightarrow 0.55\,T_1 = 0.74\,T_2 \Rightarrow T_1 = \dfrac{0.74}{0.55}T_2$</p>
+<p><b>Step 2 — vertical forces balance.</b><br>
+$T_1\cos36.9^\circ + T_2\cos53.1^\circ = W$<br>
+$\left(\dfrac{0.74}{0.55}T_2\right)(0.84) + 0.68\,T_2 = W \Rightarrow T_2(1.130 + 0.68) = W \Rightarrow T_2 \approx 0.552\,W$</p>
+<p><b>Step 3 — take torques about the left end</b>, which eliminates $T_1$ entirely (its line of action passes through that point). The weight acts downward at distance $x$; the vertical component of $T_2$ acts upward at 2 m.<br>
+$W \times x = (T_2\cos53.1^\circ)\times 2 = (0.552W)(0.68)(2)$</p>
+<p class="ans">x ≈ 0.75 m from the left end</p>
+<p><b>The technique to carry away:</b> take moments about a point through which an unknown force acts. That force then contributes zero torque and drops out of the equation.</p>
+</div>
+
+<h2>9 · The linear ↔ rotational analogy</h2>
+<p>This table is worth several marks on its own, and it also means you never have to learn the rotational formulae separately — you derive them from the linear ones by substitution.</p>
+<table>
+<thead><tr><th>Linear motion</th><th>Rotational motion (fixed axis)</th></tr></thead>
+<tbody>
+<tr><td>Displacement $s$</td><td>Angular displacement $\theta$</td></tr>
+<tr><td>Velocity $v = ds/dt$</td><td>Angular velocity $\omega = d\theta/dt$</td></tr>
+<tr><td>Acceleration $a = dv/dt$</td><td>Angular acceleration $\alpha = d\omega/dt$</td></tr>
+<tr><td>Mass $m$ (inertia)</td><td>Moment of inertia $I$</td></tr>
+<tr><td>Force $F$</td><td>Torque $\tau = rF\sin\theta$</td></tr>
+<tr><td>$F = ma$</td><td>$\tau = I\alpha$</td></tr>
+<tr><td>Momentum $p = mv$</td><td>Angular momentum $L = I\omega$</td></tr>
+<tr><td>$F = dp/dt$</td><td>$\tau = dL/dt$</td></tr>
+<tr><td>Impulse $F\Delta t = \Delta p$</td><td>Angular impulse $\tau\Delta t = \Delta L$</td></tr>
+<tr><td>Work $W = Fs$</td><td>$W = \tau\theta$</td></tr>
+<tr><td>KE $=\tfrac12mv^2 = p^2/2m$</td><td>KE $=\tfrac12I\omega^2 = L^2/2I$</td></tr>
+<tr><td>Power $P = Fv$</td><td>$P = \tau\omega$</td></tr>
+<tr><td>$v = u+at$</td><td>$\omega=\omega_0+\alpha t$</td></tr>
+<tr><td>$s = ut+\tfrac12at^2$</td><td>$\theta=\omega_0t+\tfrac12\alpha t^2$</td></tr>
+<tr><td>$v^2 = u^2 + 2as$</td><td>$\omega^2 = \omega_0^2 + 2\alpha\theta$</td></tr>
+</tbody>
+</table>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 5</span> &nbsp;Angular momentum of two particles is independent of the origin</div>
+<p><i>Two particles, each of mass $m$ and speed $v$, travel in opposite directions along parallel lines separated by a distance $d$. Show that the total angular momentum is the same about every point.</i></p>
+<ol>
+<li>Choose any origin $O$. Let particle 1 be at $\vec r_1$ moving with velocity $\vec v$, and particle 2 at $\vec r_2$ moving with $-\vec v$.</li>
+<li>Total angular momentum: $\vec L = \vec r_1\times(m\vec v) + \vec r_2\times(-m\vec v)$.</li>
+<li>Factor out: $\vec L = m(\vec r_1 - \vec r_2)\times\vec v$.</li>
+<li>But $(\vec r_1 - \vec r_2)$ is the <b>relative</b> position vector of one particle from the other — it does not involve $O$ at all.</li>
+<li>Since the choice of origin has cancelled, $\vec L$ is the same about every point. Its magnitude is $|\vec L| = m v d$, where $d$ is the perpendicular separation of the two lines.</li>
+</ol>
+<div class="res">$\vec L = m(\vec r_1-\vec r_2)\times\vec v$, magnitude $mvd$ — independent of the origin. This is the defining property of a <b>couple</b> applied to angular momentum.</div>
+</div>
+
+<h2>10 · Only if covered in class — axis theorems and rolling</h2>
+<p>These were removed in the rationalised syllabus, so check whether your teacher covered them.</p>
+<ul>
+<li><b>Parallel axis theorem.</b> $I = I_{cm} + Md^2$, where $d$ is the perpendicular distance between two <i>parallel</i> axes and one of them passes through the centre of mass.<br>
+<i>Check:</i> a rod about its end $= \tfrac{1}{12}ML^2 + M(L/2)^2 = \tfrac13ML^2$ ✓</li>
+<li><b>Perpendicular axis theorem</b> (<i>plane laminae only</i>). $I_z = I_x + I_y$, where $x$ and $y$ lie in the plane and $z$ is perpendicular to it, all three meeting at a point.<br>
+<i>Check:</i> a disc — $\tfrac12MR^2 = \tfrac14MR^2 + \tfrac14MR^2$ ✓ &nbsp;(Never apply this to a sphere or a cylinder.)</li>
+<li><b>Rolling without slipping.</b> $v_{cm} = \omega R$; the contact point is instantaneously at rest; the topmost point moves at $2v_{cm}$.</li>
+<li><b>Rolling kinetic energy.</b> $K_{\text{total}} = \tfrac12Mv_{cm}^2 + \tfrac12I\omega^2 = \tfrac12Mv_{cm}^2\!\left(1+\dfrac{K^2}{R^2}\right)$, where $K$ here is the radius of gyration.</li>
+<li><b>Rolling down an incline $\theta$.</b> $a = \dfrac{g\sin\theta}{1+K^2/R^2}$ &nbsp;and&nbsp; $v_{\text{bottom}} = \sqrt{\dfrac{2gh}{1+K^2/R^2}}$.<br>
+Since $a$ falls as $K^2/R^2$ rises, the arrival order down the same incline is <b>solid sphere</b> ($\tfrac25$) → <b>disc</b> ($\tfrac12$) → <b>hollow sphere</b> ($\tfrac23$) → <b>ring</b> ($1$), independent of $M$ and $R$.</li>
+</ul>
+
+<div class="trap">
+<div class="th">Traps that cost marks</div>
+<ol>
+<li><b>$I$ is not a property of the body alone — it depends on the axis.</b> Always name the axis before quoting a value.</li>
+<li><b>In $I = \sum mr^2$, $r$ is the perpendicular distance from the AXIS</b> — not the distance from the centre or from the origin.</li>
+<li><b>When $L$ is conserved and $I$ decreases, $\omega$ increases AND $K_{\text{rot}}$ increases.</b> Kinetic energy is not conserved — internal work supplies the difference. Saying "energy is conserved" here is wrong.</li>
+<li><b>The perpendicular-axis theorem applies to plane laminae only</b>; the parallel-axis theorem needs one axis through the centre of mass.</li>
+<li><b>Rigid-body equilibrium needs both $\sum F = 0$ and $\sum\tau = 0$.</b> Quoting only the first is a half-answer.</li>
+<li><b>$\vec\omega$, $\vec\tau$ and $\vec L$ point along the AXIS</b> (right-hand rule), not along the direction of motion.</li>
+<li><b>Zero external torque does not fix $\omega$</b> — it fixes $L$. If $I$ changes, $\omega$ changes.</li>
+<li><b>The minus sign on the $\hat j$ term</b> in every cross-product determinant. Check it every time.</li>
+<li><b>Zero external torque says nothing about $v_{cm}$.</b> The velocity of the centre of mass is controlled by external <i>force</i>, not torque — a favourite false assertion.</li>
+</ol>
+</div>
+
+<p class="footer-note">Chapter 6 of the rationalised NCERT (2023–24 onward). Every derivation above is written the way it should appear in the answer script: numbered steps, the key substitution shown explicitly, and the final result stated separately.</p>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laws of Motion — Chapter 4 Notes</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<style>
+@page { size: A4 portrait; margin: 16mm 15mm 18mm 15mm; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, "DejaVu Serif", "Times New Roman", serif;
+  font-size: 10.8pt; line-height: 1.5; color: #16191d; background: #fff;
+  margin: 0; hyphens: none;
+}
+.sans { font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif; }
+
+h1 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 21pt; line-height: 1.15; margin: 0 0 3mm; letter-spacing: -.2px;
+  border-bottom: 2.5pt solid #16191d; padding-bottom: 3mm;
+}
+h1 .ch { display: block; font-size: 10pt; font-weight: 600; letter-spacing: 1.6px;
+  text-transform: uppercase; color: #9c3a1f; margin-bottom: 2mm; }
+.subtitle { font-size: 10pt; color: #4a5158; margin: 0 0 7mm; font-style: italic; }
+
+h2 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 14pt; margin: 8mm 0 3mm; padding: 1.6mm 3mm;
+  background: #16191d; color: #fff; border-radius: 2pt;
+  break-after: avoid; page-break-after: avoid;
+}
+h3 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 11.8pt; margin: 6mm 0 2mm; color: #16191d;
+  border-bottom: 1pt solid #b9c0c7; padding-bottom: 1mm;
+  break-after: avoid; page-break-after: avoid;
+}
+h4 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 10.6pt; margin: 4.5mm 0 1.5mm; color: #2b3138;
+  break-after: avoid; page-break-after: avoid;
+}
+p { margin: 0 0 2.6mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+li { margin-bottom: 1.4mm; }
+b, strong { font-weight: 700; }
+em, i { font-style: italic; }
+
+/* ---- derivation box ---- */
+.deriv {
+  border: 1pt solid #16191d; border-left: 3.5pt solid #9c3a1f;
+  background: #fdfcfa; padding: 3mm 4mm; margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.deriv .dh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.8pt; margin-bottom: 2mm; color: #16191d;
+}
+.deriv .dh .tag { color: #9c3a1f; font-size: 9pt; letter-spacing: 1px; }
+.deriv ol { margin: 0; padding-left: 6mm; }
+.deriv ol li { margin-bottom: 1.8mm; }
+.deriv .res {
+  margin-top: 2.5mm; padding-top: 2mm; border-top: 1pt dashed #a8b0b8;
+  font-weight: 600;
+}
+
+/* ---- worked example ---- */
+.ex {
+  border: 1pt solid #1d5f4a; background: #f3f9f6; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.ex .eh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #1d5f4a; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.ans { font-weight: 700; color: #1d5f4a; }
+
+/* ---- traps ---- */
+.trap {
+  border: 1pt solid #a5281b; background: #fdf4f3; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.trap .th {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #a5281b; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.trap ol { margin: 0; padding-left: 6mm; }
+
+/* ---- key result strip ---- */
+.key {
+  background: #eef1f4; border-left: 3pt solid #2b3138;
+  padding: 2.2mm 3.5mm; margin: 3mm 0; border-radius: 0 2pt 2pt 0;
+  break-inside: avoid;
+}
+.key b { color: #16191d; }
+
+/* ---- exam callout ---- */
+.exam {
+  border: 1pt dashed #7a5c00; background: #fdfaef; padding: 2.6mm 3.5mm;
+  margin: 3.5mm 0; border-radius: 2pt; font-size: 10.2pt;
+  break-inside: avoid;
+}
+.exam .xh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 9.4pt; color: #7a5c00; letter-spacing: .8px;
+  text-transform: uppercase; margin-bottom: 1.2mm;
+}
+
+/* ---- tables ---- */
+table {
+  border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 3mm 0;
+  break-inside: avoid; page-break-inside: avoid;
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+}
+th, td { border: 0.7pt solid #98a1a9; padding: 1.4mm 2.2mm; text-align: left; vertical-align: top; }
+th { background: #e4e8ec; font-weight: 700; }
+tbody tr:nth-child(even) { background: #f6f8f9; }
+td.c, th.c { text-align: center; }
+
+/* ---- figures ---- */
+figure { margin: 4mm 0; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+svg.dg { max-width: 100%; height: auto; }
+figcaption { font-size: 9.6pt; color: #4a5158; margin-top: 1.5mm; font-style: italic; text-align: left; }
+svg .s-n{stroke:#1b5fd0} svg .t-n{fill:#1b5fd0}
+svg .s-f{stroke:#be3a2b} svg .t-f{fill:#be3a2b}
+svg .s-w{stroke:#69747f} svg .t-w{fill:#69747f}
+svg .s-a{stroke:#0b7355} svg .t-a{fill:#0b7355}
+svg .s-t{stroke:#6a45b0} svg .t-t{fill:#6a45b0}
+svg .s-i{stroke:#6f7a88} svg .t-i{fill:#6f7a88}
+svg .arw{stroke-width:2;fill:none;stroke-linecap:round}
+svg .thin{stroke-width:1.3}
+svg .dash{stroke-dasharray:4 3}
+svg .body{fill:#e7ecf1;stroke:#46515f;stroke-width:1.4}
+svg .ghost{fill:#e7ecf1;stroke:#46515f;stroke-width:1.3;stroke-dasharray:5 3}
+svg .gnd{stroke:#46515f;stroke-width:2;fill:none}
+svg .lbl{font-size:13px;font-weight:600;font-family:"DejaVu Sans",sans-serif}
+svg .lbl-s{font-size:10.5px;font-weight:500;font-family:"DejaVu Sans",sans-serif}
+svg .t-k{fill:#2b3138}
+
+hr.sep { border: 0; border-top: 1pt solid #d5dbe0; margin: 6mm 0; }
+.katex { font-size: 1.02em; }
+.katex-display { margin: 2.5mm 0; break-inside: avoid; }
+.footer-note { font-size: 9.4pt; color: #6b737b; font-style: italic; margin-top: 8mm;
+  border-top: 1pt solid #d5dbe0; padding-top: 2.5mm; }
+
+</style>
+</head>
+<body>
+<h1><span class="ch">CBSE Class 11 Physics · Chapter 4</span>Laws of Motion</h1>
+<p class="subtitle">Complete chapter notes — concepts, every derivation worked in full, standard results, worked examples and the traps that cost marks.</p>
+
+<div class="key"><b>The one idea that organises this chapter:</b> force does not <i>maintain</i> motion — it <i>changes</i> motion. Every confusion in Chapter 4 comes from carrying Aristotle's intuition (things stop unless you keep pushing) into Newton's framework. Hold that sentence and the rest follows.</div>
+
+<h2>1 · Aristotle's fallacy and the law of inertia</h2>
+
+<h3>1.1 What Aristotle got wrong</h3>
+<p>Aristotle claimed that an external force is required to keep a body moving with constant velocity. Push a book across a table; it slides and stops. Stop pushing and it stops. So — force sustains motion.</p>
+<p>This is wrong, but it is worth understanding <i>why it is seductive</i>. It is not a stupid theory: it is an accurate description of what you actually observe. The error is that Aristotle never noticed that <b>friction is a force too</b>. The book stops not because the push "ran out", but because friction acted on it the whole time. On a frictionless surface the book would never stop.</p>
+<p><b>Why this matters for you:</b> whenever a body moves at constant velocity, your instinct will insist there must be a net force in the direction of motion. There is not. The net force is exactly zero.</p>
+
+<h3>1.2 Galileo's argument — the reason the first law is believable</h3>
+<p>Do not accept the first law as a bare assertion. Galileo <i>argued</i> for it, and the argument is examinable.</p>
+<ol>
+<li>Take two inclined planes facing each other. Release a ball down one; it rolls up the other and reaches <b>almost the same height</b>.</li>
+<li>Reduce the angle of the second plane. The ball still climbs to the same height — so it must travel a <b>longer distance</b> along the slope to get there.</li>
+<li>Reduce the angle further. Longer still.</li>
+<li>Now the limiting step: make the second plane <b>horizontal</b>. The ball can never reach its original height, so it must keep going <b>forever</b>.</li>
+</ol>
+<p>Conclusion: in the absence of friction, a body in motion continues in motion with no force acting. That final step — pushing a trend to its limit — is the actual physics, and examiners like to see it.</p>
+
+<h2>2 · Newton's First Law</h2>
+
+<div class="key"><b>Statement.</b> A body continues in its state of rest, or of uniform motion in a straight line, unless it is compelled by a <b>net external force</b> to change that state.</div>
+
+<p>Three things the law genuinely says, which students routinely miss:</p>
+
+<h4>(a) "Net" external force</h4>
+<p>A body with four forces acting on it that sum to zero obeys the first law perfectly. <b>Zero net force does not mean no forces.</b> A book on a table has two forces on it and is in equilibrium.</p>
+
+<h4>(b) Rest and uniform motion are the <i>same</i> state</h4>
+<p>Physically there is no difference between sitting still and moving at 20 m s<sup>−1</sup> in a straight line. Both are simply "zero acceleration". Which one you observe depends on the frame you are watching from.</p>
+
+<h4>(c) It defines the inertial frame</h4>
+<p>This is the deep content. The first law is not a special case of $F=ma$. It tells you <i>in which frames</i> $F=ma$ is allowed to be used at all — namely, frames in which a free body has zero acceleration. Those are <b>inertial frames</b>.</p>
+
+<h3>2.1 Inertial and non-inertial frames</h3>
+<p>An <b>inertial frame</b> is one in which Newton's first law holds. Any frame moving with constant velocity relative to an inertial frame is also inertial.</p>
+<p>A <b>non-inertial frame</b> is one in which the first law fails — a body with no net force on it does <i>not</i> stay at rest or in uniform motion. Equivalently: <b>any frame that is accelerating</b>, whether linearly or by rotating.</p>
+<p>The observable symptom is that you see accelerations with no force causing them. In a braking bus you lurch forward and nobody pushed you. On a merry-go-round you are flung outward with no agent pulling you.</p>
+<p><b>Examples:</b> an accelerating or braking vehicle; a lift speeding up or slowing down; any rotating frame. Strictly the Earth is non-inertial too (it spins and orbits), but the effect is so small that we treat it as inertial in every school problem.</p>
+<p><b>$F = ma$ is valid only in inertial frames.</b> That is exactly why lift problems are solved from the ground, never from inside the lift.</p>
+<div class="exam"><div class="xh">Exam note</div>This is almost always a 1-mark definition. Give the definition, one example, and the line "Newton's laws are valid only in inertial frames." Pseudo-forces are not required at Class 11 CBSE level — do not spend time on them.</div>
+
+<h3>2.2 Inertia and mass</h3>
+<p>Inertia is a body's resistance to a <b>change</b> in its state of motion. <b>Mass is the quantitative measure of inertia.</b> A heavier body is harder to start, harder to stop and harder to turn.</p>
+<table>
+<thead><tr><th>Type of inertia</th><th>Meaning</th><th>Standard example</th></tr></thead>
+<tbody>
+<tr><td>Inertia of rest</td><td>A body at rest resists being set in motion</td><td>Dust flies off when a carpet is beaten — the carpet moves, the dust stays</td></tr>
+<tr><td>Inertia of motion</td><td>A moving body resists being stopped</td><td>You fall forward when a bus stops suddenly</td></tr>
+<tr><td>Inertia of direction</td><td>A body resists a change in its direction of motion</td><td>Mud flies off a spinning tyre along the tangent</td></tr>
+</tbody>
+</table>
+
+<h2>3 · Momentum and Newton's Second Law</h2>
+
+<h3>3.1 Why momentum is the right quantity</h3>
+<p>Ask what makes a moving object hard to stop. Not speed alone — a bullet at 500 m s<sup>−1</sup> and a truck at 5 m s<sup>−1</sup> are both dangerous. Not mass alone — a parked truck is harmless. The combination that matters is</p>
+<div class="key">$\vec p = m\vec v$ &nbsp;— <b>linear momentum</b>, a <b>vector</b> along the velocity. SI unit: kg m s<sup>−1</sup>.</div>
+<p>The physical claim underneath the second law is this: <b>the same force applied for the same time produces the same change in momentum, whatever the mass.</b> That is why momentum, not velocity, is the natural variable. Newton called it "quantity of motion".</p>
+
+<h3>3.2 Newton's Second Law</h3>
+<div class="key"><b>Statement.</b> The rate of change of momentum of a body is directly proportional to the applied force and takes place in the direction of the force.</div>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 1</span> &nbsp;$\vec F = d\vec p/dt \Rightarrow \vec F = m\vec a$, and impulse</div>
+<ol>
+<li>Momentum is $\vec p = m\vec v$. The second law in its general form is $\vec F = \dfrac{d\vec p}{dt}$.</li>
+<li>Differentiate the product: $\dfrac{d\vec p}{dt} = \dfrac{d(m\vec v)}{dt} = m\dfrac{d\vec v}{dt} + \vec v\dfrac{dm}{dt}$.</li>
+<li>For a body of <b>constant mass</b>, $dm/dt = 0$, so the second term vanishes.</li>
+<li>$\Rightarrow \vec F = m\dfrac{d\vec v}{dt} = m\vec a$.</li>
+<li>Rearranging the general form gives $\vec F\,dt = d\vec p$. Integrating over the contact time from $t_1$ to $t_2$: &nbsp;$\displaystyle\int_{t_1}^{t_2}\vec F\,dt = \vec p_2 - \vec p_1$.</li>
+</ol>
+<div class="res">$\vec F = m\vec a$ (constant mass) &nbsp;·&nbsp; Impulse $\vec J = \vec F_{\text{avg}}\Delta t = \Delta\vec p$</div>
+</div>
+
+<p>Four things to internalise about $F = ma$:</p>
+<ul>
+<li><b>It is a vector equation</b>, so it splits into independent component equations: $F_x = ma_x$, $F_y = ma_y$. This is how every free-body-diagram problem actually gets solved.</li>
+<li><b>It is instantaneous.</b> The force <i>right now</i> determines the acceleration <i>right now</i> — not the average, not the history.</li>
+<li><b>It defines the newton.</b> 1 N is the force that gives a 1 kg mass an acceleration of 1 m s<sup>−2</sup>. So 1 N = 1 kg m s<sup>−2</sup>.</li>
+<li><b>$F = ma$ is the special case; $F = dp/dt$ is the law.</b></li>
+</ul>
+
+<h3>3.3 Impulse</h3>
+<div class="key">$\vec J = \vec F_{\text{avg}}\,\Delta t = \Delta\vec p = \displaystyle\int\vec F\,dt$ &nbsp;— unit N s = kg m s<sup>−1</sup>. For a varying force, impulse is the <b>area under the $F$–$t$ graph</b>.</div>
+<p>The whole point of impulse: <b>$\Delta p$ is often fixed by the situation, so a longer $\Delta t$ means a smaller peak force.</b> A cricketer catching a ball must bring its momentum to zero either way; pulling the hands back stretches $\Delta t$ and cuts the force. Same physics: bending your knees on landing, airbags, sand pits under a high-jump bar, foam packaging.</p>
+
+<div class="ex">
+<div class="eh">Worked example — impulse with a reversal</div>
+<p>A ball of mass 0.15 kg travelling at 20 m s<sup>−1</sup> strikes a wall perpendicularly and rebounds along the same line at 15 m s<sup>−1</sup>. Contact lasts 0.02 s. Find the change in momentum and the average force.</p>
+<p><b>Take "toward the wall" as positive.</b> This single decision is where the marks are.</p>
+<p>$p_i = 0.15 \times (+20) = +3.00$ kg m s<sup>−1</sup> &nbsp;&nbsp; $p_f = 0.15 \times (-15) = -2.25$ kg m s<sup>−1</sup></p>
+<p>$\Delta p = p_f - p_i = -2.25 - 3.00 = -5.25$ kg m s<sup>−1</sup></p>
+<p>$F = \dfrac{\Delta p}{\Delta t} = \dfrac{5.25}{0.02} = 262.5$ N</p>
+<p class="ans">Δp = 5.25 kg m s⁻¹ directed away from the wall; F = 262.5 N.</p>
+<p>If you forget that the rebound velocity is <b>negative</b> you get 0.75 instead of 5.25. That one sign is the most common 3-mark loss in this chapter.</p>
+</div>
+
+<h2>4 · Newton's Third Law</h2>
+
+<div class="key"><b>Statement.</b> To every action there is always an equal and opposite reaction. Stated properly: <b>Force on A by B = − Force on B by A.</b></div>
+
+<p>The statement is easy; the interpretation is where marks are lost. Non-negotiable points:</p>
+<ul>
+<li><b>The two forces act on two DIFFERENT bodies.</b> Therefore they can never cancel each other. Cancellation only ever happens between forces acting on the <i>same</i> body.</li>
+<li><b>They are simultaneous.</b> There is no "action first, then reaction". The labels "action" and "reaction" are arbitrary — neither is more fundamental.</li>
+<li><b>They are always of the same type</b> — both gravitational, or both contact forces, and so on.</li>
+</ul>
+
+<h3>4.1 The classic trap — the book on the table</h3>
+<p>A book rests on a table. The normal force $N$ (table pushes book up) and the weight $mg$ (Earth pulls book down) are equal and opposite — but they are <b>NOT</b> a third-law pair. Both act on the <i>same</i> body, the book. They are a first-law balance.</p>
+<p>The true partners are:</p>
+<table>
+<thead><tr><th>Force</th><th>Its third-law reaction</th><th>Acts on</th></tr></thead>
+<tbody>
+<tr><td>Table pushes book up ($N$)</td><td>Book pushes table down</td><td>the table</td></tr>
+<tr><td>Earth pulls book down ($mg$)</td><td>Book pulls Earth up</td><td>the Earth</td></tr>
+</tbody>
+</table>
+<div class="exam"><div class="xh">Frequently asked</div>"What is the reaction to the weight of the book?" The answer is <b>not</b> the normal force. It is the upward gravitational pull the book exerts <b>on the Earth</b>. A useful test: removing the table destroys the first pair but leaves the second untouched.</div>
+
+<h3>4.2 The horse-and-cart objection</h3>
+<p><i>"If the cart pulls back on the horse exactly as hard as the horse pulls the cart, how can anything move?"</i></p>
+<p>Because those two forces act on <b>different bodies</b>, so they never appear in the same equation. To find the horse's motion, draw only the forces acting <b>on the horse</b>: the cart pulls it backward, and the ground pushes it forward (friction). The ground force is larger, so the horse accelerates.</p>
+
+<h3>4.3 Ten third-law pairs</h3>
+<table>
+<thead><tr><th>Situation</th><th>Action — force on A by B</th><th>Reaction — force on B by A</th></tr></thead>
+<tbody>
+<tr><td>Walking</td><td>Foot pushes the ground backward</td><td>Ground pushes the foot forward — this propels you</td></tr>
+<tr><td>Swimming</td><td>Hands push water backward</td><td>Water pushes the swimmer forward</td></tr>
+<tr><td>Rocket</td><td>Rocket pushes exhaust gases down</td><td>Gases push the rocket up — no air needed</td></tr>
+<tr><td>Firing a gun</td><td>Gun pushes the bullet forward</td><td>Bullet pushes the gun backward — the recoil</td></tr>
+<tr><td>Book on table</td><td>Table pushes the book up</td><td>Book pushes the table down</td></tr>
+<tr><td>Book and Earth</td><td>Earth pulls the book down (its weight)</td><td>Book pulls the Earth up, equally</td></tr>
+<tr><td>Hammer and nail</td><td>Hammer drives the nail in</td><td>Nail pushes back on the hammer, stopping it</td></tr>
+<tr><td>Stepping off a boat</td><td>You push the boat backward</td><td>Boat pushes you forward — and drifts away</td></tr>
+<tr><td>Released balloon</td><td>Balloon pushes air out backward</td><td>Escaping air pushes the balloon forward</td></tr>
+<tr><td>Earth and Moon</td><td>Earth pulls the Moon</td><td>Moon pulls the Earth with the <i>same</i> force</td></tr>
+</tbody>
+</table>
+<p>Two are worth a second look. In the <b>Earth–Moon</b> case the forces really are equal — the Moon's pull on the Earth is what raises the tides. And in <b>walking</b>, the reaction is a friction force: on ice you push the ground backward just as hard, but the ground cannot push you forward, so you go nowhere.</p>
+
+<h2>5 · Conservation of linear momentum</h2>
+<p>This is not an independent law. It follows from the second and third laws together, and the derivation is examinable.</p>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 2</span> &nbsp;Conservation of momentum, and gun recoil</div>
+<ol>
+<li>Take two bodies $A$ and $B$ forming an isolated system — no external force acts. They interact with each other for a time $\Delta t$.</li>
+<li><b>Third law:</b> the force on $A$ due to $B$ and on $B$ due to $A$ satisfy $\vec F_{AB} = -\vec F_{BA}$.</li>
+<li><b>Second law</b> applied to each: $\dfrac{d\vec p_A}{dt} = \vec F_{AB}$ &nbsp;and&nbsp; $\dfrac{d\vec p_B}{dt} = \vec F_{BA}$.</li>
+<li>Add the two equations: $\dfrac{d}{dt}(\vec p_A + \vec p_B) = \vec F_{AB} + \vec F_{BA} = 0$.</li>
+<li>If the derivative of a quantity is zero, the quantity is constant: $\vec p_A + \vec p_B = \text{constant}$.</li>
+<li><b>Gun recoil.</b> Gun (mass $M$) and bullet (mass $m$) are initially at rest, so total momentum $= 0$. After firing, $0 = m\vec v_b + M\vec v_g$.</li>
+<li>$\Rightarrow \vec v_g = -\dfrac{m}{M}\vec v_b$ — the recoil is <b>opposite</b> to the bullet and small in magnitude because $M \gg m$.</li>
+</ol>
+<div class="res">$\vec F_{\text{ext}} = 0 \Rightarrow m_1\vec u_1 + m_2\vec u_2 = m_1\vec v_1 + m_2\vec v_2$</div>
+</div>
+
+<p><b>Read the condition carefully:</b> $F_{\text{external}} = 0$. During a collision the internal forces are enormous but external forces (gravity, friction) are negligible over the tiny contact time — which is why momentum is conserved in collisions even on a rough floor.</p>
+
+<h2>6 · Equilibrium of a particle</h2>
+<div class="key">$\sum\vec F = 0$, which for concurrent forces means $\sum F_x = 0$ <b>and</b> $\sum F_y = 0$.</div>
+<p>Three concurrent forces in equilibrium form a closed triangle when drawn head to tail. For exactly three forces you may use <b>Lami's theorem</b>:</p>
+<div class="key">$\dfrac{F_1}{\sin\alpha} = \dfrac{F_2}{\sin\beta} = \dfrac{F_3}{\sin\gamma}$ — where each angle is the one <b>opposite</b> to its force, i.e. the angle between the other two.</div>
+
+<h2>7 · The forces you will actually meet</h2>
+<table>
+<thead><tr><th>Force</th><th>Direction</th><th>Key point</th></tr></thead>
+<tbody>
+<tr><td><b>Weight</b> $mg$</td><td>Vertically down, acts at the centre of mass</td><td>Never changes with the motion of the body</td></tr>
+<tr><td><b>Normal reaction</b> $N$</td><td>Perpendicular to the contact surface</td><td>Always a <b>push</b>, never a pull. <b>$N$ is not always $mg$</b></td></tr>
+<tr><td><b>Tension</b> $T$</td><td>Along the string, away from the body</td><td>Always a <b>pull</b>. Uniform throughout only if the string is massless and the pulley is massless and frictionless</td></tr>
+<tr><td><b>Spring force</b></td><td>Opposite to the deformation</td><td>$F = -kx$, restoring</td></tr>
+<tr><td><b>Friction</b> $f$</td><td>Parallel to the surface</td><td>Opposes relative sliding, or the tendency to slide</td></tr>
+</tbody>
+</table>
+<div class="key"><b>The single most useful sentence in this chapter:</b> $N$ equals $mg$ only on flat ground with no vertical component of any applied force. On an incline $N = mg\cos\theta$; in a lift $N = m(g\pm a)$; with a force pulled at angle $\theta$ above the horizontal, $N = mg - F\sin\theta$.</div>
+<p>Conceptually, normal force, tension and friction are all <b>contact forces</b>, and all of them are electromagnetic in origin at the microscopic level.</p>
+
+<h2>8 · Friction — the hardest section in the chapter</h2>
+
+<h3>8.1 The three kinds</h3>
+<p><b>Static friction ($f_s$)</b> acts when there is no relative sliding, only a <i>tendency</i> to slide. Its defining property is that it is <b>self-adjusting</b>.</p>
+<p>Push a heavy box with 10 N and it does not move — friction is exactly 10 N. Push with 30 N, still no motion — friction is exactly 30 N. It matches whatever you apply, up to a ceiling:</p>
+<div class="key">$f_s \le \mu_s N$, with maximum (<b>limiting</b>) value $(f_s)_{\max} = \mu_s N$</div>
+<p>Writing $f_s = \mu_s N$ when the body is <i>not</i> on the verge of slipping is a straight error.</p>
+<p><b>Limiting friction</b> is that maximum static value — the friction acting at the exact instant slipping begins.</p>
+<p><b>Kinetic friction</b> acts once sliding has started: $f_k = \mu_k N$. It is roughly constant, independent of the sliding speed and of the apparent area of contact. And <b>$\mu_k &lt; \mu_s$</b>, which is why a stuck box lurches forward the instant it gives — the opposing force suddenly drops.</p>
+<p><b>Rolling friction</b> is far smaller than sliding friction. That is the entire reason for wheels and ball bearings.</p>
+
+<figure>
+<svg class="dg" viewBox="0 0 440 270" role="img" aria-label="Graph of frictional force against applied force, rising along a 45 degree line to a peak at limiting friction then dropping to a constant kinetic value.">
+  <rect x="70" y="35" width="160" height="185" fill="#be3a2b" opacity="0.06"/>
+  <line class="grid dash" x1="70" y1="65" x2="230" y2="65" stroke="#b9c0c7" stroke-width="1"/>
+  <line class="grid dash" x1="70" y1="105" x2="400" y2="105" stroke="#b9c0c7" stroke-width="1"/>
+  <line class="grid dash" x1="230" y1="220" x2="230" y2="65" stroke="#b9c0c7" stroke-width="1"/>
+  <line x1="70" y1="220" x2="412" y2="220" stroke="#46515f" stroke-width="1.6"/>
+  <line x1="70" y1="220" x2="70" y2="35" stroke="#46515f" stroke-width="1.6"/>
+  <polyline class="arw s-f" points="70,220 230,65"/>
+  <line class="arw thin dash s-f" x1="230" y1="65" x2="230" y2="105"/>
+  <polyline class="arw s-f" points="230,105 400,105"/>
+  <circle cx="230" cy="65" r="4" fill="#be3a2b"/>
+  <circle cx="230" cy="105" r="4" fill="#be3a2b"/>
+  <text class="lbl-s t-k" x="62" y="69" text-anchor="end">μₛN</text>
+  <text class="lbl-s t-k" x="62" y="109" text-anchor="end">μₖN</text>
+  <text class="lbl-s t-k" x="62" y="224" text-anchor="end">O</text>
+  <text class="lbl t-f" x="238" y="58">A — limiting friction</text>
+  <text class="lbl t-f" x="300" y="98">kinetic friction</text>
+  <text class="lbl-s t-i" x="118" y="146" transform="rotate(-44 118 146)">f = F  (45°)</text>
+  <text class="lbl-s t-i" x="150" y="198" text-anchor="middle" letter-spacing="1.2">STATIC · AT REST</text>
+  <text class="lbl-s t-i" x="315" y="198" text-anchor="middle" letter-spacing="1.2">KINETIC · SLIDING</text>
+  <text class="lbl-s t-k" x="240" y="252" text-anchor="middle">Applied force F →</text>
+  <text class="lbl-s t-k" x="24" y="128" text-anchor="middle" transform="rotate(-90 24 128)">Friction f →</text>
+</svg>
+<figcaption><b>Friction versus applied force.</b> In the shaded region friction exactly equals the applied force (a 45° line), so the body stays at rest. Only at the peak A does $f$ actually equal $\mu_s N$. Past it, friction <i>drops</i> to $\mu_k N$ and stays there however hard you push. <b>Highest value: limiting friction. Lowest: kinetic friction.</b></figcaption>
+</figure>
+
+<h3>8.2 What μ depends on</h3>
+<p>The coefficient of friction depends on exactly two things:</p>
+<ol>
+<li>The <b>nature of the two surfaces</b> in contact — how rough or smooth they are.</li>
+<li>The <b>materials</b> of the bodies in contact.</li>
+</ol>
+<p>It does <b>not</b> depend on the area of contact, the normal force, the mass, or the speed of sliding.</p>
+
+<h3>8.3 Angle of friction and angle of repose</h3>
+<p><b>Angle of friction $\lambda$</b> is the angle between the normal reaction $N$ and the resultant of $N$ and the limiting friction $f_{\max}$.</p>
+<p>$\tan\lambda = \dfrac{f_{\max}}{N} = \dfrac{\mu_s N}{N}$ &nbsp;$\Rightarrow$&nbsp; $\boxed{\tan\lambda = \mu_s}$</p>
+<p><b>Angle of repose $\alpha$</b> is the inclination at which a body placed on a slope <i>just</i> begins to slide. On the verge, the component of weight along the slope equals limiting friction:</p>
+<p>$mg\sin\alpha = \mu_s\,mg\cos\alpha$ &nbsp;$\Rightarrow$&nbsp; $\boxed{\tan\alpha = \mu_s}$ &nbsp;— note the mass cancels.</p>
+<div class="key">$\lambda = \alpha$. Same number, two different physical set-ups. Both equal $\mu_s$.</div>
+
+<h3>8.4 The decision procedure that fixes most friction errors</h3>
+<ol>
+<li><b>Find $N$ first</b>, from the direction perpendicular to the surface. Flat ground, no vertical force: $N = mg$. Incline $\theta$: $N = mg\cos\theta$. Force pulled at $\theta$ above horizontal: $N = mg - F\sin\theta$. Pushed at $\theta$ below: $N = mg + F\sin\theta$.</li>
+<li><b>Compare.</b> Work out $f_{\max} = \mu_s N$ and compare with the force applied along the surface.
+  <ul><li>Applied $&lt;$ $f_{\max}$ → <b>static</b>. $f$ = the applied force. $a = 0$.</li>
+  <li>Applied $&gt;$ $f_{\max}$ → <b>sliding</b>. $f = \mu_k N$.</li></ul></li>
+<li><b>Direction:</b> opposite to how <i>that surface</i> slides, or would slide if the contact suddenly turned to frictionless ice.</li>
+</ol>
+<p>Almost every friction mistake is skipping step 1 and assuming $N = mg$.</p>
+
+<h3>8.5 Which way does friction act?</h3>
+<div class="key">Friction opposes <b>relative sliding between the two surfaces</b> — <i>not</i> the motion of the body through space. That is why friction can be the force that <b>drives</b> motion.</div>
+<p>Three cases with the same rule:</p>
+<ul>
+<li><b>You push a crate along a floor.</b> The crate slides forward over the floor, so friction on the crate acts <b>backward</b>. The familiar case.</li>
+<li><b>A crate sits on the bed of an accelerating truck.</b> If the bed were ice, the crate would be left behind — it would slip <i>backward</i> relative to the bed. So friction on the crate acts <b>forward</b>, and it is the only force accelerating the crate.</li>
+<li><b>A car's driving wheel.</b> The tyre surface pushes the road backward, so the road pushes the tyre <b>forward</b>. This is what moves the car.</li>
+</ul>
+<p>A faster test when friction is the only horizontal force: <b>its direction is forced by $F = ma$.</b> The block on the truck bed accelerates forward, so the net force on it points forward, so friction points forward. No intuition required.</p>
+<p><b>Friction is not always horizontal.</b> A block pressed against a vertical wall tends to slide <i>down</i>, so friction on it acts <b>vertically upward</b>.</p>
+
+<h3>8.6 Why pulling beats pushing</h3>
+<p>This is a standard 2-mark question ("why is it easier to pull a lawn roller than to push it?").</p>
+<ul>
+<li><b>Pushing</b> at an angle $\theta$ <i>below</i> the horizontal: the vertical component presses the roller down, so $N = mg + F\sin\theta$. Larger $N$ ⟹ larger friction ⟹ harder.</li>
+<li><b>Pulling</b> at an angle $\theta$ <i>above</i> the horizontal: the vertical component lifts part of the weight, so $N = mg - F\sin\theta$. Smaller $N$ ⟹ smaller friction ⟹ easier.</li>
+</ul>
+
+<div class="ex">
+<div class="eh">Worked example — pulling versus pushing</div>
+<p>A 20 kg box on a floor with $\mu_k = 0.25$ is acted on by a 100 N force at 30° to the horizontal. Find the acceleration when the force is (a) pulling upward, (b) pushing downward. Take $g = 10$ m s<sup>−2</sup>.</p>
+<p><b>(a) Pulling.</b> Vertically there is no acceleration, so the vertical forces balance:</p>
+<p>$N + F\sin30^\circ = mg \Rightarrow N = 200 - 50 = 150$ N &nbsp;→&nbsp; $f = 0.25\times150 = 37.5$ N</p>
+<p>Horizontally: $F\cos30^\circ - f = ma \Rightarrow 86.60 - 37.5 = 20a$</p>
+<p class="ans">a = 2.46 m s⁻²</p>
+<p><b>(b) Pushing.</b> $N = mg + F\sin30^\circ = 250$ N &nbsp;→&nbsp; $f = 62.5$ N</p>
+<p>$86.60 - 62.5 = 20a$</p>
+<p class="ans">a = 1.21 m s⁻²</p>
+<p>Same 100 N force, half the acceleration. This only shows up if you compute $N$ properly instead of assuming $N = mg$.</p>
+</div>
+
+<h2>9 · Circular motion dynamics</h2>
+<div class="key"><b>"Centripetal force" is not a new force.</b> It is the <i>name</i> for the net inward force, whatever supplies it — tension for a stone on a string, gravity for a satellite, friction for a car on a flat road, a component of $N$ for a banked road. Never draw a separate arrow labelled "centripetal force" on a free-body diagram.</div>
+<p>$F_c = \dfrac{mv^2}{r} = m\omega^2 r$</p>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 3</span> &nbsp;Maximum speed on a level circular road</div>
+<ol>
+<li>A car of mass $m$ rounds a horizontal circular road of radius $R$. The forces on it are its weight $mg$ down, the normal reaction $N$ up, and static friction $f$ — the <b>only</b> horizontal force available.</li>
+<li>Vertical equilibrium: $N = mg$.</li>
+<li>Friction must supply the whole centripetal force: $\dfrac{mv^2}{R} = f \le \mu_s N = \mu_s mg$.</li>
+<li>Divide through by $m$: $\dfrac{v^2}{R} \le \mu_s g$.</li>
+</ol>
+<div class="res">$v_{\max} = \sqrt{\mu_s R g}$ — independent of the mass of the car. Beyond it the car skids outward.</div>
+</div>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 4</span> &nbsp;Banking of roads — optimum and maximum speed</div>
+<p><b>Meaning.</b> Banking is raising the outer edge of a curved road above the inner edge. <b>Why it is needed:</b> relying on friction alone to supply the centripetal force is dangerous (friction fails when the road is wet) and wears the tyres rapidly. Banking lets the horizontal component of the normal reaction supply the force instead.</p>
+<ol>
+<li><b>Frictionless case first.</b> Road banked at angle $\theta$, radius $R$. Only two forces act: $N$ perpendicular to the road surface, and $mg$ vertically down.</li>
+<li>Resolve $N$. Vertical (no vertical acceleration): $N\cos\theta = mg$.</li>
+<li>Horizontal (toward the centre, supplying $F_c$): $N\sin\theta = \dfrac{mv_0^2}{R}$.</li>
+<li>Divide the second by the first — $N$ and $m$ both cancel: $\tan\theta = \dfrac{v_0^2}{Rg}$.</li>
+<li>$\Rightarrow v_0 = \sqrt{Rg\tan\theta}$ &nbsp;and&nbsp; $\theta = \tan^{-1}\!\left(\dfrac{v_0^2}{Rg}\right)$. This is the <b>optimum speed</b> — at exactly this speed no friction is needed at all, so tyre wear is minimised.</li>
+<li><b>With friction, at maximum speed</b> the car tends to slip <i>up and outward</i>, so friction $f = \mu_s N$ acts <i>down</i> the incline. Resolving:</li>
+<li>Vertical: $N\cos\theta = mg + f\sin\theta$ &nbsp;·&nbsp; Horizontal: $N\sin\theta + f\cos\theta = \dfrac{mv_{\max}^2}{R}$</li>
+<li>Put $f = \mu_s N$ and divide the horizontal equation by the vertical one to eliminate $N$ and $m$: $\dfrac{v_{\max}^2}{Rg} = \dfrac{\sin\theta+\mu_s\cos\theta}{\cos\theta-\mu_s\sin\theta} = \dfrac{\tan\theta+\mu_s}{1-\mu_s\tan\theta}$</li>
+</ol>
+<div class="res">$v_0 = \sqrt{Rg\tan\theta}$ &nbsp;·&nbsp; $v_{\max}=\sqrt{Rg\dfrac{\mu_s+\tan\theta}{1-\mu_s\tan\theta}}$ &nbsp;·&nbsp; $v_{\min}=\sqrt{Rg\dfrac{\tan\theta-\mu_s}{1+\mu_s\tan\theta}}$ (real only if $\tan\theta&gt;\mu_s$)<br>
+<b>Checks:</b> $\mu_s = 0$ gives $\sqrt{Rg\tan\theta}$ ✓ &nbsp; $\theta = 0$ gives $\sqrt{\mu_s Rg}$, the level road ✓</div>
+</div>
+
+<h2>10 · Standard systems</h2>
+
+<h3>10.1 Apparent weight in a lift</h3>
+<p>Solve these in the <b>ground frame</b> and nothing is mysterious. The true weight $mg$ never changes. What changes is $N$, the normal reaction — which is exactly what a weighing scale reads.</p>
+<table>
+<thead><tr><th>Situation</th><th>Equation</th><th>Scale reads</th></tr></thead>
+<tbody>
+<tr><td>At rest or constant velocity</td><td>$N - mg = 0$</td><td>$N = mg$</td></tr>
+<tr><td>Accelerating up with $a$</td><td>$N - mg = ma$</td><td>$N = m(g+a)$</td></tr>
+<tr><td>Accelerating down with $a$</td><td>$mg - N = ma$</td><td>$N = m(g-a)$</td></tr>
+<tr><td>Free fall ($a = g$)</td><td>$mg - N = mg$</td><td>$N = 0$ — weightlessness</td></tr>
+<tr><td>Downward $a &gt; g$</td><td>—</td><td>Body leaves the floor and presses on the roof</td></tr>
+</tbody>
+</table>
+<p><b>Weightlessness is not the absence of gravity.</b> In free fall gravity still pulls with the full $mg$ — that is exactly what produces the acceleration. What vanishes is the floor's push, and since that is all your body can feel, you feel weightless.</p>
+
+<h3>10.2 Atwood machine</h3>
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 5</span> &nbsp;Atwood machine — acceleration and tension</div>
+<ol>
+<li>Masses $m_1 &gt; m_2$ hang from a light inextensible string over a frictionless massless pulley. Because the string cannot stretch, both have the same magnitude of acceleration; because the pulley is ideal, $T$ is the same on both sides.</li>
+<li>For $m_1$, taking downward as positive: $m_1g - T = m_1a$.</li>
+<li>For $m_2$, taking upward as positive: $T - m_2g = m_2a$.</li>
+<li>Add the two equations — $T$ cancels: $(m_1 - m_2)g = (m_1+m_2)a$.</li>
+<li>Substitute back into either equation for $T$.</li>
+</ol>
+<div class="res">$a = \dfrac{(m_1-m_2)g}{m_1+m_2}$ &nbsp;·&nbsp; $T = \dfrac{2m_1m_2 g}{m_1+m_2}$ &nbsp;·&nbsp; force on the pulley $= 2T$<br>
+<b>Check:</b> $T$ must lie between the two weights, $m_2g &lt; T &lt; m_1g$.</div>
+</div>
+
+<h3>10.3 Block on an incline</h3>
+<table>
+<thead><tr><th>Case</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td>Normal reaction</td><td>$N = mg\cos\theta$ — never $mg$</td></tr>
+<tr><td>Frictionless</td><td>$a = g\sin\theta$ down the incline</td></tr>
+<tr><td>Sliding down with friction</td><td>$a = g(\sin\theta - \mu_k\cos\theta)$</td></tr>
+<tr><td>Moving up the incline</td><td>Retardation $a = g(\sin\theta + \mu_k\cos\theta)$ — both gravity and friction oppose</td></tr>
+<tr><td>Stays at rest if</td><td>$\tan\theta \le \mu_s$</td></tr>
+</tbody>
+</table>
+
+<h3>10.4 Connected bodies</h3>
+<ul>
+<li><b>Two blocks in contact</b> on a smooth floor, $F$ applied to $m_1$: $a = \dfrac{F}{m_1+m_2}$, and the contact force is $\dfrac{m_2F}{m_1+m_2}$. The rule: <b>the contact force equals (the mass ahead of the contact) × $a$.</b> Push the other block instead and the answer changes.</li>
+<li><b>Two blocks joined by a string</b>, pulled by $F$: $a = \dfrac{F}{m_1+m_2}$, and $T = \dfrac{m_{\text{behind}}}{m_1+m_2}F$.</li>
+</ul>
+
+<div class="ex">
+<div class="eh">Worked example — trolley and hanging block with friction</div>
+<p>A 20 kg trolley on a table ($\mu_k = 0.04$) is connected over a frictionless pulley to a 3 kg block hanging freely. Find the acceleration and the tension. Take $g = 10$ m s<sup>−2</sup>.</p>
+<p>Friction on the trolley: $N = 20\times10 = 200$ N, so $f_k = 0.04\times200 = 8$ N.</p>
+<p>Hanging block (down positive): $30 - T = 3a$ &nbsp;… (1)</p>
+<p>Trolley (right positive): $T - 8 = 20a$ &nbsp;… (2)</p>
+<p>Adding: $30 - 8 = 23a \Rightarrow a = \dfrac{22}{23}$</p>
+<p class="ans">a ≈ 0.957 m s⁻²  ·  T = 20(22/23) + 8 = 624/23 ≈ 27.1 N</p>
+</div>
+
+<h2>11 · The method — use it every single time</h2>
+<ol>
+<li><b>Pick one body</b> and say out loud what it is. One body, one diagram.</li>
+<li><b>Draw only the forces acting ON it.</b> Weight always. Then one arrow per surface it touches and per string attached. Forces it exerts on other things belong on <i>their</i> diagrams.</li>
+<li><b>Fix the friction direction</b> with the ice test: if this contact were frictionless, which way would this surface slip? Friction points opposite.</li>
+<li><b>Choose axes intelligently</b> — along and perpendicular to the slope for inclines, along the acceleration otherwise. Resolve whatever does not lie on an axis, which is usually just $mg$.</li>
+<li><b>Write $\sum F = ma$ per direction.</b> Use $\sum F = 0$ in any direction with no acceleration — that is nearly always how you find $N$, and $N$ is nearly always what friction depends on.</li>
+<li><b>Check the limits.</b> Does $\mu = 0$ give the frictionless answer? Does the tension sit between the two weights? Does the mass cancel where it should?</li>
+</ol>
+
+<div class="trap">
+<div class="th">Traps that cost marks</div>
+<ol>
+<li><b>Action and reaction act on different bodies</b>, so they never cancel and must never both appear in one free-body diagram. $N$ and $mg$ on a resting block are <i>not</i> a pair.</li>
+<li><b>On an incline $N = mg\cos\theta$</b>, so friction is $\mu\,mg\cos\theta$ — not $\mu\,mg$.</li>
+<li><b>$f_s = \mu_s N$ is the maximum only.</b> Below the limit, static friction equals whatever force is applied — possibly zero. Always compare the applied force with $f_{\max}$ before choosing a formula.</li>
+<li><b>In a lift, the true weight $mg$ never changes</b> — only $N$ does. In free fall $N = 0$, yet $g$ still acts.</li>
+<li><b>$\sqrt{Rg\tan\theta}$ is the optimum speed, not the maximum.</b> With friction there is a whole band $v_{\min} \le v \le v_{\max}$.</li>
+<li><b>Tension is uniform</b> only for a massless string over a massless frictionless pulley.</li>
+<li><b>Never draw "centripetal force" as an extra arrow.</b> Name the real force and set it equal to $mv^2/r$.</li>
+<li><b>Signs in impulse problems.</b> A rebounding velocity is negative. Fix a positive direction before you write anything down.</li>
+</ol>
+</div>
+
+<p class="footer-note">Chapter 4 of the rationalised NCERT (2023–24 onward). Every derivation above is written the way it should appear in the answer script: numbered steps, the key substitution shown explicitly, and the final result stated separately.</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$",  right: "$",  display: false }
+    ],
+    throwOnError: false, errorColor: "#cc0000", strict: false, trust: false
+  });
+  document.body.setAttribute("data-katex-done", "1");
+});
+</script>
+</body>
+</html>

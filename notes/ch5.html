@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Work, Energy and Power — Chapter 5 Notes</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<style>
+@page { size: A4 portrait; margin: 16mm 15mm 18mm 15mm; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, "DejaVu Serif", "Times New Roman", serif;
+  font-size: 10.8pt; line-height: 1.5; color: #16191d; background: #fff;
+  margin: 0; hyphens: none;
+}
+.sans { font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif; }
+
+h1 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 21pt; line-height: 1.15; margin: 0 0 3mm; letter-spacing: -.2px;
+  border-bottom: 2.5pt solid #16191d; padding-bottom: 3mm;
+}
+h1 .ch { display: block; font-size: 10pt; font-weight: 600; letter-spacing: 1.6px;
+  text-transform: uppercase; color: #9c3a1f; margin-bottom: 2mm; }
+.subtitle { font-size: 10pt; color: #4a5158; margin: 0 0 7mm; font-style: italic; }
+
+h2 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 14pt; margin: 8mm 0 3mm; padding: 1.6mm 3mm;
+  background: #16191d; color: #fff; border-radius: 2pt;
+  break-after: avoid; page-break-after: avoid;
+}
+h3 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 11.8pt; margin: 6mm 0 2mm; color: #16191d;
+  border-bottom: 1pt solid #b9c0c7; padding-bottom: 1mm;
+  break-after: avoid; page-break-after: avoid;
+}
+h4 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 10.6pt; margin: 4.5mm 0 1.5mm; color: #2b3138;
+  break-after: avoid; page-break-after: avoid;
+}
+p { margin: 0 0 2.6mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+li { margin-bottom: 1.4mm; }
+b, strong { font-weight: 700; }
+em, i { font-style: italic; }
+
+/* ---- derivation box ---- */
+.deriv {
+  border: 1pt solid #16191d; border-left: 3.5pt solid #9c3a1f;
+  background: #fdfcfa; padding: 3mm 4mm; margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.deriv .dh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.8pt; margin-bottom: 2mm; color: #16191d;
+}
+.deriv .dh .tag { color: #9c3a1f; font-size: 9pt; letter-spacing: 1px; }
+.deriv ol { margin: 0; padding-left: 6mm; }
+.deriv ol li { margin-bottom: 1.8mm; }
+.deriv .res {
+  margin-top: 2.5mm; padding-top: 2mm; border-top: 1pt dashed #a8b0b8;
+  font-weight: 600;
+}
+
+/* ---- worked example ---- */
+.ex {
+  border: 1pt solid #1d5f4a; background: #f3f9f6; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.ex .eh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #1d5f4a; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.ans { font-weight: 700; color: #1d5f4a; }
+
+/* ---- traps ---- */
+.trap {
+  border: 1pt solid #a5281b; background: #fdf4f3; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.trap .th {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #a5281b; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.trap ol { margin: 0; padding-left: 6mm; }
+
+/* ---- key result strip ---- */
+.key {
+  background: #eef1f4; border-left: 3pt solid #2b3138;
+  padding: 2.2mm 3.5mm; margin: 3mm 0; border-radius: 0 2pt 2pt 0;
+  break-inside: avoid;
+}
+.key b { color: #16191d; }
+
+/* ---- exam callout ---- */
+.exam {
+  border: 1pt dashed #7a5c00; background: #fdfaef; padding: 2.6mm 3.5mm;
+  margin: 3.5mm 0; border-radius: 2pt; font-size: 10.2pt;
+  break-inside: avoid;
+}
+.exam .xh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 9.4pt; color: #7a5c00; letter-spacing: .8px;
+  text-transform: uppercase; margin-bottom: 1.2mm;
+}
+
+/* ---- tables ---- */
+table {
+  border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 3mm 0;
+  break-inside: avoid; page-break-inside: avoid;
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+}
+th, td { border: 0.7pt solid #98a1a9; padding: 1.4mm 2.2mm; text-align: left; vertical-align: top; }
+th { background: #e4e8ec; font-weight: 700; }
+tbody tr:nth-child(even) { background: #f6f8f9; }
+td.c, th.c { text-align: center; }
+
+/* ---- figures ---- */
+figure { margin: 4mm 0; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+svg.dg { max-width: 100%; height: auto; }
+figcaption { font-size: 9.6pt; color: #4a5158; margin-top: 1.5mm; font-style: italic; text-align: left; }
+svg .s-n{stroke:#1b5fd0} svg .t-n{fill:#1b5fd0}
+svg .s-f{stroke:#be3a2b} svg .t-f{fill:#be3a2b}
+svg .s-w{stroke:#69747f} svg .t-w{fill:#69747f}
+svg .s-a{stroke:#0b7355} svg .t-a{fill:#0b7355}
+svg .s-t{stroke:#6a45b0} svg .t-t{fill:#6a45b0}
+svg .s-i{stroke:#6f7a88} svg .t-i{fill:#6f7a88}
+svg .arw{stroke-width:2;fill:none;stroke-linecap:round}
+svg .thin{stroke-width:1.3}
+svg .dash{stroke-dasharray:4 3}
+svg .body{fill:#e7ecf1;stroke:#46515f;stroke-width:1.4}
+svg .ghost{fill:#e7ecf1;stroke:#46515f;stroke-width:1.3;stroke-dasharray:5 3}
+svg .gnd{stroke:#46515f;stroke-width:2;fill:none}
+svg .lbl{font-size:13px;font-weight:600;font-family:"DejaVu Sans",sans-serif}
+svg .lbl-s{font-size:10.5px;font-weight:500;font-family:"DejaVu Sans",sans-serif}
+svg .t-k{fill:#2b3138}
+
+hr.sep { border: 0; border-top: 1pt solid #d5dbe0; margin: 6mm 0; }
+.katex { font-size: 1.02em; }
+.katex-display { margin: 2.5mm 0; break-inside: avoid; }
+.footer-note { font-size: 9.4pt; color: #6b737b; font-style: italic; margin-top: 8mm;
+  border-top: 1pt solid #d5dbe0; padding-top: 2.5mm; }
+
+</style>
+</head>
+<body>
+<h1><span class="ch">CBSE Class 11 Physics · Chapter 5</span>Work, Energy and Power</h1>
+<p class="subtitle">Complete chapter notes — concepts, every derivation worked in full, standard results, worked examples and the traps that cost marks.</p>
+
+<div class="key"><b>The spine of this chapter:</b> work is the transfer of energy, and everything else is bookkeeping. $W_{\text{net}} = \Delta K$ holds <i>always</i>, with no exceptions. Add potential energy to the ledger and you get conservation of mechanical energy — but only when the forces doing work are conservative.</div>
+
+<h2>1 · Work</h2>
+
+<h3>1.1 Definition</h3>
+<div class="key">$W = \vec F\cdot\vec d = Fd\cos\theta$ &nbsp;— a <b>scalar</b>. Unit: joule (J) $=$ N m. &nbsp;$\theta$ is the angle between the force and the <b>displacement</b>.</div>
+<p>Work is done only when a force produces a displacement <i>and</i> has a component along it. Holding a heavy bag stationary does no work in the physics sense, however tired you get.</p>
+
+<h3>1.2 Sign of work</h3>
+<table>
+<thead><tr><th>Angle</th><th>Sign</th><th>Standard examples</th></tr></thead>
+<tbody>
+<tr><td>$\theta &lt; 90^\circ$</td><td>Positive</td><td>Applied force on a moving block; gravity on a falling body</td></tr>
+<tr><td>$\theta = 90^\circ$</td><td><b>Zero</b></td><td><b>Centripetal force</b>; normal reaction on a horizontal floor; tension on a bob in circular motion; the force on a body carried horizontally</td></tr>
+<tr><td>$\theta &gt; 90^\circ$</td><td>Negative</td><td>Friction on a sliding block; gravity on a body moving upward</td></tr>
+</tbody>
+</table>
+<div class="exam"><div class="xh">Frequently asked</div>"Why is no work done by the centripetal force?" Because it acts perpendicular to the instantaneous displacement at every point, so $W = Fs\cos90^\circ = 0$. The force changes the <i>direction</i> of the velocity, never its magnitude — and it is only the magnitude that carries kinetic energy.</div>
+
+<h3>1.3 Work done by a variable force</h3>
+<p>When $F$ changes with position, split the displacement into pieces so small that $F$ is effectively constant across each one. Over a piece $dx$ the work is $dW = F\,dx$, and the total is the sum:</p>
+<div class="key">$W = \displaystyle\int_{x_1}^{x_2} F\,dx$ &nbsp;= the <b>area under the $F$–$x$ graph</b> between $x_1$ and $x_2$. Area below the axis counts as negative work.</div>
+
+<h2>2 · Kinetic energy</h2>
+<div class="key">$K = \tfrac12 mv^2 = \dfrac{p^2}{2m}$ &nbsp;and&nbsp; $p = \sqrt{2mK}$ &nbsp;— a scalar, always positive, measured in joules.</div>
+
+<h3>2.1 A pattern worth spotting</h3>
+<p>Three results in your syllabus share one algebraic shape:</p>
+<table>
+<thead><tr><th>Result</th><th>Where it comes from</th></tr></thead>
+<tbody>
+<tr><td>$W = \dfrac{F^2}{2k}$</td><td>Work done stretching a spring by a <i>given force</i> $F$</td></tr>
+<tr><td>$K = \dfrac{p^2}{2m}$</td><td>Linear kinetic energy in terms of momentum</td></tr>
+<tr><td>$K_{\text{rot}} = \dfrac{L^2}{2I}$</td><td>Rotational kinetic energy in terms of angular momentum (Ch 6)</td></tr>
+</tbody>
+</table>
+<p>All three have the form <b>(quantity)² ÷ (2 × inertia-like term)</b>. In every case, if the numerator is held fixed, the answer is <b>inversely proportional</b> to the denominator.</p>
+<div class="exam"><div class="xh">Exam application</div>Two springs stretched by the <i>same force</i>, with $k_A &gt; k_B$: since $W \propto 1/k$, we get $W_A &lt; W_B$ — <b>more work is done on the softer spring B</b>. Two bodies with <i>equal angular momenta</i>, $I_A &gt; I_B$: since $K \propto 1/I$, we get $K_A &lt; K_B$ — <b>body B has the greater kinetic energy</b>. These are the same question in two costumes.</div>
+<p>Also worth carrying: for <b>equal momenta</b>, the lighter body has more KE; for <b>equal KE</b>, the heavier body has more momentum.</p>
+
+<h2>3 · The Work–Energy Theorem</h2>
+<div class="key"><b>Statement.</b> The work done by the <b>net force</b> acting on a body equals the change in its kinetic energy. &nbsp;$W_{\text{net}} = \Delta K = \tfrac12mv^2 - \tfrac12mu^2$</div>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 1</span> &nbsp;Work–energy theorem — constant force, then variable force</div>
+<p><b>Part A — constant force (1-D).</b></p>
+<ol>
+<li>Start from the third equation of motion: $v^2 = u^2 + 2as$.</li>
+<li>Multiply throughout by $\tfrac12 m$: &nbsp;$\tfrac12mv^2 - \tfrac12mu^2 = mas$.</li>
+<li>But $ma = F$ and $Fs = W$, so the right-hand side is exactly the work done.</li>
+<li>$\Rightarrow W = \tfrac12mv^2 - \tfrac12mu^2 = \Delta K$.</li>
+</ol>
+<p><b>Part B — variable force.</b> This is the version usually asked, because it needs calculus.</p>
+<ol>
+<li>For a small displacement $dx$ the work done is $dW = F\,dx$, so the total work is $W = \displaystyle\int_{x_1}^{x_2}F\,dx$.</li>
+<li>By Newton's second law $F = ma = m\dfrac{dv}{dt}$.</li>
+<li>Use the chain rule to change the variable: $\dfrac{dv}{dt} = \dfrac{dv}{dx}\cdot\dfrac{dx}{dt} = v\dfrac{dv}{dx}$.</li>
+<li>Substitute: $dW = \left(mv\dfrac{dv}{dx}\right)dx = mv\,dv$.</li>
+<li>Integrate between the initial and final speeds: $W = \displaystyle\int_{u}^{v} mv\,dv = m\left[\dfrac{v^2}{2}\right]_{u}^{v}$.</li>
+<li>$\Rightarrow W = \tfrac12mv^2 - \tfrac12mu^2 = K_f - K_i$.</li>
+</ol>
+<div class="res">$W_{\text{net}} = \Delta K$. Positive net work ⟹ the body speeds up; negative ⟹ it slows down; zero ⟹ the speed is unchanged.</div>
+</div>
+<div class="trap">
+<div class="th">Where this loses marks</div>
+<ol>
+<li>The theorem uses the <b>net</b> work of <i>all</i> forces — gravity and friction included — not just the applied force.</li>
+<li>If the question says "for a variable force", you must show the $\int F\,dx = \int mv\,dv$ route. The $v^2 = u^2+2as$ argument alone will not earn full marks.</li>
+</ol>
+</div>
+
+<h2>4 · Potential energy</h2>
+<p>Potential energy is energy stored by virtue of position or configuration. It is defined only for <b>conservative</b> forces.</p>
+
+<h3>4.1 Gravitational PE near the Earth's surface</h3>
+<p>$U = mgh$, taking $g$ as constant over the height involved. Only <i>changes</i> in $U$ are physically meaningful, so you may set the zero level wherever it is convenient.</p>
+
+<h3>4.2 Elastic potential energy of a spring</h3>
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 2</span> &nbsp;Potential energy of a spring, $U = \tfrac12kx^2$</div>
+<ol>
+<li><b>Hooke's law.</b> When a spring is stretched or compressed by $x$ from its natural length, it exerts a <b>restoring</b> force $F_s = -kx$. The minus sign says the force opposes the displacement; $k$ is the spring constant, in N m<sup>−1</sup>.</li>
+<li>To stretch the spring <i>slowly</i> (no kinetic energy gained), an external agent must apply an equal and opposite force $F_{\text{ext}} = +kx$ at every instant.</li>
+<li>Work done by the agent over a further small stretch $dx$: &nbsp;$dW = kx\,dx$.</li>
+<li>Total work from the natural length to extension $x$: &nbsp;$W = \displaystyle\int_0^{x} kx\,dx = k\left[\dfrac{x^2}{2}\right]_0^{x} = \tfrac12kx^2$.</li>
+<li>This work is stored in the spring as elastic potential energy: $U(x) = \tfrac12kx^2$. (The spring itself does $-\tfrac12kx^2$ of work.)</li>
+<li>Geometrically it is the area of the triangle under the $F$–$x$ line: $\tfrac12 \times x \times kx$.</li>
+</ol>
+<div class="res">$U(x) = \tfrac12kx^2$. Work done in going from $x_1$ to $x_2$ is $\tfrac12k(x_2^2 - x_1^2)$ — <b>not</b> $\tfrac12k(x_2-x_1)^2$.</div>
+</div>
+
+<figure>
+<svg class="dg" viewBox="0 0 400 240" role="img" aria-label="Graph of spring potential energy against displacement: an upward parabola symmetric about the origin.">
+  <line x1="40" y1="200" x2="370" y2="200" stroke="#46515f" stroke-width="1.6"/>
+  <line x1="205" y1="200" x2="205" y2="25" stroke="#46515f" stroke-width="1.6"/>
+  <path d="M 70 40 Q 205 285 340 40" fill="none" stroke="#be3a2b" stroke-width="2.4"/>
+  <circle cx="205" cy="200" r="3.5" fill="#be3a2b"/>
+  <text class="lbl-s t-k" x="196" y="216" text-anchor="end">O</text>
+  <text class="lbl t-k" x="358" y="220">x</text>
+  <text class="lbl t-k" x="212" y="34">U</text>
+  <text class="lbl-s t-k" x="120" y="222" text-anchor="middle">compression (−x)</text>
+  <text class="lbl-s t-k" x="292" y="222" text-anchor="middle">extension (+x)</text>
+  <text class="lbl t-f" x="300" y="70">U = ½kx²</text>
+  <line class="dash" x1="120" y1="200" x2="120" y2="127" stroke="#98a1a9" stroke-width="1"/>
+  <line class="dash" x1="290" y1="200" x2="290" y2="127" stroke="#98a1a9" stroke-width="1"/>
+  <line class="dash" x1="120" y1="127" x2="290" y2="127" stroke="#98a1a9" stroke-width="1"/>
+  <text class="lbl-s t-i" x="205" y="121" text-anchor="middle">equal x ⟹ equal U</text>
+</svg>
+<figcaption><b>Spring PE against displacement.</b> An <b>upward parabola</b>, symmetric about the mean position, with its minimum ($U=0$) at $x=0$. The symmetry says that stretching and compressing by the same amount store the same energy. A stiffer spring (larger $k$) gives a narrower, steeper parabola.</figcaption>
+</figure>
+
+<h3>4.3 Conservative and non-conservative forces</h3>
+<table>
+<thead><tr><th></th><th>Conservative</th><th>Non-conservative</th></tr></thead>
+<tbody>
+<tr><td>Examples</td><td>Gravity, spring force, electrostatic force</td><td>Friction, air resistance, viscous drag</td></tr>
+<tr><td>Work done</td><td>Path-independent — depends only on the endpoints</td><td>Path-dependent</td></tr>
+<tr><td>Round a closed loop</td><td>Zero</td><td>Non-zero</td></tr>
+<tr><td>Potential energy</td><td>Can be defined</td><td>Cannot be defined</td></tr>
+</tbody>
+</table>
+<p>For a conservative force in one dimension,</p>
+<div class="key">$F = -\dfrac{dU}{dx}$ &nbsp;— the force is the negative slope of the PE curve. Where $U$ is a <b>minimum</b> the equilibrium is <b>stable</b>; where it is a maximum, unstable.</div>
+
+<h2>5 · Conservation of mechanical energy</h2>
+<div class="key">$E = K + U = \text{constant}$, provided the forces doing work are <b>conservative</b>. With friction present: $\Delta K + \Delta U = W_{\text{non-conservative}}$.</div>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 3</span> &nbsp;Conservation of mechanical energy for a freely falling body</div>
+<p>A body of mass $m$ is released from rest at height $H$. Take the ground as the reference level ($U = 0$) and ignore air resistance, so gravity is the only force doing work.</p>
+<ol>
+<li><b>At the top.</b> $v = 0$, so $K = 0$; $U = mgH$. &nbsp;Total $E = 0 + mgH = mgH$.</li>
+<li><b>At a depth $x$ below the top</b> (height $H - x$). Using $v^2 = u^2 + 2gx$ with $u = 0$: $v^2 = 2gx$.<br>
+$K = \tfrac12m(2gx) = mgx$ &nbsp;and&nbsp; $U = mg(H-x)$.<br>
+Total $E = mgx + mgH - mgx = mgH$.</li>
+<li><b>At the ground.</b> $v^2 = 2gH$, so $K = \tfrac12m(2gH) = mgH$; $U = 0$. &nbsp;Total $E = mgH$.</li>
+<li>The total is the same at all three points, so mechanical energy is conserved. Potential energy is steadily converted into kinetic energy.</li>
+</ol>
+<div class="res">$E = mgH$ throughout. Halfway down ($x = H/2$): $K = U = mgH/2$. The speed on reaching the ground is $\sqrt{2gH}$ — independent of the mass.</div>
+</div>
+
+<h2>6 · Power</h2>
+<div class="key">$P_{\text{avg}} = \dfrac{W}{t}$ &nbsp;·&nbsp; $P_{\text{inst}} = \dfrac{dW}{dt} = \vec F\cdot\vec v = Fv\cos\theta$ &nbsp;— unit watt (W) $=$ J s<sup>−1</sup>.</div>
+<ul>
+<li>$1\ \text{horsepower} = 746\ \text{W}$</li>
+<li>$1\ \text{kWh} = 3.6\times10^{6}\ \text{J}$ — this is a unit of <b>energy</b>, not power. The "per hour" is part of the unit, not a rate.</li>
+</ul>
+
+<h2>7 · Collisions</h2>
+<div class="key"><b>Momentum is conserved in every collision.</b> Kinetic energy is conserved <b>only</b> in an elastic collision. Write this sentence in any collision answer — it is often a mark on its own.</div>
+<p>During a collision the internal forces are enormous and the contact time tiny, so external forces (gravity, friction) contribute negligible impulse. That is why momentum conservation holds even on a rough floor.</p>
+
+<h3>7.1 Elastic collision in one dimension</h3>
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 4</span> &nbsp;Elastic collision in 1-D — final velocities</div>
+<p>Masses $m_1, m_2$ move along one line with initial velocities $u_1, u_2$ and final velocities $v_1, v_2$.</p>
+<ol>
+<li><b>Conservation of momentum:</b> $m_1u_1 + m_2u_2 = m_1v_1 + m_2v_2$<br>
+Group the like masses: &nbsp;$m_1(u_1 - v_1) = m_2(v_2 - u_2)$ &nbsp;… (i)</li>
+<li><b>Conservation of kinetic energy:</b> $\tfrac12m_1u_1^2 + \tfrac12m_2u_2^2 = \tfrac12m_1v_1^2 + \tfrac12m_2v_2^2$<br>
+Cancel the $\tfrac12$ and group: &nbsp;$m_1(u_1^2 - v_1^2) = m_2(v_2^2 - u_2^2)$<br>
+Factorise both differences of squares: &nbsp;$m_1(u_1-v_1)(u_1+v_1) = m_2(v_2-u_2)(v_2+u_2)$ &nbsp;… (ii)</li>
+<li><b>Divide (ii) by (i)</b> — the masses and the bracketed differences cancel:<br>
+$u_1 + v_1 = u_2 + v_2$ &nbsp;$\Rightarrow$&nbsp; $u_1 - u_2 = v_2 - v_1$ &nbsp;… (iii)<br>
+In words: <b>relative velocity of approach = relative velocity of separation.</b> This is the signature of an elastic collision.</li>
+<li>Solve (i) and (iii) as simultaneous equations in $v_1$ and $v_2$.</li>
+</ol>
+<div class="res">
+$v_1 = \left(\dfrac{m_1-m_2}{m_1+m_2}\right)u_1 + \left(\dfrac{2m_2}{m_1+m_2}\right)u_2$<br><br>
+$v_2 = \left(\dfrac{m_2-m_1}{m_1+m_2}\right)u_2 + \left(\dfrac{2m_1}{m_1+m_2}\right)u_1$
+</div>
+</div>
+
+<h4>The three special cases (with $u_2 = 0$)</h4>
+<table>
+<thead><tr><th>Case</th><th class="c">$v_1$</th><th class="c">$v_2$</th><th>Physical picture</th></tr></thead>
+<tbody>
+<tr><td><b>$m_1 = m_2$</b></td><td class="c">$0$</td><td class="c">$u_1$</td><td>The velocities are <b>exchanged</b> — carrom, Newton's cradle. The first body stops dead, the second moves off with the first one's speed.</td></tr>
+<tr><td><b>$m_1 \gg m_2$</b><br>heavy hits light</td><td class="c">$\approx u_1$</td><td class="c">$\approx 2u_1$</td><td>The heavy body ploughs on almost unaffected; the light body shoots off at <b>twice</b> the speed.</td></tr>
+<tr><td><b>$m_1 \ll m_2$</b><br>light hits heavy</td><td class="c">$\approx -u_1$</td><td class="c">$\approx 0$</td><td>The light body <b>rebounds with almost the same speed</b>; the massive body stays essentially at rest. (A ball bouncing off a wall.)</td></tr>
+</tbody>
+</table>
+<div class="exam"><div class="xh">Frequently asked</div>"What happens when a light body collides elastically with a massive stationary body?" Substitute $m_1 \ll m_2$ and $u_2 = 0$ into the results: $v_1 \approx -u_1$ and $v_2 \approx 0$. The light body <b>rebounds with its original speed reversed</b>, and the massive body remains at rest. Its kinetic energy is essentially unchanged.</div>
+
+<h3>7.2 Perfectly inelastic collision</h3>
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 5</span> &nbsp;Perfectly inelastic collision — common velocity and energy lost</div>
+<ol>
+<li>$m_1$ moving with $u_1$ strikes $m_2$ at rest, and the two stick together and move with a common velocity $v$.</li>
+<li>Momentum: $m_1u_1 = (m_1+m_2)v \Rightarrow v = \dfrac{m_1u_1}{m_1+m_2}$.</li>
+<li>Initial KE: $K_i = \tfrac12m_1u_1^2$. &nbsp;Final KE: $K_f = \tfrac12(m_1+m_2)v^2 = \dfrac{m_1^2u_1^2}{2(m_1+m_2)}$.</li>
+<li>$\Delta K = K_i - K_f = \tfrac12m_1u_1^2\left[1 - \dfrac{m_1}{m_1+m_2}\right]$.</li>
+</ol>
+<div class="res">$v = \dfrac{m_1u_1}{m_1+m_2}$ &nbsp;·&nbsp; $\Delta K_{\text{lost}} = \dfrac{1}{2}\dfrac{m_1m_2}{m_1+m_2}u_1^2 &gt; 0$ &nbsp;·&nbsp; fraction lost $= \dfrac{m_2}{m_1+m_2}$<br>
+The lost energy goes into heat, sound and permanent deformation. Momentum is still exactly conserved.</div>
+</div>
+
+<h3>7.3 Coefficient of restitution</h3>
+<div class="key">$e = \dfrac{\text{relative velocity of separation}}{\text{relative velocity of approach}} = \dfrac{|v_2-v_1|}{|u_1-u_2|}$ — dimensionless. $e=1$ perfectly elastic, $e=0$ perfectly inelastic, $0&lt;e&lt;1$ partially elastic.</div>
+<p>A ball dropped from height $h$ rebounds to $h' = e^2h$; after $n$ bounces, $h_n = e^{2n}h$. So $e = \sqrt{h'/h}$.</p>
+
+<h3>7.4 Elastic collision in two dimensions</h3>
+<p>With $m_2$ initially at rest and the bodies flying off at angles $\theta_1$ and $\theta_2$:</p>
+<ul>
+<li>$x$-momentum: $m_1u_1 = m_1v_1\cos\theta_1 + m_2v_2\cos\theta_2$</li>
+<li>$y$-momentum: $0 = m_1v_1\sin\theta_1 - m_2v_2\sin\theta_2$</li>
+<li>Energy: $\tfrac12m_1u_1^2 = \tfrac12m_1v_1^2 + \tfrac12m_2v_2^2$</li>
+</ul>
+<p>Three equations, four unknowns — so one quantity must be supplied by the question.</p>
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 6</span> &nbsp;Equal masses in 2-D separate at 90°</div>
+<ol>
+<li>Equal masses, target at rest. Momentum (as vectors): $\vec u = \vec v_1 + \vec v_2$.</li>
+<li>Kinetic energy (the $\tfrac12 m$ cancels): $u^2 = v_1^2 + v_2^2$.</li>
+<li>Square the vector equation: $u^2 = (\vec v_1+\vec v_2)\cdot(\vec v_1+\vec v_2) = v_1^2 + v_2^2 + 2\,\vec v_1\cdot\vec v_2$.</li>
+<li>Compare with step 2: the extra term must vanish, so $\vec v_1\cdot\vec v_2 = 0$.</li>
+</ol>
+<div class="res">$\vec v_1 \perp \vec v_2$ — after an elastic collision between equal masses (one initially at rest), the two separate at <b>90°</b>, provided both actually move.</div>
+</div>
+
+<h2>8 · Motion in a vertical circle</h2>
+<p>A body of mass $m$ is tied to a string of length $R$ and whirled in a <b>vertical</b> circle. The speed is not constant — gravity does work as the height changes — so you need both a force equation and an energy equation.</p>
+
+<div class="deriv">
+<div class="dh"><span class="tag">DERIVATION 7</span> &nbsp;Vertical circle — minimum speeds and $T_{\text{bot}} - T_{\text{top}} = 6mg$</div>
+<ol>
+<li><b>At the highest point</b>, both the tension $T_t$ and the weight $mg$ point downward — toward the centre. So they together supply the centripetal force:<br>
+$T_t + mg = \dfrac{mv_t^2}{R}$</li>
+<li>A string can only <b>pull</b>, never push, so the critical condition is $T_t = 0$ (the string just goes slack):<br>
+$mg = \dfrac{mv_t^2}{R} \Rightarrow v_t^{\min} = \sqrt{gR}$</li>
+<li><b>Energy conservation</b> from the top to the bottom — a drop of $2R$, with only gravity doing work:<br>
+$\tfrac12mv_b^2 = \tfrac12mv_t^2 + mg(2R) \Rightarrow v_b^2 = v_t^2 + 4gR$</li>
+<li>Put $v_t^2 = gR$ for the critical case: $v_b^2 = gR + 4gR = 5gR \Rightarrow v_b^{\min} = \sqrt{5gR}$</li>
+<li><b>At the lowest point</b>, $T_b$ points up (toward the centre) and $mg$ points down:<br>
+$T_b - mg = \dfrac{mv_b^2}{R}$</li>
+<li>Subtract the top equation from the bottom one:<br>
+$T_b - T_t = \dfrac{m}{R}\left(v_b^2 - v_t^2\right) + 2mg = \dfrac{m}{R}(4gR) + 2mg$</li>
+</ol>
+<div class="res">$v_{\text{top}}^{\min} = \sqrt{gR}$ &nbsp;·&nbsp; $v_{\text{bottom}}^{\min} = \sqrt{5gR}$ &nbsp;·&nbsp; $v_{\text{side}}^{\min} = \sqrt{3gR}$<br>
+$T_{\text{bot}} - T_{\text{top}} = 6mg$ — and this holds at <b>any</b> speed, because $v_b^2 - v_t^2 = 4gR$ always follows from energy conservation.<br>
+At the critical speed: $T_{\text{top}}=0$, $T_{\text{bot}}=6mg$, $T_{\text{side}}=3mg$.</div>
+</div>
+
+<h3>8.1 General position on the circle</h3>
+<p>Let $u$ be the speed at the lowest point and $\theta$ the angle turned from there, so the height gained is $h = R(1-\cos\theta)$:</p>
+<div class="key">$v = \sqrt{u^2 - 2gR(1-\cos\theta)}$ &nbsp;·&nbsp; $T = \dfrac{m}{R}\left[u^2 - 2gR(1-\cos\theta)\right] + mg\cos\theta$</div>
+<p>Check the two ends: at $\theta = 0$ (bottom) this gives $T = \dfrac{mu^2}{R} + mg$; at $\theta = 180^\circ$ (top) it gives $T = \dfrac{mv_{\text{top}}^2}{R} - mg$. ✓</p>
+<p><b>For a rod, or a bead inside a tube</b>, the minimum speed at the top is <b>zero</b> — because a rod can push as well as pull, so it can support the body at the top with no speed at all.</p>
+<div class="exam"><div class="xh">Frequently asked</div>"A motorcyclist rides in a vertical circle. What is the necessary condition so that he does not fall?" His speed at the <b>highest point</b> must satisfy $v \ge \sqrt{rg}$, so that gravity is not more than what is needed to bend his path around the circle.</div>
+
+<div class="trap">
+<div class="th">Traps that cost marks</div>
+<ol>
+<li><b>In $W = Fd\cos\theta$, $\theta$ is between the force and the displacement</b> — not between the force and the horizontal.</li>
+<li><b>The work–energy theorem uses NET work</b> of all forces. And if the question specifies a variable force, show the integral.</li>
+<li><b>Momentum is conserved in inelastic collisions too</b> — only kinetic energy is lost. Never try to conserve KE in an inelastic problem.</li>
+<li><b>Spring work from $x_1$ to $x_2$ is $\tfrac12k(x_2^2-x_1^2)$</b>, not $\tfrac12k(x_2-x_1)^2$.</li>
+<li><b>Minimum speed at the top of a vertical circle is $\sqrt{gR}$, not zero.</b> Zero applies only to a rod or a tube.</li>
+<li><b>1 kWh is energy, not power.</b></li>
+<li><b>Heat produced by friction is $f\times$(relative sliding distance)</b>, which is not the same as the work done by friction on one block when both bodies move.</li>
+<li><b>Equal masses in an elastic collision exchange velocities</b> — they do <i>not</i> both come to rest. That is a favourite false assertion in assertion–reason questions.</li>
+</ol>
+</div>
+
+<p class="footer-note">Chapter 5 of the rationalised NCERT (2023–24 onward). Every derivation above is written the way it should appear in the answer script: numbered steps, the key substitution shown explicitly, and the final result stated separately.</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$",  right: "$",  display: false }
+    ],
+    throwOnError: false, errorColor: "#cc0000", strict: false, trust: false
+  });
+  document.body.setAttribute("data-katex-done", "1");
+});
+</script>
+</body>
+</html>
