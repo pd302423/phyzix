@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redox Reactions — Chapter 7 Notes</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<style>
+@page { size: A4 portrait; margin: 16mm 15mm 18mm 15mm; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, "DejaVu Serif", "Times New Roman", serif;
+  font-size: 10.8pt; line-height: 1.5; color: #16191d; background: #fff;
+  margin: 0; hyphens: none;
+}
+.sans { font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif; }
+
+h1 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 21pt; line-height: 1.15; margin: 0 0 3mm; letter-spacing: -.2px;
+  border-bottom: 2.5pt solid #16191d; padding-bottom: 3mm;
+}
+h1 .ch { display: block; font-size: 10pt; font-weight: 600; letter-spacing: 1.6px;
+  text-transform: uppercase; color: #9c3a1f; margin-bottom: 2mm; }
+.subtitle { font-size: 10pt; color: #4a5158; margin: 0 0 7mm; font-style: italic; }
+
+h2 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 14pt; margin: 8mm 0 3mm; padding: 1.6mm 3mm;
+  background: #16191d; color: #fff; border-radius: 2pt;
+  break-after: avoid; page-break-after: avoid;
+}
+h3 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 11.8pt; margin: 6mm 0 2mm; color: #16191d;
+  border-bottom: 1pt solid #b9c0c7; padding-bottom: 1mm;
+  break-after: avoid; page-break-after: avoid;
+}
+h4 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 10.6pt; margin: 4.5mm 0 1.5mm; color: #2b3138;
+  break-after: avoid; page-break-after: avoid;
+}
+p { margin: 0 0 2.6mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+li { margin-bottom: 1.4mm; }
+b, strong { font-weight: 700; }
+em, i { font-style: italic; }
+
+/* ---- derivation box ---- */
+.deriv {
+  border: 1pt solid #16191d; border-left: 3.5pt solid #9c3a1f;
+  background: #fdfcfa; padding: 3mm 4mm; margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.deriv .dh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.8pt; margin-bottom: 2mm; color: #16191d;
+}
+.deriv .dh .tag { color: #9c3a1f; font-size: 9pt; letter-spacing: 1px; }
+.deriv ol { margin: 0; padding-left: 6mm; }
+.deriv ol li { margin-bottom: 1.8mm; }
+.deriv .res {
+  margin-top: 2.5mm; padding-top: 2mm; border-top: 1pt dashed #a8b0b8;
+  font-weight: 600;
+}
+
+/* ---- worked example ---- */
+.ex {
+  border: 1pt solid #1d5f4a; background: #f3f9f6; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.ex .eh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #1d5f4a; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.ans { font-weight: 700; color: #1d5f4a; }
+
+/* ---- traps ---- */
+.trap {
+  border: 1pt solid #a5281b; background: #fdf4f3; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.trap .th {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #a5281b; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.trap ol { margin: 0; padding-left: 6mm; }
+
+/* ---- key result strip ---- */
+.key {
+  background: #eef1f4; border-left: 3pt solid #2b3138;
+  padding: 2.2mm 3.5mm; margin: 3mm 0; border-radius: 0 2pt 2pt 0;
+  break-inside: avoid;
+}
+.key b { color: #16191d; }
+
+/* ---- exam callout ---- */
+.exam {
+  border: 1pt dashed #7a5c00; background: #fdfaef; padding: 2.6mm 3.5mm;
+  margin: 3.5mm 0; border-radius: 2pt; font-size: 10.2pt;
+  break-inside: avoid;
+}
+.exam .xh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 9.4pt; color: #7a5c00; letter-spacing: .8px;
+  text-transform: uppercase; margin-bottom: 1.2mm;
+}
+
+/* ---- tables ---- */
+table {
+  border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 3mm 0;
+  break-inside: avoid; page-break-inside: avoid;
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+}
+th, td { border: 0.7pt solid #98a1a9; padding: 1.4mm 2.2mm; text-align: left; vertical-align: top; }
+th { background: #e4e8ec; font-weight: 700; }
+tbody tr:nth-child(even) { background: #f6f8f9; }
+td.c, th.c { text-align: center; }
+
+/* ---- figures ---- */
+figure { margin: 4mm 0; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+svg.dg { max-width: 100%; height: auto; }
+figcaption { font-size: 9.6pt; color: #4a5158; margin-top: 1.5mm; font-style: italic; text-align: left; }
+svg .s-n{stroke:#1b5fd0} svg .t-n{fill:#1b5fd0}
+svg .s-f{stroke:#be3a2b} svg .t-f{fill:#be3a2b}
+svg .s-w{stroke:#69747f} svg .t-w{fill:#69747f}
+svg .s-a{stroke:#0b7355} svg .t-a{fill:#0b7355}
+svg .s-t{stroke:#6a45b0} svg .t-t{fill:#6a45b0}
+svg .s-i{stroke:#6f7a88} svg .t-i{fill:#6f7a88}
+svg .arw{stroke-width:2;fill:none;stroke-linecap:round}
+svg .thin{stroke-width:1.3}
+svg .dash{stroke-dasharray:4 3}
+svg .body{fill:#e7ecf1;stroke:#46515f;stroke-width:1.4}
+svg .ghost{fill:#e7ecf1;stroke:#46515f;stroke-width:1.3;stroke-dasharray:5 3}
+svg .gnd{stroke:#46515f;stroke-width:2;fill:none}
+svg .lbl{font-size:13px;font-weight:600;font-family:"DejaVu Sans",sans-serif}
+svg .lbl-s{font-size:10.5px;font-weight:500;font-family:"DejaVu Sans",sans-serif}
+svg .t-k{fill:#2b3138}
+
+hr.sep { border: 0; border-top: 1pt solid #d5dbe0; margin: 6mm 0; }
+.katex { font-size: 1.02em; }
+.katex-display { margin: 2.5mm 0; break-inside: avoid; }
+.footer-note { font-size: 9.4pt; color: #6b737b; font-style: italic; margin-top: 8mm;
+  border-top: 1pt solid #d5dbe0; padding-top: 2.5mm; }
+
+
+/* ================= chemistry-specific additions ================= */
+
+/* ---- mnemonic / memory hook ---- */
+.mem {
+  border: 1pt solid #26468c; background: #f2f5fb; padding: 2.6mm 3.5mm;
+  margin: 3.5mm 0; border-radius: 2pt; font-size: 10.2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.mem .mh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 9.4pt; color: #26468c; letter-spacing: .8px;
+  text-transform: uppercase; margin-bottom: 1.2mm;
+}
+
+/* ---- centred chemical equation ---- */
+.rxn {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  text-align: center; font-size: 10.6pt; margin: 3mm 0; line-height: 1.7;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.rxn .cond { font-size: 8.8pt; color: #4a5158; }
+
+/* ---- oxidation-number annotation under a species ---- */
+.ox { color: #9c3a1f; font-weight: 700; }
+.red { color: #1b5fd0; font-weight: 700; }
+
+/* tighter tables for the long trend tables */
+table.tight { font-size: 9.2pt; }
+table.tight th, table.tight td { padding: 1.1mm 1.6mm; }
+
+</style>
+</head>
+<body>
+<h1><span class="ch">CBSE Class 11 Chemistry · Chapter 7</span>Redox Reactions</h1>
+<p class="subtitle">Complete chapter notes — oxidation numbers, every type of redox change, both balancing methods worked step by step, redox titrations and the electrode processes behind them.</p>
+
+<div class="key"><b>The spine of this chapter:</b> a redox reaction is nothing but <b>electron bookkeeping</b>. Assign oxidation numbers, see which element goes <b>up</b> (oxidation, electrons lost) and which goes <b>down</b> (reduction, electrons gained), and every question in the chapter — identify, classify, balance, titrate, predict — is answered from that one table of numbers. Oxidation and reduction always occur <b>together</b> and in exactly equal electron counts; that equality <i>is</i> the balancing method.</div>
+
+<h2>1 · Two Concepts of Oxidation and Reduction</h2>
+<table>
+<thead><tr><th></th><th>Oxidation</th><th>Reduction</th></tr></thead>
+<tbody>
+<tr><td><b>Classical</b></td><td>Addition of oxygen or of any electronegative element; removal of hydrogen or of any electropositive element</td><td>Removal of oxygen; addition of hydrogen</td></tr>
+<tr><td><b>Electronic</b></td><td><b>Loss of electrons</b></td><td><b>Gain of electrons</b></td></tr>
+<tr><td><b>Oxidation number</b></td><td><b>Increase</b> in oxidation number</td><td><b>Decrease</b> in oxidation number</td></tr>
+</tbody>
+</table>
+<div class="mem"><div class="mh">Memory hook</div><b>OIL RIG</b> — <b>O</b>xidation <b>I</b>s <b>L</b>oss, <b>R</b>eduction <b>I</b>s <b>G</b>ain (of electrons). And remember the agents are named for what they do to the <i>other</i> substance: the <b>oxidising agent is itself reduced</b>, the <b>reducing agent is itself oxidised</b>.</div>
+<div class="key">The electronic definition is the general one — it covers reactions with no oxygen at all. In &nbsp;2Na(s) + Cl<sub>2</sub>(g) &rarr; 2NaCl(s), sodium loses electrons (oxidised, reducing agent) and chlorine gains them (reduced, oxidising agent).</div>
+
+<h2>2 · Oxidation Number</h2>
+<div class="key"><b>Oxidation number</b> is the charge an atom <i>appears</i> to have in a species when all the bonds are treated as fully ionic — the shared electrons of each bond assigned entirely to the more electronegative atom.</div>
+
+<h3>2.1 The rules, in order of priority</h3>
+<ol>
+<li>An atom in its <b>free element</b> has oxidation number <b>0</b>: Na, O<sub>2</sub>, P<sub>4</sub>, S<sub>8</sub>, Cl<sub>2</sub>.</li>
+<li>A <b>monatomic ion</b> has an oxidation number equal to its charge: Na<sup>+</sup> is $+1$, S<sup>2&minus;</sup> is $-2$.</li>
+<li><b>Fluorine is always $-1$</b> — no exceptions, it is the most electronegative element.</li>
+<li><b>Group 1 metals are $+1$</b>, group 2 are $+2$, aluminium is $+3$ in all their compounds.</li>
+<li><b>Hydrogen is $+1$</b> with non-metals, but <b>$-1$ in metal hydrides</b> (NaH, CaH<sub>2</sub>, LiAlH<sub>4</sub>).</li>
+<li><b>Oxygen is $-2$</b>, except: <b>$-1$ in peroxides</b> (H<sub>2</sub>O<sub>2</sub>, Na<sub>2</sub>O<sub>2</sub>), <b>$-\tfrac12$ in superoxides</b> (KO<sub>2</sub>), and <b>positive with fluorine</b> ($+2$ in OF<sub>2</sub>, $+1$ in O<sub>2</sub>F<sub>2</sub>).</li>
+<li>The <b>sum</b> of the oxidation numbers equals 0 for a neutral molecule and equals the charge for an ion.</li>
+</ol>
+<div class="ex"><div class="eh">Worked example 1 — computing oxidation numbers</div>
+<p>(a) <b>Cr in Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup>:</b> $2x + 7(-2) = -2 \Rightarrow 2x = 12 \Rightarrow x =$ <span class="ans">+6</span></p>
+<p>(b) <b>Mn in MnO<sub>4</sub><sup>&minus;</sup>:</b> $x + 4(-2) = -1 \Rightarrow x =$ <span class="ans">+7</span></p>
+<p>(c) <b>Fe in Fe<sub>3</sub>O<sub>4</sub>:</b> $3x + 4(-2) = 0 \Rightarrow x =$ <span class="ans">+8/3</span> — a <b>fractional average</b>, because Fe<sub>3</sub>O<sub>4</sub> is really FeO·Fe<sub>2</sub>O<sub>3</sub>, containing one Fe(II) and two Fe(III).</p>
+<p>(d) <b>S in Na<sub>2</sub>S<sub>4</sub>O<sub>6</sub> (sodium tetrathionate):</b> $2(+1) + 4x + 6(-2) = 0 \Rightarrow 4x = 10 \Rightarrow x =$ <span class="ans">+2.5</span> — again an average: two of the sulfurs are at $+5$ and two, joined by an S–S bond, are at $0$.</p>
+<p>(e) <b>C in C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>:</b> $6x + 12(+1) + 6(-2) = 0 \Rightarrow x =$ <span class="ans">0</span>, even though the individual carbons are certainly not all zero.</p></div>
+<div class="trap"><div class="th">Oxidation number is not valency</div><ol>
+<li>Oxidation number may be <b>positive, negative, zero or fractional</b>; <b>valency is always a whole number and has no sign</b>. In CH<sub>4</sub> the oxidation number of carbon is $-4$ while its valency is 4.</li>
+<li>A fractional value <i>always</i> means an <b>average</b> over atoms in genuinely different environments. Never write "the oxidation state of Fe is $+8/3$" without saying it is an average.</li>
+<li><b>Stock notation</b> puts the oxidation number in Roman numerals after the element: Fe(III) in Fe<sub>2</sub>O<sub>3</sub>, Mn(VII) in KMnO<sub>4</sub>, Cu(I) in Cu<sub>2</sub>O.</li>
+</ol></div>
+
+<figure>
+<svg class="dg" viewBox="0 0 620 240" role="img" aria-label="Number line of nitrogen oxidation states from minus three to plus five, with oxidation increasing to the right and reduction to the left.">
+  <defs>
+    <marker id="ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9c3a1f"/>
+    </marker>
+    <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1b5fd0"/>
+    </marker>
+  </defs>
+  <line x1="46" y1="132" x2="580" y2="132" stroke="#46515f" stroke-width="1.6"/>
+  <g stroke="#46515f" stroke-width="1.3">
+    <line x1="54" y1="126" x2="54" y2="138"/><line x1="120" y1="126" x2="120" y2="138"/>
+    <line x1="186" y1="126" x2="186" y2="138"/><line x1="252" y1="126" x2="252" y2="138"/>
+    <line x1="318" y1="126" x2="318" y2="138"/><line x1="384" y1="126" x2="384" y2="138"/>
+    <line x1="450" y1="126" x2="450" y2="138"/><line x1="516" y1="126" x2="516" y2="138"/>
+    <line x1="572" y1="126" x2="572" y2="138"/>
+  </g>
+  <g class="lbl-s t-k" text-anchor="middle">
+    <text x="54" y="152">&minus;3</text><text x="120" y="152">&minus;2</text><text x="186" y="152">&minus;1</text>
+    <text x="252" y="152">0</text><text x="318" y="152">+1</text><text x="384" y="152">+2</text>
+    <text x="450" y="152">+3</text><text x="516" y="152">+4</text><text x="572" y="152">+5</text>
+  </g>
+  <g class="lbl-s t-k" text-anchor="middle">
+    <text x="54" y="116">NH&#8323;</text><text x="120" y="116">N&#8322;H&#8324;</text><text x="186" y="116">NH&#8322;OH</text>
+    <text x="252" y="116">N&#8322;</text><text x="318" y="116">N&#8322;O</text><text x="384" y="116">NO</text>
+    <text x="450" y="116">HNO&#8322;</text><text x="516" y="116">NO&#8322;</text><text x="572" y="116">HNO&#8323;</text>
+  </g>
+  <line class="arw" x1="120" y1="58" x2="540" y2="58" stroke="#9c3a1f" marker-end="url(#ahr)"/>
+  <text class="lbl-s" x="330" y="46" text-anchor="middle" fill="#9c3a1f">OXIDATION &mdash; oxidation number increases, electrons are LOST</text>
+  <text class="lbl-s t-i" x="330" y="76" text-anchor="middle">the species is the reducing agent; it reduces something else</text>
+  <line class="arw" x1="540" y1="196" x2="120" y2="196" stroke="#1b5fd0" marker-end="url(#ahb)"/>
+  <text class="lbl-s" x="330" y="216" text-anchor="middle" fill="#1b5fd0">REDUCTION &mdash; oxidation number decreases, electrons are GAINED</text>
+  <text class="lbl-s t-i" x="330" y="184" text-anchor="middle">the species is the oxidising agent; it oxidises something else</text>
+</svg>
+<figcaption><b>The oxidation-number line for nitrogen.</b> Any species in the middle of its range can move <i>both</i> ways, and that is precisely the condition for <b>disproportionation</b>. An element already at its highest state (N in HNO<sub>3</sub>) can only be reduced; at its lowest (N in NH<sub>3</sub>) it can only be oxidised.</figcaption>
+</figure>
+
+<h2>3 · Types of Redox Reactions</h2>
+<table>
+<thead><tr><th>Type</th><th>Description</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td><b>Combination</b></td><td>Two species combine; redox only if an <b>element</b> is involved</td><td>C(s) + O<sub>2</sub>(g) &rarr; CO<sub>2</sub>(g)<br>3Mg + N<sub>2</sub> &rarr; Mg<sub>3</sub>N<sub>2</sub></td></tr>
+<tr><td><b>Decomposition</b></td><td>A compound breaks into two or more products, at least one an element</td><td>2H<sub>2</sub>O &rarr; 2H<sub>2</sub> + O<sub>2</sub><br>2KClO<sub>3</sub> &rarr; 2KCl + 3O<sub>2</sub></td></tr>
+<tr><td><b>Displacement</b> (metal)</td><td>A more reactive metal displaces a less reactive one from its salt</td><td>Zn(s) + CuSO<sub>4</sub>(aq) &rarr; ZnSO<sub>4</sub>(aq) + Cu(s)</td></tr>
+<tr><td><b>Displacement</b> (non-metal)</td><td>Hydrogen or a halogen is displaced</td><td>2Na + 2H<sub>2</sub>O &rarr; 2NaOH + H<sub>2</sub><br>Cl<sub>2</sub> + 2KBr &rarr; 2KCl + Br<sub>2</sub></td></tr>
+<tr><td><b>Disproportionation</b></td><td><b>The same element</b> in a single species is <b>both</b> oxidised and reduced</td><td>2H<sub>2</sub>O<sub>2</sub> &rarr; 2H<sub>2</sub>O + O<sub>2</sub></td></tr>
+<tr><td><b>Comproportionation</b></td><td>The reverse: two different oxidation states of one element give a single intermediate state</td><td>5Cl<sup>&minus;</sup> + ClO<sub>3</sub><sup>&minus;</sup> + 6H<sup>+</sup> &rarr; 3Cl<sub>2</sub> + 3H<sub>2</sub>O</td></tr>
+</tbody>
+</table>
+
+<h3>3.1 Disproportionation — the type most often asked</h3>
+<div class="key"><b>Requirement:</b> the element must be in an <b>intermediate</b> oxidation state, with both a higher and a lower state available to it.</div>
+<table class="tight">
+<thead><tr><th>Reaction</th><th>Element</th><th>Goes to</th></tr></thead>
+<tbody>
+<tr><td>2H<sub>2</sub>O<sub>2</sub> &rarr; 2H<sub>2</sub>O + O<sub>2</sub></td><td>O at $-1$</td><td>$-2$ (reduced) and $0$ (oxidised)</td></tr>
+<tr><td>Cl<sub>2</sub> + 2OH<sup>&minus;</sup> &rarr; Cl<sup>&minus;</sup> + ClO<sup>&minus;</sup> + H<sub>2</sub>O</td><td>Cl at $0$</td><td>$-1$ and $+1$</td></tr>
+<tr><td>2Cu<sup>+</sup>(aq) &rarr; Cu<sup>2+</sup>(aq) + Cu(s)</td><td>Cu at $+1$</td><td>$+2$ and $0$</td></tr>
+<tr><td>P<sub>4</sub> + 3OH<sup>&minus;</sup> + 3H<sub>2</sub>O &rarr; PH<sub>3</sub> + 3H<sub>2</sub>PO<sub>2</sub><sup>&minus;</sup></td><td>P at $0$</td><td>$-3$ and $+1$</td></tr>
+</tbody>
+</table>
+<div class="exam"><div class="xh">Frequently asked</div><b>Why does fluorine not disproportionate?</b> Because fluorine is the most electronegative element and has <b>no positive oxidation state</b> — it can only be reduced from 0 to $-1$, never oxidised. So F<sub>2</sub> with alkali gives OF<sub>2</sub> or O<sub>2</sub> (oxidising the <i>oxygen</i>), not the F<sup>&minus;</sup>/FO<sup>&minus;</sup> pair that chlorine gives.</div>
+
+<h2>4 · Balancing Redox Reactions</h2>
+
+<h3>4.1 The oxidation number method</h3>
+<div class="deriv">
+<div class="dh"><span class="tag">METHOD 1</span> &nbsp;Balancing by the oxidation number method</div>
+<ol>
+<li>Write the skeletal equation and assign oxidation numbers to every atom.</li>
+<li>Identify the elements whose oxidation numbers <b>change</b>, and compute the increase and the decrease <b>per atom</b>, then per formula unit.</li>
+<li>Multiply the two species by whatever coefficients make the <b>total increase equal to the total decrease</b>.</li>
+<li>Balance all remaining atoms except H and O by inspection.</li>
+<li>Balance <b>oxygen</b> by adding H<sub>2</sub>O, then <b>hydrogen</b> by adding H<sup>+</sup> (acidic medium).</li>
+<li>In a <b>basic</b> medium, finish by adding as many OH<sup>&minus;</sup> ions to <b>both</b> sides as there are H<sup>+</sup>, and combine H<sup>+</sup> + OH<sup>&minus;</sup> into H<sub>2</sub>O.</li>
+<li>Verify that both the <b>atoms</b> and the <b>total charge</b> balance.</li>
+</ol>
+<div class="res">Step 3 is the whole method: electrons lost = electrons gained is the same statement as total increase = total decrease.</div>
+</div>
+
+<div class="ex"><div class="eh">Worked example 2 — dichromate and iron(II) in acid</div>
+<p>Skeleton: &nbsp;Fe<sup>2+</sup> + Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup> + H<sup>+</sup> &rarr; Fe<sup>3+</sup> + Cr<sup>3+</sup> + H<sub>2</sub>O</p>
+<p><b>Changes:</b> Fe goes $+2 \to +3$ — an increase of <b>1</b> per atom. Cr goes $+6 \to +3$ — a decrease of <b>3</b> per atom, and there are <b>2</b> Cr atoms, so <b>6</b> per dichromate ion.</p>
+<p><b>Equalise:</b> multiply Fe<sup>2+</sup> by 6. &nbsp; $6 \times 1 = 1 \times 6$ ✓</p>
+<p>6Fe<sup>2+</sup> + Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup> &rarr; 6Fe<sup>3+</sup> + 2Cr<sup>3+</sup></p>
+<p>Balance O with 7H<sub>2</sub>O on the right, then H with 14H<sup>+</sup> on the left:</p>
+<div class="rxn"><b>6Fe<sup>2+</sup> + Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup> + 14H<sup>+</sup> &rarr; 6Fe<sup>3+</sup> + 2Cr<sup>3+</sup> + 7H<sub>2</sub>O</b></div>
+<p><b>Charge check:</b> left $= 6(+2) + (-2) + 14(+1) = +24$; right $= 6(+3) + 2(+3) = +24$. <span class="ans">Balanced.</span></p></div>
+
+<h3>4.2 The half-reaction (ion–electron) method</h3>
+<div class="deriv">
+<div class="dh"><span class="tag">METHOD 2</span> &nbsp;Half-reaction method — acidic medium</div>
+<ol>
+<li>Split the reaction into the <b>oxidation half</b> and the <b>reduction half</b>.</li>
+<li>In each half, balance all atoms <b>except H and O</b>.</li>
+<li>Balance <b>O</b> by adding H<sub>2</sub>O to the deficient side.</li>
+<li>Balance <b>H</b> by adding H<sup>+</sup>.</li>
+<li>Balance the <b>charge</b> by adding electrons — to the left of the reduction half, to the right of the oxidation half.</li>
+<li>Multiply the two halves so that the <b>electrons cancel</b>, then add them together.</li>
+<li>Cancel anything appearing on both sides, and check atoms and charge.</li>
+</ol>
+<div class="res">For a <b>basic</b> medium, do all of the above, then add OH<sup>&minus;</sup> to <b>both</b> sides equal to the number of H<sup>+</sup>, convert H<sup>+</sup> + OH<sup>&minus;</sup> &rarr; H<sub>2</sub>O, and cancel duplicated water molecules.</div>
+</div>
+
+<div class="ex"><div class="eh">Worked example 3 — permanganate and sulfite in acid</div>
+<p>Skeleton: &nbsp;MnO<sub>4</sub><sup>&minus;</sup> + SO<sub>3</sub><sup>2&minus;</sup> &rarr; Mn<sup>2+</sup> + SO<sub>4</sub><sup>2&minus;</sup> &nbsp;(acidic)</p>
+<p><b>Reduction half</b> (Mn: $+7 \to +2$):</p>
+<p>MnO<sub>4</sub><sup>&minus;</sup> &rarr; Mn<sup>2+</sup> + 4H<sub>2</sub>O &nbsp;&rarr;&nbsp; MnO<sub>4</sub><sup>&minus;</sup> + 8H<sup>+</sup> &rarr; Mn<sup>2+</sup> + 4H<sub>2</sub>O &nbsp;&rarr;&nbsp; <b>MnO<sub>4</sub><sup>&minus;</sup> + 8H<sup>+</sup> + 5e<sup>&minus;</sup> &rarr; Mn<sup>2+</sup> + 4H<sub>2</sub>O</b></p>
+<p><b>Oxidation half</b> (S: $+4 \to +6$):</p>
+<p>SO<sub>3</sub><sup>2&minus;</sup> + H<sub>2</sub>O &rarr; SO<sub>4</sub><sup>2&minus;</sup> + 2H<sup>+</sup> &nbsp;&rarr;&nbsp; <b>SO<sub>3</sub><sup>2&minus;</sup> + H<sub>2</sub>O &rarr; SO<sub>4</sub><sup>2&minus;</sup> + 2H<sup>+</sup> + 2e<sup>&minus;</sup></b></p>
+<p><b>Equalise electrons:</b> reduction $\times 2$, oxidation $\times 5$ (LCM of 5 and 2 is 10), then add and cancel:</p>
+<div class="rxn"><b>2MnO<sub>4</sub><sup>&minus;</sup> + 5SO<sub>3</sub><sup>2&minus;</sup> + 6H<sup>+</sup> &rarr; 2Mn<sup>2+</sup> + 5SO<sub>4</sub><sup>2&minus;</sup> + 3H<sub>2</sub>O</b></div>
+<p><b>Check.</b> O: $8+15 = 23$ left, $20+3 = 23$ right ✓. H: 6 both sides ✓. Charge: $-2-10+6 = -6$ left, $+4-10 = -6$ right ✓ <span class="ans">Balanced.</span></p></div>
+
+<div class="ex"><div class="eh">Worked example 4 — permanganate and iodide in alkali</div>
+<p>Skeleton: &nbsp;MnO<sub>4</sub><sup>&minus;</sup> + I<sup>&minus;</sup> &rarr; MnO<sub>2</sub> + I<sub>2</sub> &nbsp;(basic)</p>
+<p><b>Reduction half</b> (Mn: $+7 \to +4$), balanced first in acid then converted:</p>
+<p>MnO<sub>4</sub><sup>&minus;</sup> + 4H<sup>+</sup> + 3e<sup>&minus;</sup> &rarr; MnO<sub>2</sub> + 2H<sub>2</sub>O &nbsp;&rarr;&nbsp; add 4OH<sup>&minus;</sup> to both sides &nbsp;&rarr;&nbsp; <b>MnO<sub>4</sub><sup>&minus;</sup> + 2H<sub>2</sub>O + 3e<sup>&minus;</sup> &rarr; MnO<sub>2</sub> + 4OH<sup>&minus;</sup></b></p>
+<p><b>Oxidation half:</b> &nbsp;<b>2I<sup>&minus;</sup> &rarr; I<sub>2</sub> + 2e<sup>&minus;</sup></b></p>
+<p>Multiply the first by 2 and the second by 3 (six electrons each), then add:</p>
+<div class="rxn"><b>2MnO<sub>4</sub><sup>&minus;</sup> + 6I<sup>&minus;</sup> + 4H<sub>2</sub>O &rarr; 2MnO<sub>2</sub> + 3I<sub>2</sub> + 8OH<sup>&minus;</sup></b></div>
+<p><b>Charge check:</b> left $= -2 - 6 = -8$; right $= -8$ ✓ <span class="ans">Balanced.</span></p></div>
+
+<div class="trap"><div class="th">Where balancing goes wrong</div><ol>
+<li><b>Never add H<sup>+</sup> to a basic medium</b> in the final equation, and never add OH<sup>&minus;</sup> to an acidic one.</li>
+<li><b>Electrons must cancel completely.</b> If any remain in the final equation, the halves were not multiplied correctly.</li>
+<li><b>Check the total charge, not only the atoms.</b> A charge mismatch is the fastest way to catch an error.</li>
+<li>Never change a formula (writing SO<sub>4</sub><sup>&minus;</sup> for SO<sub>4</sub><sup>2&minus;</sup>) to make the balancing work — only coefficients may change.</li>
+</ol></div>
+
+<h2>5 · Redox Titrations</h2>
+<div class="key">The end point of a redox titration is found either from a <b>self-indicating</b> reagent (KMnO<sub>4</sub>, whose first permanent pink tinge marks the end point) or from an <b>external indicator</b> (starch, giving a blue-black colour with iodine).</div>
+
+<h3>5.1 Permanganate — a different product in each medium</h3>
+<table class="tight">
+<thead><tr><th>Medium</th><th>Half-reaction</th><th>Electrons ($n$-factor)</th><th>Mn goes</th></tr></thead>
+<tbody>
+<tr><td><b>Acidic</b> (dilute H<sub>2</sub>SO<sub>4</sub>)</td><td>MnO<sub>4</sub><sup>&minus;</sup> + 8H<sup>+</sup> + 5e<sup>&minus;</sup> &rarr; Mn<sup>2+</sup> + 4H<sub>2</sub>O</td><td class="c"><b>5</b></td><td>$+7 \to +2$ (colourless)</td></tr>
+<tr><td>Neutral / faintly alkaline</td><td>MnO<sub>4</sub><sup>&minus;</sup> + 2H<sub>2</sub>O + 3e<sup>&minus;</sup> &rarr; MnO<sub>2</sub> + 4OH<sup>&minus;</sup></td><td class="c"><b>3</b></td><td>$+7 \to +4$ (brown solid)</td></tr>
+<tr><td>Strongly alkaline</td><td>MnO<sub>4</sub><sup>&minus;</sup> + e<sup>&minus;</sup> &rarr; MnO<sub>4</sub><sup>2&minus;</sup></td><td class="c"><b>1</b></td><td>$+7 \to +6$ (green)</td></tr>
+</tbody>
+</table>
+<div class="trap"><div class="th">Why sulfuric acid and never HCl or HNO<sub>3</sub></div>
+<p>Permanganate titrations are acidified with <b>dilute H<sub>2</sub>SO<sub>4</sub></b>. Hydrochloric acid would itself be oxidised to chlorine, consuming extra KMnO<sub>4</sub> and giving a high result; nitric acid is itself an oxidising agent and would attack the reducing agent being estimated.</p></div>
+
+<h3>5.2 Dichromate and iodometry</h3>
+<p><b>Dichromate</b> works only in acid, with $n = 6$: &nbsp;Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup> + 14H<sup>+</sup> + 6e<sup>&minus;</sup> &rarr; 2Cr<sup>3+</sup> + 7H<sub>2</sub>O. It is a <b>primary standard</b> — obtainable pure and stable — which KMnO<sub>4</sub> is not.</p>
+<p><b>Iodometry</b> liberates iodine, which is then titrated against standard sodium thiosulfate with starch near the end point:</p>
+<div class="rxn">I<sub>2</sub> + 2S<sub>2</sub>O<sub>3</sub><sup>2&minus;</sup> &rarr; 2I<sup>&minus;</sup> + S<sub>4</sub>O<sub>6</sub><sup>2&minus;</sup></div>
+<p>Note the sulfur: $+2$ in thiosulfate rises to the average $+2.5$ in tetrathionate, so each thiosulfate loses exactly one electron.</p>
+
+<h3>5.3 Equivalents and $n$-factor</h3>
+<div class="key">$n$-factor $=$ number of electrons gained or lost per formula unit. &nbsp;Equivalent mass $= \dfrac{\text{molar mass}}{n\text{-factor}}$, &nbsp;Normality $=$ Molarity $\times\ n$-factor, and at the end point &nbsp;$N_1V_1 = N_2V_2$.</div>
+<div class="ex"><div class="eh">Worked example 5 — a titration calculation</div>
+<p>25.0 mL of an FeSO<sub>4</sub> solution needs 20.0 mL of 0.02 M KMnO<sub>4</sub> in dilute H<sub>2</sub>SO<sub>4</sub>. Find the molarity of the iron(II) solution.</p>
+<p>Reaction: MnO<sub>4</sub><sup>&minus;</sup> + 5Fe<sup>2+</sup> + 8H<sup>+</sup> &rarr; Mn<sup>2+</sup> + 5Fe<sup>3+</sup> + 4H<sub>2</sub>O, so the mole ratio is <b>1 : 5</b>.</p>
+<p>Moles of MnO<sub>4</sub><sup>&minus;</sup> $= 0.02 \times 0.0200 = 4.0\times10^{-4}$ mol &nbsp;&rArr;&nbsp; moles of Fe<sup>2+</sup> $= 5 \times 4.0\times10^{-4} = 2.0\times10^{-3}$ mol</p>
+<p>$M(\text{Fe}^{2+}) = \dfrac{2.0\times10^{-3}}{0.0250} =$ <span class="ans">0.080 M</span></p>
+<p><i>Same answer by equivalents:</i> $N(\text{KMnO}_4) = 0.02\times5 = 0.1$ N; $N_1V_1 = N_2V_2 \Rightarrow N(\text{Fe}^{2+}) = \dfrac{0.1\times20}{25} = 0.08$ N, and since $n=1$ for Fe<sup>2+</sup>, $M = 0.08$ M.</p></div>
+
+<h2>6 · Redox Reactions and Electrode Processes</h2>
+<p>If the two halves of a redox reaction are physically separated, the electrons must travel through an external wire — and that current is usable work. This is a <b>galvanic (voltaic) cell</b>.</p>
+
+<figure>
+<svg class="dg" viewBox="0 0 620 302" role="img" aria-label="Daniell cell: zinc electrode in zinc sulfate and copper electrode in copper sulfate, joined by a salt bridge and an external wire through a voltmeter.">
+  <defs>
+    <marker id="ahe" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1b5fd0"/>
+    </marker>
+  </defs>
+  <path d="M 60 120 L 60 255 L 250 255 L 250 120" fill="#eef4fa" stroke="#46515f" stroke-width="1.6"/>
+  <path d="M 370 120 L 370 255 L 560 255 L 560 120" fill="#fbeee9" stroke="#46515f" stroke-width="1.6"/>
+  <line x1="60" y1="152" x2="250" y2="152" stroke="#7f97b5" stroke-width="1.2"/>
+  <line x1="370" y1="152" x2="560" y2="152" stroke="#c08a76" stroke-width="1.2"/>
+
+  <rect x="140" y="90" width="13" height="140" fill="#c3ccd4" stroke="#46515f" stroke-width="1.2"/>
+  <rect x="467" y="90" width="13" height="140" fill="#d78a5e" stroke="#46515f" stroke-width="1.2"/>
+
+  <path d="M 146 90 L 146 46 L 474 46 L 474 90" fill="none" stroke="#16191d" stroke-width="1.8"/>
+  <circle cx="310" cy="46" r="17" fill="#fff" stroke="#16191d" stroke-width="1.6"/>
+  <text class="lbl t-k" x="310" y="51" text-anchor="middle">V</text>
+  <line class="arw" x1="186" y1="66" x2="252" y2="66" stroke="#1b5fd0" marker-end="url(#ahe)"/>
+  <line class="arw" x1="368" y1="66" x2="434" y2="66" stroke="#1b5fd0" marker-end="url(#ahe)"/>
+  <text class="lbl-s t-n" x="219" y="82" text-anchor="middle">e&#8315;</text>
+  <text class="lbl-s t-n" x="401" y="82" text-anchor="middle">e&#8315;</text>
+
+  <path d="M 212 150 L 212 104 L 408 104 L 408 150" fill="none" stroke="#9aa6b2" stroke-width="9" stroke-linejoin="round"/>
+  <text class="lbl-s t-i" x="310" y="126" text-anchor="middle">salt bridge</text>
+  <text class="lbl-s t-i" x="310" y="140" text-anchor="middle">(KCl in agar)</text>
+
+  <text class="lbl-s t-k" x="128" y="110" text-anchor="end">Zn</text>
+  <text class="lbl-s t-k" x="492" y="110" text-anchor="start">Cu</text>
+  <text class="lbl-s t-i" x="192" y="248" text-anchor="middle">1 M ZnSO&#8324;(aq)</text>
+  <text class="lbl-s t-i" x="420" y="248" text-anchor="middle">1 M CuSO&#8324;(aq)</text>
+
+  <text class="lbl-s t-f" x="100" y="278" text-anchor="middle">ANODE (&minus;)</text>
+  <text class="lbl-s t-i" x="100" y="292" text-anchor="middle">oxidation</text>
+  <text class="lbl-s t-a" x="520" y="278" text-anchor="middle">CATHODE (+)</text>
+  <text class="lbl-s t-i" x="520" y="292" text-anchor="middle">reduction</text>
+  <text class="lbl-s t-k" x="230" y="278" text-anchor="middle">Zn &rarr; Zn&#178;&#8314; + 2e&#8315;</text>
+  <text class="lbl-s t-k" x="390" y="278" text-anchor="middle">Cu&#178;&#8314; + 2e&#8315; &rarr; Cu</text>
+  <text class="lbl-s t-k" x="310" y="294" text-anchor="middle">E&deg;cell = 0.34 &minus; (&minus;0.76) = +1.10 V</text>
+</svg>
+<figcaption><b>The Daniell cell.</b> Zinc, the stronger reducing agent, dissolves and sends electrons through the wire to the copper electrode, where Cu<sup>2+</sup> is plated out. <b>Electrons flow anode &rarr; cathode through the wire</b>; the salt bridge carries ions the opposite way, keeping both solutions electrically neutral and completing the circuit.</figcaption>
+</figure>
+
+<div class="key"><b>Cell notation:</b> Zn(s) | Zn<sup>2+</sup>(1 M) &#8214; Cu<sup>2+</sup>(1 M) | Cu(s) — anode written on the left, cathode on the right, the double line being the salt bridge.<br>
+<b>EMF:</b> $E^\circ_{\text{cell}} = E^\circ_{\text{cathode}} - E^\circ_{\text{anode}}$ (both as reduction potentials). A <b>positive</b> $E^\circ_{\text{cell}}$ means the reaction is <b>spontaneous</b> as written.</div>
+<p>Electrode potentials are measured against the <b>standard hydrogen electrode</b> (SHE), defined as exactly <b>0.00 V</b>: Pt | H<sub>2</sub>(1 bar) | H<sup>+</sup>(1 M) at 298 K.</p>
+<div class="key"><b>Reading the electrochemical series.</b> A <b>more negative</b> $E^\circ$ means a <b>stronger reducing agent</b> (more willing to be oxidised) — so Li, K, Ca, Na, Mg, Al, Zn, Fe are all good reducing agents. A <b>more positive</b> $E^\circ$ means a <b>stronger oxidising agent</b> — F<sub>2</sub> ($+2.87$ V) is the strongest of all.</div>
+<div class="ex"><div class="eh">Worked example 6 — predicting whether a reaction happens</div>
+<p>(a) <b>Will zinc displace copper from CuSO<sub>4</sub>?</b> $E^\circ_{\text{cell}} = +0.34 - (-0.76) = +1.10$ V, positive &rArr; <span class="ans">yes, it happens spontaneously</span>.</p>
+<p>(b) <b>Will copper displace zinc from ZnSO<sub>4</sub>?</b> $E^\circ_{\text{cell}} = -0.76 - 0.34 = -1.10$ V &rArr; <span class="ans">no</span>.</p>
+<p>(c) <b>Will copper liberate hydrogen from dilute HCl?</b> $E^\circ(\text{Cu}^{2+}/\text{Cu}) = +0.34$ V is <i>above</i> hydrogen's 0.00 V, so $E^\circ_{\text{cell}} = 0.00 - 0.34 = -0.34$ V &rArr; <span class="ans">no — this is why copper vessels resist dilute acids while zinc does not</span>.</p></div>
+<div class="mem"><div class="mh">Memory hook</div>Activity series, most reactive first: <b>Li K Ba Ca Na Mg Al Zn Fe Ni Sn Pb (H) Cu Hg Ag Au</b> — "<b>L</b>ittle <b>K</b>atie <b>B</b>akes <b>Ca</b>kes, <b>Na</b>ughty <b>Mag</b>gie <b>Al</b>ways <b>Z</b>aps <b>Fe</b>rocious <b>Ni</b>ce <b>Sn</b>akes, <b>Pb</b>… <b>H</b>ere <b>Cu</b>rious <b>H</b>ungry <b>Ag</b>ents <b>Au</b>dition." Any metal displaces every metal <i>below</i> it from solution.</div>
+
+<h2>7 · Where marks are lost</h2>
+<div class="trap">
+<div class="th">The twelve traps of Chapter 7</div>
+<ol>
+<li><b>The oxidising agent is the one that gets reduced.</b> Write the oxidation numbers down before naming any agent.</li>
+<li><b>Oxidation number can be fractional; valency cannot.</b> A fraction always means an average over inequivalent atoms.</li>
+<li><b>Oxygen is not always $-2$</b> — it is $-1$ in peroxides, $-\tfrac12$ in superoxides and <b>positive</b> in OF<sub>2</sub>. Fluorine, however, is always $-1$.</li>
+<li><b>Hydrogen is $-1$ in metal hydrides</b> (NaH, CaH<sub>2</sub>).</li>
+<li><b>Disproportionation needs an intermediate oxidation state.</b> Fluorine cannot disproportionate; nor can an element already at its highest or lowest state.</li>
+<li><b>Balance the charge as well as the atoms.</b> An equation with balanced atoms and unbalanced charge is still wrong.</li>
+<li><b>In basic medium, finish with OH<sup>&minus;</sup>, not H<sup>+</sup>.</b> Add OH<sup>&minus;</sup> to both sides and collapse the pairs into water.</li>
+<li><b>KMnO<sub>4</sub> gives a different product in each medium</b> — $n = 5$ in acid, 3 in neutral, 1 in strong alkali. Read the medium before writing the half-reaction.</li>
+<li><b>Acidify permanganate with dilute H<sub>2</sub>SO<sub>4</sub> only</b>, never HCl (oxidised to Cl<sub>2</sub>) or HNO<sub>3</sub> (itself an oxidant).</li>
+<li><b>Not every reaction with oxygen is redox, and not every redox has oxygen.</b> Precipitation and acid–base neutralisation involve no change in oxidation number at all.</li>
+<li><b>In a galvanic cell the anode is negative</b> (the opposite of an electrolytic cell) and oxidation always occurs there.</li>
+<li><b>$E^\circ$ values are not multiplied by stoichiometric coefficients.</b> Doubling a half-reaction does not double its electrode potential.</li>
+</ol>
+</div>
+
+<p class="footer-note">Chapter 7 of the rationalised NCERT (2023&ndash;24 onward) — the opening chapter of Chemistry Part II. Standard electrode potentials quoted at 298 K against the standard hydrogen electrode.</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$",  right: "$",  display: false }
+    ],
+    throwOnError: false, errorColor: "#cc0000", strict: false, trust: false
+  });
+  document.body.setAttribute("data-katex-done", "1");
+});
+</script>
+</body>
+</html>
