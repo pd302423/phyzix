@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chemical Bonding and Molecular Structure — Chapter 4 Notes</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<style>
+@page { size: A4 portrait; margin: 16mm 15mm 18mm 15mm; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, "DejaVu Serif", "Times New Roman", serif;
+  font-size: 10.8pt; line-height: 1.5; color: #16191d; background: #fff;
+  margin: 0; hyphens: none;
+}
+.sans { font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif; }
+
+h1 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 21pt; line-height: 1.15; margin: 0 0 3mm; letter-spacing: -.2px;
+  border-bottom: 2.5pt solid #16191d; padding-bottom: 3mm;
+}
+h1 .ch { display: block; font-size: 10pt; font-weight: 600; letter-spacing: 1.6px;
+  text-transform: uppercase; color: #9c3a1f; margin-bottom: 2mm; }
+.subtitle { font-size: 10pt; color: #4a5158; margin: 0 0 7mm; font-style: italic; }
+
+h2 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 14pt; margin: 8mm 0 3mm; padding: 1.6mm 3mm;
+  background: #16191d; color: #fff; border-radius: 2pt;
+  break-after: avoid; page-break-after: avoid;
+}
+h3 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 11.8pt; margin: 6mm 0 2mm; color: #16191d;
+  border-bottom: 1pt solid #b9c0c7; padding-bottom: 1mm;
+  break-after: avoid; page-break-after: avoid;
+}
+h4 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 10.6pt; margin: 4.5mm 0 1.5mm; color: #2b3138;
+  break-after: avoid; page-break-after: avoid;
+}
+p { margin: 0 0 2.6mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+li { margin-bottom: 1.4mm; }
+b, strong { font-weight: 700; }
+em, i { font-style: italic; }
+
+/* ---- derivation box ---- */
+.deriv {
+  border: 1pt solid #16191d; border-left: 3.5pt solid #9c3a1f;
+  background: #fdfcfa; padding: 3mm 4mm; margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.deriv .dh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.8pt; margin-bottom: 2mm; color: #16191d;
+}
+.deriv .dh .tag { color: #9c3a1f; font-size: 9pt; letter-spacing: 1px; }
+.deriv ol { margin: 0; padding-left: 6mm; }
+.deriv ol li { margin-bottom: 1.8mm; }
+.deriv .res {
+  margin-top: 2.5mm; padding-top: 2mm; border-top: 1pt dashed #a8b0b8;
+  font-weight: 600;
+}
+
+/* ---- worked example ---- */
+.ex {
+  border: 1pt solid #1d5f4a; background: #f3f9f6; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.ex .eh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #1d5f4a; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.ans { font-weight: 700; color: #1d5f4a; }
+
+/* ---- traps ---- */
+.trap {
+  border: 1pt solid #a5281b; background: #fdf4f3; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.trap .th {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #a5281b; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.trap ol { margin: 0; padding-left: 6mm; }
+
+/* ---- key result strip ---- */
+.key {
+  background: #eef1f4; border-left: 3pt solid #2b3138;
+  padding: 2.2mm 3.5mm; margin: 3mm 0; border-radius: 0 2pt 2pt 0;
+  break-inside: avoid;
+}
+.key b { color: #16191d; }
+
+/* ---- exam callout ---- */
+.exam {
+  border: 1pt dashed #7a5c00; background: #fdfaef; padding: 2.6mm 3.5mm;
+  margin: 3.5mm 0; border-radius: 2pt; font-size: 10.2pt;
+  break-inside: avoid;
+}
+.exam .xh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 9.4pt; color: #7a5c00; letter-spacing: .8px;
+  text-transform: uppercase; margin-bottom: 1.2mm;
+}
+
+/* ---- tables ---- */
+table {
+  border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 3mm 0;
+  break-inside: avoid; page-break-inside: avoid;
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+}
+th, td { border: 0.7pt solid #98a1a9; padding: 1.4mm 2.2mm; text-align: left; vertical-align: top; }
+th { background: #e4e8ec; font-weight: 700; }
+tbody tr:nth-child(even) { background: #f6f8f9; }
+td.c, th.c { text-align: center; }
+
+/* ---- figures ---- */
+figure { margin: 4mm 0; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+svg.dg { max-width: 100%; height: auto; }
+figcaption { font-size: 9.6pt; color: #4a5158; margin-top: 1.5mm; font-style: italic; text-align: left; }
+svg .s-n{stroke:#1b5fd0} svg .t-n{fill:#1b5fd0}
+svg .s-f{stroke:#be3a2b} svg .t-f{fill:#be3a2b}
+svg .s-w{stroke:#69747f} svg .t-w{fill:#69747f}
+svg .s-a{stroke:#0b7355} svg .t-a{fill:#0b7355}
+svg .s-t{stroke:#6a45b0} svg .t-t{fill:#6a45b0}
+svg .s-i{stroke:#6f7a88} svg .t-i{fill:#6f7a88}
+svg .arw{stroke-width:2;fill:none;stroke-linecap:round}
+svg .thin{stroke-width:1.3}
+svg .dash{stroke-dasharray:4 3}
+svg .body{fill:#e7ecf1;stroke:#46515f;stroke-width:1.4}
+svg .ghost{fill:#e7ecf1;stroke:#46515f;stroke-width:1.3;stroke-dasharray:5 3}
+svg .gnd{stroke:#46515f;stroke-width:2;fill:none}
+svg .lbl{font-size:13px;font-weight:600;font-family:"DejaVu Sans",sans-serif}
+svg .lbl-s{font-size:10.5px;font-weight:500;font-family:"DejaVu Sans",sans-serif}
+svg .t-k{fill:#2b3138}
+
+hr.sep { border: 0; border-top: 1pt solid #d5dbe0; margin: 6mm 0; }
+.katex { font-size: 1.02em; }
+.katex-display { margin: 2.5mm 0; break-inside: avoid; }
+.footer-note { font-size: 9.4pt; color: #6b737b; font-style: italic; margin-top: 8mm;
+  border-top: 1pt solid #d5dbe0; padding-top: 2.5mm; }
+
+
+/* ================= chemistry-specific additions ================= */
+
+/* ---- mnemonic / memory hook ---- */
+.mem {
+  border: 1pt solid #26468c; background: #f2f5fb; padding: 2.6mm 3.5mm;
+  margin: 3.5mm 0; border-radius: 2pt; font-size: 10.2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.mem .mh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 9.4pt; color: #26468c; letter-spacing: .8px;
+  text-transform: uppercase; margin-bottom: 1.2mm;
+}
+
+/* ---- centred chemical equation ---- */
+.rxn {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  text-align: center; font-size: 10.6pt; margin: 3mm 0; line-height: 1.7;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.rxn .cond { font-size: 8.8pt; color: #4a5158; }
+
+/* ---- oxidation-number annotation under a species ---- */
+.ox { color: #9c3a1f; font-weight: 700; }
+.red { color: #1b5fd0; font-weight: 700; }
+
+/* tighter tables for the long trend tables */
+table.tight { font-size: 9.2pt; }
+table.tight th, table.tight td { padding: 1.1mm 1.6mm; }
+
+</style>
+</head>
+<body>
+<h1><span class="ch">CBSE Class 11 Chemistry · Chapter 4</span>Chemical Bonding and Molecular Structure</h1>
+<p class="subtitle">Complete chapter notes — Lewis structures and formal charge, bond parameters, VSEPR shapes, hybridisation, molecular orbital theory worked for every diatomic, and hydrogen bonding.</p>
+
+<div class="key"><b>The spine of this chapter:</b> atoms bond to lower their energy, and there are exactly three theories, each answering a different question. <b>Lewis/VSEPR</b> answers <i>what shape?</i> <b>Valence bond theory (hybridisation)</b> answers <i>which orbitals overlap, and how strong is the bond?</i> <b>Molecular orbital theory</b> answers <i>how many bonds, and is it magnetic?</i> When a question mentions <b>paramagnetism or bond order</b>, it is asking for MOT; when it mentions <b>shape or bond angle</b>, it is asking for VSEPR.</div>
+
+<h2>1 · The Kössel–Lewis Approach</h2>
+<p>Atoms combine to attain the stable <b>octet</b> of the nearest noble gas — by transferring electrons (ionic bond) or by sharing them (covalent bond). A <b>Lewis symbol</b> shows the valence electrons as dots around the symbol; the number of dots gives the valence directly.</p>
+
+<h3>1.1 Writing a Lewis structure</h3>
+<div class="deriv">
+<div class="dh"><span class="tag">METHOD 1</span> &nbsp;Drawing any Lewis structure</div>
+<ol>
+<li>Count the <b>total valence electrons</b>. For an anion <b>add</b> one per unit of negative charge; for a cation <b>subtract</b> one per unit of positive charge.</li>
+<li>Pick the <b>central atom</b> — the least electronegative one (never hydrogen, which forms only one bond).</li>
+<li>Join each outer atom to the centre with a single bond (2 electrons each).</li>
+<li>Distribute the remaining electrons as <b>lone pairs</b> on the outer atoms first, to complete their octets.</li>
+<li>If the central atom is still short of an octet, convert lone pairs on the outer atoms into <b>multiple bonds</b>.</li>
+<li>Check with <b>formal charges</b>; the best structure has formal charges closest to zero, with any negative charge on the most electronegative atom.</li>
+</ol>
+<div class="res">For CO<sub>3</sub><sup>2&minus;</sup>: $4 + 3(6) + 2 = 24$ valence electrons, C central, one C=O and two C–O<sup>&minus;</sup>, giving three equivalent resonance structures.</div>
+</div>
+
+<div class="key"><b>Formal charge</b> $= $ (valence electrons in the free atom) $-$ (lone-pair electrons) $-\tfrac12$ (bonding electrons). Formal charges are a <b>bookkeeping device</b> for choosing between structures — they are not real charges on the atoms.</div>
+<div class="ex"><div class="eh">Worked example 1 — formal charges in ozone</div>
+<p>O<sub>3</sub> is drawn as O<sub>central</sub> with one double and one single bond.</p>
+<p>Central O: $6 - 2 - \tfrac12(6) = +1$. &nbsp; Doubly bonded terminal O: $6 - 4 - \tfrac12(4) = 0$. &nbsp; Singly bonded terminal O: $6 - 6 - \tfrac12(2) = -1$.</p>
+<p>Sum $= +1 + 0 - 1 =$ <span class="ans">0</span>, matching the neutral molecule — always check this.</p></div>
+
+<h3>1.2 Limitations of the octet rule</h3>
+<table>
+<thead><tr><th>Failure</th><th>Explanation</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td><b>Incomplete octet</b></td><td>Central atom has fewer than 8 electrons</td><td>LiCl, BeH<sub>2</sub>, BCl<sub>3</sub> (6 around B)</td></tr>
+<tr><td><b>Expanded octet</b></td><td>Elements of period 3 onward have vacant <b>d orbitals</b> and may hold 10, 12 or more</td><td>PF<sub>5</sub> (10), SF<sub>6</sub> (12), H<sub>2</sub>SO<sub>4</sub> (12)</td></tr>
+<tr><td><b>Odd-electron species</b></td><td>An odd total cannot be paired into octets</td><td>NO (11), NO<sub>2</sub> (17)</td></tr>
+<tr><td><b>Noble gas compounds</b></td><td>The octet was supposed to be inviolable</td><td>XeF<sub>2</sub>, XeOF<sub>2</sub>, KrF<sub>2</sub></td></tr>
+</tbody>
+</table>
+<p>Beyond these, the rule says nothing about <b>molecular shape</b> and nothing about the <b>energy</b> (and hence the stability) of a molecule.</p>
+
+<h2>2 · The Ionic Bond</h2>
+<div class="key">An ionic bond forms when one atom transfers electrons to another and the resulting oppositely charged ions are held by electrostatic attraction in a three-dimensional <b>lattice</b>.</div>
+<p><b>Conditions that favour it:</b> low ionization enthalpy of the metal, highly negative electron gain enthalpy of the non-metal, and — decisively — a <b>high lattice enthalpy</b>.</p>
+<div class="key"><b>Lattice enthalpy</b> is the energy required to completely separate one mole of a solid ionic compound into gaseous ions. For NaCl it is 788 kJ mol<sup>&minus;1</sup>. It rises with <b>higher ionic charges</b> and <b>smaller ionic radii</b> (roughly $\propto q_1q_2/r$), which is why MgO (2+, 2&minus;) melts far above NaCl.</p></div>
+<div class="exam"><div class="xh">Frequently asked</div>The formation of Na<sup>+</sup> and Cl<sup>&minus;</sup> from the atoms is <i>endothermic</i> overall ($+496 - 349 = +147$ kJ mol<sup>&minus;1</sup>). NaCl is stable only because the lattice enthalpy released on assembling the crystal far outweighs that cost. Ionic bonding is driven by the <b>lattice</b>, not by the ion formation.</div>
+
+<h3>2.1 Fajans' rules — covalent character in an ionic bond</h3>
+<div class="key">Covalent character increases with (i) <b>small cation</b>, (ii) <b>large anion</b>, (iii) <b>high charge</b> on either ion, and (iv) a cation with a <b>pseudo-noble-gas (18-electron) configuration</b>, such as Cu<sup>+</sup>, Ag<sup>+</sup>, Zn<sup>2+</sup>, which polarises better than an alkali-metal ion of the same size.</div>
+<p>Hence LiCl is more covalent than NaCl; AlCl<sub>3</sub> is more covalent than MgCl<sub>2</sub>; and among the lithium halides, LiI is the most covalent. A more covalent halide is more soluble in organic solvents and has a lower melting point.</p>
+
+<h2>3 · Bond Parameters</h2>
+<table>
+<thead><tr><th>Parameter</th><th>Definition</th><th>What to remember</th></tr></thead>
+<tbody>
+<tr><td><b>Bond length</b></td><td>Equilibrium distance between the nuclei of two bonded atoms</td><td>Falls as bond order rises: C–C 154 pm &gt; C=C 133 pm &gt; C&equiv;C 120 pm</td></tr>
+<tr><td><b>Bond angle</b></td><td>Angle between two bonds at an atom</td><td>Fixed by VSEPR; CH<sub>4</sub> 109.5&deg;, NH<sub>3</sub> 107&deg;, H<sub>2</sub>O 104.5&deg;</td></tr>
+<tr><td><b>Bond enthalpy</b></td><td>Energy required to break one mole of bonds in the gaseous state</td><td>Rises with bond order: N&equiv;N 946 &gt; O=O 498 &gt; H–H 435.8 kJ mol<sup>&minus;1</sup></td></tr>
+<tr><td><b>Bond order</b></td><td>Number of bonds between two atoms</td><td>Higher order &rArr; shorter bond, greater enthalpy, greater stability</td></tr>
+</tbody>
+</table>
+<p>For a polyatomic molecule such as water, breaking the two O–H bonds takes different energies (502 and 427 kJ mol<sup>&minus;1</sup>), so the tabulated value 464 is a <b>mean bond enthalpy</b>.</p>
+
+<h3>3.1 Resonance</h3>
+<div class="key">When a single Lewis structure cannot describe a molecule adequately, the real structure is a <b>resonance hybrid</b> of several canonical forms. The hybrid is <b>lower in energy</b> — more stable — than any contributing structure.</div>
+<p>In O<sub>3</sub>, both oxygen–oxygen bonds are <b>equal</b> at 128 pm — between a single bond (148 pm) and a double bond (121 pm). In CO<sub>3</sub><sup>2&minus;</sup> all three C–O bonds are identical, and in NO<sub>3</sub><sup>&minus;</sup> likewise, which no single Lewis structure can show.</p>
+<div class="trap"><div class="th">The classic misconception</div><ol>
+<li>The molecule does <b>not</b> flip between canonical forms, and it is <b>not</b> a mixture of them. It is a single structure that none of the drawings captures on its own.</li>
+<li>Canonical forms have <b>no independent existence</b>; only the hybrid is real.</li>
+<li>All canonical forms must have the <b>same positions of nuclei</b> — only electrons move. Moving an atom gives a different molecule, not a resonance form.</li>
+</ol></div>
+
+<h3>3.2 Polarity and dipole moment</h3>
+<div class="key">$\mu = q \times d$, measured in <b>debye</b> (1 D $= 3.33564\times10^{-30}$ C m). Dipole moment is a <b>vector</b>: the molecular dipole is the vector sum of the individual bond dipoles, so a molecule with polar bonds can still be non-polar.</div>
+<table class="tight">
+<thead><tr><th>Molecule</th><th class="c">BeF<sub>2</sub></th><th class="c">CO<sub>2</sub></th><th class="c">BF<sub>3</sub></th><th class="c">CCl<sub>4</sub></th><th class="c">H<sub>2</sub>O</th><th class="c">NH<sub>3</sub></th><th class="c">NF<sub>3</sub></th><th class="c">HF</th></tr></thead>
+<tbody>
+<tr><td>$\mu$ / D</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">0</td><td class="c">1.85</td><td class="c">1.47</td><td class="c">0.24</td><td class="c">1.78</td></tr>
+<tr><td>Why</td><td class="c" colspan="4">Symmetrical — bond dipoles cancel exactly</td><td class="c" colspan="4">Unsymmetrical / lone pair adds to the dipole</td></tr>
+</tbody>
+</table>
+<div class="trap"><div class="th">NH<sub>3</sub> vs NF<sub>3</sub> — the single most asked comparison</div>
+<p>Both are pyramidal, yet $\mu(\text{NH}_3) = 1.47$ D while $\mu(\text{NF}_3)$ is only 0.24 D, even though N–F bonds are far more polar than N–H bonds.</p>
+<p><b>Reason.</b> In both molecules the nitrogen lone pair contributes a dipole pointing <i>away</i> from nitrogen, along the axis. In <b>NH<sub>3</sub></b> nitrogen is more electronegative than hydrogen, so the three bond dipoles point <i>towards</i> nitrogen — in the <b>same</b> direction as the lone-pair dipole, and the two <b>add</b>. In <b>NF<sub>3</sub></b> fluorine is more electronegative than nitrogen, so the bond dipoles point <i>away</i> from nitrogen — <b>opposing</b> the lone-pair moment, and they largely <b>cancel</b>.</p></div>
+
+<h2>4 · VSEPR Theory — Predicting Shape</h2>
+<p><b>Valence Shell Electron Pair Repulsion</b> theory: the electron pairs in the valence shell of the central atom arrange themselves as far apart as possible, because like charges repel.</p>
+<div class="key"><b>Repulsion order:</b> &nbsp;lone pair–lone pair &gt; lone pair–bond pair &gt; bond pair–bond pair. A lone pair is held by only one nucleus, so it spreads out more and pushes harder.</div>
+
+<figure>
+<svg class="dg" viewBox="0 0 620 274" role="img" aria-label="Gallery of the five basic VSEPR geometries plus bent and pyramidal shapes.">
+  <g stroke="#46515f" stroke-width="1.6" fill="none">
+    <!-- linear -->
+    <line x1="65" y1="56" x2="141" y2="56"/>
+    <!-- trigonal planar -->
+    <line x1="309" y1="56" x2="309" y2="22"/>
+    <line x1="309" y1="56" x2="280" y2="73"/>
+    <line x1="309" y1="56" x2="338" y2="73"/>
+    <!-- tetrahedral -->
+    <line x1="515" y1="56" x2="515" y2="22"/>
+    <line x1="515" y1="56" x2="481" y2="72"/>
+    <line x1="515" y1="56" x2="549" y2="72" stroke-width="4"/>
+    <line x1="515" y1="56" x2="508" y2="92" stroke-dasharray="3 3"/>
+    <!-- trigonal bipyramidal -->
+    <line x1="103" y1="186" x2="103" y2="146"/>
+    <line x1="103" y1="186" x2="103" y2="226"/>
+    <line x1="103" y1="186" x2="66" y2="198"/>
+    <line x1="103" y1="186" x2="140" y2="198" stroke-width="4"/>
+    <line x1="103" y1="186" x2="141" y2="166" stroke-dasharray="3 3"/>
+    <!-- octahedral -->
+    <line x1="309" y1="186" x2="309" y2="148"/>
+    <line x1="309" y1="186" x2="309" y2="224"/>
+    <line x1="309" y1="186" x2="262" y2="170"/>
+    <line x1="309" y1="186" x2="356" y2="204" stroke-width="4"/>
+    <line x1="309" y1="186" x2="262" y2="204" stroke-dasharray="3 3"/>
+    <line x1="309" y1="186" x2="356" y2="170"/>
+    <!-- bent / pyramidal pair -->
+    <line x1="487" y1="176" x2="458" y2="200"/>
+    <line x1="487" y1="176" x2="516" y2="200"/>
+    <line x1="565" y1="180" x2="565" y2="216"/>
+    <line x1="565" y1="180" x2="537" y2="198"/>
+    <line x1="565" y1="180" x2="593" y2="198" stroke-width="4"/>
+  </g>
+  <g fill="#be3a2b">
+    <circle cx="103" cy="56" r="5.5"/><circle cx="309" cy="56" r="5.5"/><circle cx="515" cy="56" r="5.5"/>
+    <circle cx="103" cy="186" r="5.5"/><circle cx="309" cy="186" r="5.5"/>
+    <circle cx="487" cy="176" r="5"/><circle cx="565" cy="180" r="5"/>
+  </g>
+  <g fill="#46515f">
+    <circle cx="65" cy="56" r="4"/><circle cx="141" cy="56" r="4"/>
+    <circle cx="309" cy="22" r="4"/><circle cx="280" cy="73" r="4"/><circle cx="338" cy="73" r="4"/>
+    <circle cx="515" cy="22" r="4"/><circle cx="481" cy="72" r="4"/><circle cx="549" cy="72" r="4"/><circle cx="508" cy="92" r="4"/>
+    <circle cx="103" cy="146" r="4"/><circle cx="103" cy="226" r="4"/><circle cx="66" cy="198" r="4"/><circle cx="140" cy="198" r="4"/><circle cx="141" cy="166" r="4"/>
+    <circle cx="309" cy="148" r="4"/><circle cx="309" cy="224" r="4"/><circle cx="262" cy="170" r="4"/><circle cx="356" cy="204" r="4"/><circle cx="262" cy="204" r="4"/><circle cx="356" cy="170" r="4"/>
+    <circle cx="458" cy="200" r="4"/><circle cx="516" cy="200" r="4"/>
+    <circle cx="565" cy="216" r="4"/><circle cx="537" cy="198" r="4"/><circle cx="593" cy="198" r="4"/>
+  </g>
+  <g fill="#1b5fd0">
+    <circle cx="481" cy="160" r="2.6"/><circle cx="489" cy="156" r="2.6"/>
+    <circle cx="493" cy="160" r="2.6"/><circle cx="501" cy="156" r="2.6"/>
+    <circle cx="561" cy="162" r="2.6"/><circle cx="569" cy="162" r="2.6"/>
+  </g>
+  <g class="lbl-s t-k" text-anchor="middle">
+    <text x="103" y="110">Linear &middot; 180&deg;</text>
+    <text x="309" y="110">Trigonal planar &middot; 120&deg;</text>
+    <text x="515" y="110">Tetrahedral &middot; 109.5&deg;</text>
+    <text x="103" y="252">Trigonal bipyramidal</text>
+    <text x="309" y="252">Octahedral &middot; 90&deg;</text>
+    <text x="525" y="252">Bent &amp; pyramidal</text>
+  </g>
+  <g class="lbl-s t-i" text-anchor="middle">
+    <text x="103" y="124">BeCl&#8322;, CO&#8322;</text>
+    <text x="309" y="124">BF&#8323;, BCl&#8323;</text>
+    <text x="515" y="124">CH&#8324;, NH&#8324;&#8314;</text>
+    <text x="103" y="266">PCl&#8325; &middot; 90&deg; and 120&deg;</text>
+    <text x="309" y="266">SF&#8326;</text>
+    <text x="525" y="266">H&#8322;O 104.5&deg; &middot; NH&#8323; 107&deg;</text>
+  </g>
+</svg>
+<figcaption><b>The five basic geometries, plus the two commonest lone-pair shapes.</b> Blue dots are lone pairs. The geometry is set by the <i>total</i> number of electron pairs; the <b>shape</b> is what you see when only the atoms are drawn.</figcaption>
+</figure>
+
+<h3>4.1 The complete VSEPR table</h3>
+<table class="tight">
+<thead><tr><th>Type</th><th>Bond pairs</th><th>Lone pairs</th><th>Electron-pair geometry</th><th><b>Molecular shape</b></th><th>Example (angle)</th></tr></thead>
+<tbody>
+<tr><td>AB<sub>2</sub></td><td class="c">2</td><td class="c">0</td><td>Linear</td><td><b>Linear</b></td><td>BeCl<sub>2</sub>, CO<sub>2</sub> (180&deg;)</td></tr>
+<tr><td>AB<sub>3</sub></td><td class="c">3</td><td class="c">0</td><td>Trigonal planar</td><td><b>Trigonal planar</b></td><td>BF<sub>3</sub> (120&deg;)</td></tr>
+<tr><td>AB<sub>2</sub>E</td><td class="c">2</td><td class="c">1</td><td>Trigonal planar</td><td><b>Bent</b></td><td>SO<sub>2</sub> (119.5&deg;), SnCl<sub>2</sub></td></tr>
+<tr><td>AB<sub>4</sub></td><td class="c">4</td><td class="c">0</td><td>Tetrahedral</td><td><b>Tetrahedral</b></td><td>CH<sub>4</sub> (109.5&deg;)</td></tr>
+<tr><td>AB<sub>3</sub>E</td><td class="c">3</td><td class="c">1</td><td>Tetrahedral</td><td><b>Trigonal pyramidal</b></td><td>NH<sub>3</sub> (107&deg;)</td></tr>
+<tr><td>AB<sub>2</sub>E<sub>2</sub></td><td class="c">2</td><td class="c">2</td><td>Tetrahedral</td><td><b>Bent</b></td><td>H<sub>2</sub>O (104.5&deg;)</td></tr>
+<tr><td>AB<sub>5</sub></td><td class="c">5</td><td class="c">0</td><td>Trigonal bipyramidal</td><td><b>Trigonal bipyramidal</b></td><td>PCl<sub>5</sub> (90&deg;, 120&deg;)</td></tr>
+<tr><td>AB<sub>4</sub>E</td><td class="c">4</td><td class="c">1</td><td>Trigonal bipyramidal</td><td><b>See-saw</b></td><td>SF<sub>4</sub></td></tr>
+<tr><td>AB<sub>3</sub>E<sub>2</sub></td><td class="c">3</td><td class="c">2</td><td>Trigonal bipyramidal</td><td><b>T-shaped</b></td><td>ClF<sub>3</sub></td></tr>
+<tr><td>AB<sub>2</sub>E<sub>3</sub></td><td class="c">2</td><td class="c">3</td><td>Trigonal bipyramidal</td><td><b>Linear</b></td><td>XeF<sub>2</sub>, I<sub>3</sub><sup>&minus;</sup></td></tr>
+<tr><td>AB<sub>6</sub></td><td class="c">6</td><td class="c">0</td><td>Octahedral</td><td><b>Octahedral</b></td><td>SF<sub>6</sub> (90&deg;)</td></tr>
+<tr><td>AB<sub>5</sub>E</td><td class="c">5</td><td class="c">1</td><td>Octahedral</td><td><b>Square pyramidal</b></td><td>BrF<sub>5</sub></td></tr>
+<tr><td>AB<sub>4</sub>E<sub>2</sub></td><td class="c">4</td><td class="c">2</td><td>Octahedral</td><td><b>Square planar</b></td><td>XeF<sub>4</sub></td></tr>
+</tbody>
+</table>
+<div class="mem"><div class="mh">Memory hook</div>In a <b>trigonal bipyramid</b>, lone pairs always take <b>equatorial</b> positions (only two neighbours at 90&deg; instead of three), which is why SF<sub>4</sub> is a see-saw and ClF<sub>3</sub> is T-shaped. In an <b>octahedron</b> the second lone pair goes <b>trans</b> to the first, which is why XeF<sub>4</sub> is square planar rather than see-saw.</div>
+
+<h3>4.2 Bond-angle contraction</h3>
+<div class="key">CH<sub>4</sub> (109.5&deg;) &gt; NH<sub>3</sub> (107&deg;) &gt; H<sub>2</sub>O (104.5&deg;). All three are sp<sup>3</sup> hybridised with four electron pairs; each lone pair added squeezes the bonding pairs closer together by about 2.5&deg;.</div>
+<p>Two further comparisons worth carrying: <b>NH<sub>3</sub> (107&deg;) &gt; NF<sub>3</sub> (102&deg;)</b>, because the more electronegative fluorine pulls the bonding pairs away from nitrogen, reducing their mutual repulsion; and <b>NH<sub>3</sub> (107&deg;) &gt; PH<sub>3</sub> (93.6&deg;)</b>, because the larger phosphorus atom uses nearly pure p orbitals, so the angle falls towards 90&deg;.</p>
+
+<h2>5 · Valence Bond Theory and Hybridisation</h2>
+<p>VBT explains a covalent bond as the <b>overlap of two half-filled atomic orbitals</b> with opposite spins. Greater overlap gives a stronger bond, and the bond forms along the direction of maximum overlap — which is where directional character, and therefore shape, comes from.</p>
+
+<h3>5.1 Sigma and pi bonds</h3>
+<table>
+<thead><tr><th></th><th>&sigma; (sigma) bond</th><th>&pi; (pi) bond</th></tr></thead>
+<tbody>
+<tr><td>Overlap</td><td><b>Head-on (axial)</b>: s–s, s–p, p–p along the axis</td><td><b>Sideways (lateral)</b>: p–p perpendicular to the axis</td></tr>
+<tr><td>Strength</td><td>Stronger — overlap is larger</td><td>Weaker — overlap is smaller</td></tr>
+<tr><td>Rotation</td><td>Free rotation possible about the bond</td><td><b>Restricted</b> — this is the origin of geometrical isomerism</td></tr>
+<tr><td>Occurrence</td><td>Always the <b>first</b> bond between two atoms</td><td>Only in addition to a &sigma; bond</td></tr>
+</tbody>
+</table>
+<p>So a double bond is 1&sigma; + 1&pi;, and a triple bond is 1&sigma; + 2&pi;. In N&equiv;N (946 kJ mol<sup>&minus;1</sup>) the &sigma; is formed by head-on 2p<sub>z</sub> overlap and the two &pi; bonds by sideways 2p<sub>x</sub> and 2p<sub>y</sub> overlap.</p>
+
+<h3>5.2 Hybridisation</h3>
+<div class="key"><b>Hybridisation</b> is the intermixing of atomic orbitals of <b>nearly equal energy</b> belonging to the same atom, to give an equal number of <b>identical hybrid orbitals</b> of equal energy and shape. Hybrid orbitals are better directed and overlap more effectively, so they form stronger bonds.</div>
+<p><b>Conditions:</b> orbitals hybridised must belong to the same atom or ion, have comparable energies, and — importantly — hybridisation does <i>not</i> require the orbitals to be half filled; filled and empty orbitals may take part.</p>
+<table class="tight">
+<thead><tr><th>Hybridisation</th><th>Orbitals mixed</th><th>Geometry</th><th>Angle</th><th>s character</th><th>Examples</th></tr></thead>
+<tbody>
+<tr><td><b>sp</b></td><td>1 s + 1 p</td><td>Linear</td><td class="c">180&deg;</td><td class="c">50%</td><td>BeCl<sub>2</sub>, C<sub>2</sub>H<sub>2</sub>, CO<sub>2</sub></td></tr>
+<tr><td><b>sp<sup>2</sup></b></td><td>1 s + 2 p</td><td>Trigonal planar</td><td class="c">120&deg;</td><td class="c">33%</td><td>BF<sub>3</sub>, C<sub>2</sub>H<sub>4</sub>, SO<sub>2</sub></td></tr>
+<tr><td><b>sp<sup>3</sup></b></td><td>1 s + 3 p</td><td>Tetrahedral</td><td class="c">109.5&deg;</td><td class="c">25%</td><td>CH<sub>4</sub>, NH<sub>3</sub>, H<sub>2</sub>O, NH<sub>4</sub><sup>+</sup></td></tr>
+<tr><td><b>sp<sup>3</sup>d</b></td><td>1 s + 3 p + 1 d</td><td>Trigonal bipyramidal</td><td class="c">90&deg;, 120&deg;</td><td class="c">—</td><td>PCl<sub>5</sub>, SF<sub>4</sub>, ClF<sub>3</sub></td></tr>
+<tr><td><b>sp<sup>3</sup>d<sup>2</sup></b></td><td>1 s + 3 p + 2 d</td><td>Octahedral</td><td class="c">90&deg;</td><td class="c">—</td><td>SF<sub>6</sub>, XeF<sub>4</sub></td></tr>
+</tbody>
+</table>
+<div class="exam"><div class="xh">A consequence worth quoting</div>Greater <b>s character</b> means the hybrid orbital is held closer to the nucleus, so the bond is <b>shorter</b> and the atom behaves as more electronegative. This is why C–H bond length falls in the order sp<sup>3</sup> (ethane, 109 pm) &gt; sp<sup>2</sup> (ethene, 107 pm) &gt; sp (ethyne, 106 pm), and why ethyne is acidic enough to react with sodium while ethane is not.</div>
+
+<div class="deriv">
+<div class="dh"><span class="tag">METHOD 2</span> &nbsp;Finding the hybridisation of any central atom</div>
+<ol>
+<li>Compute the steric number &nbsp;$H = \tfrac12\left[V + M - C + A\right]$, where<br>
+$V$ = valence electrons of the <b>central</b> atom, $M$ = number of <b>monovalent</b> atoms attached (H, F, Cl…), $C$ = charge if a cation, $A$ = charge if an anion.</li>
+<li>Read off: $H = 2$ &rarr; sp, $3$ &rarr; sp<sup>2</sup>, $4$ &rarr; sp<sup>3</sup>, $5$ &rarr; sp<sup>3</sup>d, $6$ &rarr; sp<sup>3</sup>d<sup>2</sup>.</li>
+<li>Divalent atoms such as O and S attached to the centre contribute <b>nothing</b> to $M$ — they take their electrons back through a double bond.</li>
+</ol>
+<div class="res">NH<sub>4</sub><sup>+</sup>: $\tfrac12[5+4-1] = 4$ &rarr; sp<sup>3</sup>. &nbsp; SO<sub>4</sub><sup>2&minus;</sup>: $\tfrac12[6+0+2] = 4$ &rarr; sp<sup>3</sup>. &nbsp; ClF<sub>3</sub>: $\tfrac12[7+3] = 5$ &rarr; sp<sup>3</sup>d. &nbsp; XeF<sub>4</sub>: $\tfrac12[8+4] = 6$ &rarr; sp<sup>3</sup>d<sup>2</sup>. &nbsp; CO<sub>2</sub>: $\tfrac12[4+0] = 2$ &rarr; sp.</div>
+</div>
+
+<div class="trap"><div class="th">Geometry is not the same as shape</div>
+<p>The steric number gives the <b>electron-pair geometry</b>. The <b>shape</b> is what remains when the lone pairs are made invisible. H<sub>2</sub>O is sp<sup>3</sup> with a <i>tetrahedral geometry</i> but a <b>bent shape</b>; XeF<sub>4</sub> is sp<sup>3</sup>d<sup>2</sup> with an <i>octahedral geometry</i> but a <b>square planar shape</b>. Answer whichever the question asks for, and name the other to be safe.</p></div>
+
+<h2>6 · Molecular Orbital Theory</h2>
+<p>Atomic orbitals of the combining atoms merge into <b>molecular orbitals</b> that belong to the molecule as a whole. Two atomic orbitals combining by <b>LCAO</b> always give two molecular orbitals: one <b>bonding</b> (lower energy, additive combination, electron density between the nuclei) and one <b>antibonding</b> (higher energy, subtractive, with a node between the nuclei).</p>
+<div class="key"><b>Conditions for combining:</b> the atomic orbitals must have (i) <b>comparable energies</b>, (ii) the <b>same symmetry</b> about the molecular axis, and (iii) <b>sufficient overlap</b>.</div>
+<div class="key"><b>Energy order.</b><br>
+For B<sub>2</sub>, C<sub>2</sub>, N<sub>2</sub> (<b>14 electrons or fewer</b>): &nbsp;&sigma;1s &lt; &sigma;*1s &lt; &sigma;2s &lt; &sigma;*2s &lt; <b>&pi;2p<sub>x</sub> = &pi;2p<sub>y</sub> &lt; &sigma;2p<sub>z</sub></b> &lt; &pi;*2p<sub>x</sub> = &pi;*2p<sub>y</sub> &lt; &sigma;*2p<sub>z</sub><br>
+For O<sub>2</sub>, F<sub>2</sub>, Ne<sub>2</sub> (<b>more than 14</b>): the two swap — &nbsp;<b>&sigma;2p<sub>z</sub> &lt; &pi;2p<sub>x</sub> = &pi;2p<sub>y</sub></b>.<br>
+<i>Reason:</i> in the lighter atoms the 2s and 2p levels are close enough to mix, and s–p mixing pushes &sigma;2p<sub>z</sub> above the &pi; orbitals.</div>
+
+<figure>
+<svg class="dg" viewBox="0 0 600 402" role="img" aria-label="Molecular orbital energy level diagram for the oxygen molecule showing two unpaired electrons in the pi antibonding orbitals.">
+  <g stroke="#16191d" stroke-width="1.8">
+    <line x1="272" y1="60" x2="328" y2="60"/>
+    <line x1="250" y1="112" x2="286" y2="112"/><line x1="314" y1="112" x2="350" y2="112"/>
+    <line x1="250" y1="202" x2="286" y2="202"/><line x1="314" y1="202" x2="350" y2="202"/>
+    <line x1="272" y1="232" x2="328" y2="232"/>
+    <line x1="272" y1="282" x2="328" y2="282"/>
+    <line x1="272" y1="356" x2="328" y2="356"/>
+  </g>
+  <g stroke="#46515f" stroke-width="1.5">
+    <line x1="48" y1="162" x2="76" y2="162"/><line x1="82" y1="162" x2="110" y2="162"/><line x1="116" y1="162" x2="144" y2="162"/>
+    <line x1="456" y1="162" x2="484" y2="162"/><line x1="490" y1="162" x2="518" y2="162"/><line x1="524" y1="162" x2="552" y2="162"/>
+    <line x1="66" y1="320" x2="126" y2="320"/>
+    <line x1="474" y1="320" x2="534" y2="320"/>
+  </g>
+  <g class="lbl-s t-i" text-anchor="middle">
+    <text x="96" y="30">O atom</text>
+    <text x="300" y="30">O&#8322; molecule</text>
+    <text x="504" y="30">O atom</text>
+    <text x="40" y="166" text-anchor="end">2p</text><text x="560" y="166" text-anchor="start">2p</text>
+    <text x="58" y="324" text-anchor="end">2s</text><text x="542" y="324" text-anchor="start">2s</text>
+  </g>
+  <g class="lbl-s t-k" text-anchor="start">
+    <text x="360" y="64">&sigma;*2p<tspan font-size="8" dy="2.5">z</tspan></text>
+    <text x="360" y="116">&pi;*2p<tspan font-size="8" dy="2.5">x</tspan><tspan dy="-2.5">&#160;&#160;&pi;*2p</tspan><tspan font-size="8" dy="2.5">y</tspan></text>
+    <text x="360" y="206">&pi;2p<tspan font-size="8" dy="2.5">x</tspan><tspan dy="-2.5">&#160;&#160;&pi;2p</tspan><tspan font-size="8" dy="2.5">y</tspan></text>
+    <text x="360" y="236">&sigma;2p<tspan font-size="8" dy="2.5">z</tspan></text>
+    <text x="360" y="286">&sigma;*2s</text>
+    <text x="360" y="360">&sigma;2s</text>
+  </g>
+  <g class="lbl t-f" text-anchor="middle" font-size="12">
+    <text x="62" y="159">&#8593;&#8595;</text><text x="96" y="159">&#8593;</text><text x="130" y="159">&#8593;</text>
+    <text x="470" y="159">&#8593;&#8595;</text><text x="504" y="159">&#8593;</text><text x="538" y="159">&#8593;</text>
+    <text x="96" y="317">&#8593;&#8595;</text><text x="504" y="317">&#8593;&#8595;</text>
+  </g>
+  <g class="lbl t-n" text-anchor="middle" font-size="12">
+    <text x="300" y="353">&#8593;&#8595;</text>
+    <text x="300" y="279">&#8593;&#8595;</text>
+    <text x="300" y="229">&#8593;&#8595;</text>
+    <text x="268" y="199">&#8593;&#8595;</text><text x="332" y="199">&#8593;&#8595;</text>
+    <text x="268" y="109">&#8593;</text><text x="332" y="109">&#8593;</text>
+  </g>
+  <text class="lbl-s t-f" x="180" y="96" text-anchor="middle">two unpaired</text>
+  <text class="lbl-s t-f" x="180" y="110" text-anchor="middle">electrons &rArr;</text>
+  <text class="lbl-s t-f" x="180" y="124" text-anchor="middle">PARAMAGNETIC</text>
+  <text class="lbl-s t-i" x="300" y="388" text-anchor="middle">N<tspan font-size="8" dy="2.5">b</tspan><tspan dy="-2.5"> = 8, N</tspan><tspan font-size="8" dy="2.5">a</tspan><tspan dy="-2.5"> = 4 (valence orbitals) &#8658; bond order = (8 &minus; 4)/2 = 2, a double bond</tspan></text>
+</svg>
+<figcaption><b>MO diagram for O<sub>2</sub></b> (valence orbitals; the 1s electrons are written KK). The two unpaired electrons in the degenerate &pi;* orbitals — placed there by Hund's rule — explain the <b>paramagnetism of oxygen</b>, which Lewis and valence bond theories both get wrong. For N<sub>2</sub> the &pi;2p and &sigma;2p levels are the other way round.</figcaption>
+</figure>
+
+<div class="key"><b>Bond order</b> $= \dfrac{N_b - N_a}{2}$, where $N_b$ and $N_a$ are the numbers of bonding and antibonding electrons. A <b>positive</b> bond order means the molecule exists; <b>zero or negative</b> means it does not. Bond order &uarr; &rArr; bond enthalpy &uarr; and bond length &darr;.</div>
+
+<table class="tight">
+<thead><tr><th>Species</th><th>Valence electrons</th><th>Bond order</th><th>Magnetic behaviour</th><th>Comment</th></tr></thead>
+<tbody>
+<tr><td>H<sub>2</sub></td><td class="c">2</td><td class="c">1</td><td>Diamagnetic</td><td>&sigma;1s<sup>2</sup></td></tr>
+<tr><td>He<sub>2</sub></td><td class="c">4</td><td class="c"><b>0</b></td><td>—</td><td><b>Does not exist</b></td></tr>
+<tr><td>Li<sub>2</sub></td><td class="c">2 (valence)</td><td class="c">1</td><td>Diamagnetic</td><td>Exists in the vapour</td></tr>
+<tr><td>Be<sub>2</sub></td><td class="c">4</td><td class="c"><b>0</b></td><td>—</td><td>Does not exist</td></tr>
+<tr><td>B<sub>2</sub></td><td class="c">6</td><td class="c">1</td><td><b>Paramagnetic</b></td><td>One electron in each of &pi;2p<sub>x</sub>, &pi;2p<sub>y</sub></td></tr>
+<tr><td>C<sub>2</sub></td><td class="c">8</td><td class="c">2</td><td>Diamagnetic</td><td>Both bonds are &pi; — no &sigma; from 2p</td></tr>
+<tr><td>N<sub>2</sub></td><td class="c">10</td><td class="c"><b>3</b></td><td>Diamagnetic</td><td>Shortest, strongest — 946 kJ mol<sup>&minus;1</sup></td></tr>
+<tr><td>O<sub>2</sub></td><td class="c">12</td><td class="c">2</td><td><b>Paramagnetic</b></td><td>Two unpaired &pi;* electrons</td></tr>
+<tr><td>F<sub>2</sub></td><td class="c">14</td><td class="c">1</td><td>Diamagnetic</td><td>Weak single bond</td></tr>
+<tr><td>Ne<sub>2</sub></td><td class="c">16</td><td class="c"><b>0</b></td><td>—</td><td>Does not exist</td></tr>
+</tbody>
+</table>
+<div class="ex"><div class="eh">Worked example 2 — the oxygen family, a favourite ordering question</div>
+<p>Adding electrons to O<sub>2</sub> puts them into <b>antibonding</b> &pi;* orbitals, so each one lowers the bond order:</p>
+<table class="tight">
+<thead><tr><th>Species</th><th class="c">O<sub>2</sub><sup>+</sup></th><th class="c">O<sub>2</sub></th><th class="c">O<sub>2</sub><sup>&minus;</sup></th><th class="c">O<sub>2</sub><sup>2&minus;</sup></th></tr></thead>
+<tbody>
+<tr><td>Valence electrons</td><td class="c">11</td><td class="c">12</td><td class="c">13</td><td class="c">14</td></tr>
+<tr><td>Bond order</td><td class="c">2.5</td><td class="c">2</td><td class="c">1.5</td><td class="c">1</td></tr>
+<tr><td>Unpaired electrons</td><td class="c">1</td><td class="c">2</td><td class="c">1</td><td class="c">0</td></tr>
+</tbody>
+</table>
+<p><b>Bond length:</b> O<sub>2</sub><sup>+</sup> &lt; O<sub>2</sub> &lt; O<sub>2</sub><sup>&minus;</sup> &lt; O<sub>2</sub><sup>2&minus;</sup>. &nbsp;<b>Stability</b> runs the other way. <span class="ans">O<sub>2</sub><sup>2&minus;</sup> is the only diamagnetic member.</span></p></div>
+
+<h2>7 · Hydrogen Bonding</h2>
+<div class="key">A <b>hydrogen bond</b> is the electrostatic attraction between a hydrogen atom covalently bonded to a highly electronegative, small atom (<b>F, O or N</b>) and a lone pair on another such atom. Strength 10–40 kJ mol<sup>&minus;1</sup> — far weaker than a covalent bond (~400) but far stronger than ordinary van der Waals forces.</div>
+<table>
+<thead><tr><th></th><th>Intermolecular</th><th>Intramolecular</th></tr></thead>
+<tbody>
+<tr><td>Between</td><td>Two <b>different</b> molecules</td><td>Two groups within the <b>same</b> molecule</td></tr>
+<tr><td>Effect</td><td>Associates molecules &rArr; <b>raises</b> melting point, boiling point, viscosity and solubility in water</td><td>Ties the molecule up internally &rArr; <b>lowers</b> boiling point and water solubility</td></tr>
+<tr><td>Examples</td><td>H<sub>2</sub>O, HF, NH<sub>3</sub>, alcohols, carboxylic acid dimers, <b>p</b>-nitrophenol</td><td><b>o</b>-nitrophenol, salicylaldehyde, salicylic acid</td></tr>
+</tbody>
+</table>
+<div class="exam"><div class="xh">The two answers this always demands</div>
+<p><b>Why is ice less dense than water?</b> In ice each oxygen is tetrahedrally hydrogen-bonded to four others, producing an <b>open cage-like structure</b> with large empty spaces. On melting, some of these hydrogen bonds break, the cage collapses and the molecules pack closer — so water at 273 K is denser than ice, and ice floats.</p>
+<p><b>Why does o-nitrophenol boil lower than p-nitrophenol?</b> The <i>ortho</i> isomer forms an <b>intramolecular</b> hydrogen bond (the groups are adjacent), so its molecules are not associated with one another and it is volatile. The <i>para</i> isomer can only form <b>intermolecular</b> hydrogen bonds, associating the molecules and raising the boiling point — and making it far more soluble in water.</p></div>
+<div class="trap"><div class="th">The subtle ordering</div>
+<p>Hydrogen bond <b>strength</b> follows electronegativity: <b>HF &gt; H<sub>2</sub>O &gt; NH<sub>3</sub></b>. But boiling point follows <b>H<sub>2</sub>O &gt; HF &gt; NH<sub>3</sub></b>, because each water molecule has <b>two</b> hydrogens to donate <i>and</i> <b>two</b> lone pairs to accept, so it forms about four hydrogen bonds, whereas HF has only one hydrogen to donate. Total hydrogen bonding beats individual strength.</p></div>
+
+<h2>8 · Where marks are lost</h2>
+<div class="trap">
+<div class="th">The twelve traps of Chapter 4</div>
+<ol>
+<li><b>Geometry &ne; shape.</b> H<sub>2</sub>O: tetrahedral geometry, bent shape. XeF<sub>4</sub>: octahedral geometry, square planar shape.</li>
+<li><b>Lone pairs go equatorial in a trigonal bipyramid</b> and <i>trans</i> in an octahedron. This is why SF<sub>4</sub> is a see-saw and XeF<sub>4</sub> is square planar.</li>
+<li><b>NF<sub>3</sub> has a smaller dipole moment than NH<sub>3</sub></b> — bond dipoles oppose the lone-pair dipole in NF<sub>3</sub> and reinforce it in NH<sub>3</sub>.</li>
+<li><b>A molecule with polar bonds can be non-polar</b> if it is symmetrical: CO<sub>2</sub>, BF<sub>3</sub>, CCl<sub>4</sub>.</li>
+<li><b>Resonance forms do not interconvert</b> and do not exist separately; nuclei stay put, only electrons are redistributed.</li>
+<li><b>O<sub>2</sub> is paramagnetic</b> and only MOT explains it. Do not answer this with a Lewis structure.</li>
+<li><b>The MO order changes at 14 electrons.</b> Use &pi; below &sigma;2p for B<sub>2</sub>, C<sub>2</sub>, N<sub>2</sub>; &sigma;2p below &pi; for O<sub>2</sub>, F<sub>2</sub>.</li>
+<li><b>Adding electrons to O<sub>2</sub> weakens it</b>, because they enter antibonding orbitals.</li>
+<li><b>Formal charge is bookkeeping</b>, not a real charge, and the formal charges must sum to the ion's overall charge.</li>
+<li><b>Bond angle order NH<sub>3</sub> &gt; NF<sub>3</sub> and NH<sub>3</sub> &gt; PH<sub>3</sub></b> — electronegativity of the surrounding atom, and size of the central atom, respectively.</li>
+<li><b>Hybridisation does not need half-filled orbitals</b>, and the number of hybrid orbitals always equals the number of atomic orbitals mixed.</li>
+<li><b>An intramolecular hydrogen bond lowers the boiling point</b>; only the intermolecular kind raises it.</li>
+</ol>
+</div>
+
+<p class="footer-note">Chapter 4 of the rationalised NCERT (2023&ndash;24 onward). Bond enthalpies in kJ mol<sup>&minus;1</sup>, bond lengths in pm, dipole moments in debye.</p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$",  right: "$",  display: false }
+    ],
+    throwOnError: false, errorColor: "#cc0000", strict: false, trust: false
+  });
+  document.body.setAttribute("data-katex-done", "1");
+});
+</script>
+</body>
+</html>
