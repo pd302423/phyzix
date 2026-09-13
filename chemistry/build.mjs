@@ -34,6 +34,7 @@ const TITLES = {
   ch4: "Chemical Bonding and Molecular Structure — Chapter 4 Notes",
   ch7: "Redox Reactions — Chapter 7 Notes",
   formulas: "All Formulas — Chemistry Chapters 1, 2, 3, 4 and 7",
+  compendium: "CBSE Class 11 Chemistry Compendium — Chapters 1, 2, 3, 4 and 7",
 };
 
 const CDN = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist";

@@ -208,3 +208,31 @@ table.fs-t th, table.fs-t td { padding: 0.9mm 1.5mm; }
 .deflist { margin: 2mm 0; }
 .deflist div { margin-bottom: 1.4mm; break-inside: avoid; }
 .deflist b { color: #16191d; }
+
+/* ================= compendium additions ================= */
+.pagebreak { break-before: page; page-break-before: always; height: 0; }
+.cover { padding-top: 6mm; }
+.cover .kicker {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 10pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: #9c3a1f; margin-bottom: 4mm;
+}
+.cover h1 {
+  font-size: 30pt; line-height: 1.05; border-bottom: 3pt solid #16191d;
+  padding-bottom: 4mm; margin-bottom: 5mm;
+}
+.cover .lede { font-size: 12pt; color: #2b3138; margin-bottom: 6mm; max-width: 150mm; }
+.toc { border: 1pt solid #b9c0c7; padding: 4mm 6mm; margin: 5mm 0; background: #fdfcfa; }
+.toc h3 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 9.5pt; letter-spacing: 1.6px; text-transform: uppercase; color: #4a5158;
+  border: 0; margin: 0 0 3mm; padding: 0;
+}
+.toc ol { margin: 0; padding-left: 0; list-style: none; }
+.toc li { margin-bottom: 2.6mm; padding-left: 16mm; text-indent: -16mm; }
+.toc .cn {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; color: #9c3a1f; display: inline-block; width: 14mm; text-indent: 0;
+}
+.toc .ct { font-weight: 700; }
+.toc .cd { color: #4a5158; font-size: 9.8pt; }
