@@ -35,6 +35,7 @@ const TITLES = {
   ch7: "Redox Reactions — Chapter 7 Notes",
   formulas: "All Formulas — Chemistry Chapters 1, 2, 3, 4 and 7",
   compendium: "CBSE Class 11 Chemistry Compendium — Chapters 1, 2, 3, 4 and 7",
+  highyield: "High-Yield Notes — Every Fact With Its Mechanism (Ch 1, 2, 3, 4, 7)",
   cheatsheet: "Chemistry Cheat Sheet — Chapters 1, 2, 3, 4 and 7",
 };
 

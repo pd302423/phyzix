@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>High-Yield Notes — Every Fact With Its Mechanism (Ch 1, 2, 3, 4, 7)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+<style>
+@page { size: A4 portrait; margin: 16mm 15mm 18mm 15mm; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  font-family: Georgia, "DejaVu Serif", "Times New Roman", serif;
+  font-size: 10.8pt; line-height: 1.5; color: #16191d; background: #fff;
+  margin: 0; hyphens: none;
+}
+.sans { font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif; }
+
+h1 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 21pt; line-height: 1.15; margin: 0 0 3mm; letter-spacing: -.2px;
+  border-bottom: 2.5pt solid #16191d; padding-bottom: 3mm;
+}
+h1 .ch { display: block; font-size: 10pt; font-weight: 600; letter-spacing: 1.6px;
+  text-transform: uppercase; color: #9c3a1f; margin-bottom: 2mm; }
+.subtitle { font-size: 10pt; color: #4a5158; margin: 0 0 7mm; font-style: italic; }
+
+h2 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 14pt; margin: 8mm 0 3mm; padding: 1.6mm 3mm;
+  background: #16191d; color: #fff; border-radius: 2pt;
+  break-after: avoid; page-break-after: avoid;
+}
+h3 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 11.8pt; margin: 6mm 0 2mm; color: #16191d;
+  border-bottom: 1pt solid #b9c0c7; padding-bottom: 1mm;
+  break-after: avoid; page-break-after: avoid;
+}
+h4 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 10.6pt; margin: 4.5mm 0 1.5mm; color: #2b3138;
+  break-after: avoid; page-break-after: avoid;
+}
+p { margin: 0 0 2.6mm; }
+ul, ol { margin: 0 0 3mm; padding-left: 6mm; }
+li { margin-bottom: 1.4mm; }
+b, strong { font-weight: 700; }
+em, i { font-style: italic; }
+
+/* ---- derivation box ---- */
+.deriv {
+  border: 1pt solid #16191d; border-left: 3.5pt solid #9c3a1f;
+  background: #fdfcfa; padding: 3mm 4mm; margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.deriv .dh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.8pt; margin-bottom: 2mm; color: #16191d;
+}
+.deriv .dh .tag { color: #9c3a1f; font-size: 9pt; letter-spacing: 1px; }
+.deriv ol { margin: 0; padding-left: 6mm; }
+.deriv ol li { margin-bottom: 1.8mm; }
+.deriv .res {
+  margin-top: 2.5mm; padding-top: 2mm; border-top: 1pt dashed #a8b0b8;
+  font-weight: 600;
+}
+
+/* ---- worked example ---- */
+.ex {
+  border: 1pt solid #1d5f4a; background: #f3f9f6; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.ex .eh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #1d5f4a; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.ans { font-weight: 700; color: #1d5f4a; }
+
+/* ---- traps ---- */
+.trap {
+  border: 1pt solid #a5281b; background: #fdf4f3; padding: 3mm 4mm;
+  margin: 4mm 0; border-radius: 2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.trap .th {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 10.2pt; color: #a5281b; margin-bottom: 1.8mm;
+  text-transform: uppercase; letter-spacing: .6px;
+}
+.trap ol { margin: 0; padding-left: 6mm; }
+
+/* ---- key result strip ---- */
+.key {
+  background: #eef1f4; border-left: 3pt solid #2b3138;
+  padding: 2.2mm 3.5mm; margin: 3mm 0; border-radius: 0 2pt 2pt 0;
+  break-inside: avoid;
+}
+.key b { color: #16191d; }
+
+/* ---- exam callout ---- */
+.exam {
+  border: 1pt dashed #7a5c00; background: #fdfaef; padding: 2.6mm 3.5mm;
+  margin: 3.5mm 0; border-radius: 2pt; font-size: 10.2pt;
+  break-inside: avoid;
+}
+.exam .xh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 9.4pt; color: #7a5c00; letter-spacing: .8px;
+  text-transform: uppercase; margin-bottom: 1.2mm;
+}
+
+/* ---- tables ---- */
+table {
+  border-collapse: collapse; width: 100%; font-size: 9.8pt; margin: 3mm 0;
+  break-inside: avoid; page-break-inside: avoid;
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+}
+th, td { border: 0.7pt solid #98a1a9; padding: 1.4mm 2.2mm; text-align: left; vertical-align: top; }
+th { background: #e4e8ec; font-weight: 700; }
+tbody tr:nth-child(even) { background: #f6f8f9; }
+td.c, th.c { text-align: center; }
+
+/* ---- figures ---- */
+figure { margin: 4mm 0; text-align: center; break-inside: avoid; page-break-inside: avoid; }
+svg.dg { max-width: 100%; height: auto; }
+figcaption { font-size: 9.6pt; color: #4a5158; margin-top: 1.5mm; font-style: italic; text-align: left; }
+svg .s-n{stroke:#1b5fd0} svg .t-n{fill:#1b5fd0}
+svg .s-f{stroke:#be3a2b} svg .t-f{fill:#be3a2b}
+svg .s-w{stroke:#69747f} svg .t-w{fill:#69747f}
+svg .s-a{stroke:#0b7355} svg .t-a{fill:#0b7355}
+svg .s-t{stroke:#6a45b0} svg .t-t{fill:#6a45b0}
+svg .s-i{stroke:#6f7a88} svg .t-i{fill:#6f7a88}
+svg .arw{stroke-width:2;fill:none;stroke-linecap:round}
+svg .thin{stroke-width:1.3}
+svg .dash{stroke-dasharray:4 3}
+svg .body{fill:#e7ecf1;stroke:#46515f;stroke-width:1.4}
+svg .ghost{fill:#e7ecf1;stroke:#46515f;stroke-width:1.3;stroke-dasharray:5 3}
+svg .gnd{stroke:#46515f;stroke-width:2;fill:none}
+svg .lbl{font-size:13px;font-weight:600;font-family:"DejaVu Sans",sans-serif}
+svg .lbl-s{font-size:10.5px;font-weight:500;font-family:"DejaVu Sans",sans-serif}
+svg .t-k{fill:#2b3138}
+
+hr.sep { border: 0; border-top: 1pt solid #d5dbe0; margin: 6mm 0; }
+.katex { font-size: 1.02em; }
+.katex-display { margin: 2.5mm 0; break-inside: avoid; }
+.footer-note { font-size: 9.4pt; color: #6b737b; font-style: italic; margin-top: 8mm;
+  border-top: 1pt solid #d5dbe0; padding-top: 2.5mm; }
+
+
+/* ================= chemistry-specific additions ================= */
+
+/* ---- mnemonic / memory hook ---- */
+.mem {
+  border: 1pt solid #26468c; background: #f2f5fb; padding: 2.6mm 3.5mm;
+  margin: 3.5mm 0; border-radius: 2pt; font-size: 10.2pt;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.mem .mh {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; font-size: 9.4pt; color: #26468c; letter-spacing: .8px;
+  text-transform: uppercase; margin-bottom: 1.2mm;
+}
+
+/* ---- centred chemical equation ---- */
+.rxn {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  text-align: center; font-size: 10.6pt; margin: 3mm 0; line-height: 1.7;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.rxn .cond { font-size: 8.8pt; color: #4a5158; }
+
+/* ---- oxidation-number annotation under a species ---- */
+.ox { color: #9c3a1f; font-weight: 700; }
+.red { color: #1b5fd0; font-weight: 700; }
+
+/* tighter tables for the long trend tables */
+table.tight { font-size: 9.2pt; }
+table.tight th, table.tight td { padding: 1.1mm 1.6mm; }
+
+/* ================= formula-sheet additions ================= */
+.fs h2 { font-size: 13pt; margin: 6mm 0 2.5mm; }
+.fs h3 { font-size: 11pt; margin: 4mm 0 1.5mm; }
+.fs p { margin: 0 0 2mm; }
+
+/* compact two-up formula cards */
+.fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5mm; margin: 2.5mm 0; }
+.fcard {
+  border: 0.8pt solid #b9c0c7; border-left: 2.5pt solid #16191d;
+  padding: 2mm 2.8mm; border-radius: 1.5pt; background: #fff;
+  break-inside: avoid; page-break-inside: avoid;
+}
+.fcard .fl {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 8.4pt; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
+  color: #4a5158; margin-bottom: 1mm;
+}
+.fcard .fv { font-size: 10.6pt; }
+.fcard .fn { font-size: 8.8pt; color: #4a5158; margin-top: 1mm; }
+.fcard.hi { border-left-color: #9c3a1f; background: #fdfcfa; }
+
+/* dense reference table */
+table.fs-t { font-size: 8.9pt; }
+table.fs-t th, table.fs-t td { padding: 0.9mm 1.5mm; }
+
+/* the non-NCERT marker */
+.xn { color: #9c3a1f; font-weight: 700; font-size: .8em; vertical-align: super; }
+
+/* structures strip */
+.struct { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin: 3mm 0; }
+.struct figure { margin: 0; break-inside: avoid; }
+.struct figcaption { text-align: center; font-size: 8.8pt; margin-top: 1mm; }
+
+/* run-in definition list */
+.deflist { margin: 2mm 0; }
+.deflist div { margin-bottom: 1.4mm; break-inside: avoid; }
+.deflist b { color: #16191d; }
+
+/* ================= compendium additions ================= */
+.pagebreak { break-before: page; page-break-before: always; height: 0; }
+.cover { padding-top: 6mm; }
+.cover .kicker {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 10pt; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  color: #9c3a1f; margin-bottom: 4mm;
+}
+.cover h1 {
+  font-size: 30pt; line-height: 1.05; border-bottom: 3pt solid #16191d;
+  padding-bottom: 4mm; margin-bottom: 5mm;
+}
+.cover .lede { font-size: 12pt; color: #2b3138; margin-bottom: 6mm; max-width: 150mm; }
+.toc { border: 1pt solid #b9c0c7; padding: 4mm 6mm; margin: 5mm 0; background: #fdfcfa; }
+.toc h3 {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-size: 9.5pt; letter-spacing: 1.6px; text-transform: uppercase; color: #4a5158;
+  border: 0; margin: 0 0 3mm; padding: 0;
+}
+.toc ol { margin: 0; padding-left: 0; list-style: none; }
+.toc li { margin-bottom: 2.6mm; padding-left: 16mm; text-indent: -16mm; }
+.toc .cn {
+  font-family: "Segoe UI", Roboto, "DejaVu Sans", Arial, sans-serif;
+  font-weight: 700; color: #9c3a1f; display: inline-block; width: 14mm; text-indent: 0;
+}
+.toc .ct { font-weight: 700; }
+.toc .cd { color: #4a5158; font-size: 9.8pt; }
+
+</style>
+</head>
+<body>
+<style>
+@page { size: A4 portrait; margin: 9mm 8mm 11mm 8mm; }
+body.hy-mode { font-size: 8.1pt; line-height: 1.36; }
+.hy { display: grid; grid-template-columns: 1fr 1fr; gap: 0 5mm; align-items: start; }
+.hy h1 { grid-column: 1 / -1; font-size: 15pt; margin: 0 0 1mm; padding-bottom: 1.5mm; border-bottom: 2pt solid #16191d; }
+.hy h1 .ch { display:block; font-size: 7pt; letter-spacing: 1.2px; margin-bottom: 1mm; color:#4a5158;
+  font-family:"Segoe UI",Arial,sans-serif; text-transform:uppercase; }
+.hy .strip { grid-column: 1 / -1; font-size: 7pt; background: #16191d; color: #fff; padding: 1.6mm 2.5mm;
+  margin: 0 0 2.5mm; border-radius: 1.5pt; font-family: "Segoe UI",Arial,sans-serif; }
+.hy .strip b { color: #ffd9a0; }
+.hy .band { grid-column: 1 / -1; font-family:"Segoe UI",Arial,sans-serif; font-size:8.4pt; font-weight:700;
+  letter-spacing:1.4px; text-transform:uppercase; color:#fff; background:#3a4148; padding:1.4mm 2.5mm;
+  margin: 1.5mm 0 2.2mm; border-radius:1.5pt; }
+.hy .bx { display: block; break-inside: avoid; page-break-inside: avoid;
+  border: 0.7pt solid #b9c0c7; border-left: 2.4pt solid #16191d; padding: 1.8mm 2.4mm;
+  margin: 0 0 2.4mm; border-radius: 1.5pt; background: #fff; }
+.hy .bx.c1 { border-left-color: #1d5f4a } .hy .bx.c2 { border-left-color: #9c3a1f }
+.hy .bx.c3 { border-left-color: #26468c } .hy .bx.c4 { border-left-color: #6a45b0 }
+.hy .bx.c7 { border-left-color: #a5281b }
+.hy .bx.tr { border-left-color: #a5281b; background: #fdf4f3 }
+.hy .bx.wide { grid-column: 1 / -1 }
+.hy .bh { font-family: "Segoe UI",Arial,sans-serif; font-size: 6.9pt; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; color: #4a5158; margin-bottom: 1.4mm; }
+.hy p { margin: 0 0 1.3mm }
+.hy ul, .hy ol { margin: 0 0 1.2mm; padding-left: 3.6mm }
+.hy li { margin-bottom: 0.7mm }
+.hy table { font-size: 7.1pt; margin: 1.2mm 0; width: 100%; border-collapse: collapse }
+.hy th, .hy td { padding: 0.6mm 1.1mm; border: 0.4pt solid #b9c0c7; vertical-align: top }
+.hy th { background: #e4e8ec; font-size: 6.5pt; letter-spacing: .3px; font-family:"Segoe UI",Arial,sans-serif }
+.hy .f { font-family: "DejaVu Sans",Arial,sans-serif; }
+.hy .hi { background: #fff6d9 }
+.hy .why { display:block; background:#eef4f0; border-left:1.6pt solid #1d5f4a; padding:1.2mm 2mm;
+  margin:1.2mm 0; border-radius:1pt; }
+.hy .why::before { content:"WHY  "; font-family:"Segoe UI",Arial,sans-serif; font-size:6pt;
+  font-weight:700; letter-spacing:1px; color:#1d5f4a; }
+.hy .trap2 { display:block; background:#fdf2f0; border-left:1.6pt solid #a5281b; padding:1.2mm 2mm;
+  margin:1.2mm 0; border-radius:1pt; }
+.hy .trap2::before { content:"TRAP  "; font-family:"Segoe UI",Arial,sans-serif; font-size:6pt;
+  font-weight:700; letter-spacing:1px; color:#a5281b; }
+.hy .bh .nc { text-transform: none }
+.hy .katex { font-size: .95em }
+.hy .brk { grid-column: 1 / -1; break-before: page; height:0; margin:0; }
+</style>
+<script>document.body.classList.add("hy-mode");</script>
+
+<div class="hy">
+
+<h1><span class="ch">CBSE Class 11 &middot; Rationalised NCERT &middot; Chapters 1 &middot; 2 &middot; 3 &middot; 4 &middot; 7</span>High-Yield Notes &mdash; Every Fact With Its Mechanism</h1>
+
+<div class="strip"><b>HOW TO USE</b> &nbsp; Every grey <b>WHY</b> box is the mechanism that lets you rebuild the fact if you blank. Every pink <b>TRAP</b> box is a mistake that costs real marks. &nbsp;|&nbsp; <b>CONSTANTS</b> &nbsp; h = 6.626&times;10<sup>&minus;34</sup> J s &middot; c = 3&times;10<sup>8</sup> m/s &middot; e = 1.602&times;10<sup>&minus;19</sup> C &middot; m<sub>e</sub> = 9.11&times;10<sup>&minus;31</sup> kg &middot; N<sub>A</sub> = 6.022&times;10<sup>23</sup> &middot; R<sub>H</sub> = 109677 cm<sup>&minus;1</sup> &middot; E<sub>1</sub>(H) = &minus;13.6 eV &middot; r<sub>1</sub> = 52.9 pm</div>
+
+<div class="band">Chapter 1 &nbsp;&middot;&nbsp; Some Basic Concepts of Chemistry</div>
+
+<div class="bx c1"><div class="bh">The mole &mdash; a counting unit</div>
+<p>1 mole = <b>6.022&times;10<sup>23</sup></b> particles. Defined as the number of atoms in exactly <b>12 g of carbon&ndash;12</b>. Molar mass (g/mol) is numerically equal to atomic/molecular mass in u.</p>
+<p class="f">$n=\dfrac{m}{M}=\dfrac{N}{N_A}=\dfrac{V}{22.7\,\text{L}}=M\times V_{(L)}$</p>
+<p><b>Molar volume:</b> <b>22.71 L</b> at STP (273.15 K, <b>1 bar</b>) &middot; <b>22.4 L</b> at 273.15 K, <b>1 atm</b>.</p>
+<span class="why">Avogadro's law: equal volumes of <i>any</i> gases at the same T and P hold equal numbers of molecules. So one mole of <i>every</i> gas takes the same volume &mdash; H<sub>2</sub> and SO<sub>2</sub> alike.</span>
+<span class="trap2">The rationalised NCERT uses 1 bar &rarr; 22.71 L. Only use 22.4 L when the question says 1 atm.</span></div>
+
+<div class="bx c1"><div class="bh">Concentration &mdash; and the temperature question</div>
+<table><tr><th>Term</th><th>Formula</th><th>Changes with T?</th></tr>
+<tr><td>Mass %</td><td class="f">$\frac{w_B}{w_A+w_B}\times100$</td><td>No</td></tr>
+<tr><td>Mole fraction</td><td class="f">$x_B=\frac{n_B}{n_A+n_B}$</td><td>No</td></tr>
+<tr class="hi"><td><b>Molarity</b></td><td class="f">$M=\frac{n_B}{V_{soln}(\text{L})}$</td><td><b>YES</b></td></tr>
+<tr><td><b>Molality</b></td><td class="f">$m=\frac{n_B}{w_A(\text{kg})}$</td><td>No</td></tr>
+<tr><td>ppm</td><td class="f">$\frac{w_{solute}}{w_{soln}}\times10^6$</td><td>No</td></tr></table>
+<span class="why">Heat a solution and it <b>expands</b>: volume rises, moles do not, so molarity <b>falls</b>. Mass never changes with temperature, so molality is fixed. That single sentence is the whole 1-marker.</span>
+<p class="f">$M=\dfrac{10\times\%\times d}{M_B}$ &nbsp;·&nbsp; $M_1V_1=M_2V_2$</p></div>
+
+<div class="bx c1"><div class="bh">The five laws of chemical combination</div>
+<table><tr><th>Law</th><th>Who</th><th>Statement / example</th></tr>
+<tr><td>Conservation of mass</td><td>Lavoisier</td><td>Matter is neither created nor destroyed in a reaction</td></tr>
+<tr><td>Definite proportions</td><td>Proust</td><td>A given compound always has the same elements in the same fixed ratio by mass</td></tr>
+<tr class="hi"><td><b>Multiple proportions</b></td><td>Dalton</td><td>Two elements forming more than one compound &rarr; masses of one combining with a fixed mass of the other are in a <b>simple whole-number ratio</b>. H<sub>2</sub>O vs H<sub>2</sub>O<sub>2</sub>: for 2 g H, O is 16 g vs 32 g &rarr; <b>1 : 2</b></td></tr>
+<tr><td>Gaseous volumes</td><td>Gay-Lussac</td><td>Gases combine in simple whole-number ratios <b>by volume</b></td></tr>
+<tr><td>Avogadro's law</td><td>Avogadro</td><td>Equal volumes, same T and P &rarr; equal number of molecules</td></tr></table></div>
+
+<div class="bx c1"><div class="bh">Formulae, significant figures, limiting reagent</div>
+<p class="f">$\text{Molecular} = n\times\text{Empirical},\quad n=\dfrac{\text{Molar mass}}{\text{Empirical formula mass}}$</p>
+<p>Benzene: EF = CH (13), M = 78 &rarr; n = 6 &rarr; MF = <b>C<sub>6</sub>H<sub>6</sub></b>.</p>
+<p><b>Sig figs:</b> non-zero digits count &middot; zeros <i>between</i> digits count &middot; <i>leading</i> zeros do not &middot; trailing zeros <i>after a decimal</i> do. <b>+ and &minus;</b> &rarr; fewest <b>decimal places</b>; <b>&times; and &divide;</b> &rarr; fewest <b>significant figures</b>.</p>
+<p><b>Limiting reagent:</b> divide <b>moles &divide; stoichiometric coefficient</b> for each reactant &mdash; the <b>smallest</b> value is limiting.</p>
+<span class="trap2">Never compare raw masses to find the limiting reagent. Always convert to moles first, then divide by the coefficient.</span></div>
+
+<div class="band">Chapter 2 &nbsp;&middot;&nbsp; Structure of Atom</div>
+
+<div class="bx c2"><div class="bh">Cathode rays &rarr; the electron</div>
+<p>Low-pressure gas, high voltage. Rays stream from the <b>cathode (&minus;)</b>.</p>
+<ul><li>Travel in <b>straight lines</b></li>
+<li>Deflected <b>towards the positive plate</b> &rarr; carry <b>negative</b> charge</li>
+<li><b>Properties are independent of the gas and of the electrode material</b></li></ul>
+<span class="why">If swapping hydrogen for neon for argon changes nothing, the particle cannot belong to any one gas &mdash; it must be a <b>universal constituent of all matter</b>. That is exactly how Thomson argued the electron is in every atom.</span>
+<p><b>Thomson measured only the ratio</b> by balancing electric against magnetic deflection:</p>
+<p class="f">$e/m = 1.758820\times10^{11}\ \text{C kg}^{-1}$</p>
+<p>Deflection depends on (i) magnitude of charge, (ii) mass of the particle, (iii) strength of the field.</p>
+<span class="trap2">Thomson could <b>not</b> find e or m separately &mdash; only e/m.</span></div>
+
+<div class="bx c2"><div class="bh">Anode rays &mdash; why e/m varies</div>
+<p>Cathode-ray electrons <b>knock electrons off the gas atoms</b>, creating positive ions that stream to the cathode.</p>
+<table><tr><th></th><th>Cathode rays</th><th>Anode rays</th></tr>
+<tr><td>Identity</td><td>Electrons</td><td>Positive ions <b>of the gas</b></td></tr>
+<tr><td>Mass</td><td>Always 9.11&times;10<sup>&minus;31</sup> kg</td><td>Depends on the gas</td></tr>
+<tr><td>Charge</td><td>Always &minus;1.6&times;10<sup>&minus;19</sup> C</td><td>+1, +2 &hellip; depends how many e<sup>&minus;</sup> stripped</td></tr>
+<tr class="hi"><td><b>e/m</b></td><td><b>Constant</b></td><td><b>Varies with the gas</b></td></tr></table>
+<p>Lightest positive particle = <b>H<sup>+</sup> = proton</b>, 1.676&times;10<sup>&minus;27</sup> kg &mdash; and therefore the <b>largest e/m</b> of any anode ray.</p></div>
+
+<div class="bx c2"><div class="bh">Millikan's oil drop &rarr; the charge</div>
+<p>Oil droplets are charged by X-ray-ionised air. The field is tuned until a droplet <b>hangs motionless</b> &mdash; electric force up exactly balances gravity down &mdash; which gives the droplet's charge.</p>
+<span class="why">Every droplet's charge came out an <b>integral multiple of 1.602&times;10<sup>&minus;19</sup> C</b>, never a fraction. That proves charge is <b>quantised</b> and this is the fundamental unit.</span>
+<p class="f">$m_e=\dfrac{e}{(e/m)}=\dfrac{1.602\times10^{-19}}{1.758\times10^{11}}=9.1094\times10^{-31}\ \text{kg}$</p>
+<p><b>Thomson gave the ratio &rarr; Millikan gave the charge &rarr; together they gave the mass.</b> That chain is a 3-marker.</p></div>
+
+<div class="bx c2"><div class="bh">Rutherford's <span class="nc">&alpha;</span>-scattering</div>
+<table><tr><th>Observation</th><th>Conclusion</th></tr>
+<tr><td><b>Most</b> &alpha; pass straight through</td><td>Atom is <b>mostly empty space</b></td></tr>
+<tr><td>A <b>small fraction</b> deflect by small angles</td><td>Something <b>positive</b> sits inside</td></tr>
+<tr class="hi"><td><b>~1 in 20 000</b> rebound at &gt;90&deg;</td><td>All the positive charge <b>and nearly all the mass</b> is packed into a tiny <b>nucleus</b></td></tr></table>
+<p>Nucleus ~10<sup>&minus;15</sup> m, atom ~10<sup>&minus;10</sup> m &rarr; nucleus is <b>10<sup>5</sup> times smaller</b>.</p>
+<p><b>Two drawbacks:</b> (1) an accelerating electron must continuously radiate energy, spiral in and collapse in ~10<sup>&minus;8</sup> s &mdash; but atoms are stable; (2) it predicts a <b>continuous</b> spectrum, whereas atoms give a <b>line</b> spectrum. It also says nothing about electron arrangement.</p></div>
+
+<div class="bx c2"><div class="bh">Bohr's model &mdash; the four postulates</div>
+<ol><li>The electron revolves in certain <b>fixed circular orbits</b> called <b>stationary states</b>.</li>
+<li>The energy of an electron in a stationary state <b>does not change with time</b>; energy is emitted or absorbed <b>only</b> on jumping between orbits.</li>
+<li><b>Angular momentum is quantised:</b> <span class="f">$mvr=n\dfrac{h}{2\pi}$</span></li>
+<li><b>Bohr's frequency rule:</b> <span class="f">$\Delta E=E_2-E_1=h\nu$</span></li></ol>
+<p class="f">$r_n=52.9\dfrac{n^2}{Z}\ \text{pm}\qquad E_n=-13.6\dfrac{Z^2}{n^2}\ \text{eV}=-2.18\times10^{-18}\dfrac{Z^2}{n^2}\ \text{J}$</p>
+<span class="why"><b>Why is the energy negative?</b> We <i>define</i> E = 0 for an electron infinitely far away and free. A bound electron is more stable than a free one, so it must have <b>less</b> energy than zero &rarr; negative. More negative = more tightly bound. n = 1 is the most negative = ground state.</span></div>
+
+<div class="bx c2"><div class="bh">Limitations of Bohr's model</div>
+<ul><li>Fails for <b>any atom with more than one electron</b> &mdash; it ignores electron&ndash;electron repulsion</li>
+<li>Cannot explain the <b>fine structure</b> of spectral lines</li>
+<li>Cannot explain the <b>Zeeman effect</b> (magnetic field) or the <b>Stark effect</b> (electric field)</li>
+<li>Cannot explain <b>chemical bonding or molecular shapes</b></li>
+<li><b>Violates Heisenberg's uncertainty principle</b> &mdash; a fixed orbit means exact position <i>and</i> exact momentum at once</li>
+<li>Ignores the <b>wave nature</b> of the electron</li></ul>
+<p>Works only for one-electron species: <b>H, He<sup>+</sup>, Li<sup>2+</sup>, Be<sup>3+</sup></b>.</p></div>
+
+<div class="bx c2"><div class="bh">Spectra and the Rydberg equation</div>
+<p><b>Emission:</b> bright lines on a dark background. <b>Absorption:</b> dark lines on a bright background, at <i>the same</i> positions. A line spectrum is an element's <b>fingerprint</b>.</p>
+<p class="f">$\bar\nu=109677\left(\dfrac{1}{n_1^2}-\dfrac{1}{n_2^2}\right)\ \text{cm}^{-1}$</p>
+<table><tr><th>Series</th><th>n<sub>1</sub></th><th>Region</th></tr>
+<tr class="hi"><td><b>Lyman</b></td><td>1</td><td><b>Ultraviolet</b></td></tr>
+<tr class="hi"><td><b>Balmer</b></td><td>2</td><td><b>Visible</b></td></tr>
+<tr><td>Paschen</td><td>3</td><td>Infrared</td></tr>
+<tr><td>Brackett</td><td>4</td><td>Infrared</td></tr>
+<tr><td>Pfund</td><td>5</td><td>Infrared</td></tr></table>
+<p>Hook: <b>L</b>yman is <b>L</b>owest n<sub>1</sub> &rarr; biggest jump &rarr; highest energy &rarr; UV. <b>B</b>almer is the one you can <b>B</b>ehold &rarr; visible.</p>
+<p>Number of spectral lines from level n to ground = <span class="f">$n(n-1)/2$</span>.</p></div>
+
+<div class="bx c2"><div class="bh">Photoelectric effect &mdash; all four observations</div>
+<table><tr><th>Observation</th><th>Wave theory says</th><th>Reality</th></tr>
+<tr class="hi"><td>Below a <b>threshold frequency &nu;<sub>0</sub></b>, <b>no</b> electrons come out &mdash; however intense the light</td><td>Enough intensity should eventually work</td><td><b>It never works.</b> Frequency is a hard gate</td></tr>
+<tr><td>Raising <b>intensity</b> &rarr; <b>more</b> electrons, same KE each</td><td>Brighter = more energy each</td><td>Only the <b>number</b> changes</td></tr>
+<tr><td>Raising <b>frequency</b> &rarr; <b>higher KE</b> per electron</td><td>Frequency irrelevant</td><td>It is the only thing that sets KE</td></tr>
+<tr><td><b>No time lag</b> &mdash; emission is instantaneous</td><td>Energy must accumulate</td><td>Instant</td></tr></table>
+<p class="f">$h\nu=h\nu_0+\tfrac12 m_ev^2\quad\Longrightarrow\quad KE=h(\nu-\nu_0)$</p>
+<p><b>Work function</b> <span class="f">$W_0=h\nu_0$</span> = minimum energy to eject an electron from that metal.</p>
+<span class="why">Light arrives as <b>photons</b> of energy E = h&nu;. <b>One photon hits one electron</b> and dumps all its energy at once. That single-packet picture explains the threshold, the instant emission, and why intensity only changes the count.</span></div>
+
+<div class="bx c2"><div class="bh">Dual nature, uncertainty, orbital</div>
+<p class="f">de Broglie: $\lambda=\dfrac{h}{mv}=\dfrac{h}{p}$ &nbsp;·&nbsp; Heisenberg: $\Delta x\cdot\Delta p\ \ge\ \dfrac{h}{4\pi}$</p>
+<span class="why">A cricket ball has enormous m, so &lambda; ~ 10<sup>&minus;34</sup> m &mdash; unmeasurable. An electron's m is tiny, so &lambda; is atom-sized and its wave nature dominates.</span>
+<p><b>Orbit</b> = a fixed circular path (Bohr &mdash; wrong). <b>Orbital</b> = a three-dimensional region where the <b>probability of finding the electron is maximum</b> (~90%).</p>
+<p><b>&psi;</b> is the wave function &mdash; <b>no physical meaning on its own</b>. <b>&psi;<sup>2</sup> is the probability density</b> &mdash; the chance of finding the electron at that point. That is why orbitals are drawn as clouds.</p></div>
+
+<div class="bx c2"><div class="bh">The four quantum numbers</div>
+<table><tr><th>Symbol</th><th>Name</th><th>Tells you</th><th>Allowed values</th></tr>
+<tr><td><b>n</b></td><td>Principal</td><td><b>Size &amp; energy</b> &mdash; the shell</td><td>1, 2, 3 &hellip;</td></tr>
+<tr><td><b>l</b></td><td>Azimuthal</td><td><b>Shape</b> &mdash; the subshell</td><td>0 to (n&minus;1)</td></tr>
+<tr class="hi"><td><b>m<sub>l</sub></b></td><td>Magnetic</td><td><b>Orientation</b> in space</td><td>&minus;l to +l &rarr; <b>(2l+1)</b> values</td></tr>
+<tr><td><b>m<sub>s</sub></b></td><td>Spin</td><td>Direction of spin</td><td><b>+&frac12; or &minus;&frac12; only</b></td></tr></table>
+<p>l = 0 &rarr; <b>s</b>, 1 &rarr; <b>p</b>, 2 &rarr; <b>d</b>, 3 &rarr; <b>f</b></p>
+<p>Subshells in shell n = <b>n</b> &middot; orbitals in a subshell = <b>2l+1</b> (s 1, p 3, d 5, f 7) &middot; orbitals in shell n = <b>n<sup>2</sup></b> &middot; electrons in shell n = <b>2n<sup>2</sup></b></p>
+<span class="trap2">They are <b>n, l, m<sub>l</sub>, m<sub>s</sub></b> &mdash; not m<sub>1</sub> and m<sub>2</sub>. m<sub>l</sub> is orientation; m<sub>s</sub> is spin. Check validity with l &le; n&minus;1 and |m<sub>l</sub>| &le; l.</span>
+<p><b>Nodes:</b> radial = <b>n &minus; l &minus; 1</b> &middot; angular = <b>l</b> &middot; total = <b>n &minus; 1</b>. 3p &rarr; radial 1, angular 1, total 2.</p></div>
+
+<div class="bx c2"><div class="bh">Filling rules &mdash; Aufbau, Pauli, Hund</div>
+<p><b>Aufbau:</b> orbitals fill in order of increasing energy, given by the <b>(n + l) rule</b> &mdash; lower (n+l) first; if tied, lower n first. 4s (4+0=4) fills before 3d (3+2=5).</p>
+<p><b>Pauli exclusion:</b> no two electrons in an atom have all four quantum numbers the same &rarr; an orbital holds <b>at most 2 electrons, with opposite spins</b>.</p>
+<p><b>Hund's rule of maximum multiplicity:</b> degenerate orbitals are filled <b>singly first, all with parallel spin</b>, before any pairing begins.</p>
+<span class="why">Hund's rule exists because electrons repel &mdash; they stay in separate orbitals as long as there is room.</span>
+<table><tr><th></th><th>Expected</th><th>Actual</th></tr>
+<tr class="hi"><td><b>Cr (24)</b></td><td>[Ar] 3d<sup>4</sup> 4s<sup>2</sup></td><td><b>[Ar] 3d<sup>5</sup> 4s<sup>1</sup></b></td></tr>
+<tr class="hi"><td><b>Cu (29)</b></td><td>[Ar] 3d<sup>9</sup> 4s<sup>2</sup></td><td><b>[Ar] 3d<sup>10</sup> 4s<sup>1</sup></b></td></tr></table>
+<p><b>Reason:</b> exactly half-filled and completely filled subshells are extra stable, because of (a) <b>symmetrical distribution</b> of electrons and (b) greater <b>exchange energy</b>.</p>
+<span class="trap2">4s fills <b>before</b> 3d, but electrons are <b>removed from 4s first</b>. Fe = [Ar]3d<sup>6</sup>4s<sup>2</sup> &rarr; Fe<sup>2+</sup> = [Ar]3d<sup>6</sup> &rarr; Fe<sup>3+</sup> = [Ar]3d<sup>5</sup>.</span>
+<span class="trap2">Cr and Cu are <b>electronic-configuration</b> anomalies, <b>not</b> ionisation-enthalpy anomalies. The IE anomalies are <b>Be &gt; B</b> and <b>N &gt; O</b>.</span></div>
+
+<div class="brk"></div>
+
+<div class="band">Chapter 3 &nbsp;&middot;&nbsp; Classification of Elements and Periodicity</div>
+
+<div class="bx c3"><div class="bh">The engine behind every trend</div>
+<p>Every single trend in this chapter is a tug-of-war between three things:</p>
+<ol><li><b>Effective nuclear charge (Z<sub>eff</sub>)</b> &mdash; the net pull the outer electron actually feels. Pulls inward.</li>
+<li><b>Shielding / screening</b> &mdash; inner electrons blocking that pull. Pushes outward.</li>
+<li><b>Number of shells</b> &mdash; more shells, bigger atom.</li></ol>
+<p>Learn this one paragraph and you can derive every trend below instead of memorising five of them.</p></div>
+
+<div class="bx c3"><div class="bh">Periodic law, periods, blocks</div>
+<p><b>Modern periodic law:</b> the properties of elements are a <b>periodic function of their atomic numbers</b>. Mendeleev used atomic <i>mass</i>, which gave anomalies (Ar/K, Co/Ni); <b>Moseley's X-ray work</b> established atomic <i>number</i> as fundamental.</p>
+<table><tr><th>Period</th><th>Orbitals filled</th><th>Elements</th></tr>
+<tr><td>1</td><td>1s</td><td><b>2</b></td></tr><tr><td>2</td><td>2s 2p</td><td><b>8</b></td></tr>
+<tr><td>3</td><td>3s 3p</td><td><b>8</b></td></tr><tr><td>4</td><td>4s <b>3d</b> 4p</td><td><b>18</b></td></tr>
+<tr><td>5</td><td>5s 4d 5p</td><td><b>18</b></td></tr><tr><td>6</td><td>6s <b>4f</b> 5d 6p</td><td><b>32</b></td></tr>
+<tr><td>7</td><td>7s 5f 6d 7p</td><td><b>32</b></td></tr></table>
+<table><tr><th>Block</th><th>Groups</th><th>Configuration</th></tr>
+<tr><td>s</td><td>1, 2</td><td>ns<sup>1&ndash;2</sup></td></tr>
+<tr><td>p</td><td>13&ndash;18</td><td>ns<sup>2</sup> np<sup>1&ndash;6</sup></td></tr>
+<tr><td>d</td><td>3&ndash;12</td><td>(n&minus;1)d<sup>1&ndash;10</sup> ns<sup>0&ndash;2</sup></td></tr>
+<tr><td>f</td><td>Lanthanoids, actinoids</td><td>(n&minus;2)f<sup>1&ndash;14</sup> (n&minus;1)d<sup>0&ndash;1</sup> ns<sup>2</sup></td></tr></table>
+<span class="trap2">ns<sup>1&ndash;2</sup> means "1 <b>to</b> 2 electrons in the ns orbital". It is a <b>range</b>, not a subtraction.</span></div>
+
+<div class="bx c3"><div class="bh">Atomic and ionic radius</div>
+<p><b>Across a period &rarr; DECREASES.</b> Protons are added one at a time but the electrons go into the <b>same shell</b>, so shielding barely changes. Z<sub>eff</sub> rises &rarr; the shell is pulled in tighter.</p>
+<p><b>Down a group &rarr; INCREASES.</b> A whole <b>new shell</b> is added; the extra shielding outweighs the extra nuclear charge.</p>
+<p><b>Cation &lt; parent atom</b> &mdash; electrons lost (often a whole shell), the same nuclear charge now holds fewer electrons.</p>
+<p><b>Anion &gt; parent atom</b> &mdash; electrons added, more mutual repulsion, the same nuclear charge spread thinner.</p>
+<p><b>Isoelectronic species</b> (same electron count): radius <b>falls as Z rises</b>.</p>
+<p class="f">$\text{N}^{3-}>\text{O}^{2-}>\text{F}^->\text{Ne}>\text{Na}^+>\text{Mg}^{2+}>\text{Al}^{3+}$</p>
+<p>All have 10 electrons; Z runs 7&rarr;13. More protons, same electrons &rarr; smaller.</p></div>
+
+<div class="bx c3"><div class="bh">Ionisation enthalpy &mdash; and both anomalies</div>
+<p>Energy <b>required</b> to remove the most loosely bound electron from an <b>isolated gaseous atom in its ground state</b>. Always <b>positive</b> (endothermic).</p>
+<p>Increases across a period &middot; decreases down a group.</p>
+<p><b>Why IE<sub>2</sub> &gt; IE<sub>1</sub> always:</b> after the first electron leaves, the species is a <b>cation</b> &mdash; the same protons now hold fewer electrons, so every one left is gripped harder.</p>
+<table><tr><th>Anomaly</th><th>Reason</th></tr>
+<tr class="hi"><td><b>Be (899) &gt; B (801)</b></td><td>In Be the electron leaves a <b>2s</b> orbital. In B it leaves a <b>2p</b> orbital &mdash; higher in energy and <b>shielded by the 2s pair</b> &rarr; easier to remove.</td></tr>
+<tr class="hi"><td><b>N (1402) &gt; O (1314)</b></td><td>N is <b>2p<sup>3</sup> &mdash; exactly half-filled</b>, extra stable, every electron in its own orbital. O is <b>2p<sup>4</sup></b> &mdash; one orbital now holds a <b>pair</b>, and their mutual <b>repulsion</b> makes one easier to pull out.</td></tr></table>
+<p>Same logic repeats: <b>Mg &gt; Al</b> and <b>P &gt; S</b>.</p></div>
+
+<div class="bx c3"><div class="bh">Electron gain enthalpy &mdash; in full</div>
+<p class="f">$X(g)+e^-\longrightarrow X^-(g)\qquad \Delta_{eg}H$</p>
+<p>The atom must be <b>gaseous</b> (isolated, no neighbours), <b>neutral</b> and in its <b>ground state</b>.</p>
+<p><b>Sign convention:</b> energy <b>released</b> &rarr; &Delta;<sub>eg</sub>H is <b>negative</b> (the atom wants the electron). Energy must be <b>supplied</b> &rarr; &Delta;<sub>eg</sub>H is <b>positive</b> (the atom resists it).</p>
+<table><tr><th>Species</th><th>Sign</th><th>Why</th></tr>
+<tr><td>Halogens</td><td>Most negative</td><td>One electron short of a full octet</td></tr>
+<tr class="hi"><td><b>Noble gases</b></td><td><b>Positive</b></td><td>Octet already complete &mdash; the electron must be forced into a <b>new shell</b></td></tr>
+<tr><td>Be, Mg (group 2)</td><td>Positive</td><td>Stable filled ns<sup>2</sup> subshell</td></tr>
+<tr><td>N</td><td>~zero</td><td>Stable half-filled 2p<sup>3</sup></td></tr></table>
+<p><b>Trends:</b> across a period &rarr; <b>more negative</b> (smaller atom, higher Z<sub>eff</sub>, keener to accept). Down a group &rarr; <b>less negative</b> (bigger atom, the incoming electron sits further from the nucleus).</p>
+<span class="why"><b>The anomaly: Cl (&minus;349) is more negative than F (&minus;328)</b> &mdash; and S more than O. F and O are <b>second-period</b> atoms: very small, with <b>compact 2p subshells</b>. Forcing an extra electron into that crowded little region causes <b>strong inter-electronic repulsion</b>, which cancels much of the energy released. Cl and S are third-period &mdash; roomier, less repulsion, so more energy is actually given out.</span>
+<p><b>Electron affinity vs &Delta;<sub>eg</sub>H:</b> electron affinity is the energy <i>released</i> (positive when released); &Delta;<sub>eg</sub>H is the enthalpy <i>change</i> (negative when released). Opposite signs for the same event. NCERT uses &Delta;<sub>eg</sub>H.</p></div>
+
+<div class="bx c3"><div class="bh">Electronegativity, metallic character, oxides</div>
+<p><b>Electronegativity:</b> the tendency of an atom <b>in a chemical compound</b> to attract the <b>shared pair</b> of electrons. <b>Cannot be measured directly</b> &mdash; relative scale, <b>no units</b>. Pauling: <b>F = 4.0 highest</b>. Increases across a period, decreases down a group.</p>
+<span class="trap2">Electronegativity applies to an atom <b>inside a bond</b>; &Delta;<sub>eg</sub>H applies to an <b>isolated gaseous atom</b> and is a measurable energy. Do not swap them.</span>
+<p><b>Metallic character</b> tracks how easily an atom <b>loses</b> electrons &rarr; inversely follows IE. Decreases across a period, increases down a group.</p>
+<p><b>Oxides across period 3:</b> Na<sub>2</sub>O, MgO <b>basic</b> &rarr; Al<sub>2</sub>O<sub>3</sub> <b>amphoteric</b> &rarr; SiO<sub>2</sub>, P<sub>4</sub>O<sub>10</sub>, SO<sub>3</sub>, Cl<sub>2</sub>O<sub>7</sub> <b>acidic</b>. Amphoteric = reacts with <b>both</b> acids and bases.</p>
+<p><b>Diagonal relationship:</b> <b>Li&ndash;Mg, Be&ndash;Al, B&ndash;Si</b> &mdash; the first element of a group resembles the <b>second element of the next group</b>, because they end up with similar size and polarising power.</p></div>
+
+<div class="brk"></div>
+
+<div class="band">Chapter 4 &nbsp;&middot;&nbsp; Chemical Bonding and Molecular Structure</div>
+
+<div class="bx c4"><div class="bh">Types of chemical bond</div>
+<table><tr><th>Bond</th><th>How it forms</th><th>Example</th></tr>
+<tr><td><b>Ionic (electrovalent)</b></td><td><b>Complete transfer</b> of electrons; metal + non-metal; large electronegativity difference</td><td>NaCl, MgO</td></tr>
+<tr><td><b>Covalent</b></td><td><b>Sharing</b> of electron pairs</td><td>H<sub>2</sub>, CH<sub>4</sub></td></tr>
+<tr><td>&nbsp;&nbsp;&mdash; non-polar covalent</td><td>Shared <b>equally</b> (identical atoms)</td><td>H<sub>2</sub>, Cl<sub>2</sub>, O<sub>2</sub></td></tr>
+<tr><td>&nbsp;&nbsp;&mdash; polar covalent</td><td>Shared <b>unequally</b> (different electronegativity)</td><td>HCl, H<sub>2</sub>O</td></tr>
+<tr><td><b>Coordinate (dative)</b></td><td><b>Both</b> shared electrons come from the <b>same</b> atom</td><td>NH<sub>4</sub><sup>+</sup>, O<sub>3</sub>, CO</td></tr>
+<tr><td><b>Hydrogen bond</b></td><td>&delta;+ H attracted to a lone pair on F, O or N</td><td>H<sub>2</sub>O, HF</td></tr></table>
+<p><b>Favourable conditions for an ionic bond:</b> low ionisation enthalpy of the metal, highly negative electron gain enthalpy of the non-metal, and <b>high lattice enthalpy</b>.</p>
+<p><b>Lattice enthalpy</b> = the energy required to completely separate <b>one mole</b> of a solid ionic compound into its <b>gaseous ions</b>. NaCl = <b>788 kJ mol<sup>&minus;1</sup></b>.</p></div>
+
+<div class="bx c4"><div class="bh">Overlapping of atomic orbitals</div>
+<p>A covalent bond forms when two half-filled atomic orbitals <b>overlap</b>. <b>The greater the overlap, the stronger the bond.</b></p>
+<table><tr><th>Sign of overlap</th><th>Phases</th><th>Result</th></tr>
+<tr><td><b>Positive</b></td><td>Same phase (same sign of &psi;)</td><td>Electron density builds between the nuclei &rarr; <b>bond forms</b></td></tr>
+<tr><td><b>Negative</b></td><td>Opposite phase</td><td>Density cancels between the nuclei &rarr; <b>antibonding</b></td></tr>
+<tr><td><b>Zero</b></td><td>Perpendicular arrangement</td><td>Constructive and destructive parts cancel exactly &rarr; <b>no bond</b></td></tr></table>
+<p><b>&sigma; bond &mdash; head-on / axial / end-to-end overlap</b> along the internuclear axis:</p>
+<ul><li><b>s&ndash;s</b> &rarr; H<sub>2</sub></li>
+<li><b>s&ndash;p</b> &rarr; HF, HCl</li>
+<li><b>p&ndash;p (axial, e.g. p<sub>z</sub>&ndash;p<sub>z</sub>)</b> &rarr; F<sub>2</sub>, Cl<sub>2</sub></li>
+<li><b>hybrid&ndash;s</b> or <b>hybrid&ndash;hybrid</b> &rarr; CH<sub>4</sub>, C<sub>2</sub>H<sub>6</sub></li></ul>
+<p><b>&pi; bond &mdash; sideways / lateral overlap</b> of <b>unhybridised p orbitals</b>, perpendicular to the internuclear axis (p<sub>x</sub>&ndash;p<sub>x</sub>, p<sub>y</sub>&ndash;p<sub>y</sub>). The electron cloud sits <b>above and below</b> the axis, never on it.</p>
+<table><tr><th></th><th>&sigma; (sigma)</th><th>&pi; (pi)</th></tr>
+<tr><td>Overlap</td><td><b>Head-on / axial</b></td><td><b>Sideways / lateral</b></td></tr>
+<tr><td>Extent of overlap</td><td>Large</td><td>Small</td></tr>
+<tr><td>Strength</td><td><b>Stronger</b></td><td>Weaker</td></tr>
+<tr><td>Rotation about the bond</td><td><b>Free</b> (cylindrically symmetric)</td><td><b>Restricted</b> &mdash; rotating would break the overlap</td></tr>
+<tr><td>Formed from</td><td><b>Hybrid</b> orbitals</td><td><b>Unhybridised p</b> orbitals</td></tr>
+<tr><td>Exists alone?</td><td>Yes</td><td><b>No</b> &mdash; only alongside a &sigma;</td></tr></table>
+<p class="f"><b>The rule that unlocks every counting question:</b> single = 1&sigma; &nbsp;·&nbsp; double = 1&sigma; + 1&pi; &nbsp;·&nbsp; triple = 1&sigma; + 2&pi;. The <b>first</b> bond of any multiple bond is always &sigma;.</p></div>
+
+<div class="bx c4 wide"><div class="bh">Molecular orbital theory &mdash; the bonding / antibonding relationship</div>
+<p>Two atomic orbitals combine by <b>LCAO</b> (linear combination of atomic orbitals). <b>Two AOs in &rarr; always exactly two MOs out.</b> The total number of MOs always equals the total number of AOs combined.</p>
+<table><tr><th></th><th><b>Bonding MO &nbsp;(&sigma;, &pi;)</b></th><th><b>Antibonding MO &nbsp;(&sigma;*, &pi;*)</b></th></tr>
+<tr><td>Formed by</td><td><b>Constructive</b> interference &mdash; waves in the <b>same phase</b> add</td><td><b>Destructive</b> interference &mdash; waves in <b>opposite phase</b> subtract</td></tr>
+<tr><td>Wave function</td><td class="f">$\psi_b=\psi_A+\psi_B$</td><td class="f">$\psi_a=\psi_A-\psi_B$</td></tr>
+<tr class="hi"><td>Electron density between the nuclei</td><td><b>Concentrated there</b></td><td><b>Zero &mdash; there is a NODE between the nuclei</b></td></tr>
+<tr><td>Effect on the nuclei</td><td>The shared cloud <b>screens</b> the two nuclei from each other and pulls both inward</td><td>The nuclei are <b>exposed</b> to each other and <b>repel</b></td></tr>
+<tr><td>Energy vs the parent AOs</td><td><b>LOWER</b> &rarr; stabilising</td><td><b>HIGHER</b> &rarr; destabilising</td></tr>
+<tr><td>Filled</td><td>First (Aufbau still applies)</td><td>Only after the bonding MO is full</td></tr></table>
+<p><b>Five relationships to state in an answer:</b></p>
+<ol><li>They are <b>always produced as a pair</b> &mdash; one bonding and one antibonding from every pair of combining AOs.</li>
+<li>The antibonding MO is <b>raised more</b> than the bonding MO is lowered. <span class="why">This is exactly why <b>He<sub>2</sub> does not exist</b>: 2 electrons in &sigma;1s and 2 in &sigma;*1s give bond order 0, and the net effect is slightly <i>destabilising</i>.</span></li>
+<li>Each pair of electrons in an antibonding MO <b>cancels</b> one pair in the corresponding bonding MO.</li>
+<li>Conditions for two AOs to combine: <b>comparable energy</b>, <b>same symmetry</b> about the molecular axis, and <b>sufficient overlap</b>.</li>
+<li class="f">Bond order $=\dfrac{N_b-N_a}{2}$. <b>BO &gt; 0 &rarr; the molecule exists. BO = 0 &rarr; it does not.</b></li></ol>
+<p><b>Energy order &mdash; and there are two of them.</b> For <b>B<sub>2</sub>, C<sub>2</sub>, N<sub>2</sub></b> (14 electrons or fewer):</p>
+<p class="f">$\sigma 1s<\sigma^*1s<\sigma 2s<\sigma^*2s<\underline{\pi 2p_x=\pi 2p_y}<\sigma 2p_z<\pi^*2p_x=\pi^*2p_y<\sigma^*2p_z$</p>
+<p>For <b>O<sub>2</sub>, F<sub>2</sub></b> (more than 14 electrons) the <b>&sigma;2p<sub>z</sub> drops below the &pi; orbitals</b>:</p>
+<p class="f">$\sigma 1s<\sigma^*1s<\sigma 2s<\sigma^*2s<\underline{\sigma 2p_z}<\pi 2p_x=\pi 2p_y<\pi^*2p_x=\pi^*2p_y<\sigma^*2p_z$</p>
+<p class="f"><b>N<sub>2</sub>:</b> $KK\ \sigma2s^2\ \sigma^*2s^2\ \pi2p_x^2\ \pi2p_y^2\ \sigma2p_z^2$ &nbsp;&rarr;&nbsp; BO $=\frac{10-4}{2}=3$, all paired &rarr; <b>diamagnetic</b></p>
+<p class="f"><b>O<sub>2</sub>:</b> $KK\ \sigma2s^2\ \sigma^*2s^2\ \sigma2p_z^2\ \pi2p_x^2\ \pi2p_y^2\ \pi^*2p_x^1\ \pi^*2p_y^1$ &nbsp;&rarr;&nbsp; BO $=\frac{10-6}{2}=2$, <b>two unpaired &rarr; PARAMAGNETIC</b></p>
+<p><b>Magnetic behaviour:</b> any <b>unpaired</b> electron in any MO &rarr; <b>paramagnetic</b> (attracted by a magnetic field). All paired &rarr; <b>diamagnetic</b> (weakly repelled). MOT is the <b>only</b> theory that predicts O<sub>2</sub>'s paramagnetism &mdash; that is its headline success.</p>
+<table><tr><th>Species</th><th>Electrons</th><th>Bond order</th><th>Bond length</th><th>Magnetic</th></tr>
+<tr><td>O<sub>2</sub><sup>+</sup></td><td>15</td><td><b>2.5</b></td><td>Shortest</td><td>Para</td></tr>
+<tr><td>O<sub>2</sub></td><td>16</td><td><b>2.0</b></td><td>&darr;</td><td>Para</td></tr>
+<tr><td>O<sub>2</sub><sup>&minus;</sup></td><td>17</td><td><b>1.5</b></td><td>&darr;</td><td>Para</td></tr>
+<tr><td>O<sub>2</sub><sup>2&minus;</sup></td><td>18</td><td><b>1.0</b></td><td>Longest</td><td>Dia</td></tr></table>
+<p class="f">$\boxed{\text{Bond order}\uparrow\ \Longrightarrow\ \text{bond length}\downarrow,\ \text{bond enthalpy}\uparrow,\ \text{stability}\uparrow}$</p>
+<p><b>Isoelectronic species have the same bond order:</b> N<sub>2</sub>, CO and NO<sup>+</sup> all have 14 electrons and bond order 3.</p></div>
+
+<div class="bx c4"><div class="bh">Lewis structures and formal charge</div>
+<ol><li>Count <b>total valence electrons</b> (add for a negative charge, subtract for a positive one)</li>
+<li>Put the <b>least electronegative</b> atom in the centre &mdash; H is <b>never</b> central</li>
+<li>Join each outer atom with a single bond</li>
+<li>Complete the octets of the <b>outer</b> atoms first</li>
+<li>Leftover electrons &rarr; lone pairs on the central atom</li>
+<li>Still short &rarr; convert lone pairs into <b>double or triple bonds</b></li></ol>
+<p><b>Valence electrons:</b> H 1 &middot; Be 2 &middot; B 3 &middot; C 4 &middot; N 5 &middot; O 6 &middot; F/Cl 7 &middot; P 5 &middot; S 6 &middot; Xe 8</p>
+<p class="f">$\text{FC}=V-L-\tfrac12 B$</p>
+<p>V = valence electrons in the free atom, L = lone-pair electrons, B = bonding electrons. <b>The best Lewis structure is the one with the smallest formal charges.</b></p></div>
+
+<div class="bx c4"><div class="bh">Limitations of the octet rule</div>
+<table><tr><th>Category</th><th>Examples</th></tr>
+<tr><td><b>Incomplete octet</b> &mdash; central atom has fewer than 8 (elements with fewer than 4 valence electrons)</td><td>LiCl, BeH<sub>2</sub>, <b>BCl<sub>3</sub> / BF<sub>3</sub> (B has 6)</b>, AlCl<sub>3</sub></td></tr>
+<tr><td><b>Odd-electron molecules</b> &mdash; total electrons odd, so the octet cannot be satisfied for every atom</td><td><b>NO, NO<sub>2</sub></b></td></tr>
+<tr><td><b>Expanded octet</b> &mdash; <b>3rd period onwards</b> have empty <b>d orbitals</b> available</td><td><b>PF<sub>5</sub> (10), SF<sub>6</sub> (12)</b>, H<sub>2</sub>SO<sub>4</sub>, PCl<sub>5</sub></td></tr></table>
+<p><b>Three further limitations</b> (the forgotten 1-markers):</p>
+<ul><li>It says nothing about the <b>shape</b> of a molecule</li>
+<li>It says nothing about the <b>energy or relative stability</b> of a molecule</li>
+<li>Some <b>noble gases form compounds</b> (XeF<sub>2</sub>, XeF<sub>4</sub>, KrF<sub>2</sub>) despite complete octets</li></ul></div>
+
+<div class="bx c4"><div class="bh">Resonance</div>
+<p><b>Definition:</b> when a single Lewis structure cannot describe a molecule accurately, several structures with <b>similar energy, the same positions of nuclei</b>, and the same number of bonding and non-bonding electron pairs are taken as the <b>canonical structures</b>, and the molecule is described by their <b>resonance hybrid</b>.</p>
+<table><tr><th>Molecule</th><th>Canonical forms</th><th>Evidence</th></tr>
+<tr><td><b>O<sub>3</sub></b></td><td>2</td><td>Both O&ndash;O bonds equal at <b>128 pm</b> &mdash; between single (148) and double (121)</td></tr>
+<tr><td><b>CO<sub>3</sub><sup>2&minus;</sup></b></td><td>3</td><td>All three C&ndash;O bonds identical</td></tr>
+<tr><td><b>CO<sub>2</sub></b></td><td>3</td><td>Both C&ndash;O bonds identical</td></tr></table>
+<p>The <b>hybrid is lower in energy (more stable)</b> than any canonical form &mdash; the difference is the <b>resonance stabilisation energy</b>.</p>
+<span class="trap2"><b>The four things NCERT says resonance is NOT</b> (a favourite question): canonical forms have <b>no real existence</b>; the molecule does <b>not</b> spend part of its time in each form; there is <b>no equilibrium</b> between them; the molecule has <b>one single structure</b> which simply cannot be drawn with one Lewis diagram.</span></div>
+
+<div class="bx c4"><div class="bh">VSEPR &mdash; the full table</div>
+<p><b>The rule:</b> electron pairs around the central atom get as far apart as possible. Repulsion order:</p>
+<p class="f">$\text{lp--lp}>\text{lp--bp}>\text{bp--bp}$</p>
+<table><tr><th>BP</th><th>LP</th><th>Shape</th><th>Example</th><th>Angle</th></tr>
+<tr><td>2</td><td>0</td><td>Linear</td><td>BeCl<sub>2</sub></td><td>180&deg;</td></tr>
+<tr><td>3</td><td>0</td><td>Trigonal planar</td><td>BF<sub>3</sub></td><td>120&deg;</td></tr>
+<tr><td>4</td><td>0</td><td>Tetrahedral</td><td>CH<sub>4</sub></td><td>109.5&deg;</td></tr>
+<tr class="hi"><td>3</td><td>1</td><td><b>Trigonal pyramidal</b></td><td>NH<sub>3</sub></td><td><b>107&deg;</b></td></tr>
+<tr class="hi"><td>2</td><td>2</td><td><b>Bent / V-shaped</b></td><td>H<sub>2</sub>O</td><td><b>104.5&deg;</b></td></tr>
+<tr><td>5</td><td>0</td><td>Trigonal bipyramidal</td><td>PCl<sub>5</sub></td><td>120&deg;, 90&deg;</td></tr>
+<tr class="hi"><td>4</td><td>1</td><td><b>See-saw</b></td><td><b>SF<sub>4</sub></b></td><td>&mdash;</td></tr>
+<tr><td>3</td><td>2</td><td>T-shaped</td><td>ClF<sub>3</sub></td><td>&mdash;</td></tr>
+<tr><td>6</td><td>0</td><td>Octahedral</td><td>SF<sub>6</sub></td><td>90&deg;</td></tr>
+<tr><td>5</td><td>1</td><td>Square pyramidal</td><td>BrF<sub>5</sub></td><td>&mdash;</td></tr>
+<tr class="hi"><td>4</td><td>2</td><td><b>Square planar</b></td><td><b>XeF<sub>4</sub></b></td><td>90&deg;</td></tr></table>
+<span class="why"><b>The bond angle answer:</b> CH<sub>4</sub> 109.5&deg; &rarr; NH<sub>3</sub> 107&deg; &rarr; H<sub>2</sub>O 104.5&deg;. All three have <b>four</b> electron pairs, so all start tetrahedral. NH<sub>3</sub> has <b>one lone pair</b>, H<sub>2</sub>O has <b>two</b>. A lone pair is held by only one nucleus, so it spreads out wider and <b>squeezes the bonding pairs closer</b>. More lone pairs &rarr; smaller angle.</span>
+<span class="trap2"><b>SF<sub>4</sub> is see-saw. XeF<sub>4</sub> is SQUARE PLANAR.</b> Do not swap them.</span></div>
+
+<div class="bx c4"><div class="bh">Hybridisation &mdash; the three steps and the shortcut</div>
+<p><b>1 Promotion</b> &mdash; an electron is promoted to an empty orbital of the same shell to create enough half-filled orbitals. <b>2 Mixing</b> &mdash; orbitals of <i>nearly equal energy</i> mix to give an equal number of <b>identical hybrid orbitals</b>. <b>3 Overlap</b> &mdash; each hybrid overlaps head-on with another orbital &rarr; <b>&sigma; bond</b>.</p>
+<p class="f">$\text{Steric number}=(\text{atoms bonded to the central atom})+(\text{lone pairs on it})$</p>
+<table><tr><th>SN</th><th>Hybridisation</th><th>Geometry</th></tr>
+<tr><td>2</td><td><b>sp</b></td><td>Linear, 180&deg;</td></tr>
+<tr><td>3</td><td><b>sp<sup>2</sup></b></td><td>Trigonal planar, 120&deg;</td></tr>
+<tr><td>4</td><td><b>sp<sup>3</sup></b></td><td>Tetrahedral, 109.5&deg;</td></tr>
+<tr><td>5</td><td><b>sp<sup>3</sup>d</b></td><td>Trigonal bipyramidal</td></tr>
+<tr><td>6</td><td><b>sp<sup>3</sup>d<sup>2</sup></b></td><td>Octahedral, 90&deg;</td></tr></table>
+<p class="f">$\text{Lone pairs}=\dfrac{(\text{valence e}^-\text{ of central atom})-(\text{number of bonds formed})}{2}$</p>
+<p><b>H<sub>2</sub>O:</b> O has 6, forms 2 bonds &rarr; LP = 2 &rarr; SN = 4 &rarr; <b>sp<sup>3</sup>, bent</b>.<br>
+<b>NH<sub>3</sub>:</b> N has 5, forms 3 bonds &rarr; LP = 1 &rarr; SN = 4 &rarr; <b>sp<sup>3</sup>, trigonal pyramidal</b>.<br>
+<b>CO<sub>2</sub>:</b> C has 4, forms 4 bonds &rarr; LP = 0 &rarr; SN = <b>2</b> (only two <i>atoms</i> attached) &rarr; <b>sp, LINEAR</b>.</p>
+<span class="why"><b>"sp<sup>3</sup>" simply names which orbitals were mixed</b> &mdash; one s and three p &rarr; four identical sp<sup>3</sup> hybrids. The superscript is a <b>count of p orbitals</b>, not a power.</span>
+<span class="trap2"><b>Hybrid orbitals only ever make &sigma; bonds.</b> Every &pi; bond comes from a leftover <b>unhybridised p</b> orbital. C<sub>2</sub>H<sub>4</sub>: sp<sup>2</sup> C, one p left over &rarr; 1&sigma; + 1&pi;. C<sub>2</sub>H<sub>2</sub>: sp C, two p left over &rarr; 1&sigma; + 2&pi;.</span></div>
+
+<div class="bx c4"><div class="bh">Dipole moment &mdash; polar vs non-polar</div>
+<p class="f">$\mu=Q\times r$ &nbsp;·&nbsp; unit <b>debye (D)</b>, $1\ \text{D}=3.33564\times10^{-30}\ \text{C m}$</p>
+<p><b>&mu; is a VECTOR</b> &mdash; drawn as a crossed arrow pointing <b>from positive to negative</b>. For a molecule, &mu; is the <b>vector sum of all bond moments</b>.</p>
+<p class="f">$\mu=0\ \Rightarrow\ \textbf{non-polar molecule}\qquad \mu\ne0\ \Rightarrow\ \textbf{polar molecule}$</p>
+<span class="why"><b>A molecule can have polar bonds and still be non-polar.</b> If the geometry is symmetric, the bond moments cancel as vectors. Rule of thumb: <b>no lone pairs on the central atom AND all surrounding atoms identical &rarr; non-polar.</b> Lone pairs or mixed atoms break the symmetry and make it polar.</span>
+<table><tr><th>Molecule</th><th>Shape</th><th>&mu; / D</th><th>Verdict</th></tr>
+<tr><td>BeF<sub>2</sub>, CO<sub>2</sub></td><td>Linear</td><td><b>0</b></td><td>Non-polar</td></tr>
+<tr><td>BF<sub>3</sub></td><td>Trigonal planar</td><td><b>0</b></td><td>Non-polar</td></tr>
+<tr><td>CCl<sub>4</sub>, CH<sub>4</sub></td><td>Tetrahedral</td><td><b>0</b></td><td>Non-polar</td></tr>
+<tr class="hi"><td>H<sub>2</sub>O</td><td>Bent</td><td><b>1.85</b></td><td>Polar</td></tr>
+<tr class="hi"><td>NH<sub>3</sub></td><td>Pyramidal</td><td><b>1.47</b></td><td>Polar</td></tr>
+<tr class="hi"><td>NF<sub>3</sub></td><td>Pyramidal</td><td><b>0.23</b></td><td>Weakly polar</td></tr>
+<tr><td>CHCl<sub>3</sub></td><td>Tetrahedral</td><td>1.04</td><td>Polar</td></tr></table>
+<p>HF 1.78 &gt; HCl 1.07 &gt; HBr 0.79 &gt; HI 0.38 &mdash; falls as the electronegativity difference falls.</p>
+<span class="why"><b>NH<sub>3</sub> vs NF<sub>3</sub>.</b> Both pyramidal, both one lone pair on N. In <b>NH<sub>3</sub></b>, N is more electronegative than H, so the three N&ndash;H bond moments point <b>towards N &mdash; the same side as the lone-pair dipole</b>. They <b>add</b> &rarr; large &mu;. In <b>NF<sub>3</sub></b>, F is more electronegative than N, so the N&ndash;F moments point <b>away from N &mdash; opposite to the lone-pair dipole</b>. They <b>partly cancel</b> &rarr; tiny &mu;.</span></div>
+
+<div class="bx c4"><div class="bh">Bond parameters &amp; hydrogen bonding</div>
+<p><b>Bond length</b> &mdash; equilibrium distance between two bonded nuclei. <b>Bond angle</b> &mdash; angle between two bonds at a central atom. <b>Bond enthalpy</b> &mdash; energy to break one mole of bonds in the gaseous state: H<sub>2</sub> 435.8, O<sub>2</sub> 498, <b>N<sub>2</sub> 946 kJ mol<sup>&minus;1</sup></b> (why N<sub>2</sub> is so unreactive). <b>Bond order</b> &mdash; number of bonds between two atoms.</p>
+<p><b>Hydrogen bond:</b> the attractive force binding the hydrogen of one molecule to a <b>highly electronegative atom &mdash; F, O or N</b>. Strength <b>10&ndash;100 kJ mol<sup>&minus;1</sup></b>.</p>
+<span class="why">The large electronegativity difference makes the H&ndash;F/O/N bond strongly polar, so H carries <b>&delta;+</b> and is drawn to the lone pair on a <b>&delta;&minus;</b> atom nearby.</span>
+<ul><li><b>Intermolecular</b> &mdash; between <i>different</i> molecules: HF, H<sub>2</sub>O, NH<sub>3</sub>, alcohols. <b>Raises</b> boiling point.</li>
+<li><b>Intramolecular</b> &mdash; <i>within</i> one molecule: <b>o-nitrophenol</b>. <b>Lowers</b> boiling point, because no chain of molecules can form.</li></ul>
+<p><b>Consequences to quote:</b> abnormally high boiling point of water vs H<sub>2</sub>S &middot; <b>ice is less dense than water</b> (H-bonds hold an open cage structure) &middot; high surface tension and viscosity &middot; the structure of proteins and DNA.</p></div>
+
+<div class="brk"></div>
+
+<div class="band">Chapter 7 &nbsp;&middot;&nbsp; Redox Reactions</div>
+
+<div class="bx c7 wide"><div class="bh">What an oxidation number actually IS</div>
+<p><b>Oxidation number is a bookkeeping device.</b> It is the charge an atom <b>would</b> carry if every bond in the compound were <b>100% ionic</b> &mdash; that is, if in every bond you handed <b>both</b> shared electrons entirely to the <b>more electronegative</b> atom.</p>
+<span class="why"><b>It is not the real charge.</b> In H<sub>2</sub>O oxygen is assigned &minus;2, but its actual partial charge is only about &minus;0.4 &mdash; the bond is polar covalent, not ionic. We <i>pretend</i> it is fully ionic so that electron movement can be tracked with whole numbers.</span>
+<p><b>Why it was invented:</b> in a covalent reaction nobody transfers a whole electron, so "loss of electrons" has no literal meaning. The oxidation number gives an unambiguous way to say whether an atom <b>gained or lost control</b> of electron density.</p>
+<p><b>Where the rules come from:</b> in H&ndash;Cl, Cl is more electronegative, so it takes both electrons &rarr; Cl = &minus;1, H = +1. In Cl&ndash;Cl the two atoms are identical, so the pair is split evenly &rarr; each = 0. <b>That is exactly why every free element is 0.</b> Every rule below is just a consequence of relative electronegativities.</p></div>
+
+<div class="bx c7"><div class="bh">The seven rules, in priority order</div>
+<ol><li><b>Free element = 0</b> &mdash; Na, O<sub>2</sub>, P<sub>4</sub>, S<sub>8</sub>, Cl<sub>2</sub></li>
+<li><b>Monatomic ion</b> = its charge &mdash; Na<sup>+</sup> = +1, Cl<sup>&minus;</sup> = &minus;1</li>
+<li><b>F is always &minus;1</b> (most electronegative element &mdash; it can never be positive)</li>
+<li><b>O is &minus;2</b>, except: <b>&minus;1 in peroxides</b> (H<sub>2</sub>O<sub>2</sub>, Na<sub>2</sub>O<sub>2</sub>), <b>&minus;&frac12; in superoxides</b> (KO<sub>2</sub>), <b>+2 in OF<sub>2</sub></b></li>
+<li><b>H is +1</b>, except <b>&minus;1 in metal hydrides</b> (NaH, CaH<sub>2</sub>)</li>
+<li>Group 1 = <b>+1</b>, Group 2 = <b>+2</b></li>
+<li><b>Sum = 0</b> for a neutral molecule; <b>sum = the charge</b> for an ion</li></ol>
+<span class="trap2"><b>Oxygen is &minus;2, not +2.</b> The only place oxygen is positive is <b>OF<sub>2</sub> (+2)</b> and O<sub>2</sub>F<sub>2</sub> (+1) &mdash; because fluorine is the one element more electronegative than oxygen.</span>
+<p><b>Method:</b> let the unknown be x, apply rule 7, solve.</p>
+<p><b>KMnO<sub>4</sub>:</b> (+1) + x + 4(&minus;2) = 0 &rarr; <b>Mn = +7</b><br>
+<b>Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup>:</b> 2x + 7(&minus;2) = &minus;2 &rarr; <b>Cr = +6</b><br>
+<b>H<sub>2</sub>SO<sub>4</sub>:</b> 2(+1) + x + 4(&minus;2) = 0 &rarr; <b>S = +6</b></p></div>
+
+<div class="bx c7"><div class="bh">Oxidation, reduction, and the agents</div>
+<table><tr><th></th><th><b>Oxidation</b></th><th><b>Reduction</b></th></tr>
+<tr><td>Electrons</td><td><b>Loss</b></td><td><b>Gain</b></td></tr>
+<tr><td>Oxidation number</td><td><b>Increases</b></td><td><b>Decreases</b></td></tr>
+<tr><td>Oxygen / hydrogen</td><td>Gains O, loses H</td><td>Loses O, gains H</td></tr></table>
+<p><b>OIL RIG</b> &mdash; Oxidation Is Loss, Reduction Is Gain.</p>
+<p><b>Oxidising agent</b> = <b>accepts</b> electrons = is itself <b>reduced</b>.<br>
+<b>Reducing agent</b> = <b>donates</b> electrons = is itself <b>oxidised</b>.</p>
+<span class="trap2">The agent does the <b>opposite</b> of what happens to it. An oxidising agent oxidises <i>the other substance</i>, so it itself gets reduced. This single confusion costs more marks than anything else in the chapter.</span></div>
+
+<div class="bx c7"><div class="bh">The four types of redox reaction</div>
+<p><b>1 Combination</b> &mdash; two species join, at least one an element</p>
+<p class="f">$\text{C}+\text{O}_2\to\text{CO}_2\qquad 3\text{Mg}+\text{N}_2\to\text{Mg}_3\text{N}_2$</p>
+<p><b>2 Decomposition</b> &mdash; one compound splits</p>
+<p class="f">$2\text{KClO}_3\to2\text{KCl}+3\text{O}_2\qquad 2\text{H}_2\text{O}\to2\text{H}_2+\text{O}_2$</p>
+<p><b>3 Displacement</b> &mdash; one ion or atom is replaced by another</p>
+<p class="f">$\text{Metal: }\ \text{Zn}+\text{CuSO}_4\to\text{ZnSO}_4+\text{Cu}$</p>
+<p class="f">$\text{Non-metal: }\ \text{Cl}_2+2\text{KBr}\to2\text{KCl}+\text{Br}_2;\quad 2\text{Na}+2\text{H}_2\text{O}\to2\text{NaOH}+\text{H}_2$</p>
+<p><b>4 Disproportionation</b> &mdash; <b>the same element is simultaneously oxidised AND reduced</b></p>
+<p class="f">$2\text{H}_2\text{O}_2\to2\text{H}_2\text{O}+\text{O}_2\quad(\text{O}: -1\to-2\ \text{and}\ -1\to0)$</p>
+<p class="f">$\text{Cl}_2+2\text{OH}^-\to\text{Cl}^-+\text{ClO}^-+\text{H}_2\text{O}\quad(\text{Cl}: 0\to-1\ \text{and}\ 0\to+1)$</p>
+<p class="f">$\text{P}_4+3\text{OH}^-+3\text{H}_2\text{O}\to\text{PH}_3+3\text{H}_2\text{PO}_2^-$</p>
+<span class="why"><b>Requirement for disproportionation:</b> the element must have <b>at least three oxidation states</b> and must currently sit in an <b>intermediate</b> one &mdash; so it has room to move both up and down.</span></div>
+
+<div class="bx c7"><div class="bh">Ion&ndash;electron (half-reaction) method &mdash; nine steps</div>
+<ol><li>Write the <b>skeletal ionic equation</b></li>
+<li>Assign oxidation numbers; identify what is <b>oxidised</b> and what is <b>reduced</b></li>
+<li>Split into <b>two half-reactions</b></li>
+<li>Balance all atoms <b>except O and H</b></li>
+<li>Balance <b>O</b> by adding <b>H<sub>2</sub>O</b>; balance <b>H</b> by adding <b>H<sup>+</sup></b></li>
+<li>Balance <b>charge</b> by adding electrons to the more positive side</li>
+<li><b>Multiply</b> the half-reactions so the electrons are equal</li>
+<li><b>Add</b> them; cancel the electrons</li>
+<li><b>Basic medium only:</b> add as many <b>OH<sup>&minus;</sup> to BOTH sides</b> as there are H<sup>+</sup>; combine H<sup>+</sup> + OH<sup>&minus;</sup> &rarr; H<sub>2</sub>O; cancel</li></ol>
+<span class="trap2">Step 9 is the one people forget. If the question says <b>alkaline / basic medium</b> and your final answer still contains H<sup>+</sup>, you have not finished.</span></div>
+
+<div class="bx tr wide"><div class="bh">Paired terms &mdash; know both halves of each</div>
+<table><tr><th>Term</th><th>Means</th><th>Its partner</th><th>Means</th></tr>
+<tr><td><b>Paramagnetic</b></td><td>Has <b>unpaired</b> electrons &rarr; <b>attracted</b> by a magnetic field (O<sub>2</sub>, NO)</td><td><b>Diamagnetic</b></td><td>All electrons <b>paired</b> &rarr; weakly <b>repelled</b> (N<sub>2</sub>, F<sub>2</sub>)</td></tr>
+<tr><td><b>Polar</b></td><td>&mu; &ne; 0 &mdash; bond moments do not cancel (H<sub>2</sub>O, NH<sub>3</sub>, HCl)</td><td><b>Non-polar</b></td><td>&mu; = 0 &mdash; symmetric, moments cancel (CO<sub>2</sub>, BF<sub>3</sub>, CCl<sub>4</sub>)</td></tr>
+<tr><td><b>Bonding MO</b></td><td>Constructive overlap, density <b>between</b> nuclei, <b>lower</b> energy</td><td><b>Antibonding MO</b></td><td>Destructive overlap, <b>node</b> between nuclei, <b>higher</b> energy</td></tr>
+<tr><td><b>&sigma; bond</b></td><td><b>Head-on</b> overlap, stronger, free rotation</td><td><b>&pi; bond</b></td><td><b>Sideways</b> overlap, weaker, no rotation</td></tr>
+<tr><td><b>Oxidation</b></td><td>Loss of e<sup>&minus;</sup>, oxidation number <b>increases</b></td><td><b>Reduction</b></td><td>Gain of e<sup>&minus;</sup>, oxidation number <b>decreases</b></td></tr>
+<tr><td><b>Oxidising agent</b></td><td>Accepts e<sup>&minus;</sup>, is itself <b>reduced</b></td><td><b>Reducing agent</b></td><td>Donates e<sup>&minus;</sup>, is itself <b>oxidised</b></td></tr>
+<tr><td><b>Ionisation enthalpy</b></td><td>Energy <b>required</b> to remove an e<sup>&minus;</sup> &mdash; always <b>positive</b></td><td><b>Electron gain enthalpy</b></td><td>Enthalpy change on <b>adding</b> an e<sup>&minus;</sup> &mdash; usually <b>negative</b></td></tr>
+<tr><td><b>Electronegativity</b></td><td>Attraction for a shared pair, atom <b>in a bond</b>, no units</td><td><b>Electron affinity</b></td><td>Energy released by an <b>isolated gaseous</b> atom, measurable</td></tr>
+<tr><td><b>Intermolecular H-bond</b></td><td><b>Between</b> molecules &rarr; <b>raises</b> b.p. (H<sub>2</sub>O, HF)</td><td><b>Intramolecular H-bond</b></td><td><b>Within</b> one molecule &rarr; <b>lowers</b> b.p. (o-nitrophenol)</td></tr>
+<tr><td><b>Empirical formula</b></td><td><b>Simplest</b> whole-number ratio (CH)</td><td><b>Molecular formula</b></td><td>The <b>actual</b> number of atoms (C<sub>6</sub>H<sub>6</sub>)</td></tr>
+<tr><td><b>Acidic oxide</b></td><td>Non-metal oxide, reacts with base (SO<sub>3</sub>, Cl<sub>2</sub>O<sub>7</sub>)</td><td><b>Basic / amphoteric</b></td><td>Metal oxide (Na<sub>2</sub>O) / reacts with <b>both</b> (Al<sub>2</sub>O<sub>3</sub>)</td></tr>
+<tr><td><b>Orbit</b></td><td>Fixed circular path &mdash; Bohr's idea, <b>wrong</b></td><td><b>Orbital</b></td><td>3-D region of <b>maximum probability</b> (~90%)</td></tr>
+<tr><td><b>Shielding</b></td><td>Inner electrons blocking the nuclear pull</td><td><b>Effective nuclear charge</b></td><td>The net pull the outer electron actually feels</td></tr>
+<tr><td><b>Emission spectrum</b></td><td><b>Bright</b> lines on a dark background</td><td><b>Absorption spectrum</b></td><td><b>Dark</b> lines on a bright background, same positions</td></tr>
+<tr><td><b>Degenerate orbitals</b></td><td>Orbitals of <b>equal energy</b> (the three 2p)</td><td><b>Non-degenerate</b></td><td>Different energies (2s vs 2p in a multi-electron atom)</td></tr></table></div>
+
+<div class="bx tr wide"><div class="bh">The twelve mistakes that cost the most marks</div>
+<table><tr><th>Wrong</th><th>Right</th></tr>
+<tr><td>Oxygen's oxidation number is +2</td><td><b>&minus;2</b>; &minus;1 in peroxides, &minus;&frac12; in superoxides, <b>+2 only in OF<sub>2</sub></b></td></tr>
+<tr><td>The IE anomalies are Cr and Cu</td><td>Cr and Cu are <b>configuration</b> anomalies. The <b>IE</b> anomalies are <b>Be &gt; B</b> and <b>N &gt; O</b></td></tr>
+<tr><td>CO<sub>2</sub> is trigonal planar</td><td><b>Linear, sp</b> &mdash; only <b>two atoms</b> attached, SN = 2</td></tr>
+<tr><td>XeF<sub>4</sub> is see-saw</td><td><b>XeF<sub>4</sub> is square planar. SF<sub>4</sub> is see-saw</b></td></tr>
+<tr><td>Quantum numbers are n, l, m<sub>1</sub>, m<sub>2</sub></td><td><b>n, l, m<sub>l</sub>, m<sub>s</sub></b> &mdash; m<sub>l</sub> is orientation, m<sub>s</sub> is spin</td></tr>
+<tr><td>ns<sup>1&minus;2</sup> means "1 minus 2"</td><td>It is a <b>range</b>: 1 <b>to</b> 2 electrons</td></tr>
+<tr><td>Intensity of light raises the KE of photoelectrons</td><td>Intensity raises the <b>number</b>; only <b>frequency</b> raises KE</td></tr>
+<tr><td>Molality changes with temperature</td><td><b>Molarity</b> does (volume expands). Molality never does</td></tr>
+<tr><td>Fill 4s first, so empty 4s last</td><td>Fill 4s first, but <b>remove from 4s FIRST</b> too</td></tr>
+<tr><td>Resonance forms flip back and forth</td><td>They have <b>no real existence</b>; there is <b>one</b> hybrid structure, no equilibrium</td></tr>
+<tr><td>An oxidising agent is oxidised</td><td>An oxidising agent is <b>reduced</b></td></tr>
+<tr><td>Leaving H<sup>+</sup> in a basic-medium redox answer</td><td>Add OH<sup>&minus;</sup> to <b>both sides</b>, combine to H<sub>2</sub>O, cancel</td></tr></table></div>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      { left: "$$", right: "$$", display: true },
+      { left: "$",  right: "$",  display: false }
+    ],
+    throwOnError: false, errorColor: "#cc0000", strict: false, trust: false
+  });
+  document.body.setAttribute("data-katex-done", "1");
+});
+</script>
+</body>
+</html>
