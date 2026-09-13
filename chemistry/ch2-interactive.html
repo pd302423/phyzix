@@ -1,0 +1,1562 @@
+<title>Structure of Atom</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#f6f7fa; --surface:#ffffff; --surface-2:#eef1f6; --sunken:#12151c;
+  --ink:#141821; --ink-2:#3d4557; --muted:#69738a; --rule:#dadfe9; --rule-2:#c3cad8;
+  --h-alpha:#c9392b; --h-beta:#177d92; --h-gamma:#3446b8; --h-delta:#7440b5;
+  --accent:var(--h-beta); --accent-ink:#0d5c6d;
+  --ok:#1d6b4f; --warn:#8a5a00;
+  --glow:rgba(23,125,146,.10);
+  --shadow:0 1px 2px rgba(20,24,33,.06), 0 6px 20px -12px rgba(20,24,33,.22);
+  --serif:"Spectral",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --maxw:1240px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#0e1116; --surface:#161a22; --surface-2:#1d222c; --sunken:#080a0e;
+  --ink:#e7ebf3; --ink-2:#c0c8d8; --muted:#8f9ab0; --rule:#272d39; --rule-2:#39414f;
+  --h-alpha:#f0685a; --h-beta:#54c3d8; --h-gamma:#7f8ff0; --h-delta:#b183e8;
+  --accent:var(--h-beta); --accent-ink:#8fdcea;
+  --ok:#4fbf8e; --warn:#d6a13a;
+  --glow:rgba(84,195,216,.13);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 26px -14px rgba(0,0,0,.7);
+}}
+:root[data-theme="dark"]{
+  --ground:#0e1116; --surface:#161a22; --surface-2:#1d222c; --sunken:#080a0e;
+  --ink:#e7ebf3; --ink-2:#c0c8d8; --muted:#8f9ab0; --rule:#272d39; --rule-2:#39414f;
+  --h-alpha:#f0685a; --h-beta:#54c3d8; --h-gamma:#7f8ff0; --h-delta:#b183e8;
+  --accent:var(--h-beta); --accent-ink:#8fdcea;
+  --ok:#4fbf8e; --warn:#d6a13a;
+  --glow:rgba(84,195,216,.13);
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 26px -14px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.62;margin:0;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:20px;padding-block:0}
+h1,h2,h3,h4{font-family:var(--serif);text-wrap:balance;margin:0}
+a{color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:1px solid var(--rule);background:var(--surface)}
+.mast .wrap{padding-block:30px 26px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 10px}
+h1{font-size:clamp(34px,6vw,54px);line-height:1.02;font-weight:700;letter-spacing:-.018em}
+.dek{font-family:var(--serif);font-size:clamp(16px,2.2vw,19px);color:var(--ink-2);
+  max-width:60ch;margin:12px 0 0;font-style:italic}
+.spectrum-fig{margin:26px 0 0}
+.spectrum-fig figcaption{font-size:13px;color:var(--muted);margin-top:9px;max-width:78ch}
+.metastrip{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chipm{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;padding:5px 10px;
+  border:1px solid var(--rule-2);color:var(--ink-2);background:var(--surface-2)}
+
+/* ---------- shell ---------- */
+.shell{display:grid;grid-template-columns:216px minmax(0,1fr);gap:44px;align-items:start}
+.rail{position:sticky;top:16px;padding-block:28px 40px;max-height:calc(100vh - 32px);overflow-y:auto}
+.rail h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;margin:0 0 12px}
+.rail ol{list-style:none;margin:0 0 22px;padding:0;display:flex;flex-direction:column;gap:1px}
+.rail a{display:flex;gap:9px;align-items:baseline;text-decoration:none;color:var(--ink-2);
+  font-size:13.5px;line-height:1.35;padding:6px 8px 6px 6px;border-left:2px solid transparent}
+.rail a:hover{color:var(--ink);background:var(--surface-2)}
+.rail a.on{color:var(--ink);border-left-color:var(--accent);background:var(--surface-2);font-weight:600}
+.rail a .num{font-family:var(--mono);font-size:11px;color:var(--muted);min-width:14px}
+.rail a.done .num::after{content:"✓";color:var(--ok);margin-left:3px}
+main{padding-block:34px 90px;min-width:0}
+
+/* ---------- sections ---------- */
+section{scroll-margin-top:16px;padding-block:0 20px}
+section+section{margin-top:52px;padding-top:46px;border-top:1px solid var(--rule)}
+.shead{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:18px}
+h2{font-size:clamp(25px,3.6vw,33px);font-weight:700;letter-spacing:-.014em;line-height:1.14}
+h2 .sn{font-family:var(--mono);font-size:.5em;font-weight:500;color:var(--accent-ink);
+  letter-spacing:.06em;display:block;margin-bottom:5px}
+h3{font-size:19px;font-weight:600;margin:30px 0 9px;letter-spacing:-.005em}
+h4{font-size:15.5px;font-weight:600;margin:20px 0 6px;font-family:var(--sans)}
+p{margin:0 0 13px;max-width:68ch}
+ul,ol.list{margin:0 0 14px;padding-left:20px;max-width:68ch}
+li{margin-bottom:6px}
+.lede{font-family:var(--serif);font-size:17.5px;color:var(--ink-2);max-width:64ch}
+strong{font-weight:600}
+code,.m{font-family:var(--mono);font-size:.9em;background:var(--surface-2);
+  padding:1px 5px;border-radius:2px;white-space:nowrap}
+.mark{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--muted);
+  border:1px solid var(--rule-2);padding:3px 7px;white-space:nowrap;background:var(--surface)}
+
+/* self-check */
+.selfcheck{display:flex;gap:6px}
+.sc{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 9px;border:1px solid var(--rule-2);background:var(--surface);color:var(--muted);
+  cursor:pointer;transition:.12s}
+.sc:hover{border-color:var(--accent);color:var(--ink)}
+.sc[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+:root[data-theme="dark"] .sc[aria-pressed="true"],
+:root:not([data-theme="light"]) .sc[aria-pressed="true"]{color:#0b1014}
+
+/* ---------- boxes ---------- */
+.box{border:1px solid var(--rule);background:var(--surface);padding:16px 18px;margin:18px 0}
+.box>:last-child{margin-bottom:0}
+.box .bh{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:9px;font-weight:500}
+.key{border-left:3px solid var(--accent);background:var(--surface)}
+.trap{border-left:3px solid var(--h-alpha)}
+.trap .bh{color:var(--h-alpha)}
+.exam{border-left:3px solid var(--warn)}
+.exam .bh{color:var(--warn)}
+.deriv{border-left:3px solid var(--h-gamma);background:var(--surface)}
+.deriv .bh{color:var(--h-gamma)}
+.deriv ol{margin:0;padding-left:22px}
+.deriv li{margin-bottom:9px}
+.res{margin-top:12px;padding-top:11px;border-top:1px dashed var(--rule-2);font-weight:600}
+.fx{font-family:var(--mono);font-size:14.5px;display:block;margin:9px 0;color:var(--ink);
+  overflow-x:auto;padding-bottom:2px}
+.fx-c{text-align:center;font-size:16px;margin:14px 0}
+
+/* ---------- tables ---------- */
+.tw{overflow-x:auto;margin:16px 0;border:1px solid var(--rule);background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);font-weight:500;background:var(--surface-2);border-bottom:1px solid var(--rule-2)}
+tbody tr:last-child td{border-bottom:0}
+td.n,th.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* ---------- interactive ---------- */
+.lab{border:1px solid var(--rule-2);background:var(--surface);margin:22px 0;box-shadow:var(--shadow)}
+.lab-h{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:11px 16px;border-bottom:1px solid var(--rule);background:var(--surface-2)}
+.lab-h .t{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--ink-2);font-weight:600}
+.lab-h .s{font-size:12.5px;color:var(--muted)}
+.lab-b{padding:16px}
+.ctl{display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.ctl label{font-family:var(--mono);font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.ctl .v{font-family:var(--mono);font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums}
+input[type=range]{width:100%;accent-color:var(--accent);height:22px}
+select,input[type=number]{font-family:var(--mono);font-size:14px;padding:6px 8px;
+  border:1px solid var(--rule-2);background:var(--surface);color:var(--ink);border-radius:2px;width:100%}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:780px){.grid3,.grid4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:430px){.grid3,.grid4{grid-template-columns:1fr}}
+.out{border:1px solid var(--rule);background:var(--surface-2);padding:10px 12px}
+.out .k{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.nc{text-transform:none}
+.out .val{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--ink);
+  font-variant-numeric:tabular-nums;margin-top:3px;word-break:break-word}
+.out.hot .val{color:var(--accent-ink)}
+.verdict{font-family:var(--mono);font-size:13px;padding:9px 12px;margin-top:12px;border:1px solid}
+.verdict.yes{border-color:var(--ok);color:var(--ok);background:var(--glow)}
+.verdict.no{border-color:var(--h-alpha);color:var(--h-alpha)}
+.pill{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;
+  padding:2px 7px;border:1px solid var(--rule-2);color:var(--muted);margin-left:6px}
+
+/* orbital boxes */
+.orbrow{display:flex;flex-wrap:wrap;gap:14px;margin-top:6px}
+.orbset{display:flex;flex-direction:column;gap:4px}
+.orbset .lbl{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:center}
+.orbset .cells{display:flex;gap:2px}
+.cell{width:26px;height:22px;border:1px solid var(--rule-2);background:var(--surface);
+  font-family:var(--mono);font-size:12px;display:flex;align-items:center;justify-content:center;
+  color:var(--accent-ink);letter-spacing:-1px}
+.cell.full{background:var(--glow)}
+
+/* ---------- Q bank ---------- */
+.qfilter{display:flex;gap:6px;flex-wrap:wrap;margin:16px 0 20px}
+.qf{font-family:var(--mono);font-size:11px;letter-spacing:.06em;padding:6px 11px;
+  border:1px solid var(--rule-2);background:var(--surface);color:var(--muted);cursor:pointer}
+.qf[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink);font-weight:600}
+.q{border:1px solid var(--rule);background:var(--surface);margin-bottom:10px}
+.q>summary{padding:12px 15px;cursor:pointer;display:flex;gap:12px;align-items:flex-start;
+  list-style:none;font-size:14.7px}
+.q>summary::-webkit-details-marker{display:none}
+.q>summary::after{content:"+";font-family:var(--mono);color:var(--muted);margin-left:auto;font-size:17px;line-height:1}
+.q[open]>summary::after{content:"−"}
+.q[open]>summary{border-bottom:1px solid var(--rule);background:var(--surface-2)}
+.q .qm{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--muted);
+  border:1px solid var(--rule-2);padding:2px 6px;flex-shrink:0;margin-top:2px}
+.q .ans{padding:13px 15px;font-size:14.6px;border-left:3px solid var(--ok);margin:0}
+.q .ans>:last-child{margin-bottom:0}
+.q .ans p{max-width:none}
+
+/* last hour */
+.final{background:var(--sunken);color:#e7ebf3;border:1px solid var(--rule-2);padding:22px}
+.final h3{color:#fff;margin-top:0}
+.final ol{max-width:none;padding-left:20px}
+.final li{margin-bottom:9px;color:#cdd5e3;font-size:14.6px}
+.final li b{color:#fff}
+.final .bh{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:#8f9ab0;margin-bottom:10px}
+
+figure{margin:20px 0}
+figure svg{max-width:100%;height:auto;display:block}
+figcaption{font-size:13px;color:var(--muted);margin-top:9px;max-width:74ch}
+.svg-scroll{overflow-x:auto}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr;gap:0}
+  .rail{position:static;max-height:none;padding-block:18px 0;border-bottom:1px solid var(--rule)}
+  .rail ol{flex-direction:row;overflow-x:auto;gap:4px;padding-bottom:8px;margin-bottom:12px}
+  .rail a{white-space:nowrap;border-left:0;border-bottom:2px solid transparent;padding:6px 10px}
+  .rail a.on{border-left:0;border-bottom-color:var(--accent)}
+  .rail h4{display:none}
+  main{padding-block:24px 70px}
+}
+</style>
+
+<header class="mast">
+<div class="wrap">
+  <p class="eyebrow">CBSE Class 11 · Rationalised NCERT · Chapter 2</p>
+  <h1>Structure of Atom</h1>
+  <p class="dek">Four bright lines in a glass tube destroyed classical physics. Everything in this chapter is the story of what replaced it — and every exam question comes from one link in that chain.</p>
+
+  <figure class="spectrum-fig">
+  <svg viewBox="0 0 900 132" role="img" aria-label="The hydrogen emission spectrum: four bright lines at 410, 434, 486 and 656 nanometres on a dark background, compared with a continuous spectrum below.">
+    <defs>
+      <linearGradient id="vis" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#7400b8"/><stop offset=".22" stop-color="#0038ff"/>
+        <stop offset=".33" stop-color="#00b3ff"/><stop offset=".44" stop-color="#00c853"/>
+        <stop offset=".60" stop-color="#ffe000"/><stop offset=".68" stop-color="#ff9000"/>
+        <stop offset=".85" stop-color="#ff2000"/><stop offset="1" stop-color="#8b0000"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="8" width="900" height="46" fill="#07090d"/>
+    <rect x="84" y="8" width="4" height="46" fill="#8654c8"/>
+    <rect x="150" y="8" width="4" height="46" fill="#4a5fd0"/>
+    <rect x="297" y="8" width="4.5" height="46" fill="#3fb5c9"/>
+    <rect x="775" y="8" width="5" height="46" fill="#e0483a"/>
+    <text x="86" y="70" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#8654c8" text-anchor="middle">410</text>
+    <text x="152" y="70" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#4a5fd0" text-anchor="middle">434</text>
+    <text x="299" y="70" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#3fb5c9" text-anchor="middle">486</text>
+    <text x="777" y="70" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#e0483a" text-anchor="middle">656</text>
+    <text x="86" y="83" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="middle">6→2</text>
+    <text x="152" y="83" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="middle">5→2</text>
+    <text x="299" y="83" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="middle">4→2</text>
+    <text x="777" y="83" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="middle">3→2</text>
+    <rect x="0" y="96" width="900" height="17" fill="url(#vis)"/>
+    <text x="0" y="128" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity=".6">380 nm</text>
+    <text x="900" y="128" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity=".6" text-anchor="end">700 nm</text>
+    <text x="450" y="128" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity=".6" text-anchor="middle">continuous spectrum, for comparison</text>
+  </svg>
+  <figcaption><strong>The Balmer series, drawn at its true wavelengths.</strong> Top: what a hydrogen discharge tube actually emits — four sharp lines and darkness everywhere else. Bottom: what classical physics predicted an atom should emit. Rutherford's model can only produce the bottom strip. That gap is the whole chapter.</figcaption>
+  </figure>
+
+  <div class="metastrip">
+    <span class="chipm">9 interactive tools</span>
+    <span class="chipm">6 derivations</span>
+    <span class="chipm">34 exam questions</span>
+    <span class="chipm">h = 6.626×10⁻³⁴ J s</span>
+    <span class="chipm">R<sub>H</sub> = 109677 cm⁻¹</span>
+  </div>
+</div>
+</header>
+
+<div class="wrap">
+<div class="shell">
+
+<nav class="rail" aria-label="Chapter contents">
+  <h4>Contents</h4>
+  <ol id="toc">
+    <li><a href="#s0" data-s="s0"><span class="num">0</span><span>The argument</span></a></li>
+    <li><a href="#s1" data-s="s1"><span class="num">1</span><span>Sub-atomic particles</span></a></li>
+    <li><a href="#s2" data-s="s2"><span class="num">2</span><span>Models that failed</span></a></li>
+    <li><a href="#s3" data-s="s3"><span class="num">3</span><span>Photons &amp; photoelectric</span></a></li>
+    <li><a href="#s4" data-s="s4"><span class="num">4</span><span>Hydrogen spectrum</span></a></li>
+    <li><a href="#s5" data-s="s5"><span class="num">5</span><span>Bohr's model</span></a></li>
+    <li><a href="#s6" data-s="s6"><span class="num">6</span><span>de Broglie &amp; Heisenberg</span></a></li>
+    <li><a href="#s7" data-s="s7"><span class="num">7</span><span>Quantum numbers</span></a></li>
+    <li><a href="#s8" data-s="s8"><span class="num">8</span><span>Orbitals &amp; nodes</span></a></li>
+    <li><a href="#s9" data-s="s9"><span class="num">9</span><span>Configurations</span></a></li>
+    <li><a href="#s10" data-s="s10"><span class="num">10</span><span>Question bank</span></a></li>
+    <li><a href="#s11" data-s="s11"><span class="num">11</span><span>Last-hour sheet</span></a></li>
+  </ol>
+  <h4>Display</h4>
+  <button class="sc" id="themebtn" aria-pressed="false" style="width:100%">Toggle theme</button>
+</nav>
+
+<main>
+
+<section id="s0">
+  <div class="shead">
+    <h2><span class="sn">Section 0</span>How the chapter hangs together</h2>
+  </div>
+  <p class="lede">This is not a list of facts. It is a chain of four models, each killed by one specific experiment. If you can draw the chain, you can answer most of the theory questions without memorising them separately.</p>
+
+  <figure class="svg-scroll">
+  <svg viewBox="0 0 940 300" role="img" aria-label="Chain of atomic models: Dalton to Thomson to Rutherford to Bohr to quantum mechanics, each arrow labelled with the experiment or idea that destroyed the previous model.">
+    <defs>
+      <marker id="arA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <polygon points="0,0 10,5 0,10" fill="#c9392b"/>
+      </marker>
+    </defs>
+
+    <text x="6" y="18" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#c9392b" letter-spacing="1.2">WHAT KILLED EACH MODEL</text>
+    <text x="6" y="40" font-family="IBM Plex Sans, sans-serif" font-size="12.5" fill="currentColor" opacity=".75">Every red arrow is a "state the drawbacks of…" question. Learn the arrows, not just the boxes.</text>
+
+    <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#c9392b" text-anchor="middle">
+      <text x="182" y="76">cathode rays</text>
+      <text x="382" y="76">α-scattering</text><text x="382" y="88">rebound</text>
+      <text x="582" y="76">spiral death</text><text x="582" y="88">line spectra</text>
+      <text x="782" y="76">many-electron</text><text x="782" y="88">Heisenberg</text>
+    </g>
+
+    <g fill="none" stroke="currentColor" stroke-width="1.3" opacity=".55">
+      <rect x="6" y="104" width="152" height="60"/>
+      <rect x="206" y="104" width="152" height="60"/>
+      <rect x="406" y="104" width="152" height="60"/>
+      <rect x="806" y="104" width="128" height="60"/>
+    </g>
+    <rect x="606" y="104" width="152" height="60" fill="none" stroke="#177d92" stroke-width="1.8"/>
+
+    <g font-family="Spectral, serif" font-size="15" font-weight="600" fill="currentColor" text-anchor="middle">
+      <text x="82" y="130">Dalton</text><text x="282" y="130">Thomson</text><text x="482" y="130">Rutherford</text>
+      <text x="682" y="130">Bohr</text><text x="870" y="130">Quantum</text>
+    </g>
+    <g font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".65" text-anchor="middle">
+      <text x="82" y="149">indivisible atom</text><text x="282" y="149">plum pudding</text><text x="482" y="149">nuclear atom</text>
+      <text x="682" y="149">quantised orbits</text><text x="870" y="149">orbitals, ψ²</text>
+    </g>
+
+    <g stroke="#c9392b" stroke-width="1.6" marker-end="url(#arA)">
+      <line x1="160" y1="134" x2="202" y2="134"/>
+      <line x1="360" y1="134" x2="402" y2="134"/>
+      <line x1="560" y1="134" x2="602" y2="134"/>
+      <line x1="760" y1="134" x2="802" y2="134"/>
+    </g>
+
+    <line x1="6" y1="200" x2="934" y2="200" stroke="currentColor" stroke-width="1" opacity=".25"/>
+    <text x="6" y="224" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#177d92" letter-spacing="1.2">WHAT SURVIVES INTO CLASS 12</text>
+    <text x="6" y="250" font-family="IBM Plex Sans, sans-serif" font-size="12.5" fill="currentColor" opacity=".8">Quantum numbers → orbital shapes → Aufbau / Pauli / Hund → electronic configuration → periodicity (Ch 3) → bonding (Ch 4).</text>
+    <text x="6" y="272" font-family="IBM Plex Sans, sans-serif" font-size="12.5" fill="currentColor" opacity=".8">Bohr's numbers survive only for one-electron species. Everything else you keep comes from the last box.</text>
+  </svg>
+  <figcaption><strong>The failure chain.</strong> Four of the highest-frequency theory questions in this chapter are literally the four red arrows: "why did Thomson's model fail", "drawbacks of Rutherford's model", "limitations of Bohr's model", and "what the photoelectric effect proved".</figcaption>
+  </figure>
+
+  <div class="box key">
+    <div class="bh">The one sentence that organises everything</div>
+    <p style="margin-bottom:0">Classical physics says energy is <strong>continuous</strong> and a charged particle in orbit must <strong>radiate</strong>. Atoms are stable and emit <strong>discrete</strong> lines. Every idea in this chapter — Planck's quantum, the photon, Bohr's stationary states, quantised angular momentum — exists to fix that one contradiction.</p>
+  </div>
+</section>
+
+<section id="s1">
+  <div class="shead">
+    <h2><span class="sn">Section 1</span>Sub-atomic particles</h2>
+    <div class="selfcheck" data-for="s1"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+  <p>Low-yield for long answers, high-yield for one-markers. Learn the table cold and the three discovery experiments in one line each.</p>
+
+  <div class="tw"><table>
+  <thead><tr><th>Particle</th><th>Discovered by</th><th class="n">Charge</th><th class="n">Mass / kg</th><th class="n">Mass / u</th></tr></thead>
+  <tbody>
+    <tr><td>Electron, e⁻</td><td>J.&nbsp;J. Thomson (1897)</td><td class="n">−1.602×10⁻¹⁹ C</td><td class="n">9.1094×10⁻³¹</td><td class="n">0.00055</td></tr>
+    <tr><td>Proton, p⁺</td><td>Goldstein / Rutherford</td><td class="n">+1.602×10⁻¹⁹ C</td><td class="n">1.67262×10⁻²⁷</td><td class="n">1.00727</td></tr>
+    <tr><td>Neutron, n</td><td>Chadwick (1932)</td><td class="n">0</td><td class="n">1.67493×10⁻²⁷</td><td class="n">1.00867</td></tr>
+  </tbody></table></div>
+
+  <h3>The three experiments, one line each</h3>
+  <ul>
+    <li><strong>Cathode rays → the electron.</strong> Rays from the cathode bend towards the <em>positive</em> plate, so they are negative. Their <span class="m">e/m</span> is the <strong>same whatever gas or electrode</strong> is used — so the electron is universal to all matter. Thomson measured <span class="m">e/m = 1.758820×10¹¹ C kg⁻¹</span>.</li>
+    <li><strong>Millikan's oil drop → the charge.</strong> Charge on a drop is always an integral multiple of <span class="m">1.602×10⁻¹⁹ C</span>, so charge is <strong>quantised</strong>. Combining with Thomson: <span class="m">mₑ = e ÷ (e/m) = 9.1094×10⁻³¹ kg</span>.</li>
+    <li><strong>Anode (canal) rays → the proton.</strong> Positive, and their <span class="m">e/m</span> <em>depends on the gas</em> — largest for hydrogen, giving the lightest positive particle.</li>
+  </ul>
+
+  <div class="box exam">
+    <div class="bh">Exam angle</div>
+    <p style="margin-bottom:0">"Why is <span class="m">e/m</span> of cathode rays independent of the gas, but of anode rays dependent on it?" Because the <strong>electron is a constituent of every atom</strong>, so it is always the same particle; the positive ion left behind is whatever the gas happened to be, so its mass changes.</p>
+  </div>
+
+  <h3>Atomic number, mass number and the four "iso-" words</h3>
+  <p><span class="m">Z</span> = protons = electrons in a neutral atom. <span class="m">A</span> = protons + neutrons. Written <span class="m">ᴬ<sub>Z</sub>X</span>. Neutrons = <span class="m">A − Z</span>.</p>
+  <div class="tw"><table>
+  <thead><tr><th>Term</th><th>Same</th><th>Different</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Isotopes</strong></td><td>Z (same element)</td><td>A, neutrons</td><td>¹H, ²H, ³H · ³⁵Cl, ³⁷Cl</td></tr>
+    <tr><td><strong>Isobars</strong></td><td>A</td><td>Z (different elements)</td><td>¹⁴C and ¹⁴N</td></tr>
+    <tr><td><strong>Isotones</strong></td><td>Neutron number</td><td>Z and A</td><td>¹⁴C and ¹⁶O (8 neutrons each)</td></tr>
+    <tr><td><strong>Isoelectronic</strong></td><td>Electron count</td><td>Nuclear charge</td><td>N³⁻, O²⁻, F⁻, Ne, Na⁺, Mg²⁺</td></tr>
+  </tbody></table></div>
+  <div class="box trap">
+    <div class="bh">Where marks go</div>
+    <p style="margin-bottom:0">Isotopes have <strong>identical chemical properties</strong> — chemistry is decided by electrons, and isotopes have the same electron count. They differ only in mass-dependent physical properties. Reversing isotope and isobar is the single commonest one-mark loss in this section.</p>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="shead">
+    <h2><span class="sn">Section 2</span>The models that failed</h2>
+    <div class="selfcheck" data-for="s2"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+
+  <h3>Thomson (1898) — and why one experiment ended it</h3>
+  <p>A uniform sphere of positive charge with electrons embedded in it: the "plum pudding" or "watermelon" model. It explained electrical neutrality and <strong>nothing else</strong>. Because the positive charge was spread thinly over the whole atom, no α-particle should ever have been deflected sharply — yet some were.</p>
+
+  <h3>Rutherford's α-scattering (1911)</h3>
+  <p>A thin gold foil (~100 nm) bombarded with α-particles (He²⁺) from a radioactive source, detected on a fluorescent ZnS screen. Three observations, three conclusions — and the exam always wants them <em>paired</em>.</p>
+
+  <figure class="svg-scroll">
+  <svg viewBox="0 0 900 300" role="img" aria-label="Alpha scattering: most particles pass straight through a gold foil, a few deflect at small angles, and very few rebound off the nucleus.">
+    <defs>
+      <marker id="arR" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <polygon points="0,0 10,5 0,10" fill="#c9392b"/>
+      </marker>
+    </defs>
+    <rect x="10" y="158" width="86" height="46" fill="none" stroke="currentColor" stroke-width="1.3"/>
+    <text x="53" y="177" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" text-anchor="middle">α-source</text>
+    <text x="53" y="192" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity=".6" text-anchor="middle">radium</text>
+
+    <rect x="452" y="60" width="10" height="200" fill="#c9a227" opacity=".28" stroke="#8a7028" stroke-width="1.2"/>
+    <text x="457" y="50" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75" text-anchor="middle">gold foil</text>
+    <circle cx="457" cy="182" r="5" fill="#c9392b"/>
+    <text x="470" y="204" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="#c9392b">nucleus</text>
+
+    <path d="M 98 172 L 450 180 L 214 106" fill="none" stroke="#c9392b" stroke-width="1.7" marker-end="url(#arR)"/>
+    <text x="150" y="82" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#c9392b">very few rebound (&gt; 90°)</text>
+    <text x="150" y="98" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="currentColor" opacity=".75">→ the charge is also very <tspan font-weight="600">massive</tspan></text>
+
+    <path d="M 98 192 L 454 188 L 812 140" fill="none" stroke="#c9392b" stroke-width="1.7" marker-end="url(#arR)"/>
+    <text x="520" y="100" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#c9392b">a few deflected at small angles</text>
+    <text x="520" y="116" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="currentColor" opacity=".75">→ positive charge is <tspan font-weight="600">concentrated</tspan> in a tiny volume</text>
+
+    <line x1="98" y1="216" x2="812" y2="216" stroke="#c9392b" stroke-width="1.7" marker-end="url(#arR)"/>
+    <line x1="98" y1="238" x2="812" y2="238" stroke="#c9392b" stroke-width="1.7" marker-end="url(#arR)"/>
+    <text x="600" y="268" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="#c9392b" text-anchor="middle">most pass straight through</text>
+    <text x="600" y="284" font-family="IBM Plex Sans, sans-serif" font-size="12" fill="currentColor" opacity=".75" text-anchor="middle">→ the atom is mostly <tspan font-weight="600">empty space</tspan></text>
+
+    <text x="10" y="26" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".65">nucleus radius ~10⁻¹⁵ m  ·  atom radius ~10⁻¹⁰ m  ·  a factor of 100,000</text>
+  </svg>
+  <figcaption><strong>Each observation forces exactly one conclusion.</strong> If you write the observations without the conclusions (or the reverse), you get half marks. Always pair them.</figcaption>
+  </figure>
+
+  <div class="box trap">
+    <div class="bh">Rutherford's two fatal drawbacks — a guaranteed question</div>
+    <ol class="list" style="margin-bottom:0">
+      <li><strong>Stability.</strong> By classical electrodynamics, an <em>accelerating</em> charge continuously radiates energy. An electron in a circular orbit is always accelerating (its direction changes), so it must spiral into the nucleus in about <span class="m">10⁻⁸ s</span>. Matter could not exist.</li>
+      <li><strong>Spectra.</strong> A continuously spiralling electron would lose energy continuously and emit a <strong>continuous</strong> spectrum. Atoms actually give sharp <strong>line</strong> spectra.</li>
+    </ol>
+  </div>
+  <p>It also said nothing about how electrons are <em>arranged</em>, and therefore nothing about chemistry.</p>
+</section>
+
+<section id="s3">
+  <div class="shead">
+    <h2><span class="sn">Section 3</span>Photons and the photoelectric effect</h2>
+    <div class="selfcheck" data-for="s3"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+
+  <h3>Planck's quantum theory (1900)</h3>
+  <p>Classical theory predicted a black body would radiate ever more strongly at short wavelengths — the "ultraviolet catastrophe". The observed curve instead peaks and falls. Planck fixed it by abandoning continuous energy.</p>
+  <div class="box key">
+    <div class="bh">Learn this</div>
+    <p>Energy is emitted or absorbed only in discrete packets — <strong>quanta</strong> — of energy</p>
+    <span class="fx fx-c">E = hν = hc/λ&nbsp;&nbsp;&nbsp;&nbsp;h = 6.626 × 10⁻³⁴ J s</span>
+    <p style="margin-bottom:0">and total energy is always an integral multiple <span class="m">nhν</span>. For light, one quantum is a <strong>photon</strong>. Useful shortcut: <span class="m">E(eV) = 1240 / λ(nm)</span>.</p>
+  </div>
+
+  <h3>The photoelectric effect (Hertz 1887, explained by Einstein 1905)</h3>
+  <p>Shine light on a metal surface; above a certain frequency, electrons are ejected. Four observations — and the wave theory of light fails on all four.</p>
+
+  <div class="tw"><table>
+  <thead><tr><th>Observation</th><th>Wave theory predicts</th><th>Photon theory explains</th></tr></thead>
+  <tbody>
+    <tr><td>No emission below a <strong>threshold frequency</strong> ν₀, however intense</td><td>Enough intensity should always work</td><td>One photon, one electron. If <span class="m">hν &lt; hν₀</span> the single photon cannot pay the price</td></tr>
+    <tr><td>Emission is <strong>instantaneous</strong> (&lt; 10⁻⁹ s)</td><td>A time lag while energy accumulates</td><td>The transfer is a single collision</td></tr>
+    <tr><td><strong>Kinetic energy</strong> rises with <strong>frequency</strong>, not intensity</td><td>KE should rise with intensity</td><td><span class="m">E = hν</span> fixes the energy each photon carries</td></tr>
+    <tr><td><strong>Number</strong> of electrons rises with <strong>intensity</strong></td><td>—</td><td>Intensity = photons per second</td></tr>
+  </tbody></table></div>
+
+  <div class="box deriv">
+    <div class="bh">Derivation 1 · Einstein's photoelectric equation</div>
+    <ol>
+      <li>A single photon of energy <span class="m">hν</span> is absorbed by a single electron.</li>
+      <li>Part of it, the <strong>work function</strong> <span class="m">φ = hν₀</span>, is spent freeing the electron from the metal surface.</li>
+      <li>Conservation of energy gives the remainder to the electron as kinetic energy:</li>
+      <li><span class="m">hν = hν₀ + ½mₑv²</span></li>
+      <li>If a retarding potential <span class="m">V₀</span> just stops the fastest electron, <span class="m">eV₀ = ½mₑv²</span>, so <span class="m">eV₀ = h(ν − ν₀)</span>.</li>
+    </ol>
+    <div class="res">KE<sub>max</sub> = hν − hν₀ = h(ν − ν₀). A graph of KE against ν is a straight line of slope <strong>h</strong>, with x-intercept ν₀ — the <em>same slope for every metal</em>, because h is universal.</div>
+  </div>
+
+  <div class="lab">
+    <div class="lab-h">
+      <span class="t">Photoelectric bench</span>
+      <span class="s">Pick a metal and a wavelength — see whether an electron leaves, and with what energy.</span>
+    </div>
+    <div class="lab-b">
+      <div class="grid2">
+        <div>
+          <div class="ctl">
+            <label for="pe-metal">Metal (work function from NCERT Table 2.2)</label>
+            <select id="pe-metal">
+              <option value="1.9">Caesium · φ = 1.9 eV</option>
+              <option value="2.25">Potassium · φ = 2.25 eV</option>
+              <option value="2.3" selected>Sodium · φ = 2.3 eV</option>
+              <option value="2.42">Lithium · φ = 2.42 eV</option>
+              <option value="4.3">Silver · φ = 4.3 eV</option>
+              <option value="4.8">Copper · φ = 4.8 eV</option>
+            </select>
+          </div>
+          <div class="ctl">
+            <label for="pe-lam">Wavelength of incident light</label>
+            <input type="range" id="pe-lam" min="120" max="800" step="5" value="400">
+            <span class="v" id="pe-lamv">400 nm · 7.49 × 10¹⁴ Hz</span>
+          </div>
+          <div id="pe-verdict" class="verdict yes">emission occurs</div>
+        </div>
+        <div>
+          <figure style="margin:0">
+          <svg id="pe-graph" viewBox="0 0 470 230" role="img" aria-label="Graph of maximum kinetic energy against frequency for the selected metal, with the current operating point marked.">
+            <line x1="52" y1="192" x2="452" y2="192" stroke="currentColor" stroke-width="1.3"/>
+            <line x1="52" y1="192" x2="52" y2="18" stroke="currentColor" stroke-width="1.3"/>
+            <text x="52" y="14" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity=".7">KE / eV</text>
+            <text x="452" y="216" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity=".7" text-anchor="end">ν / 10¹⁵ Hz</text>
+            <text x="46" y="196" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="end">0</text>
+            <text x="46" y="26" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="end">9</text>
+            <text x="46" y="80" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="end">6</text>
+            <text x="46" y="138" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="end">3</text>
+            <text x="206" y="216" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="middle">1.0</text>
+            <text x="360" y="216" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="currentColor" opacity=".55" text-anchor="middle">2.0</text>
+            <line id="pe-line" x1="52" y1="192" x2="52" y2="192" stroke="#177d92" stroke-width="2.4"/>
+            <line id="pe-drop" x1="0" y1="0" x2="0" y2="0" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity=".5"/>
+            <circle id="pe-nu0" cx="52" cy="192" r="3.6" fill="#177d92"/>
+            <circle id="pe-pt" cx="52" cy="192" r="5" fill="#c9392b"/>
+            <text id="pe-nu0lbl" x="52" y="208" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#177d92" text-anchor="middle">ν₀</text>
+          </svg>
+          </figure>
+        </div>
+      </div>
+      <div class="grid3" style="margin-top:14px">
+        <div class="out"><div class="k">Photon energy</div><div class="val" id="pe-E">3.10 eV</div></div>
+        <div class="out"><div class="k">Work function <span class="nc">φ</span></div><div class="val" id="pe-phi">2.30 eV</div></div>
+        <div class="out hot"><div class="k">KE max</div><div class="val" id="pe-ke">0.80 eV</div></div>
+        <div class="out"><div class="k">Stopping potential</div><div class="val" id="pe-v0">0.80 V</div></div>
+        <div class="out"><div class="k">Threshold <span class="nc">ν₀</span></div><div class="val" id="pe-nu0v">5.56×10¹⁴ Hz</div></div>
+        <div class="out"><div class="k">Threshold <span class="nc">λ₀</span></div><div class="val" id="pe-lam0">539 nm</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box trap">
+    <div class="bh">The three traps here</div>
+    <ol class="list" style="margin-bottom:0">
+      <li><strong>Intensity never ejects an electron below ν₀.</strong> Brighter light means more photons, not more energetic ones. Drag the slider past the threshold and watch the verdict flip — intensity is not even an input.</li>
+      <li><strong>The slope is h for every metal.</strong> Switch metals: the line shifts sideways, never tilts. Different metals give <em>parallel</em> lines.</li>
+      <li><strong>φ = hν₀</strong>, so a bigger work function means a <em>higher</em> threshold frequency and a <em>shorter</em> threshold wavelength. Copper needs UV; caesium works with red light.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="s4">
+  <div class="shead">
+    <h2><span class="sn">Section 4</span>Atomic spectra and the hydrogen lines</h2>
+    <div class="selfcheck" data-for="s4"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h3 style="margin-top:0">Three kinds of spectrum</h3>
+      <ul>
+        <li><strong>Continuous</strong> — white light through a prism. No gaps; every wavelength present.</li>
+        <li><strong>Emission line</strong> — bright lines on a dark background. Produced by excited atoms falling back down. A fingerprint of the element.</li>
+        <li><strong>Absorption line</strong> — dark lines on a continuous background, at <em>exactly the same positions</em>. The atom absorbs precisely what it would emit.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-top:0">Rydberg's formula</h3>
+      <p>Purely empirical when written in 1888 — it just fitted the observed lines. Bohr derived it 25 years later, and that is why his model was believed.</p>
+      <span class="fx fx-c">ν̄ = 1/λ = 109677 (1/n₁² − 1/n₂²) cm⁻¹</span>
+      <p style="margin-bottom:0">with <span class="m">n₂ &gt; n₁</span>. The series is named by <strong>where the electron lands</strong> (n₁), never where it starts.</p>
+    </div>
+  </div>
+
+  <div class="lab">
+    <div class="lab-h">
+      <span class="t">Transition explorer</span>
+      <span class="s">Choose a jump and read off the line it produces.</span>
+    </div>
+    <div class="lab-b">
+      <div class="grid2">
+        <div class="ctl">
+          <label for="tr-n2">Electron falls from n₂</label>
+          <input type="range" id="tr-n2" min="2" max="12" step="1" value="3">
+          <span class="v" id="tr-n2v">n₂ = 3</span>
+        </div>
+        <div class="ctl">
+          <label for="tr-n1">Down to n₁</label>
+          <input type="range" id="tr-n1" min="1" max="6" step="1" value="2">
+          <span class="v" id="tr-n1v">n₁ = 2</span>
+        </div>
+      </div>
+      <div class="grid3">
+        <div class="out hot"><div class="k">Series</div><div class="val" id="tr-series">Balmer</div></div>
+        <div class="out"><div class="k">Region</div><div class="val" id="tr-region">Visible</div></div>
+        <div class="out"><div class="k">Wavenumber <span class="nc">ν̄</span></div><div class="val" id="tr-wn">15233 cm⁻¹</div></div>
+        <div class="out"><div class="k">Wavelength <span class="nc">λ</span></div><div class="val" id="tr-lam">656.5 nm</div></div>
+        <div class="out"><div class="k">Photon energy</div><div class="val" id="tr-eV">1.89 eV</div></div>
+        <div class="out"><div class="k">ΔE</div><div class="val" id="tr-J">3.03×10⁻¹⁹ J</div></div>
+      </div>
+      <figure style="margin:14px 0 0">
+      <svg viewBox="0 0 880 84" role="img" aria-label="Visible spectrum strip showing where the currently selected transition falls, if it is in the visible range.">
+        <defs>
+          <linearGradient id="vis2" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#7400b8"/><stop offset=".22" stop-color="#0038ff"/>
+            <stop offset=".33" stop-color="#00b3ff"/><stop offset=".44" stop-color="#00c853"/>
+            <stop offset=".60" stop-color="#ffe000"/><stop offset=".68" stop-color="#ff9000"/>
+            <stop offset=".85" stop-color="#ff2000"/><stop offset="1" stop-color="#8b0000"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="6" width="880" height="34" fill="url(#vis2)" opacity=".30"/>
+        <rect id="tr-line" x="-20" y="6" width="5" height="34" fill="#ffffff"/>
+        <text id="tr-linelbl" x="-40" y="58" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" text-anchor="middle">—</text>
+        <text x="0" y="78" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity=".6">380 nm</text>
+        <text x="880" y="78" font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity=".6" text-anchor="end">700 nm</text>
+        <text id="tr-offscale" x="440" y="78" font-family="IBM Plex Mono, monospace" font-size="10.5" fill="currentColor" opacity=".75" text-anchor="middle"></text>
+      </svg>
+      </figure>
+    </div>
+  </div>
+
+  <div class="tw"><table>
+  <thead><tr><th>Series</th><th class="n">n₁</th><th class="n">n₂</th><th>Region</th><th>Longest-λ line (first line)</th></tr></thead>
+  <tbody>
+    <tr><td>Lyman</td><td class="n">1</td><td class="n">2, 3, 4 …</td><td>Ultraviolet</td><td class="n">121.6 nm (2→1)</td></tr>
+    <tr><td><strong>Balmer</strong></td><td class="n">2</td><td class="n">3, 4, 5 …</td><td><strong>Visible</strong></td><td class="n">656.5 nm (3→2), red Hα</td></tr>
+    <tr><td>Paschen</td><td class="n">3</td><td class="n">4, 5, 6 …</td><td>Infrared</td><td class="n">1875 nm (4→3)</td></tr>
+    <tr><td>Brackett</td><td class="n">4</td><td class="n">5, 6, 7 …</td><td>Infrared</td><td class="n">4051 nm (5→4)</td></tr>
+    <tr><td>Pfund</td><td class="n">5</td><td class="n">6, 7, 8 …</td><td>Far infrared</td><td class="n">7458 nm (6→5)</td></tr>
+  </tbody></table></div>
+
+  <div class="box key">
+    <div class="bh">Mnemonic and the two facts that go with it</div>
+    <p><strong>L</strong>yman <strong>B</strong>almer <strong>P</strong>aschen <strong>B</strong>rackett <strong>P</strong>fund → "<strong>L</strong>ight <strong>B</strong>ulbs <strong>P</strong>roduce <strong>B</strong>right <strong>P</strong>hotons", with n₁ = 1, 2, 3, 4, 5 in that order.</p>
+    <ul style="margin-bottom:0">
+      <li>Only <strong>Balmer</strong> is visible. Lyman is always UV (biggest energy gaps); everything from Paschen out is IR.</li>
+      <li>Within a series, the <strong>first line</strong> (n₁+1 → n₁) has the <em>smallest</em> energy and <em>longest</em> wavelength; the <strong>series limit</strong> (∞ → n₁) has the largest energy and shortest wavelength.</li>
+    </ul>
+  </div>
+
+  <div class="box exam">
+    <div class="bh">The counting question</div>
+    <p style="margin-bottom:0">"How many spectral lines appear when an electron de-excites from level n to the ground state?" — <span class="m">n(n−1)/2</span>. From n = 4: <span class="m">4×3/2 = 6</span> lines. If it falls only as far as level n₁ instead of the ground state, use <span class="m">(n₂−n₁)(n₂−n₁+1)/2</span>.</p>
+  </div>
+</section>
+
+<section id="s5">
+  <div class="shead">
+    <h2><span class="sn">Section 5</span>Bohr's model</h2>
+    <div class="selfcheck" data-for="s5"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+  <p class="lede">The highest-scoring section of the chapter. A five-mark derivation, a set of standard numericals, and a guaranteed "limitations" question all live here.</p>
+
+  <h3>The four postulates</h3>
+  <ol class="list">
+    <li>The electron revolves in certain <strong>fixed circular orbits</strong> of definite energy, called <strong>stationary states</strong>.</li>
+    <li>While in a stationary state the electron <strong>does not radiate</strong> energy. This is a bare postulate — introduced precisely to defeat the classical spiral-death objection.</li>
+    <li>Energy is emitted or absorbed <strong>only when the electron jumps</strong> between states: <span class="m">ΔE = E₂ − E₁ = hν</span> (Bohr's frequency rule).</li>
+    <li>Angular momentum is <strong>quantised</strong>: <span class="m">mvr = nh/2π</span>, n = 1, 2, 3 …</li>
+  </ol>
+
+  <div class="box deriv">
+    <div class="bh">Derivation 2 · Radius and energy of the nth orbit</div>
+    <p><strong>Part A — radius.</strong></p>
+    <ol>
+      <li>Electrostatic attraction supplies the centripetal force:<br>
+        <span class="fx">(1/4πε₀)(Ze²/r²) = mv²/r &nbsp;⟹&nbsp; mv² = Ze²/4πε₀r &nbsp;…(i)</span></li>
+      <li>Quantised angular momentum: <span class="m">mvr = nh/2π ⟹ v = nh/2πmr</span> &nbsp;…(ii)</li>
+      <li>Substitute (ii) into (i): <span class="m">m(nh/2πmr)² = Ze²/4πε₀r</span></li>
+      <li><span class="m">n²h²/4π²mr² = Ze²/4πε₀r ⟹ r = n²h²ε₀/πmZe²</span></li>
+    </ol>
+    <div class="res">r<sub>n</sub> = 52.9 (n²/Z) pm = 0.529 (n²/Z) Å &nbsp;— so r ∝ n² and r ∝ 1/Z.</div>
+    <p style="margin-top:16px"><strong>Part B — energy.</strong></p>
+    <ol>
+      <li>From (i), <span class="m">KE = ½mv² = Ze²/8πε₀r</span></li>
+      <li><span class="m">PE = −Ze²/4πε₀r</span> — negative, because the force is attractive.</li>
+      <li><span class="m">E = KE + PE = Ze²/8πε₀r − Ze²/4πε₀r = −Ze²/8πε₀r</span></li>
+      <li>Insert r from Part A: <span class="m">E<sub>n</sub> = −mZ²e⁴ / 8ε₀²h²n²</span></li>
+    </ol>
+    <div class="res">E<sub>n</sub> = −2.18×10⁻¹⁸ (Z²/n²) J = −13.6 (Z²/n²) eV. Also <strong>PE = 2E</strong> and <strong>KE = −E</strong>, so total energy is negative — which is exactly what "bound" means. And v<sub>n</sub> = 2.188×10⁶ (Z/n) m s⁻¹.</div>
+  </div>
+
+  <div class="box deriv">
+    <div class="bh">Derivation 3 · The Rydberg formula, from Bohr</div>
+    <ol>
+      <li>The electron falls n₂ → n₁, emitting one photon: <span class="m">ΔE = E<sub>n₂</sub> − E<sub>n₁</sub></span></li>
+      <li><span class="m">ΔE = 2.18×10⁻¹⁸ (1/n₁² − 1/n₂²) J</span></li>
+      <li>By the frequency rule <span class="m">ΔE = hν</span>, so <span class="m">ν = 3.29×10¹⁵ (1/n₁² − 1/n₂²) Hz</span></li>
+      <li>Wavenumber <span class="m">ν̄ = ν/c = ΔE/hc</span></li>
+    </ol>
+    <div class="res">ν̄ = 109677 (1/n₁² − 1/n₂²) cm⁻¹ — Rydberg's <em>empirical</em> constant, now computed from m, e, h and ε₀ alone. That agreement is why the model was accepted.</div>
+  </div>
+
+  <div class="lab">
+    <div class="lab-h">
+      <span class="t">Bohr orbit calculator</span>
+      <span class="s">Works for one-electron species only: H, He⁺, Li²⁺, Be³⁺.</span>
+    </div>
+    <div class="lab-b">
+      <div class="grid2">
+        <div class="ctl">
+          <label for="bo-z">Nuclear charge Z</label>
+          <select id="bo-z">
+            <option value="1" selected>Z = 1 · H</option>
+            <option value="2">Z = 2 · He⁺</option>
+            <option value="3">Z = 3 · Li²⁺</option>
+            <option value="4">Z = 4 · Be³⁺</option>
+          </select>
+        </div>
+        <div class="ctl">
+          <label for="bo-n">Orbit number n</label>
+          <input type="range" id="bo-n" min="1" max="8" step="1" value="1">
+          <span class="v" id="bo-nv">n = 1 (ground state)</span>
+        </div>
+      </div>
+      <div class="grid3" style="margin-top:4px">
+        <div class="out hot"><div class="k">Radius rₙ</div><div class="val" id="bo-r">52.9 pm</div></div>
+        <div class="out hot"><div class="k">Energy Eₙ</div><div class="val" id="bo-e">−13.60 eV</div></div>
+        <div class="out"><div class="k">Energy Eₙ</div><div class="val" id="bo-ej">−2.18×10⁻¹⁸ J</div></div>
+        <div class="out"><div class="k">Velocity vₙ</div><div class="val" id="bo-v">2.19×10⁶ m/s</div></div>
+        <div class="out"><div class="k">Ionisation energy from n</div><div class="val" id="bo-ie">13.60 eV</div></div>
+        <div class="out"><div class="k">Angular momentum</div><div class="val" id="bo-l">1.05×10⁻³⁴ J s</div></div>
+      </div>
+      <div class="box key" style="margin:14px 0 0">
+        <p style="margin-bottom:0;font-size:14.5px"><strong>Watch the scaling as you drag.</strong> Radius grows as <span class="m">n²</span> and shrinks as <span class="m">1/Z</span>; energy shrinks as <span class="m">1/n²</span> and grows as <span class="m">Z²</span>. The favourite trick comparison: He⁺ at n=2 has <em>exactly the same energy</em> as H at n=1 (both −13.6 eV, since Z²/n² = 4/4 = 1) but <strong>twice the radius</strong> (n²/Z = 4/2 = 2). Same energy, different size — check both ratios separately.</p>
+      </div>
+    </div>
+  </div>
+
+  <figure class="svg-scroll">
+  <svg viewBox="0 0 880 320" role="img" aria-label="Hydrogen energy level diagram with Lyman, Balmer and Paschen series shown as downward transitions, and energies labelled.">
+    <defs>
+      <marker id="arT" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <polygon points="0,0 10,5 0,10" fill="#7440b5"/>
+      </marker>
+    </defs>
+    <line x1="120" y1="262" x2="700" y2="262" stroke="currentColor" stroke-width="2"/>
+    <line x1="120" y1="146" x2="700" y2="146" stroke="currentColor" stroke-width="1.6"/>
+    <line x1="120" y1="86" x2="700" y2="86" stroke="currentColor" stroke-width="1.4"/>
+    <line x1="120" y1="56" x2="700" y2="56" stroke="currentColor" stroke-width="1.2"/>
+    <line x1="120" y1="40" x2="700" y2="40" stroke="currentColor" stroke-width="1.1"/>
+    <line x1="120" y1="24" x2="700" y2="24" stroke="currentColor" stroke-width="1.1" stroke-dasharray="5 4" opacity=".6"/>
+
+    <text x="112" y="266" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" text-anchor="end">n = 1</text>
+    <text x="112" y="150" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" text-anchor="end">n = 2</text>
+    <text x="112" y="90" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" text-anchor="end">n = 3</text>
+    <text x="112" y="60" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" text-anchor="end">n = 4</text>
+    <text x="112" y="44" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" text-anchor="end">n = 5</text>
+    <text x="112" y="21" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".7" text-anchor="end">n = ∞</text>
+
+    <text x="710" y="266" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".7">−13.60 eV</text>
+    <text x="710" y="150" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".7">−3.40 eV</text>
+    <text x="710" y="90" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".7">−1.51 eV</text>
+    <text x="710" y="60" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".7">−0.85 eV</text>
+    <text x="710" y="21" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".7">0 eV · free electron</text>
+
+    <g stroke="#7440b5" stroke-width="1.5" marker-end="url(#arT)">
+      <line x1="160" y1="146" x2="160" y2="256"/>
+      <line x1="186" y1="86"  x2="186" y2="256"/>
+      <line x1="212" y1="56"  x2="212" y2="256"/>
+    </g>
+    <text x="186" y="290" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7440b5" text-anchor="middle">LYMAN → n=1 · UV</text>
+
+    <g stroke="#7440b5" stroke-width="1.5" marker-end="url(#arT)">
+      <line x1="380" y1="86" x2="380" y2="140"/>
+      <line x1="406" y1="56" x2="406" y2="140"/>
+      <line x1="432" y1="40" x2="432" y2="140"/>
+    </g>
+    <text x="406" y="176" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7440b5" text-anchor="middle">BALMER → n=2 · visible</text>
+
+    <g stroke="#7440b5" stroke-width="1.5" marker-end="url(#arT)">
+      <line x1="590" y1="56" x2="590" y2="80"/>
+      <line x1="616" y1="40" x2="616" y2="80"/>
+    </g>
+    <text x="603" y="116" font-family="IBM Plex Mono, monospace" font-size="11" fill="#7440b5" text-anchor="middle">PASCHEN → n=3 · IR</text>
+
+    <text x="120" y="312" font-family="IBM Plex Sans, sans-serif" font-size="12.5" fill="currentColor" opacity=".75">Levels crowd together as n grows, because E ∝ −1/n² — so every series converges to a limit rather than spreading out.</text>
+  </svg>
+  <figcaption><strong>Vertical scale compressed above n = 3 so the upper levels stay legible.</strong> Two things to read off: the gaps shrink upwards (hence convergence limits), and the <em>lowest</em> arrow in each group is the longest-wavelength line of that series.</figcaption>
+  </figure>
+
+  <div class="box trap">
+    <div class="bh">Limitations of Bohr's model — five, and the exam wants all five</div>
+    <ol class="list" style="margin-bottom:0">
+      <li>Works <strong>only for one-electron species</strong> (H, He⁺, Li²⁺, Be³⁺). It ignores electron–electron repulsion, so it fails from helium onward.</li>
+      <li>Cannot explain the <strong>fine structure</strong> of spectral lines seen with better spectrometers.</li>
+      <li>Cannot explain line splitting in a magnetic field (<strong>Zeeman effect</strong>) or an electric field (<strong>Stark effect</strong>).</li>
+      <li>Says nothing about <strong>molecular shapes or chemical bonding</strong>.</li>
+      <li>It <strong>violates the Heisenberg uncertainty principle</strong> — a fixed orbit assigns an exact position and an exact momentum at the same time, which is not allowed.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="s6">
+  <div class="shead">
+    <h2><span class="sn">Section 6</span>de Broglie and Heisenberg</h2>
+    <div class="selfcheck" data-for="s6"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+
+  <div class="box deriv">
+    <div class="bh">Derivation 4 · The de Broglie relation</div>
+    <ol>
+      <li>For a photon, Planck gives <span class="m">E = hν = hc/λ</span>, and Einstein gives <span class="m">E = mc²</span>.</li>
+      <li>Equate them: <span class="m">mc² = hc/λ ⟹ λ = h/mc = h/p</span>.</li>
+      <li>de Broglie's leap: if radiation can behave as a particle, matter can behave as a wave. Replace c by the particle's own speed v.</li>
+    </ol>
+    <div class="res">λ = h/mv = h/p. For an electron accelerated through V volts, λ = h/√(2mₑeV) ≈ 12.27/√V Å. Confirmed by <strong>Davisson and Germer (1927)</strong>, who diffracted electrons off a nickel crystal — diffraction is a purely wave phenomenon.</div>
+  </div>
+
+  <div class="lab">
+    <div class="lab-h">
+      <span class="t">Wavelength of matter</span>
+      <span class="s">Why a cricket ball never diffracts, in one slider.</span>
+    </div>
+    <div class="lab-b">
+      <div class="ctl">
+        <label for="db-obj">Object</label>
+        <select id="db-obj">
+          <option value="9.109e-31|2.19e6" selected>Electron in Bohr's first orbit · 9.11×10⁻³¹ kg, 2.19×10⁶ m/s</option>
+          <option value="9.109e-31|1e6">Electron · 9.11×10⁻³¹ kg, 1.0×10⁶ m/s</option>
+          <option value="1.675e-27|2200">Neutron (thermal) · 1.675×10⁻²⁷ kg, 2200 m/s</option>
+          <option value="1e-9|0.01">Dust grain · 10⁻⁹ kg, 0.01 m/s</option>
+          <option value="0.1|10">Cricket ball · 0.1 kg, 10 m/s</option>
+          <option value="60|1.5">A person walking · 60 kg, 1.5 m/s</option>
+        </select>
+      </div>
+      <div class="grid3">
+        <div class="out"><div class="k">Momentum p = mv</div><div class="val" id="db-p">—</div></div>
+        <div class="out hot"><div class="k">de Broglie <span class="nc">λ</span></div><div class="val" id="db-lam">—</div></div>
+        <div class="out"><div class="k">Compared with an atom (10⁻¹⁰ m)</div><div class="val" id="db-cmp">—</div></div>
+      </div>
+      <div class="verdict yes" id="db-verdict" style="margin-top:12px">—</div>
+      <div style="border-top:1px solid var(--rule);margin-top:16px;padding-top:14px">
+        <div class="grid2">
+          <div class="ctl">
+            <label for="db-v">…or accelerate an electron through a potential</label>
+            <input type="range" id="db-v" min="1" max="1000" step="1" value="100">
+            <span class="v" id="db-vv">V = 100 volts</span>
+          </div>
+          <div class="out hot" style="align-self:end"><div class="k"><span class="nc">λ = 12.27/√V</span></div><div class="val" id="db-lamv">1.227 Å</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box exam">
+    <div class="bh">The standard three-mark answer</div>
+    <p style="margin-bottom:0">"Why is the wave nature of a moving cricket ball not observed?" Because <span class="m">λ = h/mv</span> is <strong>inversely proportional to mass</strong>. For a 0.1 kg ball at 10 m s⁻¹, λ ≈ 6.6×10⁻³⁴ m — smaller than any aperture that exists, so no diffraction can be detected. Wave character only matters for particles of very small mass.</p>
+  </div>
+
+  <h3>Heisenberg's uncertainty principle (1927)</h3>
+  <div class="box key">
+    <div class="bh">Statement</div>
+    <p>It is impossible <strong>in principle</strong> to determine simultaneously the exact position and the exact momentum of an electron:</p>
+    <span class="fx fx-c">Δx · Δp ≥ h/4π&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;&nbsp;&nbsp;&nbsp;Δx · Δv ≥ h/4πm</span>
+    <p style="margin-bottom:0">This is <em>not</em> an instrument limitation — it follows from the wave nature of matter. Its first casualty is the word "orbit": a precise path needs precise position and momentum together, which Bohr's model assumes.</p>
+  </div>
+
+  <div class="box deriv">
+    <div class="bh">Derivation 5 · Why an electron cannot live inside the nucleus</div>
+    <ol>
+      <li>Confining the electron to a nucleus means <span class="m">Δx ≈ 10⁻¹⁴ m</span> (nuclear diameter).</li>
+      <li><span class="m">Δv ≥ h/(4πmΔx) = 6.626×10⁻³⁴ / (4π × 9.11×10⁻³¹ × 10⁻¹⁴)</span></li>
+      <li><span class="m">Δv ≥ 5.8×10⁹ m s⁻¹</span></li>
+    </ol>
+    <div class="res">That exceeds the speed of light (3×10⁸ m s⁻¹), which is impossible — so an electron cannot be confined inside the nucleus.</div>
+  </div>
+  <p>One elegant consequence worth quoting: Bohr's fourth postulate stops being arbitrary. A stable orbit must fit a whole number of electron wavelengths, <span class="m">2πr = nλ = nh/mv</span>, which rearranges to exactly <span class="m">mvr = nh/2π</span>.</p>
+</section>
+
+<section id="s7">
+  <div class="shead">
+    <h2><span class="sn">Section 7</span>Quantum numbers</h2>
+    <div class="selfcheck" data-for="s7"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+  <p class="lede">Schrödinger's equation replaces orbits with wave functions. ψ itself has no physical meaning; <strong>ψ²</strong> is the probability density. An <strong>orbital</strong> is the region enclosing about 90% of that probability. Solving the equation makes the quantum numbers fall out of the mathematics — they are not assumed.</p>
+
+  <div class="tw"><table>
+  <thead><tr><th>Quantum number</th><th class="n">Symbol</th><th>Allowed values</th><th>What it fixes</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Principal</strong></td><td class="n">n</td><td class="n">1, 2, 3 …</td><td>Shell; size and (mainly) energy; holds at most 2n² electrons</td></tr>
+    <tr><td><strong>Azimuthal</strong></td><td class="n">l</td><td class="n">0 → (n−1)</td><td>Subshell and <strong>shape</strong>. l = 0 s, 1 p, 2 d, 3 f. Orbital angular momentum = √(l(l+1))·h/2π</td></tr>
+    <tr><td><strong>Magnetic</strong></td><td class="n">m<sub>l</sub></td><td class="n">−l … 0 … +l</td><td><strong>Orientation</strong>. Gives 2l+1 orbitals per subshell</td></tr>
+    <tr><td><strong>Spin</strong></td><td class="n">m<sub>s</sub></td><td class="n">+½ or −½</td><td>Spin direction. Not a solution of the Schrödinger equation — added because experiment demanded it</td></tr>
+  </tbody></table></div>
+
+  <div class="lab">
+    <div class="lab-h">
+      <span class="t">Quantum number validator</span>
+      <span class="s">Build a set and see whether it can exist — and what it describes.</span>
+    </div>
+    <div class="lab-b">
+      <div class="grid2">
+        <div class="grid3" style="grid-template-columns:repeat(4,1fr)">
+          <div class="ctl"><label for="qn-n" class="nc">n</label><input type="number" id="qn-n" min="1" max="7" step="1" value="3"></div>
+          <div class="ctl"><label for="qn-l" class="nc">l</label><input type="number" id="qn-l" min="0" max="6" step="1" value="2"></div>
+          <div class="ctl"><label for="qn-m" class="nc">m<sub>l</sub></label><input type="number" id="qn-m" min="-6" max="6" step="1" value="0"></div>
+          <div class="ctl"><label for="qn-s" class="nc">m<sub>s</sub></label>
+            <select id="qn-s"><option value="0.5" selected>+½</option><option value="-0.5">−½</option></select>
+          </div>
+        </div>
+        <div>
+          <div class="verdict yes" id="qn-verdict">valid set</div>
+          <div class="out" style="margin-top:10px"><div class="k">Describes</div><div class="val" id="qn-name">one electron in a 3d orbital</div></div>
+        </div>
+      </div>
+      <div class="grid4" style="margin-top:14px">
+        <div class="out"><div class="k">Orbitals in subshell <span class="nc">(2l+1)</span></div><div class="val" id="qn-orb">5</div></div>
+        <div class="out"><div class="k">Electrons in subshell</div><div class="val" id="qn-esub">10</div></div>
+        <div class="out"><div class="k">Electrons in shell <span class="nc">(2n²)</span></div><div class="val" id="qn-eshell">18</div></div>
+        <div class="out hot"><div class="k">Radial nodes <span class="nc">(n−l−1)</span></div><div class="val" id="qn-rad">0</div></div>
+        <div class="out hot"><div class="k">Angular nodes <span class="nc">(l)</span></div><div class="val" id="qn-ang">2</div></div>
+        <div class="out"><div class="k">Total nodes <span class="nc">(n−1)</span></div><div class="val" id="qn-tot">2</div></div>
+        <div class="out"><div class="k">Orbital angular momentum</div><div class="val" id="qn-am">2.58×10⁻³⁴ J s</div></div>
+        <div class="out"><div class="k"><span class="nc">(n + l)</span> — filling order</div><div class="val" id="qn-npl">5</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box trap">
+    <div class="bh">What makes a set invalid</div>
+    <ul style="margin-bottom:0">
+      <li><span class="m">l</span> can never equal or exceed <span class="m">n</span>. So <strong>2d does not exist</strong> (n=2 allows only l=0,1), and neither does 1p or 3f.</li>
+      <li><span class="m">m<sub>l</sub></span> must lie between −l and +l inclusive.</li>
+      <li><span class="m">m<sub>s</sub></span> is only ±½ — never 0, never 1.</li>
+      <li>Try n=2, l=2 in the tool above. "Which of the following sets is not possible?" is a stock one-mark MCQ, and it is always this rule.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s8">
+  <div class="shead">
+    <h2><span class="sn">Section 8</span>Orbital shapes, nodes and energies</h2>
+    <div class="selfcheck" data-for="s8"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+
+  <figure class="svg-scroll">
+  <svg viewBox="0 0 900 218" role="img" aria-label="Shapes of the 1s, 2s, 2p, 3d-xy and 3d-z-squared orbitals, with nodal planes and radial nodes marked.">
+    <g fill="#177d92" fill-opacity=".20" stroke="#177d92" stroke-width="1.4">
+      <circle cx="88" cy="82" r="40"/>
+      <circle cx="268" cy="82" r="52"/>
+      <ellipse cx="448" cy="50" rx="22" ry="32"/>
+      <ellipse cx="448" cy="114" rx="22" ry="32"/>
+      <ellipse cx="628" cy="82" rx="19" ry="30" transform="rotate(45 628 82)"/>
+      <ellipse cx="628" cy="82" rx="19" ry="30" transform="rotate(-45 628 82)"/>
+      <ellipse cx="806" cy="48" rx="17" ry="28"/>
+      <ellipse cx="806" cy="116" rx="17" ry="28"/>
+      <ellipse cx="806" cy="82" rx="42" ry="12"/>
+    </g>
+    <circle cx="268" cy="82" r="25" fill="none" stroke="#c9392b" stroke-width="1.3" stroke-dasharray="4 3"/>
+    <line x1="398" y1="82" x2="498" y2="82" stroke="#c9392b" stroke-width="1.3" stroke-dasharray="4 3"/>
+    <line x1="578" y1="82" x2="678" y2="82" stroke="#c9392b" stroke-width="1.3" stroke-dasharray="4 3"/>
+    <line x1="628" y1="32" x2="628" y2="132" stroke="#c9392b" stroke-width="1.3" stroke-dasharray="4 3"/>
+
+    <g font-family="Spectral, serif" font-size="15" font-weight="600" fill="currentColor" text-anchor="middle">
+      <text x="88" y="158">1s</text><text x="268" y="158">2s</text><text x="448" y="158">2p<tspan font-size="11">z</tspan></text>
+      <text x="628" y="158">3d<tspan font-size="11">xy</tspan></text><text x="806" y="158">3d<tspan font-size="11">z²</tspan></text>
+    </g>
+    <g font-family="IBM Plex Mono, monospace" font-size="10" fill="currentColor" opacity=".7" text-anchor="middle">
+      <text x="88" y="178">spherical</text><text x="88" y="192">0 nodes</text>
+      <text x="268" y="178">spherical</text><text x="268" y="192">1 radial node</text>
+      <text x="448" y="178">dumb-bell</text><text x="448" y="192">1 nodal plane</text>
+      <text x="628" y="178">four lobes</text><text x="628" y="192">2 nodal planes</text>
+      <text x="806" y="178">2 lobes + ring</text><text x="806" y="192">2 angular nodes</text>
+    </g>
+    <text x="0" y="212" font-family="IBM Plex Mono, monospace" font-size="10" fill="#c9392b">dashed red = a node: probability of finding the electron there is exactly zero</text>
+  </svg>
+  <figcaption><strong>Shape comes from l, not n.</strong> Every s orbital is spherical whatever the shell; every p orbital is a dumb-bell with one nodal plane through the nucleus — which is why the probability of finding a p electron <em>at</em> the nucleus is exactly zero, while for an s electron it is not.</figcaption>
+  </figure>
+
+  <div class="box key">
+    <div class="bh">Nodes — three formulae, one check</div>
+    <p style="margin-bottom:0">Angular (planar) nodes = <span class="m">l</span> &nbsp;·&nbsp; Radial (spherical) nodes = <span class="m">n − l − 1</span> &nbsp;·&nbsp; <strong>Total = n − 1</strong>. The third is your check: the first two must add to it. A 3s has 2 radial nodes and 0 angular; a 3p has 1 and 1; a 3d has 0 and 2. All total 2.</p>
+  </div>
+
+  <h3>Why orbital energies split in a many-electron atom</h3>
+  <div class="box key">
+    <p style="margin-bottom:0">In <strong>hydrogen</strong> (one electron) energy depends on <span class="m">n</span> alone, so <span class="m">2s = 2p</span> and <span class="m">3s = 3p = 3d</span> are degenerate. In <strong>every other atom</strong> electron–electron repulsion splits them, and energy depends on <strong>both n and l</strong>.</p>
+  </div>
+  <p>Two competing effects do it. <strong>Shielding:</strong> inner electrons screen the nucleus, so an outer electron feels a reduced <strong>effective nuclear charge</strong> Z<sub>eff</sub>. <strong>Penetration:</strong> within a shell, an s electron spends more time close to the nucleus than p, which does more than d, which does more than f. More penetration → less shielding → larger Z<sub>eff</sub> → lower energy. Hence <strong>s &lt; p &lt; d &lt; f</strong> within a shell.</p>
+
+  <div class="box key">
+    <div class="bh">The <span class="nc">(n + l)</span> rule</div>
+    <p style="margin-bottom:0">Lower <span class="m">(n + l)</span> fills first. On a tie, the one with the <strong>lower n</strong> fills first. So 4s (4+0 = 4) fills before 3d (3+2 = 5); and 3d (5) fills before 4p (5) because 3d has the smaller n.</p>
+  </div>
+
+  <figure class="svg-scroll">
+  <svg viewBox="0 0 880 250" role="img" aria-label="Aufbau diagonal rule chart giving the order in which subshells are filled.">
+    <defs>
+      <marker id="arD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <polygon points="0,0 10,5 0,10" fill="#c9392b"/>
+      </marker>
+    </defs>
+    <g font-family="Spectral, serif" font-size="15.5" font-weight="600" fill="currentColor" text-anchor="middle">
+      <text x="46" y="34">1s</text>
+      <text x="46" y="72">2s</text><text x="106" y="72">2p</text>
+      <text x="46" y="110">3s</text><text x="106" y="110">3p</text><text x="166" y="110">3d</text>
+      <text x="46" y="148">4s</text><text x="106" y="148">4p</text><text x="166" y="148">4d</text><text x="226" y="148">4f</text>
+      <text x="46" y="186">5s</text><text x="106" y="186">5p</text><text x="166" y="186">5d</text><text x="226" y="186">5f</text>
+      <text x="46" y="224">6s</text><text x="106" y="224">6p</text><text x="166" y="224">6d</text>
+    </g>
+    <g stroke="#c9392b" stroke-width="1.4" marker-end="url(#arD)" opacity=".9">
+      <line x1="68" y1="22" x2="68" y2="52"/>
+      <line x1="128" y1="60" x2="68" y2="92"/>
+      <line x1="128" y1="98" x2="68" y2="130"/>
+      <line x1="188" y1="98" x2="68" y2="168"/>
+      <line x1="188" y1="136" x2="68" y2="206"/>
+      <line x1="248" y1="136" x2="128" y2="206"/>
+    </g>
+    <text x="300" y="40" font-family="IBM Plex Mono, monospace" font-size="11" fill="currentColor" opacity=".6" letter-spacing="1">READ ALONG THE ARROWS</text>
+    <text x="300" y="66" font-family="IBM Plex Mono, monospace" font-size="14" fill="currentColor">1s  2s  2p  3s  3p  4s  3d  4p</text>
+    <text x="300" y="90" font-family="IBM Plex Mono, monospace" font-size="14" fill="currentColor">5s  4d  5p  6s  4f  5d  6p  7s</text>
+    <text x="300" y="130" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="currentColor" opacity=".8">Same thing as the (n + l) rule — the diagonals just do the</text>
+    <text x="300" y="148" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="currentColor" opacity=".8">arithmetic for you.</text>
+    <text x="300" y="182" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="#c9392b" font-weight="600">4s fills before 3d —</text>
+    <text x="300" y="200" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="currentColor" opacity=".8">but once filled, 4s is also <tspan font-weight="600">emptied first</tspan> on ionisation.</text>
+    <text x="300" y="222" font-family="IBM Plex Sans, sans-serif" font-size="13" fill="currentColor" opacity=".8">Fe = [Ar]3d⁶4s², but Fe²⁺ = [Ar]3d⁶ — not [Ar]3d⁴4s².</text>
+  </svg>
+  <figcaption><strong>The building-up order.</strong> The 4s-before-3d crossover, and its reversal on ionisation, is the most examined single consequence in this section.</figcaption>
+  </figure>
+</section>
+
+<section id="s9">
+  <div class="shead">
+    <h2><span class="sn">Section 9</span>Filling rules and electronic configuration</h2>
+    <div class="selfcheck" data-for="s9"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+
+  <div class="grid2">
+    <div class="box key" style="margin-top:0">
+      <div class="bh">Aufbau principle</div>
+      <p style="margin-bottom:0">Electrons occupy the <strong>lowest-energy orbital available</strong> first, in the (n+l) order.</p>
+    </div>
+    <div class="box key" style="margin-top:0">
+      <div class="bh">Pauli exclusion principle</div>
+      <p style="margin-bottom:0">No two electrons in an atom can have <strong>all four</strong> quantum numbers the same — so an orbital holds at most two electrons, with <strong>opposite spins</strong>.</p>
+    </div>
+  </div>
+  <div class="box key">
+    <div class="bh">Hund's rule of maximum multiplicity</div>
+    <p style="margin-bottom:0">Pairing in the orbitals of a subshell does not begin until <strong>each orbital of that subshell has one electron</strong>, and all singly occupied orbitals have <strong>parallel</strong> spins. Note the wording: a <em>subshell</em>, not a shell.</p>
+  </div>
+
+  <div class="lab">
+    <div class="lab-h">
+      <span class="t">Configuration builder</span>
+      <span class="s">Z = 1 to 36, with Hund's rule applied and the two exceptions flagged.</span>
+    </div>
+    <div class="lab-b">
+      <div class="ctl">
+        <label for="ec-z">Atomic number Z</label>
+        <input type="range" id="ec-z" min="1" max="36" step="1" value="26">
+        <span class="v" id="ec-zv">Z = 26 · Iron (Fe)</span>
+      </div>
+      <div class="grid2">
+        <div class="out"><div class="k">Full configuration (shell order)</div><div class="val" id="ec-full" style="font-size:14px">—</div></div>
+        <div class="out"><div class="k">Noble gas core notation</div><div class="val" id="ec-core" style="font-size:14px">—</div></div>
+      </div>
+      <div class="grid3" style="margin-top:10px">
+        <div class="out hot"><div class="k">Unpaired electrons</div><div class="val" id="ec-unp">4</div></div>
+        <div class="out"><div class="k">Valence shell <span class="nc">(highest n)</span></div><div class="val" id="ec-val">4</div></div>
+        <div class="out"><div class="k">Block</div><div class="val" id="ec-block">d</div></div>
+      </div>
+      <div id="ec-flag" style="display:none" class="verdict no">exception</div>
+      <h4 style="margin-top:18px">Orbital box diagram</h4>
+      <div class="orbrow" id="ec-boxes"></div>
+      <p style="font-size:13px;color:var(--muted);margin:12px 0 0;max-width:none">Drag to Z = 24 and Z = 29 to see the two exceptions, and to Z = 7 to see Hund's rule produce three parallel unpaired electrons in 2p.</p>
+    </div>
+  </div>
+
+  <div class="box key">
+    <div class="bh">The two exceptions and the reason</div>
+    <div class="tw" style="margin:6px 0 12px"><table>
+      <thead><tr><th>Element</th><th>Expected</th><th>Actual</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Chromium</strong> (Z = 24)</td><td>[Ar] 3d⁴ 4s²</td><td><strong>[Ar] 3d⁵ 4s¹</strong></td></tr>
+        <tr><td><strong>Copper</strong> (Z = 29)</td><td>[Ar] 3d⁹ 4s²</td><td><strong>[Ar] 3d¹⁰ 4s¹</strong></td></tr>
+      </tbody></table></div>
+    <p style="margin-bottom:0">Exactly half-filled (d⁵) and completely filled (d¹⁰) subshells have extra stability because of <strong>(i)</strong> the symmetrical distribution of electron density and <strong>(ii)</strong> the greater <strong>exchange energy</strong> released when parallel-spin electrons swap positions — the more possible exchanges, the more stable. <em>Quote both reasons; one alone loses a mark.</em></p>
+  </div>
+
+  <div class="box trap">
+    <div class="bh">Where marks go in this section</div>
+    <ol class="list" style="margin-bottom:0">
+      <li><strong>Electrons leave from the outermost shell — 4s before 3d.</strong> Fe is [Ar]3d⁶4s², but Fe²⁺ is [Ar]3d⁶, <em>not</em> [Ar]3d⁴4s². Same for Cu²⁺ = [Ar]3d⁹.</li>
+      <li>Configurations are <strong>written</strong> in shell order but <strong>filled</strong> in energy order. Both conventions are accepted; be consistent within one answer.</li>
+      <li>Hund's rule applies within a <strong>subshell</strong>. 2p³ is three parallel unpaired electrons, one per orbital — never a pair plus a single.</li>
+      <li>An orbital holds at most <strong>2</strong> electrons; only a Bohr <em>shell</em> holds 2n².</li>
+    </ol>
+  </div>
+</section>
+
+<section id="s10">
+  <div class="shead">
+    <h2><span class="sn">Section 10</span>Question bank</h2>
+    <div class="selfcheck" data-for="s10"><button class="sc" aria-pressed="false">Got it</button></div>
+  </div>
+  <p class="lede">Thirty-four questions in the shapes this chapter is actually set in. Try each one before opening it — reading answers you did not attempt is the least efficient revision there is.</p>
+
+  <div class="qfilter" id="qfilter">
+    <button class="qf" data-m="all" aria-pressed="true">All</button>
+    <button class="qf" data-m="1" aria-pressed="false">1 mark</button>
+    <button class="qf" data-m="2" aria-pressed="false">2 marks</button>
+    <button class="qf" data-m="3" aria-pressed="false">3 marks</button>
+    <button class="qf" data-m="5" aria-pressed="false">5 marks</button>
+    <button class="qf" data-m="ar" aria-pressed="false">Assertion–reason</button>
+  </div>
+  <div id="qlist">
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>Which of these sets of quantum numbers is not possible: (a) n=3, l=2, mₗ=−2 &nbsp;(b) n=2, l=2, mₗ=0 &nbsp;(c) n=4, l=0, mₗ=0?</span></summary>
+  <div class="ans"><p><strong>(b) is impossible.</strong> l can only run from 0 to (n−1), so for n=2 the allowed values are l = 0 and 1 only. l = 2 would mean a "2d" orbital, which does not exist.</p></div></details>
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>How many unpaired electrons does chromium have?</span></summary>
+  <div class="ans"><p><strong>Six.</strong> Cr (Z=24) is [Ar]3d⁵4s¹ — five parallel electrons in 3d plus one in 4s, all unpaired.</p></div></details>
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>What is the orbital angular momentum of an electron in a 2s orbital?</span></summary>
+  <div class="ans"><p><strong>Zero.</strong> Orbital angular momentum = √(l(l+1))·h/2π, and for an s orbital l = 0. Note this is a favourite trap — the answer is not h/2π.</p></div></details>
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>Give the total number of nodes in a 4d orbital, and split them into radial and angular.</span></summary>
+  <div class="ans"><p>Total = n − 1 = <strong>3</strong>. Angular = l = <strong>2</strong>. Radial = n − l − 1 = 4 − 2 − 1 = <strong>1</strong>. Check: 2 + 1 = 3 ✓</p></div></details>
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>Which series of the hydrogen spectrum lies in the visible region, and why is it the only one?</span></summary>
+  <div class="ans"><p><strong>Balmer</strong> (n₁ = 2). Lyman transitions end at n = 1, where the energy gaps are far larger, putting them in the ultraviolet; Paschen and beyond end at n ≥ 3 where the gaps are much smaller, putting them in the infrared. Only n₁ = 2 gives gaps of roughly 1.9–3.4 eV, which is visible light.</p></div></details>
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>Write the electronic configuration of Cu²⁺.</span></summary>
+  <div class="ans"><p>Cu (Z=29) is [Ar]3d¹⁰4s¹ (an exception). Removing two electrons takes the 4s electron first, then one 3d: <strong>Cu²⁺ = [Ar]3d⁹</strong>.</p></div></details>
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>What is the maximum number of electrons that can have n = 3 and l = 2?</span></summary>
+  <div class="ans"><p>l = 2 is the 3d subshell, with 2l+1 = 5 orbitals × 2 electrons = <strong>10 electrons</strong>.</p></div></details>
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>Which transition emits the photon of higher energy: 3 → 1 or 3 → 2?</span></summary>
+  <div class="ans"><p><strong>3 → 1.</strong> ΔE = 13.6(1/n₁² − 1/n₂²): for 3→1 that is 13.6(1 − 1/9) = 12.09 eV; for 3→2 it is 13.6(1/4 − 1/9) = 1.89 eV. Lyman transitions are always the most energetic.</p></div></details>
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>Define threshold frequency.</span></summary>
+  <div class="ans"><p>The <strong>minimum frequency of incident radiation below which no photoelectric emission occurs</strong>, however intense the radiation. It relates to the work function by φ = hν₀.</p></div></details>
+
+  <details class="q" data-m="1"><summary><span class="qm">1</span><span>An element has the configuration 1s²2s²2p⁶3s²3p³. How many electrons have l = 1?</span></summary>
+  <div class="ans"><p>l = 1 means p orbitals: 2p⁶ and 3p³ → 6 + 3 = <strong>9 electrons</strong>.</p></div></details>
+
+  <details class="q" data-m="2"><summary><span class="qm">2</span><span>Calculate the de Broglie wavelength of an electron accelerated through a potential difference of 100 V.</span></summary>
+  <div class="ans"><p>λ = h/√(2mₑeV) = 12.27/√V Å = 12.27/√100 = 12.27/10 = <strong>1.227 Å = 1.227 × 10⁻¹⁰ m</strong>.</p><p>This is comparable to atomic spacing in a crystal, which is exactly why electron diffraction (Davisson–Germer) works.</p></div></details>
+
+  <details class="q" data-m="2"><summary><span class="qm">2</span><span>Calculate the energy of one photon of light of wavelength 4000 Å, in joules and in eV.</span></summary>
+  <div class="ans"><p>λ = 4000 Å = 4.0 × 10⁻⁷ m.</p><p>E = hc/λ = (6.626×10⁻³⁴ × 3×10⁸)/(4.0×10⁻⁷) = 1.9878×10⁻²⁵ / 4.0×10⁻⁷ = <strong>4.97 × 10⁻¹⁹ J</strong></p><p>In eV: 4.97×10⁻¹⁹ / 1.602×10⁻¹⁹ = <strong>3.10 eV</strong>. (Shortcut: 1240/400 nm = 3.10 eV.)</p></div></details>
+
+  <details class="q" data-m="2"><summary><span class="qm">2</span><span>How many spectral lines are produced when an electron in a hydrogen atom drops from n = 5 to the ground state?</span></summary>
+  <div class="ans"><p>n(n−1)/2 = 5 × 4 / 2 = <strong>10 lines</strong>.</p></div></details>
+
+  <details class="q" data-m="2"><summary><span class="qm">2</span><span>Compare the radius and the energy of He⁺ in n = 2 with hydrogen in n = 1.</span></summary>
+  <div class="ans"><p><strong>Radius:</strong> r = 52.9 n²/Z. He⁺: 52.9 × 4/2 = 105.8 pm. H: 52.9 × 1/1 = 52.9 pm. He⁺ is <strong>twice as large</strong>.</p><p><strong>Energy:</strong> E = −13.6 Z²/n². He⁺: −13.6 × 4/4 = −13.6 eV. H: −13.6 eV. <strong>Identical.</strong></p><p>The trap is assuming that equal energy implies equal size. Check n²/Z and Z²/n² separately.</p></div></details>
+
+  <details class="q" data-m="2"><summary><span class="qm">2</span><span>State Hund's rule and apply it to nitrogen.</span></summary>
+  <div class="ans"><p>Pairing of electrons in the orbitals of a given subshell does not occur until each orbital of that subshell has one electron, and all such singly occupied orbitals have parallel spins.</p><p>N (Z=7) = 1s² 2s² 2p³. The three 2p electrons occupy 2p<sub>x</sub>, 2p<sub>y</sub>, 2p<sub>z</sub> <strong>singly with parallel spins</strong> — giving three unpaired electrons, not one pair and one single.</p></div></details>
+
+  <details class="q" data-m="2"><summary><span class="qm">2</span><span>Why are 2s and 2p degenerate in hydrogen but not in lithium?</span></summary>
+  <div class="ans"><p>Hydrogen has only one electron, so there is no electron–electron repulsion and the energy depends on n alone — 2s and 2p are degenerate.</p><p>In lithium there are inner (1s) electrons. The 2s orbital <strong>penetrates</strong> closer to the nucleus than 2p, so it is <strong>less shielded</strong>, experiences a larger Z<sub>eff</sub>, and is lowered in energy. Hence E(2s) &lt; E(2p).</p></div></details>
+
+  <details class="q" data-m="2"><summary><span class="qm">2</span><span>Calculate the uncertainty in the velocity of an electron whose position is known to within 0.1 Å.</span></summary>
+  <div class="ans"><p>Δx = 0.1 Å = 1.0 × 10⁻¹¹ m.</p><p>Δv ≥ h/(4π m Δx) = 6.626×10⁻³⁴ / (4 × 3.14 × 9.11×10⁻³¹ × 1.0×10⁻¹¹)</p><p>= 6.626×10⁻³⁴ / (1.145×10⁻⁴¹) = <strong>5.8 × 10⁶ m s⁻¹</strong> — about 2% of the speed of light, for an atom-sized uncertainty in position.</p></div></details>
+
+  <details class="q" data-m="3"><summary><span class="qm">3</span><span>The work function of caesium is 1.9 eV. Find its threshold wavelength, and the kinetic energy of an electron ejected by 500 nm light.</span></summary>
+  <div class="ans"><p><strong>Threshold:</strong> λ₀ = hc/φ = 1240/1.9 = <strong>653 nm</strong> (using the eV·nm shortcut).</p><p><strong>Photon energy at 500 nm:</strong> E = 1240/500 = 2.48 eV.</p><p><strong>KE = E − φ</strong> = 2.48 − 1.90 = <strong>0.58 eV = 9.3 × 10⁻²⁰ J</strong>.</p><p>Since 500 nm &lt; 653 nm, emission does occur. Note that a longer wavelength than λ₀ would give nothing at all, whatever the intensity.</p></div></details>
+
+  <details class="q" data-m="3"><summary><span class="qm">3</span><span>Calculate the wavelength of the first line of the Balmer series.</span></summary>
+  <div class="ans"><p>First line means the smallest jump into n₁ = 2, i.e. n₂ = 3.</p><p>ν̄ = 109677 (1/2² − 1/3²) = 109677 (0.25 − 0.1111) = 109677 × 0.13889 = <strong>15233 cm⁻¹</strong></p><p>λ = 1/ν̄ = 1/15233 cm = 6.565 × 10⁻⁵ cm = <strong>656.5 nm</strong> — the red Hα line.</p></div></details>
+
+  <details class="q" data-m="3"><summary><span class="qm">3</span><span>Give the number of radial and angular nodes in 3p, 4s and 5d orbitals.</span></summary>
+  <div class="ans"><div class="tw" style="margin:0"><table><thead><tr><th>Orbital</th><th class="n">n, l</th><th class="n">Radial (n−l−1)</th><th class="n">Angular (l)</th><th class="n">Total (n−1)</th></tr></thead><tbody>
+  <tr><td>3p</td><td class="n">3, 1</td><td class="n">1</td><td class="n">1</td><td class="n">2</td></tr>
+  <tr><td>4s</td><td class="n">4, 0</td><td class="n">3</td><td class="n">0</td><td class="n">3</td></tr>
+  <tr><td>5d</td><td class="n">5, 2</td><td class="n">2</td><td class="n">2</td><td class="n">4</td></tr>
+  </tbody></table></div></div></details>
+
+  <details class="q" data-m="3"><summary><span class="qm">3</span><span>Why do chromium and copper not follow the Aufbau order?</span></summary>
+  <div class="ans"><p>Expected Cr = [Ar]3d⁴4s², actual <strong>[Ar]3d⁵4s¹</strong>. Expected Cu = [Ar]3d⁹4s², actual <strong>[Ar]3d¹⁰4s¹</strong>.</p><p>Because the 3d and 4s levels are very close in energy, and exactly half-filled (d⁵) or completely filled (d¹⁰) subshells carry extra stability from two causes:</p><ul><li><strong>Symmetrical distribution</strong> of electron density around the nucleus.</li><li><strong>Exchange energy</strong> — energy released when electrons of parallel spin exchange positions. The greater the number of possible exchanges, the greater the stability, and a half-filled set maximises them.</li></ul></div></details>
+
+  <details class="q" data-m="3"><summary><span class="qm">3</span><span>Distinguish between an orbit and an orbital (any three points).</span></summary>
+  <div class="ans"><div class="tw" style="margin:0"><table><thead><tr><th>Orbit</th><th>Orbital</th></tr></thead><tbody>
+  <tr><td>A definite circular path around the nucleus</td><td>A region of space where the probability of finding the electron is maximum (~90%)</td></tr>
+  <tr><td>Assumes position and momentum are known together</td><td>Consistent with the uncertainty principle — no path is defined</td></tr>
+  <tr><td>Always circular and planar</td><td>Different shapes: spherical (s), dumb-bell (p), double dumb-bell (d)</td></tr>
+  <tr><td>Can hold up to 2n² electrons</td><td>Holds a maximum of 2 electrons</td></tr>
+  </tbody></table></div></div></details>
+
+  <details class="q" data-m="3"><summary><span class="qm">3</span><span>State the observations of Rutherford's α-scattering experiment and the conclusion drawn from each.</span></summary>
+  <div class="ans"><ul><li><strong>Most α-particles passed straight through</strong> the foil undeflected → the atom is <strong>mostly empty space</strong>.</li><li><strong>A few were deflected</strong> through small angles → there is a <strong>concentrated positive charge</strong> occupying a very small volume.</li><li><strong>Very few (about 1 in 20,000) rebounded</strong> through more than 90° → that small volume also carries <strong>almost the entire mass</strong> of the atom.</li></ul><p style="margin-bottom:0">Conclusion: the nucleus, with radius ~10⁻¹⁵ m against an atomic radius of ~10⁻¹⁰ m.</p></div></details>
+
+  <details class="q" data-m="3"><summary><span class="qm">3</span><span>What are the four observations of the photoelectric effect that the wave theory of light cannot explain?</span></summary>
+  <div class="ans"><ul><li>Existence of a <strong>threshold frequency</strong> below which no emission occurs, however intense the light.</li><li>Emission is <strong>instantaneous</strong> — no time lag while energy accumulates.</li><li>The <strong>kinetic energy</strong> of the ejected electrons depends on the <strong>frequency</strong>, not the intensity.</li><li>The <strong>number</strong> of electrons ejected (the photocurrent) depends on the <strong>intensity</strong>, not the frequency.</li></ul></div></details>
+
+  <details class="q" data-m="5"><summary><span class="qm">5</span><span>Derive an expression for the radius and the energy of the nth Bohr orbit of a hydrogen-like species.</span></summary>
+  <div class="ans"><p><strong>Radius.</strong> The electrostatic attraction supplies the centripetal force:</p><p class="fx">(1/4πε₀)(Ze²/r²) = mv²/r ⟹ mv² = Ze²/4πε₀r &nbsp;…(i)</p><p>Bohr's quantisation of angular momentum: mvr = nh/2π ⟹ v = nh/2πmr &nbsp;…(ii)</p><p>Substituting (ii) in (i): m(nh/2πmr)² = Ze²/4πε₀r, giving n²h²/4π²mr² = Ze²/4πε₀r</p><p class="fx">⟹ r = n²h²ε₀ / πmZe² = 52.9 (n²/Z) pm</p><p><strong>Energy.</strong> KE = ½mv² = Ze²/8πε₀r (from (i)); PE = −Ze²/4πε₀r.</p><p class="fx">E = KE + PE = −Ze²/8πε₀r</p><p>Substituting r:</p><p class="fx">Eₙ = −mZ²e⁴/8ε₀²h²n² = −2.18×10⁻¹⁸ (Z²/n²) J = −13.6 (Z²/n²) eV</p><p style="margin-bottom:0">The negative sign shows the electron is <strong>bound</strong>; note also PE = 2E and KE = −E.</p></div></details>
+
+  <details class="q" data-m="5"><summary><span class="qm">5</span><span>Derive Rydberg's formula from Bohr's model, and use it to explain the spectral series of hydrogen.</span></summary>
+  <div class="ans"><p>An electron falling from n₂ to n₁ emits one photon of energy</p><p class="fx">ΔE = Eₙ₂ − Eₙ₁ = 2.18×10⁻¹⁸ (1/n₁² − 1/n₂²) J</p><p>By Bohr's frequency rule ΔE = hν, so ν = ΔE/h = 3.29×10¹⁵ (1/n₁² − 1/n₂²) Hz.</p><p>The wavenumber is ν̄ = ν/c = ΔE/hc:</p><p class="fx">ν̄ = 109677 (1/n₁² − 1/n₂²) cm⁻¹</p><p>This is exactly Rydberg's empirical formula, with R<sub>H</sub> now calculated from m, e, h and ε₀ alone.</p><p style="margin-bottom:0">Each value of n₁ generates one series: n₁ = 1 Lyman (UV), 2 Balmer (visible), 3 Paschen (IR), 4 Brackett (IR), 5 Pfund (far IR). Within a series, larger n₂ gives larger ΔE and shorter λ, converging to the series limit at n₂ = ∞.</p></div></details>
+
+  <details class="q" data-m="5"><summary><span class="qm">5</span><span>State and derive Einstein's photoelectric equation. Sketch the graph of kinetic energy against frequency for two different metals and explain its features.</span></summary>
+  <div class="ans"><p>A photon of energy hν is absorbed by a single electron. Energy φ = hν₀ (the work function) is used to free it from the surface; the rest becomes kinetic energy:</p><p class="fx">hν = hν₀ + ½mv²&nbsp;&nbsp;⟹&nbsp;&nbsp;KE<sub>max</sub> = h(ν − ν₀)</p><p>If a stopping potential V₀ just halts the fastest electron, eV₀ = h(ν − ν₀).</p><p><strong>Graph:</strong> a straight line of KE against ν.</p><ul><li><strong>Slope = h</strong>, Planck's constant — the <em>same for every metal</em>, so different metals give <strong>parallel</strong> lines.</li><li><strong>x-intercept = ν₀</strong>, the threshold frequency; a metal with a larger work function has its line shifted to the right.</li><li>Below ν₀ there is <strong>no emission at all</strong>, so the line does not continue below the axis.</li></ul><p style="margin-bottom:0">The graph proves the quantum nature of light: a wave picture would make KE depend on intensity, giving no threshold and no such straight line.</p></div></details>
+
+  <details class="q" data-m="5"><summary><span class="qm">5</span><span>State the limitations of Bohr's model, and explain how de Broglie and Heisenberg led to its replacement.</span></summary>
+  <div class="ans"><p><strong>Limitations:</strong></p><ol><li>Applies only to <strong>one-electron species</strong> (H, He⁺, Li²⁺, Be³⁺); fails for multi-electron atoms because it ignores electron–electron repulsion.</li><li>Cannot explain the <strong>fine structure</strong> of spectral lines.</li><li>Cannot explain the <strong>Zeeman effect</strong> (splitting in a magnetic field) or the <strong>Stark effect</strong> (electric field).</li><li>Gives no account of <strong>chemical bonding</strong> or molecular shape.</li><li><strong>Violates the uncertainty principle</strong> by fixing position and momentum together.</li></ol><p><strong>de Broglie</strong> (λ = h/mv) showed the electron has wave character, so treating it as a point on a circular track is wrong; a stable orbit must instead fit a whole number of wavelengths (2πr = nλ), which incidentally <em>derives</em> Bohr's fourth postulate rather than assuming it.</p><p style="margin-bottom:0"><strong>Heisenberg</strong> (Δx·Δp ≥ h/4π) showed that a definite orbit is not merely unknown but meaningless. Together these forced the replacement of the orbit with the <strong>orbital</strong> — a region of probability described by ψ², from Schrödinger's wave equation.</p></div></details>
+
+  <details class="q" data-m="5"><summary><span class="qm">5</span><span>Explain the four quantum numbers, their permitted values and their physical significance, and use them to justify the maximum electron capacity of the M shell.</span></summary>
+  <div class="ans"><p><strong>n (principal)</strong> = 1, 2, 3 … Fixes the shell, the size and mainly the energy. Maximum electrons 2n².</p><p><strong>l (azimuthal)</strong> = 0 to (n−1). Fixes the subshell and the <strong>shape</strong>; l = 0, 1, 2, 3 are s, p, d, f. Orbital angular momentum = √(l(l+1))·h/2π.</p><p><strong>mₗ (magnetic)</strong> = −l to +l, giving (2l+1) values. Fixes the <strong>orientation</strong> of the orbital in space, and therefore the number of orbitals in the subshell.</p><p><strong>mₛ (spin)</strong> = +½ or −½. Fixes the direction of electron spin; it is not a solution of the Schrödinger equation but is required by experiment.</p><p><strong>M shell (n = 3):</strong> l can be 0, 1, 2 → subshells 3s, 3p, 3d, with 1, 3 and 5 orbitals respectively = 9 orbitals. By Pauli, each holds 2 electrons:</p><p style="margin-bottom:0" class="fx">9 × 2 = 18 electrons = 2n² = 2(3)² ✓</p></div></details>
+
+  <details class="q" data-m="ar"><summary><span class="qm">A–R</span><span><strong>Assertion:</strong> The 2p orbital has one nodal plane. <strong>Reason:</strong> The number of angular nodes equals l.</span></summary>
+  <div class="ans"><p><strong>Both assertion and reason are true, and the reason is the correct explanation.</strong> For a 2p orbital l = 1, so angular nodes = 1 — the plane through the nucleus perpendicular to the orbital axis, where the probability of finding the electron is zero.</p></div></details>
+
+  <details class="q" data-m="ar"><summary><span class="qm">A–R</span><span><strong>Assertion:</strong> Increasing the intensity of light always increases the kinetic energy of photoelectrons. <strong>Reason:</strong> Intensity is the number of photons striking per second.</span></summary>
+  <div class="ans"><p><strong>The assertion is false; the reason is true.</strong> Intensity fixes how <em>many</em> photons arrive, and therefore the photocurrent — not how much energy each carries. Kinetic energy depends only on frequency, through KE = h(ν − ν₀).</p></div></details>
+
+  <details class="q" data-m="ar"><summary><span class="qm">A–R</span><span><strong>Assertion:</strong> Bohr's model can calculate the spectral lines of the He⁺ ion. <strong>Reason:</strong> Bohr's model applies to species with a single electron.</span></summary>
+  <div class="ans"><p><strong>Both are true, and the reason correctly explains the assertion.</strong> He⁺ has one electron, so there is no electron–electron repulsion, and Bohr's expressions hold with Z = 2: Eₙ = −13.6 × 4/n² eV.</p></div></details>
+
+  <details class="q" data-m="ar"><summary><span class="qm">A–R</span><span><strong>Assertion:</strong> The energy of an electron in a hydrogen atom increases as n increases. <strong>Reason:</strong> Eₙ = −13.6/n² eV, so the value becomes less negative.</span></summary>
+  <div class="ans"><p><strong>Both true, and the reason explains the assertion.</strong> "Higher energy" means <em>less negative</em>. The electron is less tightly bound at large n, and at n = ∞ the energy reaches 0, meaning the electron has escaped. The common error is reading the increasing magnitude of a negative number as increasing energy.</p></div></details>
+
+  <details class="q" data-m="2"><summary><span class="qm">2</span><span>Why is the (n+l) rule needed at all, and what happens when two orbitals have the same (n+l)?</span></summary>
+  <div class="ans"><p>Because in a multi-electron atom energy depends on both n and l, not on n alone, the shells overlap — 4s actually lies below 3d.</p><p>The rule: the orbital with the <strong>lower (n+l)</strong> fills first. On a tie, the one with the <strong>lower n</strong> fills first. Example: 3d (3+2 = 5) and 4p (4+1 = 5) tie, so <strong>3d fills first</strong> because n = 3 &lt; 4.</p></div></details>
+
+  <details class="q" data-m="2"><summary><span class="qm">2</span><span>A hydrogen atom in the ground state absorbs a photon of 12.09 eV. To which level is the electron promoted?</span></summary>
+  <div class="ans"><p>E₁ = −13.6 eV. After absorbing 12.09 eV: E = −13.6 + 12.09 = −1.51 eV.</p><p>Since Eₙ = −13.6/n², we need n² = 13.6/1.51 = 9, so <strong>n = 3</strong>.</p></div></details>
+
+  <details class="q" data-m="3"><summary><span class="qm">3</span><span>Calculate the ionisation energy of the He⁺ ion in eV and in kJ mol⁻¹.</span></summary>
+  <div class="ans"><p>Ionisation means n = 1 → n = ∞, so IE = 13.6 × Z² = 13.6 × 4 = <strong>54.4 eV</strong>.</p><p>Per mole: 54.4 × 1.602×10⁻¹⁹ × 6.022×10²³ = 5.25 × 10⁶ J mol⁻¹ = <strong>5250 kJ mol⁻¹</strong>.</p><p>Compare hydrogen at 13.6 eV (1312 kJ mol⁻¹): four times larger, because IE ∝ Z².</p></div></details>
+
+  </div>
+</section>
+
+<section id="s11">
+  <div class="shead">
+    <h2><span class="sn">Section 11</span>The last-hour sheet</h2>
+  </div>
+  <p class="lede">If you read nothing else before walking in, read this. Every line is a mark that gets dropped every year.</p>
+  <div class="final">
+    <div class="bh">Check these fifteen</div>
+    <ol>
+      <li><b>Photoelectric KE depends on frequency; photocurrent depends on intensity.</b> No intensity below ν₀ ejects anything.</li>
+      <li><b>Bohr works only for one-electron species</b> — H, He⁺, Li²⁺, Be³⁺. Never for neutral lithium.</li>
+      <li><b>A series is named by where the electron lands.</b> n₁ = 2 is always Balmer, whatever n₂ is.</li>
+      <li><b>Energy is negative and rises towards zero</b> as n increases, and the gaps get <i>smaller</i>, never larger.</li>
+      <li><b>Total nodes = n − 1</b>, of which l are angular. A 3s has 2 radial nodes, not 3.</li>
+      <li><b>Angular momentum of an s electron is zero</b>, because l = 0. Not h/2π.</li>
+      <li><b>l never equals n.</b> 2d, 1p and 3f do not exist.</li>
+      <li><b>In hydrogen 2s = 2p; in every other atom 2s &lt; 2p.</b> Questions specify the atom deliberately.</li>
+      <li><b>mₗ counts orientations, not electrons.</b> A p subshell has 3 orbitals and 6 electrons.</li>
+      <li><b>An orbital holds 2 electrons; only a shell holds 2n².</b></li>
+      <li><b>Cr is 3d⁵4s¹ and Cu is 3d¹⁰4s¹</b> — quote symmetry <i>and</i> exchange energy, both.</li>
+      <li><b>4s fills first but empties first.</b> Fe²⁺ = [Ar]3d⁶, not [Ar]3d⁴4s².</li>
+      <li><b>Isotopes differ in neutrons; isobars differ in protons.</b> Do not swap them.</li>
+      <li><b>He⁺ at n=2 has the same energy as H at n=1 but twice the radius.</b> Check Z²/n² and n²/Z separately.</li>
+      <li><b>Number of spectral lines to the ground state = n(n−1)/2.</b> From n = 4 that is 6.</li>
+    </ol>
+  </div>
+  <div class="box key">
+    <div class="bh">Constants to have at your fingertips</div>
+    <p style="margin-bottom:0"><span class="m">h = 6.626×10⁻³⁴ J s</span> · <span class="m">c = 3.0×10⁸ m s⁻¹</span> · <span class="m">mₑ = 9.11×10⁻³¹ kg</span> · <span class="m">e = 1.602×10⁻¹⁹ C</span> · <span class="m">R<sub>H</sub> = 109677 cm⁻¹</span> · <span class="m">r₁ = 52.9 pm</span> · <span class="m">E₁ = −13.6 eV</span> · <span class="m">1 eV = 1.602×10⁻¹⁹ J</span> · <span class="m">E(eV) = 1240/λ(nm)</span> · <span class="m">λ = 12.27/√V Å</span></p>
+  </div>
+</section>
+
+</main>
+</div>
+</div>
+
+<script>
+(function(){
+"use strict";
+var H=6.626e-34, C=3.0e8, ME=9.10938e-31, EV=1.602e-19, RH=109677, HC_EVNM=(6.626e-34*3.0e8)/(1.602e-19*1e-9);
+var $=function(id){return document.getElementById(id);};
+var SUP={0:"⁰",1:"¹",2:"²",3:"³",4:"⁴",5:"⁵",6:"⁶",7:"⁷",8:"⁸",9:"⁹","-":"⁻"};
+function sup(n){return String(n).split("").map(function(c){return SUP[c]||c;}).join("");}
+function sci(x,d){
+  if(x===0) return "0";
+  var e=Math.floor(Math.log10(Math.abs(x))), m=x/Math.pow(10,e);
+  if(Math.abs(e)<3) return x.toPrecision(d===undefined?3:d+1).replace(/\.?0+$/,"");
+  return m.toFixed(d===undefined?2:d)+"×10"+sup(e);
+}
+
+/* ---------------- theme ---------------- */
+var tb=$("themebtn");
+function applyTheme(t){
+  if(t) document.documentElement.setAttribute("data-theme",t);
+  else document.documentElement.removeAttribute("data-theme");
+}
+try{var saved=localStorage.getItem("ch2theme"); if(saved) applyTheme(saved);}catch(e){}
+tb.addEventListener("click",function(){
+  var cur=document.documentElement.getAttribute("data-theme");
+  var isDark = cur ? cur==="dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  var next = isDark ? "light" : "dark";
+  applyTheme(next);
+  try{localStorage.setItem("ch2theme",next);}catch(e){}
+});
+
+/* ---------------- scroll spy ---------------- */
+var links={}, tocLinks=document.querySelectorAll("#toc a");
+Array.prototype.forEach.call(tocLinks,function(a){links[a.dataset.s]=a;});
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        Array.prototype.forEach.call(tocLinks,function(a){a.classList.remove("on");});
+        if(links[en.target.id]) links[en.target.id].classList.add("on");
+      }
+    });
+  },{rootMargin:"-10% 0px -75% 0px",threshold:0});
+  Array.prototype.forEach.call(document.querySelectorAll("section"),function(sec){io.observe(sec);});
+}
+
+/* ---------------- self-check ---------------- */
+var checks={};
+try{checks=JSON.parse(localStorage.getItem("ch2checks")||"{}");}catch(e){checks={};}
+Array.prototype.forEach.call(document.querySelectorAll(".selfcheck"),function(box){
+  var key=box.dataset.for, btn=box.querySelector(".sc");
+  function paint(on){
+    btn.setAttribute("aria-pressed",on?"true":"false");
+    btn.textContent = on ? "Reviewed" : "Got it";
+    if(links[key]) links[key].classList.toggle("done",on);
+  }
+  paint(!!checks[key]);
+  btn.addEventListener("click",function(){
+    checks[key]=!checks[key];
+    paint(checks[key]);
+    try{localStorage.setItem("ch2checks",JSON.stringify(checks));}catch(e){}
+  });
+});
+
+/* ---------------- photoelectric bench ---------------- */
+var peM=$("pe-metal"), peL=$("pe-lam");
+var PE_NUMAX=2.6e15, PE_KEMAX=9;
+function peX(nu){return 52+(nu/PE_NUMAX)*400;}
+function peY(ke){return 192-(ke/PE_KEMAX)*174;}
+function pe(){
+  var phi=parseFloat(peM.value), lam=parseFloat(peL.value);
+  var nu=C/(lam*1e-9), E=HC_EVNM/lam, ke=E-phi;
+  var nu0=phi*EV/H, lam0=HC_EVNM/phi;
+  $("pe-lamv").textContent=lam+" nm · "+sci(nu,2)+" Hz";
+  $("pe-E").textContent=E.toFixed(2)+" eV";
+  $("pe-phi").textContent=phi.toFixed(2)+" eV";
+  $("pe-ke").textContent=ke>0?ke.toFixed(2)+" eV":"none";
+  $("pe-v0").textContent=ke>0?ke.toFixed(2)+" V":"—";
+  $("pe-nu0v").textContent=sci(nu0,2)+" Hz";
+  $("pe-lam0").textContent=Math.round(lam0)+" nm";
+  var v=$("pe-verdict");
+  if(ke>0){
+    v.className="verdict yes";
+    v.textContent="✓ emission occurs — photon ("+E.toFixed(2)+" eV) beats φ ("+phi.toFixed(2)+" eV)";
+  }else{
+    v.className="verdict no";
+    v.textContent="✗ no emission — "+lam+" nm is longer than λ₀ = "+Math.round(lam0)+" nm. Raising the intensity changes nothing.";
+  }
+  var nuEndKE=PE_KEMAX, nuEnd=(PE_KEMAX+phi)*EV/H;
+  if(nuEnd>PE_NUMAX){nuEnd=PE_NUMAX; nuEndKE=(H*PE_NUMAX/EV)-phi;}
+  var ln=$("pe-line");
+  ln.setAttribute("x1",peX(nu0).toFixed(1)); ln.setAttribute("y1","192");
+  ln.setAttribute("x2",peX(nuEnd).toFixed(1)); ln.setAttribute("y2",peY(nuEndKE).toFixed(1));
+  $("pe-nu0").setAttribute("cx",peX(nu0).toFixed(1));
+  var nl=$("pe-nu0lbl"); nl.setAttribute("x",peX(nu0).toFixed(1));
+  var px=peX(Math.min(nu,PE_NUMAX)), py=peY(Math.max(0,Math.min(ke,PE_KEMAX)));
+  var pt=$("pe-pt");
+  pt.setAttribute("cx",px.toFixed(1)); pt.setAttribute("cy",py.toFixed(1));
+  pt.setAttribute("fill",ke>0?"#c9392b":"#8f9ab0");
+  var dr=$("pe-drop");
+  dr.setAttribute("x1",px.toFixed(1)); dr.setAttribute("y1",py.toFixed(1));
+  dr.setAttribute("x2",px.toFixed(1)); dr.setAttribute("y2","192");
+}
+peM.addEventListener("input",pe); peL.addEventListener("input",pe); pe();
+
+/* ---------------- transition explorer ---------------- */
+var t1=$("tr-n1"), t2=$("tr-n2");
+var SERIES={1:"Lyman",2:"Balmer",3:"Paschen",4:"Brackett",5:"Pfund",6:"Humphreys"};
+function wlColour(nm){
+  if(nm<420) return "#8654c8";
+  if(nm<470) return "#4a5fd0";
+  if(nm<500) return "#3fb5c9";
+  if(nm<565) return "#3fc96a";
+  if(nm<590) return "#e8d34a";
+  if(nm<625) return "#eb9a3c";
+  return "#e0483a";
+}
+function tr(){
+  var n1=parseInt(t1.value,10), n2=parseInt(t2.value,10);
+  if(n2<=n1){ n2=n1+1; if(n2>12){n2=12; n1=11; t1.value=n1;} t2.value=n2; }
+  $("tr-n1v").textContent="n₁ = "+n1;
+  $("tr-n2v").textContent="n₂ = "+n2;
+  var wn=RH*(1/(n1*n1)-1/(n2*n2));
+  var lamnm=1e7/wn, eV=13.6*(1/(n1*n1)-1/(n2*n2));
+  $("tr-series").textContent=SERIES[n1]||("n₁ = "+n1);
+  var region = lamnm<380 ? "Ultraviolet" : (lamnm<=700 ? "Visible" : "Infrared");
+  $("tr-region").textContent=region;
+  $("tr-wn").textContent=Math.round(wn).toLocaleString("en-US")+" cm⁻¹";
+  $("tr-lam").textContent=(lamnm<1000?lamnm.toFixed(1)+" nm":(lamnm/1000).toFixed(2)+" μm");
+  $("tr-eV").textContent=eV.toFixed(2)+" eV";
+  $("tr-J").textContent=sci(eV*EV,2)+" J";
+  var line=$("tr-line"), lbl=$("tr-linelbl"), off=$("tr-offscale");
+  if(region==="Visible"){
+    var x=(lamnm-380)/320*880;
+    line.setAttribute("x",(x-2.5).toFixed(1));
+    line.setAttribute("fill",wlColour(lamnm));
+    lbl.setAttribute("x",x.toFixed(1));
+    lbl.setAttribute("fill",wlColour(lamnm));
+    lbl.textContent=lamnm.toFixed(0)+" nm";
+    off.textContent="";
+  }else{
+    line.setAttribute("x","-20");
+    lbl.setAttribute("x","-40");
+    off.textContent="this line falls in the "+region.toLowerCase()+" — outside the visible strip";
+  }
+}
+t1.addEventListener("input",tr); t2.addEventListener("input",tr); tr();
+
+/* ---------------- Bohr calculator ---------------- */
+var boZ=$("bo-z"), boN=$("bo-n");
+function bohr(){
+  var Z=parseInt(boZ.value,10), n=parseInt(boN.value,10);
+  var r=52.9*n*n/Z, eV=-13.6*Z*Z/(n*n), J=-2.18e-18*Z*Z/(n*n), v=2.188e6*Z/n, L=n*H/(2*Math.PI);
+  $("bo-nv").textContent="n = "+n+(n===1?" (ground state)":"");
+  $("bo-r").textContent=(r<1000?r.toFixed(1):Math.round(r))+" pm";
+  $("bo-e").textContent="−"+Math.abs(eV).toFixed(2)+" eV";
+  $("bo-ej").textContent="−"+sci(Math.abs(J),2)+" J";
+  $("bo-v").textContent=sci(v,2)+" m/s";
+  $("bo-ie").textContent=Math.abs(eV).toFixed(2)+" eV";
+  $("bo-l").textContent=sci(L,2)+" J s";
+}
+boZ.addEventListener("input",bohr); boN.addEventListener("input",bohr); bohr();
+
+/* ---------------- de Broglie ---------------- */
+var dbO=$("db-obj"), dbV=$("db-v");
+function db(){
+  var parts=dbO.value.split("|"), m=parseFloat(parts[0]), v=parseFloat(parts[1]);
+  var p=m*v, lam=H/p, ratio=lam/1e-10;
+  $("db-p").textContent=sci(p,2)+" kg m/s";
+  $("db-lam").textContent=sci(lam,2)+" m";
+  $("db-cmp").textContent=(ratio>=0.01? ratio.toFixed(2)+"× an atom" : sci(ratio,2)+"× an atom");
+  var vd=$("db-verdict");
+  if(lam>1e-12){
+    vd.className="verdict yes";
+    vd.textContent="✓ comparable to atomic dimensions — wave behaviour is observable (this is what Davisson–Germer diffracted)";
+  }else{
+    vd.className="verdict no";
+    vd.textContent="✗ far smaller than any aperture that exists — the wave nature cannot be detected. λ = h/mv, and a large mass kills it.";
+  }
+}
+function dbv(){
+  var V=parseFloat(dbV.value);
+  $("db-vv").textContent="V = "+V+" volt"+(V===1?"":"s");
+  $("db-lamv").textContent=(12.27/Math.sqrt(V)).toFixed(3)+" Å";
+}
+dbO.addEventListener("change",db); dbV.addEventListener("input",dbv); db(); dbv();
+
+/* ---------------- quantum number validator ---------------- */
+var LTR=["s","p","d","f","g","h","i"];
+var qn=$("qn-n"), ql=$("qn-l"), qm=$("qn-m"), qs=$("qn-s");
+function qcheck(){
+  var n=parseInt(qn.value,10), l=parseInt(ql.value,10), m=parseInt(qm.value,10);
+  var v=$("qn-verdict"), name=$("qn-name"), ok=true, why="";
+  if(isNaN(n)||isNaN(l)||isNaN(m)){ok=false;why="fill in all four values";}
+  else if(n<1){ok=false;why="n must be at least 1";}
+  else if(l<0||l>n-1){ok=false;why="l must lie between 0 and n−1 = "+(n-1)+", so "+n+LTR[l]+" does not exist";}
+  else if(m<-l||m>l){ok=false;why="mₗ must lie between −"+l+" and +"+l;}
+  if(ok){
+    v.className="verdict yes";
+    v.textContent="✓ valid set";
+    name.textContent="one electron in a "+n+LTR[l]+" orbital, mₗ = "+(m>0?"+"+m:m);
+  }else{
+    v.className="verdict no";
+    v.textContent="✗ impossible — "+why;
+    name.textContent="—";
+  }
+  var okl = (!isNaN(n)&&!isNaN(l)&&l>=0&&l<=n-1);
+  $("qn-orb").textContent = okl ? (2*l+1) : "—";
+  $("qn-esub").textContent = okl ? (2*(2*l+1)) : "—";
+  $("qn-eshell").textContent = (!isNaN(n)&&n>=1) ? (2*n*n) : "—";
+  $("qn-rad").textContent = okl ? (n-l-1) : "—";
+  $("qn-ang").textContent = okl ? l : "—";
+  $("qn-tot").textContent = (!isNaN(n)&&n>=1) ? (n-1) : "—";
+  $("qn-am").textContent = okl ? (l===0 ? "0 (l = 0)" : sci(Math.sqrt(l*(l+1))*H/(2*Math.PI),2)+" J s") : "—";
+  $("qn-npl").textContent = okl ? (n+l) : "—";
+}
+[qn,ql,qm,qs].forEach(function(el){el.addEventListener("input",qcheck);el.addEventListener("change",qcheck);});
+qcheck();
+
+/* ---------------- configuration builder ---------------- */
+var FILL=[["1s",0,2],["2s",0,2],["2p",1,6],["3s",0,2],["3p",1,6],["4s",0,2],["3d",2,10],["4p",1,6]];
+var SHELL_ORDER=["1s","2s","2p","3s","3p","3d","4s","4p"];
+var LMAP={"1s":0,"2s":0,"2p":1,"3s":0,"3p":1,"3d":2,"4s":0,"4p":1};
+var ELS=["","Hydrogen (H)","Helium (He)","Lithium (Li)","Beryllium (Be)","Boron (B)","Carbon (C)","Nitrogen (N)","Oxygen (O)","Fluorine (F)","Neon (Ne)","Sodium (Na)","Magnesium (Mg)","Aluminium (Al)","Silicon (Si)","Phosphorus (P)","Sulfur (S)","Chlorine (Cl)","Argon (Ar)","Potassium (K)","Calcium (Ca)","Scandium (Sc)","Titanium (Ti)","Vanadium (V)","Chromium (Cr)","Manganese (Mn)","Iron (Fe)","Cobalt (Co)","Nickel (Ni)","Copper (Cu)","Zinc (Zn)","Gallium (Ga)","Germanium (Ge)","Arsenic (As)","Selenium (Se)","Bromine (Br)","Krypton (Kr)"];
+var CORES=[[18,"[Ar]"],[10,"[Ne]"],[2,"[He]"]];
+function config(Z){
+  var occ={}, left=Z;
+  FILL.forEach(function(f){ var take=Math.min(left,f[2]); occ[f[0]]=take; left-=take; });
+  var exc=null;
+  if(Z===24){occ["4s"]=1; occ["3d"]=5; exc="Chromium breaks the pattern: the expected [Ar]3d⁴​4s² loses to [Ar]3d⁵​4s¹ — an exactly half-filled 3d subshell is more stable.";}
+  if(Z===29){occ["4s"]=1; occ["3d"]=10; exc="Copper breaks the pattern: the expected [Ar]3d⁹​4s² loses to [Ar]3d¹⁰​4s¹ — a completely filled 3d subshell is more stable.";}
+  return {occ:occ, exc:exc};
+}
+var ecZ=$("ec-z");
+function ec(){
+  var Z=parseInt(ecZ.value,10), r=config(Z), occ=r.occ;
+  $("ec-zv").textContent="Z = "+Z+" · "+ELS[Z];
+  var full=SHELL_ORDER.filter(function(k){return occ[k]>0;}).map(function(k){return k+sup(occ[k]);}).join(" ");
+  $("ec-full").textContent=full;
+  var core="", rest=SHELL_ORDER.slice();
+  for(var i=0;i<CORES.length;i++){
+    if(Z>CORES[i][0]){
+      core=CORES[i][1];
+      var used=0, cut=[];
+      SHELL_ORDER.forEach(function(k){ if(used<CORES[i][0]){ used+=occ[k]||0; cut.push(k);} });
+      rest=SHELL_ORDER.filter(function(k){return cut.indexOf(k)===-1;});
+      break;
+    }
+  }
+  $("ec-core").textContent = core
+    ? core+" "+rest.filter(function(k){return occ[k]>0;}).map(function(k){return k+sup(occ[k]);}).join(" ")
+    : full;
+  var unp=0, maxn=1;
+  SHELL_ORDER.forEach(function(k){
+    var e=occ[k]||0; if(!e) return;
+    var orbs=2*LMAP[k]+1;
+    unp += e<=orbs ? e : 2*orbs-e;
+    maxn=Math.max(maxn,parseInt(k[0],10));
+  });
+  $("ec-unp").textContent=unp;
+  $("ec-val").textContent="n = "+maxn;
+  var lastFilled=null;
+  FILL.forEach(function(f){ if(occ[f[0]]>0) lastFilled=f[0]; });
+  if(Z===24||Z===29) lastFilled="3d";
+  $("ec-block").textContent = LTR[LMAP[lastFilled]]+"-block";
+  var flag=$("ec-flag");
+  if(r.exc){ flag.style.display="block"; flag.textContent="⚠ "+r.exc; }
+  else flag.style.display="none";
+  var html="";
+  SHELL_ORDER.forEach(function(k){
+    var e=occ[k]||0; if(!e) return;
+    var orbs=2*LMAP[k]+1, cells="";
+    for(var i=0;i<orbs;i++){
+      var here = e>orbs ? (i < e-orbs ? 2 : 1) : (i<e ? 1 : 0);
+      cells+='<div class="cell'+(here===2?" full":"")+'">'+(here===2?"↑↓":here===1?"↑":"")+'</div>';
+    }
+    html+='<div class="orbset"><div class="cells">'+cells+'</div><div class="lbl">'+k+sup(e)+'</div></div>';
+  });
+  $("ec-boxes").innerHTML=html;
+}
+ecZ.addEventListener("input",ec); ec();
+
+/* ---------------- question filter ---------------- */
+var qbtns=document.querySelectorAll("#qfilter .qf"), qs2=document.querySelectorAll("#qlist .q");
+Array.prototype.forEach.call(qbtns,function(b){
+  b.addEventListener("click",function(){
+    Array.prototype.forEach.call(qbtns,function(x){x.setAttribute("aria-pressed","false");});
+    b.setAttribute("aria-pressed","true");
+    var m=b.dataset.m;
+    Array.prototype.forEach.call(qs2,function(q){
+      q.hidden = !(m==="all" || q.dataset.m===m);
+    });
+  });
+});
+})();
+</script>
