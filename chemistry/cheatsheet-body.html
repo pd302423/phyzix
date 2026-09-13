@@ -1,0 +1,195 @@
+<style>
+@page { size: A4 portrait; margin: 8mm 8mm 10mm 8mm; }
+body.cs-mode { font-size: 7.6pt; line-height: 1.32; }
+.cs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 5mm; align-items: start; }
+.cs h1 { grid-column: 1 / -1; font-size: 15pt; margin: 0 0 1mm; padding-bottom: 1.5mm; border-bottom: 2pt solid #16191d; }
+.cs h1 .ch { font-size: 7pt; letter-spacing: 1.2px; margin-bottom: 1mm; }
+.cs .strip { grid-column: 1 / -1; font-size: 7pt; background: #16191d; color: #fff; padding: 1.6mm 2.5mm;
+  margin: 0 0 2.5mm; border-radius: 1.5pt; font-family: "Segoe UI",Arial,sans-serif; }
+.cs .strip b { color: #ffd9a0; }
+.cs sec, .cs .bx { display: block; break-inside: avoid; page-break-inside: avoid;
+  border: 0.7pt solid #b9c0c7; border-left: 2.2pt solid #16191d; padding: 1.6mm 2.2mm;
+  margin: 0 0 2.2mm; border-radius: 1.5pt; background: #fff; }
+.cs .bx.c1 { border-left-color: #1d5f4a } .cs .bx.c2 { border-left-color: #9c3a1f }
+.cs .bx.c3 { border-left-color: #26468c } .cs .bx.c4 { border-left-color: #6a45b0 }
+.cs .bx.c7 { border-left-color: #a5281b } .cs .bx.tr { border-left-color: #a5281b; background: #fdf4f3 }
+.cs .bh { font-family: "Segoe UI",Arial,sans-serif; font-size: 6.6pt; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; color: #4a5158; margin-bottom: 1.2mm; }
+.cs p { margin: 0 0 1.2mm }
+.cs ul, .cs ol { margin: 0 0 1mm; padding-left: 3.4mm }
+.cs li { margin-bottom: 0.6mm }
+.cs table { font-size: 6.7pt; margin: 1mm 0; width: 100% }
+.cs th, .cs td { padding: 0.5mm 1mm; border: 0.4pt solid #b9c0c7; vertical-align: top }
+.cs th { background: #e4e8ec; font-size: 6.2pt; letter-spacing: .3px }
+.cs .f { font-family: "DejaVu Sans",Arial,sans-serif; }
+.cs .hi { background: #fff6d9 }
+.cs .katex { font-size: .96em }
+</style>
+<script>document.body.classList.add("cs-mode");</script>
+
+<div class="cs">
+<h1><span class="ch">CBSE Class 11 Chemistry &middot; Rationalised NCERT</span>Cheat Sheet &mdash; Ch 1 &middot; 2 &middot; 3 &middot; 4 &middot; 7</h1>
+
+<div class="strip"><b>CONSTANTS</b> &nbsp; h = 6.626&times;10<sup>&minus;34</sup> J s &nbsp;·&nbsp; c = 3&times;10<sup>8</sup> m/s &nbsp;·&nbsp; e = 1.602&times;10<sup>&minus;19</sup> C &nbsp;·&nbsp; m<sub>e</sub> = 9.11&times;10<sup>&minus;31</sup> kg &nbsp;·&nbsp; N<sub>A</sub> = 6.022&times;10<sup>23</sup> &nbsp;·&nbsp; R<sub>H</sub> = 109677 cm<sup>&minus;1</sup> &nbsp;·&nbsp; E<sub>1</sub>(H) = &minus;13.6 eV &nbsp;·&nbsp; r<sub>1</sub> = 52.9 pm &nbsp;·&nbsp; 1 eV = 1.602&times;10<sup>&minus;19</sup> J &nbsp;·&nbsp; STP: <b>22.7 L @ 1 bar</b>, 22.4 L @ 1 atm</div>
+
+<div class="bx c1"><div class="bh">Ch 1 &middot; Mole &mdash; the four bridges</div>
+<p class="f">$n=\dfrac{m}{M}=\dfrac{N}{N_A}=\dfrac{V}{22.7\text{L}}=M\times V_{(L)}$</p>
+<p>Avg atomic mass = &Sigma;(abundance &times; isotopic mass). %E = (mass of E in 1 mol / molar mass)&times;100.</p>
+<p class="f">MF = (EF)<sub>n</sub>, &nbsp;$n=\dfrac{M}{\text{EFM}}$</p>
+<p><b>Limiting reagent:</b> moles &divide; coefficient &rarr; <b>smallest wins</b>. Never compare masses.</p>
+<p>% yield = actual/theoretical &times;100</p></div>
+
+<div class="bx c1"><div class="bh">Ch 1 &middot; Concentration</div>
+<table><tr><th>Term</th><th>Formula</th><th>T?</th></tr>
+<tr><td>Mass %</td><td class="f">$\frac{w_B}{w_A+w_B}\times100$</td><td>No</td></tr>
+<tr><td>Mole frac</td><td class="f">$x_B=\frac{n_B}{n_A+n_B}$</td><td>No</td></tr>
+<tr class="hi"><td>Molarity</td><td class="f">$M=\frac{n_B}{V_{soln}(L)}$</td><td><b>Yes</b></td></tr>
+<tr><td>Molality</td><td class="f">$m=\frac{n_B}{w_A(kg)}$</td><td>No</td></tr>
+<tr><td>ppm</td><td class="f">$\frac{w_{solute}}{w_{soln}}\times10^6$</td><td>No</td></tr></table>
+<p class="f">$M=\dfrac{10\times\%\times d}{M_B}$ &nbsp;·&nbsp; $m=\dfrac{1000M}{1000d-MM_B}$ &nbsp;·&nbsp; $M_1V_1=M_2V_2$</p>
+<p><b>Sig figs:</b> +/&minus; &rarr; fewest <i>decimals</i>; &times;/&divide; &rarr; fewest <i>sig figs</i>.</p></div>
+
+<div class="bx c2"><div class="bh">Ch 2 &middot; Particles &amp; models</div>
+<p>e/m = 1.7588&times;10<sup>11</sup> C/kg (same for all gases &rArr; electron universal) &middot; e = 1.602&times;10<sup>&minus;19</sup> C (Millikan &rArr; charge quantised) &middot; p 1837&times; e<sup>&minus;</sup> &middot; n slightly &gt; p.</p>
+<p><b>Anode rays:</b> e/m <i>varies</i> &mdash; they are the <b>ionised gas atoms</b>; mass and charge both change.</p>
+<p><b>&alpha;-scattering:</b> most through &rarr; empty space &middot; few deflect &rarr; charge concentrated &middot; 1 in 20000 rebounds &rarr; also massive. Nucleus 10<sup>&minus;15</sup>, atom 10<sup>&minus;10</sup> m.</p>
+<p><b>Rutherford drawbacks (2):</b> accelerating e<sup>&minus;</sup> radiates &rarr; spirals in ~10<sup>&minus;8</sup> s; would give <b>continuous</b> not <b>line</b> spectrum.</p></div>
+
+<div class="bx c2"><div class="bh">Ch 2 &middot; Radiation, photon, photoelectric</div>
+<p class="f">$c=\nu\lambda$ &nbsp;·&nbsp; $\bar\nu=1/\lambda$ &nbsp;·&nbsp; $E=h\nu=\frac{hc}{\lambda}=nh\nu$</p>
+<p class="f">$h\nu=h\nu_0+\tfrac12 m_ev^2$ &nbsp;·&nbsp; $\phi=h\nu_0$ &nbsp;·&nbsp; KE$_{max}=h(\nu-\nu_0)$</p>
+<p><b>Graph KE vs &nu;:</b> straight line, <b>slope = h (same all metals &rArr; parallel)</b>, x-intercept = &nu;<sub>0</sub>. No emission below &nu;<sub>0</sub>.</p>
+<p><b>4 observations:</b> threshold &nu;<sub>0</sub> &middot; instantaneous &middot; KE &prop; frequency &middot; number &prop; intensity.</p></div>
+
+<div class="bx c2"><div class="bh">Ch 2 &middot; Spectrum &amp; Bohr</div>
+<p class="f">$\bar\nu=109677\left(\frac{1}{n_1^2}-\frac{1}{n_2^2}\right)$ cm<sup>&minus;1</sup></p>
+<table><tr><th>Series</th><th>n&#8321;</th><th>Region</th></tr>
+<tr><td>Lyman</td><td>1</td><td>UV</td></tr>
+<tr class="hi"><td>Balmer</td><td>2</td><td><b>Visible</b></td></tr>
+<tr><td>Paschen</td><td>3</td><td>IR</td></tr>
+<tr><td>Brackett / Pfund</td><td>4 / 5</td><td>IR</td></tr></table>
+<p>Named by where e<sup>&minus;</sup> <b>lands</b>. Lines to ground = n(n&minus;1)/2.</p>
+<p class="f">$r_n=52.9\frac{n^2}{Z}$ pm &nbsp;·&nbsp; $E_n=-13.6\frac{Z^2}{n^2}$ eV &nbsp;·&nbsp; $mvr=\frac{nh}{2\pi}$ &nbsp;·&nbsp; $\Delta E=h\nu$</p>
+<p><b>Limitations (5):</b> one-e<sup>&minus;</sup> species only &middot; no fine structure &middot; no Zeeman/Stark &middot; no bonding &middot; violates Heisenberg.</p></div>
+
+<div class="bx c2"><div class="bh">Ch 2 &middot; de Broglie, Heisenberg, QM</div>
+<p class="f">$\lambda=\frac{h}{mv}$ &nbsp;·&nbsp; $\Delta x\cdot\Delta p\ge\frac{h}{4\pi}$ &nbsp;·&nbsp; $\hat H\psi=E\psi$</p>
+<p>&psi; no meaning; <b>&psi;<sup>2</sup> = probability density</b>. Orbital = 90% region, max <b>2</b> e<sup>&minus;</sup>.</p>
+<table><tr><th>QN</th><th>Values</th><th>Fixes</th></tr>
+<tr><td>n</td><td>1,2,3…</td><td>shell, size; 2n<sup>2</sup> e<sup>&minus;</sup></td></tr>
+<tr><td>l</td><td>0 &rarr; n&minus;1</td><td>subshell, <b>shape</b>; L=&radic;(l(l+1))h/2&pi;</td></tr>
+<tr><td>m<sub>l</sub></td><td>&minus;l…+l</td><td>orientation; 2l+1 orbitals</td></tr>
+<tr><td>m<sub>s</sub></td><td>&plusmn;&frac12;</td><td>spin (not from Schr&ouml;dinger)</td></tr></table>
+<p><b>Nodes:</b> angular = l &middot; radial = n&minus;l&minus;1 &middot; <b>total = n&minus;1</b>. Orbitals/shell = n<sup>2</sup>.</p>
+<p><b>Order:</b> 1s 2s 2p 3s 3p 4s 3d 4p 5s 4d 5p 6s 4f 5d 6p. (n+l) rule; tie &rarr; lower n.</p>
+<p><b>Cr = [Ar]3d<sup>5</sup>4s<sup>1</sup>, Cu = [Ar]3d<sup>10</sup>4s<sup>1</sup></b> &mdash; symmetry <b>+</b> exchange energy. <b>Fe<sup>2+</sup> = [Ar]3d<sup>6</sup></b> (4s empties first).</p>
+<p>H only: 2s = 2p. All other atoms: s &lt; p &lt; d &lt; f.</p></div>
+
+<div class="bx c3"><div class="bh">Ch 3 &middot; Trends</div>
+<table><tr><th></th><th>Across &rarr;</th><th>Down &darr;</th></tr>
+<tr class="hi"><td>Atomic radius</td><td><b>Decreases</b></td><td><b>Increases</b></td></tr>
+<tr><td>Ionization enth.</td><td>Increases</td><td>Decreases</td></tr>
+<tr><td>Electron gain enth.</td><td>More &minus;ve</td><td>Less &minus;ve</td></tr>
+<tr><td>Electronegativity</td><td>Increases</td><td>Decreases</td></tr>
+<tr><td>Metallic char.</td><td>Decreases</td><td>Increases</td></tr>
+<tr><td>Oxide</td><td>basic&rarr;amph&rarr;acidic</td><td>more basic</td></tr></table>
+<p><b>Why:</b> across &mdash; Z&uarr; with <b>same shell</b> &rArr; pull&uarr;. Down &mdash; <b>new shell</b> + shielding&uarr; &rArr; pull on outer e<sup>&minus;</sup> <b>weakens</b>.</p>
+<p>Cation &lt; atom &lt; anion. Isoelectronic: <b>more Z &rArr; smaller</b>.<br>O<sup>2&minus;</sup>140 &gt; F<sup>&minus;</sup>136 &gt; Na<sup>+</sup>95 &gt; Mg<sup>2+</sup>65 &gt; Al<sup>3+</sup>50 pm</p></div>
+
+<div class="bx tr"><div class="bh">Ch 3 &middot; The four anomalies</div>
+<p><b>Be &gt; B, Mg &gt; Al</b> (IE): B's e<sup>&minus;</sup> from <b>2p</b> &mdash; higher energy, better shielded &mdash; vs Be's filled 2s<sup>2</sup>.</p>
+<p><b>N &gt; O, P &gt; S</b> (IE): N is <b>half-filled 2p<sup>3</sup></b>, symmetric &amp; stable; O's <b>paired</b> 2p e<sup>&minus;</sup> repels &rArr; easier to remove.</p>
+<p><b>Cl &gt; F, S &gt; O</b> (&Delta;<sub>eg</sub>H more &minus;ve): F/O so <b>small</b> that compact 2p causes <b>inter-electronic repulsion</b>.</p>
+<p><b>2nd &Delta;<sub>eg</sub>H always +ve</b>; noble gases +ve.</p></div>
+
+<div class="bx c3"><div class="bh">Ch 3 &middot; Blocks &amp; data</div>
+<p><b>s</b> gp 1&ndash;2 <span class="f">ns<sup>1-2</sup></span> &middot; <b>p</b> gp 13&ndash;18 <span class="f">ns<sup>2</sup>np<sup>1-6</sup></span> &middot; <b>d</b> gp 3&ndash;12 <span class="f">(n&minus;1)d<sup>1-10</sup>ns<sup>0-2</sup></span> &middot; <b>f</b> <span class="f">(n&minus;2)f<sup>1-14</sup>(n&minus;1)d<sup>0-1</sup>ns<sup>2</sup></span></p>
+<p><i>Superscript dash = range. (n&minus;1) = real minus.</i> Block width = subshell capacity.</p>
+<p><b>Zn/Cd/Hg not transition</b> (d<sup>10</sup> in atom &amp; ion). Period lengths <b>2,8,8,18,18,32,32</b>.</p>
+<p><b>Group:</b> s = valence e<sup>&minus;</sup>; p = 10 + (ns+np); d = (n&minus;1)d + ns.</p>
+<p>IE period 2: Li 520, <b>Be 899, B 801</b>, C 1086, <b>N 1402, O 1314</b>, F 1681, Ne 2080<br>&Delta;<sub>eg</sub>H: F &minus;328, <b>Cl &minus;349</b>, O &minus;141, <b>S &minus;200</b> &nbsp;·&nbsp; EN: <b>F = 4.0</b></p>
+<p><b>2nd-period anomaly (3):</b> small size &middot; high charge/radius &amp; EN &middot; <b>no d orbitals</b> &rArr; covalency max <b>4</b>. <b>Diagonal:</b> Li&ndash;Mg, Be&ndash;Al, B&ndash;Si.</p>
+<p><b>Roots &gt;100:</b> nil un bi tri quad pent hex sept oct enn + <b>ium</b>. 104 = unnilquadium (Unq).</p></div>
+
+<div class="bx c4"><div class="bh">Ch 4 &middot; Core formulae</div>
+<p class="f">FC $=V-L-\tfrac12 B$ &nbsp;·&nbsp; $H=\tfrac12[V+M-C+A]$ &nbsp;·&nbsp; BO $=\frac{N_b-N_a}{2}$ &nbsp;·&nbsp; $\mu=q\times d$</p>
+<p>H = 2 sp &middot; 3 sp<sup>2</sup> &middot; 4 sp<sup>3</sup> &middot; 5 sp<sup>3</sup>d &middot; 6 sp<sup>3</sup>d<sup>2</sup>. O/S divalent &rarr; contribute 0 to M.</p>
+<p><b>Octet fails:</b> incomplete (BCl<sub>3</sub>) &middot; expanded (SF<sub>6</sub>) &middot; odd-e<sup>&minus;</sup> (NO, NO<sub>2</sub>) &middot; noble gas cpds.</p></div>
+
+<div class="bx c4"><div class="bh">Ch 4 &middot; VSEPR &mdash; geometry vs shape</div>
+<table><tr><th>BP/LP</th><th>Geometry</th><th>Shape</th><th>Eg (angle)</th></tr>
+<tr><td>2/0</td><td>Linear</td><td>Linear</td><td>CO<sub>2</sub> 180&deg;</td></tr>
+<tr><td>3/0</td><td>Trig planar</td><td>Trig planar</td><td>BF<sub>3</sub> 120&deg;</td></tr>
+<tr><td>2/1</td><td>Trig planar</td><td><b>Bent</b></td><td>SO<sub>2</sub></td></tr>
+<tr><td>4/0</td><td>Tetrahedral</td><td>Tetrahedral</td><td>CH<sub>4</sub> 109.5&deg;</td></tr>
+<tr class="hi"><td>3/1</td><td>Tetrahedral</td><td><b>Pyramidal</b></td><td>NH<sub>3</sub> 107&deg;</td></tr>
+<tr class="hi"><td>2/2</td><td>Tetrahedral</td><td><b>Bent</b></td><td>H<sub>2</sub>O 104.5&deg;</td></tr>
+<tr><td>5/0</td><td>Trig bipyr</td><td>Trig bipyr</td><td>PCl<sub>5</sub> 90/120&deg;</td></tr>
+<tr><td>4/1</td><td>Trig bipyr</td><td><b>See-saw</b></td><td>SF<sub>4</sub></td></tr>
+<tr><td>3/2</td><td>Trig bipyr</td><td><b>T-shaped</b></td><td>ClF<sub>3</sub></td></tr>
+<tr><td>2/3</td><td>Trig bipyr</td><td><b>Linear</b></td><td>XeF<sub>2</sub></td></tr>
+<tr><td>6/0</td><td>Octahedral</td><td>Octahedral</td><td>SF<sub>6</sub> 90&deg;</td></tr>
+<tr><td>5/1</td><td>Octahedral</td><td><b>Sq pyramidal</b></td><td>BrF<sub>5</sub></td></tr>
+<tr class="hi"><td>4/2</td><td>Octahedral</td><td><b>Sq planar</b></td><td>XeF<sub>4</sub></td></tr></table>
+<p>Repulsion <b>lp&ndash;lp &gt; lp&ndash;bp &gt; bp&ndash;bp</b>. LP goes <b>equatorial</b> in TBP, <b>trans</b> in octahedral.</p>
+<p><b>Angles:</b> CH<sub>4</sub>109.5 &gt; NH<sub>3</sub>107 &gt; H<sub>2</sub>O104.5 &middot; NH<sub>3</sub> &gt; NF<sub>3</sub>102 (EN of F) &middot; NH<sub>3</sub> &gt; PH<sub>3</sub>93.6 (size).</p></div>
+
+<div class="bx c4"><div class="bh">Ch 4 &middot; MOT</div>
+<p><b>&le;14 e<sup>&minus;</sup> (B<sub>2</sub>,C<sub>2</sub>,N<sub>2</sub>):</b> &sigma;2s &lt; &sigma;*2s &lt; <b>&pi;2p = &pi;2p &lt; &sigma;2p</b> &lt; &pi;* &lt; &sigma;*<br><b>&gt;14 (O<sub>2</sub>,F<sub>2</sub>):</b> <b>&sigma;2p &lt; &pi;2p</b> (swap)</p>
+<table><tr><th></th><th>H<sub>2</sub></th><th>He<sub>2</sub></th><th>B<sub>2</sub></th><th>C<sub>2</sub></th><th>N<sub>2</sub></th><th>O<sub>2</sub></th><th>F<sub>2</sub></th></tr>
+<tr><td>BO</td><td>1</td><td><b>0</b></td><td>1</td><td>2</td><td><b>3</b></td><td>2</td><td>1</td></tr>
+<tr><td>Mag</td><td>dia</td><td>&mdash;</td><td><b>para</b></td><td>dia</td><td>dia</td><td><b>para</b></td><td>dia</td></tr></table>
+<p><b>O<sub>2</sub><sup>+</sup> 2.5 &gt; O<sub>2</sub> 2 &gt; O<sub>2</sub><sup>&minus;</sup> 1.5 &gt; O<sub>2</sub><sup>2&minus;</sup> 1</b> (bond length reverse; only O<sub>2</sub><sup>2&minus;</sup> diamagnetic).</p>
+<p><b>&sigma;</b> head-on, stronger, free rotation, always 1st. <b>&pi;</b> sideways, weaker, restricted. Double = 1&sigma;+1&pi;; triple = 1&sigma;+2&pi;.</p></div>
+
+<div class="bx c4"><div class="bh">Ch 4 &middot; Polarity &amp; H-bonding</div>
+<p><b>&mu; = 0:</b> BeF<sub>2</sub>, CO<sub>2</sub>, BF<sub>3</sub>, CCl<sub>4</sub> (symmetric). H<sub>2</sub>O 1.85, <b>NH<sub>3</sub> 1.47 &gt; NF<sub>3</sub> 0.24</b>.</p>
+<p><b>NH<sub>3</sub> vs NF<sub>3</sub>:</b> in NH<sub>3</sub> bond dipoles point <b>toward</b> N, <b>adding</b> to the lone-pair dipole; in NF<sub>3</sub> they point <b>away</b>, <b>opposing</b> it.</p>
+<p><b>H-bond</b> needs H on <b>F, O or N</b>. 10&ndash;40 kJ/mol. Inter &rarr; <b>raises</b> bp; intra (<i>o</i>-nitrophenol) &rarr; <b>lowers</b> bp. Ice open cage &rArr; less dense.</p>
+<p><b>Resonance:</b> only e<sup>&minus;</sup> move, nuclei fixed; forms not real; hybrid lower in energy; O<sub>3</sub> both bonds 128 pm.</p></div>
+
+<div class="bx c7"><div class="bh">Ch 7 &middot; Oxidation numbers</div>
+<p>Free element <b>0</b> &middot; monatomic ion = charge &middot; <b>F always &minus;1</b> &middot; gp1 +1, gp2 +2 &middot; H +1 but <b>&minus;1 in hydrides</b> &middot; O &minus;2, <b>&minus;1 peroxide, &minus;&frac12; superoxide, +ve with F</b> &middot; sum = 0 or charge.</p>
+<p>Cr in Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup> +6 &middot; Mn in MnO<sub>4</sub><sup>&minus;</sup> +7 &middot; <b>Fe<sub>3</sub>O<sub>4</sub> +8/3</b> &middot; <b>S<sub>4</sub>O<sub>6</sub><sup>2&minus;</sup> +2.5</b> (averages).</p>
+<p>ON can be &plusmn;, 0, fractional. <b>Valency cannot.</b> OIL RIG. Oxidising agent is <b>reduced</b>.</p></div>
+
+<div class="bx c7"><div class="bh">Ch 7 &middot; Balancing (half-reaction)</div>
+<ol><li>Split into oxidation &amp; reduction halves</li>
+<li>Balance atoms except H, O</li>
+<li>Balance <b>O with H<sub>2</sub>O</b></li>
+<li>Balance <b>H with H<sup>+</sup></b></li>
+<li>Balance <b>charge with e<sup>&minus;</sup></b></li>
+<li>Multiply so e<sup>&minus;</sup> cancel; add</li>
+<li><b>Basic:</b> add OH<sup>&minus;</sup> to <b>both</b> sides = no. of H<sup>+</sup>; combine to H<sub>2</sub>O</li></ol>
+<p class="f">6Fe<sup>2+</sup>+Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup>+14H<sup>+</sup> &rarr; 6Fe<sup>3+</sup>+2Cr<sup>3+</sup>+7H<sub>2</sub>O<br>2MnO<sub>4</sub><sup>&minus;</sup>+5SO<sub>3</sub><sup>2&minus;</sup>+6H<sup>+</sup> &rarr; 2Mn<sup>2+</sup>+5SO<sub>4</sub><sup>2&minus;</sup>+3H<sub>2</sub>O<br>2MnO<sub>4</sub><sup>&minus;</sup>+6I<sup>&minus;</sup>+4H<sub>2</sub>O &rarr; 2MnO<sub>2</sub>+3I<sub>2</sub>+8OH<sup>&minus;</sup></p>
+<p><b>Always check total charge, not just atoms.</b></p></div>
+
+<div class="bx c7"><div class="bh">Ch 7 &middot; Titration &amp; cells</div>
+<table><tr><th>Medium</th><th>MnO<sub>4</sub><sup>&minus;</sup> &rarr;</th><th>n</th></tr>
+<tr class="hi"><td>Acidic</td><td>Mn<sup>2+</sup> + 4H<sub>2</sub>O</td><td><b>5</b></td></tr>
+<tr><td>Neutral</td><td>MnO<sub>2</sub> + 4OH<sup>&minus;</sup></td><td>3</td></tr>
+<tr><td>Strong alkali</td><td>MnO<sub>4</sub><sup>2&minus;</sup></td><td>1</td></tr>
+<tr><td>Cr<sub>2</sub>O<sub>7</sub><sup>2&minus;</sup> acid</td><td>2Cr<sup>3+</sup> + 7H<sub>2</sub>O</td><td><b>6</b></td></tr></table>
+<p class="f">$E=\frac{M}{n}$ &nbsp;·&nbsp; $N=M\times n$ &nbsp;·&nbsp; $N_1V_1=N_2V_2$ &nbsp;·&nbsp; $E^\circ_{cell}=E^\circ_{cat}-E^\circ_{an}$ (+ve &rArr; spontaneous)</p>
+<p><b>Use dil. H<sub>2</sub>SO<sub>4</sub> only</b> &mdash; HCl oxidised to Cl<sub>2</sub>, HNO<sub>3</sub> is itself an oxidant.</p>
+<p><b>Disproportionation</b> needs an <b>intermediate</b> ON. 2H<sub>2</sub>O<sub>2</sub>&rarr;2H<sub>2</sub>O+O<sub>2</sub>; Cl<sub>2</sub>+2OH<sup>&minus;</sup>; 2Cu<sup>+</sup>&rarr;Cu<sup>2+</sup>+Cu. <b>F cannot</b> (no +ve state).</p>
+<p>Daniell: Zn|Zn<sup>2+</sup>&#8214;Cu<sup>2+</sup>|Cu, E&deg;=+1.10 V. Anode = &minus;ve = oxidation.</p></div>
+
+<div class="bx tr"><div class="bh">Final look &mdash; the traps</div>
+<ol><li>STP <b>22.7 L at 1 bar</b>, 22.4 at 1 atm.</li>
+<li>Molarity T-dependent; molality not.</li>
+<li>Limiting reagent: moles &divide; coefficient.</li>
+<li>Photoelectric KE &rarr; <b>frequency</b>; current &rarr; intensity.</li>
+<li>Bohr: <b>one-electron species only</b>.</li>
+<li>Series named by <b>landing</b> level.</li>
+<li>Total nodes = n&minus;1. s orbital L = <b>0</b>.</li>
+<li><b>l never = n</b> (no 2d, 1p, 3f).</li>
+<li>4s fills first, <b>empties first</b>.</li>
+<li>Isoelectronic: more Z &rArr; smaller.</li>
+<li><b>Geometry &ne; shape</b> (H<sub>2</sub>O bent; XeF<sub>4</sub> sq planar).</li>
+<li>O<sub>2</sub> paramagnetic &mdash; <b>MOT only</b>.</li>
+<li>Adding e<sup>&minus;</sup> to O<sub>2</sub> <b>weakens</b> it (antibonding).</li>
+<li>Basic medium &rarr; finish with <b>OH<sup>&minus;</sup></b>.</li>
+<li>E&deg; values are <b>never</b> multiplied by coefficients.</li></ol></div>
+
+</div>
